@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-01-17T14:21:40.744Z</updated>
+  <updated>2019-01-22T07:52:25.544Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>BZOJ1926 粟粟的书架</title>
+    <link href="http://yoursite.com/2019/01/22/BZOJ1926-%E7%B2%9F%E7%B2%9F%E7%9A%84%E4%B9%A6%E6%9E%B6/"/>
+    <id>http://yoursite.com/2019/01/22/BZOJ1926-粟粟的书架/</id>
+    <published>2019-01-22T07:22:56.000Z</published>
+    <updated>2019-01-22T07:52:25.544Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>题目链接<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=1926" target="_blank" rel="noopener">BZOJ1926</a></p></blockquote><h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>幸福幼儿园B29班的粟粟是一个聪明机灵、乖巧可爱的小朋友，她的爱好是画画和读书，尤其喜欢Thomas H. Cormen的文章。粟粟家中有一个R行C列的巨型书架，书架的每一个位置都摆有一本书，上数第i行、左数第j列摆放的书有Pi,j页厚。</p><p>粟粟每天除了读书之外，还有一件必不可少的工作就是摘苹果，她每天必须摘取一个指定的苹果。粟粟家果树上的苹果有的高、有的低，但无论如何凭粟粟自己的个头都难以摘到。不过她发现，如果在脚下放上几本书，就可以够着苹果；她同时注意到，对于第i天指定的那个苹果，只要她脚下放置书的总页数之和不低于Hi，就一定能够摘到。</p><p>由于书架内的书过多，父母担心粟粟一天内就把所有书看完而耽误了上幼儿园，于是每天只允许粟粟在一个特定区域内拿书。这个区域是一个矩形，第i天给定区域的左上角是上数第x1i行的左数第y1i本书，右下角是上数第x2i行的左数第y2i本书。换句话说，粟粟在这一天，只能在这﹙x2i－x1i＋1﹚×﹙y2i－y1i＋1﹚本书中挑选若干本垫在脚下，摘取苹果。</p><p>粟粟每次取书时都能及时放回原位，并且她的书架不会再撤下书目或换上新书，摘苹果的任务会一直持续M天。给出每本书籍的页数和每天的区域限制及采摘要求，请你告诉粟粟，她每天至少拿取多少本书，就可以摘到当天指定的苹果。<br><a id="more"></a></p><h1 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h1><p>第一行是三个正整数R，C，M。<br>接下来是一个R行C列的矩阵，从上到下、从左向右依次给出了每本书的页数Pi，j。<br>接下来M行，第i行给出正整数x1i，y1i，x2i，y2i，Hi，表示第i天的指定区域是﹙x1i，y1i﹚与﹙x2i，y2i﹚间<br>的矩形，总页数之和要求不低于Hi。<br>保证1≤x1i≤x2i≤R，1≤y1i≤y2i≤C。</p><h1 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h1><p>有M行，第i 行回答粟粟在第 i 天时为摘到苹果至少需要 拿取多少本书。如果即使取走所有书都无法摘到苹果，<br>则在该行输出“Poor QLW” （不含引号）。</p><h1 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h1><p>5 5 7<br>14 15 9 26 53<br>58 9 7 9 32<br>38 46 26 43 38<br>32 7 9 50 28<br>8 41 9 7 17<br>1 2 5 3 139<br>3 1 5 5 399<br>3 3 4 5 91<br>4 1 4 1 33<br>1 3 5 4 185<br>3 3 4 3 23<br>3 1 3 3 108 </p><h1 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h1><p>6<br>15<br>2<br>Poor QLW<br>9<br>1<br>3 </p><h1 id="HINT"><a href="#HINT" class="headerlink" title="HINT"></a>HINT</h1><p>对于 10%的数据，满足 R, C≤10；<br>对于 20%的数据，满足 R, C≤40；<br>对于 50%的数据，满足 R, C≤200，M≤200,000；<br>另有 50%的数据，满足 R＝1，C≤500,000，M≤20,000；<br>对于 100%的数据，满足 1≤Pi,j≤1,000，1≤Hi≤2,000,000,000</p><h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>先考虑矩形时的一半数据。注意到P不大于1000，因此可以预处理出与P有关的数组。用<br>val[i][j][k]表示(i, j)左上方的子矩阵中大于等于k的数的总和<br>num[i][j][k]表示(i, j)左上方的子矩阵中大于等于k的数的个数<br>然后就可以二分答案了，二分k，求矩阵前缀和，判定一下OK。</p><p>再考虑剩下的一维的大数据。</p><h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;题目链接&lt;a href=&quot;https://www.lydsy.com/JudgeOnline/problem.php?id=1926&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;BZOJ1926&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;Description&quot;&gt;&lt;a href=&quot;#Description&quot; class=&quot;headerlink&quot; title=&quot;Description&quot;&gt;&lt;/a&gt;Description&lt;/h1&gt;&lt;p&gt;幸福幼儿园B29班的粟粟是一个聪明机灵、乖巧可爱的小朋友，她的爱好是画画和读书，尤其喜欢Thomas H. Cormen的文章。粟粟家中有一个R行C列的巨型书架，书架的每一个位置都摆有一本书，上数第i行、左数第j列摆放的书有Pi,j页厚。&lt;/p&gt;
+&lt;p&gt;粟粟每天除了读书之外，还有一件必不可少的工作就是摘苹果，她每天必须摘取一个指定的苹果。粟粟家果树上的苹果有的高、有的低，但无论如何凭粟粟自己的个头都难以摘到。不过她发现，如果在脚下放上几本书，就可以够着苹果；她同时注意到，对于第i天指定的那个苹果，只要她脚下放置书的总页数之和不低于Hi，就一定能够摘到。&lt;/p&gt;
+&lt;p&gt;由于书架内的书过多，父母担心粟粟一天内就把所有书看完而耽误了上幼儿园，于是每天只允许粟粟在一个特定区域内拿书。这个区域是一个矩形，第i天给定区域的左上角是上数第x1i行的左数第y1i本书，右下角是上数第x2i行的左数第y2i本书。换句话说，粟粟在这一天，只能在这﹙x2i－x1i＋1﹚×﹙y2i－y1i＋1﹚本书中挑选若干本垫在脚下，摘取苹果。&lt;/p&gt;
+&lt;p&gt;粟粟每次取书时都能及时放回原位，并且她的书架不会再撤下书目或换上新书，摘苹果的任务会一直持续M天。给出每本书籍的页数和每天的区域限制及采摘要求，请你告诉粟粟，她每天至少拿取多少本书，就可以摘到当天指定的苹果。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="数据结构" scheme="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+      <category term="主席树" scheme="http://yoursite.com/tags/%E4%B8%BB%E5%B8%AD%E6%A0%91/"/>
+    
+      <category term="前缀和" scheme="http://yoursite.com/tags/%E5%89%8D%E7%BC%80%E5%92%8C/"/>
+    
+      <category term="二分答案" scheme="http://yoursite.com/tags/%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88/"/>
+    
+  </entry>
   
   <entry>
     <title>BZOJ1070 修车</title>
