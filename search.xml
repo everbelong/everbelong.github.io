@@ -1,12 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[BZOJ1001 狼抓兔子]]></title>
+    <url>%2F2019%2F01%2F22%2FBZOJ1001-%E7%8B%BC%E6%8A%93%E5%85%94%E5%AD%90%2F</url>
+    <content type="text"><![CDATA[题目链接BZOJ1001 Description现在小朋友们最喜欢的”喜羊羊与灰太狼”,话说灰太狼抓羊不到，但抓兔子还是比较在行的，而且现在的兔子还比较笨，它们只有两个窝，现在你做为狼王，面对下面这样一个网格的地形：左上角点为(1,1),右下角点为(N,M)(上图中N=4,M=5).有以下三种类型的道路1:(x,y)&lt;\==&gt;(x+1,y)2:(x,y)&lt;\==&gt;(x,y+1)3:(x,y)&lt;\==&gt;(x+1,y+1)道路上的权值表示这条路上最多能够通过的兔子数，道路是无向的. 左上角和右下角为兔子的两个窝，开始时所有的兔子都聚集在左上角(1,1)的窝里，现在它们要跑到右下解(N,M)的窝中去，狼王开始伏击这些兔子.当然为了保险起见，如果一条道路上最多通过的兔子数为K，狼王需要安排同样数量的K只狼，才能完全封锁这条道路，你需要帮助狼王安排一个伏击方案，使得在将兔子一网打尽的前提下，参与的狼的数量要最小。因为狼还要去找喜羊羊麻烦. Input第一行为N,M.表示网格的大小，N,M均小于等于1000.接下来分三部分第一部分共N行，每行M-1个数，表示横向道路的权值.第二部分共N-1行，每行M个数，表示纵向道路的权值.第三部分共N-1行，每行M-1个数，表示斜向道路的权值.输入文件保证不超过10M Output输出一个整数，表示参与伏击的狼的最小数量. Sample Input3 45 6 44 3 17 5 35 6 7 88 7 6 55 5 56 6 6 Sample Output14 Solution解法一：网络流很容易想到题目让求的就是最小割，利用最小割最大流定理，就是一道求最大流的裸题。说几点Dinic的注意点： tot初始化为1 当发现一条路无法增光时，将d数组设为0，表示该点不可能继续增广，可以大大提速 路径是双向边，再加上反向边，总共是4条边 模板尽可能背的准一点吧，我默写的时候出来很多小问题 解法二：耦合图这个解法就巧妙多了。 Code解法一123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354#include &lt;bits/stdc++.h&gt;using namespace std;const int N = 1010, inf = 0x3f3f3f3f;int n, m, head[N*N], ver[N*N*12], Next[N*N*12], edge[N*N*12], tot = 1, d[N*N], maxflow, f, s, t;queue&lt;int&gt; q;void add(int x, int y, int z) &#123; ver[++tot] = y, edge[tot] = z, Next[tot] = head[x], head[x] = tot; ver[++tot] = x, edge[tot] = z, Next[tot] = head[y], head[y] = tot;&#125;bool bfs() &#123; while(q.size()) q.pop(); memset(d, 0, sizeof(d)); d[s] = 1; q.push(s); while(q.size()) &#123; int x = q.front(); q.pop(); for(int i = head[x]; i; i = Next[i]) if(edge[i] &amp;&amp; !d[ver[i]]) &#123; d[ver[i]] = d[x] + 1; q.push(ver[i]); if(ver[i] == t) return true; &#125; &#125; return false;&#125;int dinic(int x, int flow) &#123; if(x == t) return flow; int k, rest = flow; for(int i = head[x]; i &amp;&amp; rest; i = Next[i]) if(edge[i] &amp;&amp; d[ver[i]] == d[x] + 1) &#123; k = dinic(ver[i], min(rest, edge[i])); if(!k) d[ver[i]] = 0; rest -= k; edge[i] -= k; edge[i ^ 1] += k; &#125; return flow - rest;&#125;int main() &#123; scanf("%d%d", &amp;n, &amp;m); int z; s = 1, t = n * m; for(int i = 0; i &lt; n; i++) for(int j = 1; j &lt; m; j++) scanf("%d", &amp;z), add(i*m+j, i*m+j+1, z), add(i*m+j+1, i*m+j, 0); for(int i = 0; i &lt; n - 1; i++) for(int j = 1; j &lt;= m; j++) scanf("%d", &amp;z), add(i*m+j, i*m+m+j, z), add(i*m+m+j, i*m+j, 0); for(int i = 0; i &lt; n - 1; i++) for(int j = 1; j &lt; m; j++) scanf("%d", &amp;z), add(i*m+j, i*m+m+j+1, z), add(i*m+m+j+1, i*m+j, 0); while(bfs()) while(f = dinic(s, inf)) maxflow += f; cout &lt;&lt; maxflow &lt;&lt; endl; return 0;&#125;]]></content>
+      <categories>
+        <category>图论</category>
+      </categories>
+      <tags>
+        <tag>网络流-最大流</tag>
+        <tag>耦合图</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[BZOJ2434 阿狸的打字机]]></title>
     <url>%2F2019%2F01%2F22%2FBZOJ2434-%E9%98%BF%E7%8B%B8%E7%9A%84%E6%89%93%E5%AD%97%E6%9C%BA%2F</url>
     <content type="text"><![CDATA[题目链接BZOJ2434 Description 阿狸喜欢收藏各种稀奇古怪的东西，最近他淘到一台老式的打字机。打字机上只有28个按键，分别印有26个小写英文字母和’B’、’P’两个字母。经阿狸研究发现，这个打字机是这样工作的：输入小写字母，打字机的一个凹槽中会加入这个字母(这个字母加在凹槽的最后)。按一下印有’B’的按键，打字机凹槽中最后一个字母会消失。按一下印有’P’的按键，打字机会在纸上打印出凹槽中现有的所有字母并换行，但凹槽中的字母不会消失。例如，阿狸输入aPaPBbP，纸上被打印的字符如下：aaaab我们把纸上打印出来的字符串从1开始顺序编号，一直到n。打字机有一个非常有趣的功能，在打字机中暗藏一个带数字的小键盘，在小键盘上输入两个数(x,y)（其中1≤x,y≤n），打字机会显示第x个打印的字符串在第y个打印的字符串中出现了多少次。阿狸发现了这个功能以后很兴奋，他想写个程序完成同样的功能，你能帮助他么？ Input输入的第一行包含一个字符串，按阿狸的输入顺序给出所有阿狸输入的字符。第二行包含一个整数m，表示询问个数。接下来m行描述所有由小键盘输入的询问。其中第i行包含两个整数x, y，表示第i个询问为(x, y)。 Output 输出m行，其中第i行包含一个整数，表示第i个询问的答案。 Sample InputaPaPBbP31 21 32 3 Sample Output210 HINT对于100%的数据，n&lt;=100000,m&lt;=100000,第一行总长度&lt;=100000。 Solution40分做法第一想法，AC自动机，记录每个字符串以及它们在Trie上的哪个节点结束，直接匹配（好暴力啊）。事实上，这种做法，仅仅是记录所有的字符串都会超时超内存，都轮不到匹配的事。但可以作为一个模板题写写嘛。 Code40分代码12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758#include &lt;bits/stdc++.h&gt;using namespace std;const int N = 100010;char str[N];int n, m, ch[N][30], pos[N], nxt[N], tot = 1, s[N], tail;vector&lt;int&gt; dic[N];void insert() &#123; int cur = 1; for(int i = 1; i &lt;= tail; i++) &#123; if(!ch[cur][s[i]]) ch[cur][s[i]] = ++tot; cur = ch[cur][s[i]]; &#125; pos[++n] = cur; for(int i = 1; i &lt;= tail; i++) dic[n].push_back(s[i]);&#125;void bfs() &#123; for(int i = 1; i &lt;= 26; i++) ch[0][i] = 1; queue&lt;int&gt; q; q.push(1); nxt[1] = 0; while(q.size()) &#123; int x = q.front(); q.pop(); for(int i = 1; i &lt;= 26; i++) &#123; if(!ch[x][i]) ch[x][i] = ch[nxt[x]][i]; else q.push(ch[x][i]), nxt[ch[x][i]] = ch[nxt[x]][i]; &#125; &#125;&#125;int find(int pa, int son) &#123; int cur = 1, res = 0; for(int i = 0; i &lt; dic[pa].size(); i++) &#123; int c = dic[pa][i], k = ch[cur][c]; while(k &gt; 1) &#123; res += pos[son] == k; k = nxt[k]; &#125; cur = ch[cur][c]; &#125; return res;&#125;int main()&#123; scanf("%s", str); int len = strlen(str); for(int i = 0; i &lt; len; i++) &#123; if(str[i] == 'P') insert(); else if(str[i] == 'B' &amp;&amp; tail) tail--; else s[++tail] = str[i] - 'a' + 1; &#125; bfs(); scanf("%d", &amp;m); while(m--)&#123; int x, y; scanf("%d%d", &amp;x, &amp;y); printf("%d\n", find(y, x)); &#125; return 0;&#125;]]></content>
       <categories>
         <category>数据结构</category>
       </categories>
+      <tags>
+        <tag>AC自动机</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[BZOJ1926 粟粟的书架]]></title>
@@ -17,8 +32,6 @@
       </categories>
       <tags>
         <tag>主席树</tag>
-        <tag>前缀和</tag>
-        <tag>二分答案</tag>
       </tags>
   </entry>
   <entry>
