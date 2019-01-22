@@ -83,7 +83,7 @@
 <meta property="og:site_name" content="everbelong">
 <meta property="og:description" content="题目链接： BZOJ3994  Description 设d(x)为x的约数个数，给定N、M，求$\sum_{i=1}^N\sum_{j=1}^Md(ij)$">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-13T10:04:31.402Z">
+<meta property="og:updated_time" content="2019-01-22T07:18:58.174Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BZOJ3994 约数个数和">
 <meta name="twitter:description" content="题目链接： BZOJ3994  Description 设d(x)为x的约数个数，给定N、M，求$\sum_{i=1}^N\sum_{j=1}^Md(ij)$">
@@ -374,7 +374,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  976
+                  1k
                 </span>
               
 
@@ -421,7 +421,7 @@
 <h1 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h1><p>2<br>7 4<br>5 6</p>
 <h1 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h1><p>110<br>121</p>
 <h1 id="HINT"><a href="#HINT" class="headerlink" title="HINT"></a>HINT</h1><p>1&lt;=N, M&lt;=50000<br>1&lt;=T&lt;=50000</p>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>首先，要先介绍一个可爱的结论：<br>$$ d(ij) = \sum_{x|i}\sum_{y|j}[gcd(x, y) = 1] $$<br>简单证明一下：<br>考虑i*j的每一个因数是如何产生的，肯定是取一个i的约数x，再取一个j的约数y，两者相乘得到。但这之中有一个重复的问题，也就是两种不同的取法得到了相同的乘积。为了去掉这个重复，考虑对结果的贡献，我们可以只在$(x, y)==1$时把这个乘积统计在内，于是得到了这个结论。</p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>首先，要先介绍一个可爱的结论：<br>$$ d(ij) = \sum_{x|i}\sum_{y|j}[gcd(x, y) = 1] $$<br>简单证明一下：<br>当$(i, j)=1$时，结果显然为i的约数个数乘j的约数个数。<br>否则，会有一部分重复，因为i*j的某一个因数可以有不同方式得到。怎样得到另一种方式呢？比如现在有$x|i,\ y|j,\ xy|ij,\ d|x$此时让x除以d，y乘以d，得到新的$xy|ij$，而这样做合法的前提是d同时是i和j的因数，或者说$gcd(x, yd)\ne 1$，当有这样的一对约数时，把结果减1，就可以得到这个式子。</p>
 <p>结合其他几道题目，可以发现反演似乎非常青睐gcd，所有的数论函数都要尽量往最大公约数上面靠，然后再开始套路。</p>
 <p>之后就是一道比较经典的反演题目了，总之就是推式子吧。求$$ \sum_{i=1}^N\sum_{j=1}^M\sum_{x|i}\sum_{y|j}[gcd(x, y) = 1] $$<br>相同的x, y枚举了很多次，因此先枚举x, y，贡献可以直接计算得到，原式即<br>$$\sum_{i=1}^N\sum_{j=1}^M\lfloor\frac{N}{i}\rfloor\lfloor\frac{M}{j}\rfloor[gcd(i, j) = 1]$$<br>我们令$$ f(n) = \sum_{i=1}^N\sum_{j=1}^M\lfloor\frac{N}{i}\rfloor\lfloor\frac{M}{j}\rfloor[gcd(i, j) = n] $$$$ F(d) = \sum_{d|n}f(n) = \sum_{i=1}^N\sum_{j=1}^M\lfloor\frac{N}{i}\rfloor\lfloor\frac{M}{j}\rfloor[d\ |\ gcd(i, j)] $$此处可以开心得去掉gcd，用漂亮的除法代替，枚举i和j分别是d的多少倍，得到$$ F(x) = \sum_{i=1}^{\lfloor\frac{N}{d}\rfloor}\sum_{j=1}^{\lfloor\frac{M}{d}\rfloor}\lfloor\frac{N}{id}\rfloor\lfloor\frac{M}{jd}\rfloor$$<br>这时就可以使用<code>莫比乌斯反演</code>了，因为可以看到我们已经消去了gcd，也就是说式子里不存在数论函数了，于是<br>$$ f(d) = \sum_{d|n}\mu(\frac{n}{d})F(n) $$得到答案为$$ ans = f(1) = \sum_{d=1}^{min(N, M)}\mu(d)F(d) =<br>\sum_{d=1}^{min(N, M)}\sum_{i=1}^{\lfloor\frac{N}{d}\rfloor}\sum_{j=1}^{\lfloor\frac{M}{d}\rfloor}\mu(d)\lfloor\frac{N}{id}\rfloor\lfloor\frac{M}{jd}\rfloor $$<br>现在讨论代码实现，暴力需要三层循环，因此需要用<code>线性筛</code>预处理，对于每一个x，处理出$s[x] = \sum_{i=1}^x\lfloor\frac{x}{i}\rfloor$，未来查询$s[\frac{N}{d}]$，因此只需要枚举d这一个变量。<br>再利用<code>整除分块</code>，$\lfloor\frac{N}{d}\rfloor$且$\lfloor\frac{M}{d}\rfloor$相同的部分只计算一次，就可以在$O(\sqrt{n})$的时间完成一次询问，总复杂度$O(T\sqrt{n})$</p>
 <p>关于$\mu$的计算最好作为一个模板记下啦。</p>
