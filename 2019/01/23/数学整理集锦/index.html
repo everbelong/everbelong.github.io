@@ -62,7 +62,7 @@
 
 
 
-  <meta name="keywords" content="网络流-最大流,耦合图,">
+  <meta name="keywords" content="排列组合,波利亚定理,生成函数,">
 
 
 
@@ -75,20 +75,27 @@
 
 
 
-<meta name="description" content="题目链接BZOJ1001  Description现在小朋友们最喜欢的”喜羊羊与灰太狼”,话说灰太狼抓羊不到，但抓兔子还是比较在行的，而且现在的兔子还比较笨，它们只有两个窝，现在你做为狼王，面对下面这样一个网格的地形：左上角点为(1,1),右下角点为(N,M)(上图中N=4,M=5).有以下三种类型的道路1:(x,y)&amp;lt;\==&amp;gt;(x+1,y)2:(x,y)&amp;lt;\==&amp;gt;(x,">
-<meta name="keywords" content="网络流-最大流,耦合图">
+<meta name="description" content="排列的生成 按字典序思想生成下一个排列   排列和组合的计数 两种特殊的排列组合技术公式 Catalan数 公式 应用 操练   Bell数 Stirling数   多重集的排列组合   容斥原理与鸽笼原理 波利亚定理 生成函数与递推关系">
+<meta name="keywords" content="排列组合,波利亚定理,生成函数">
 <meta property="og:type" content="article">
-<meta property="og:title" content="BZOJ1001 狼抓兔子">
-<meta property="og:url" content="http://yoursite.com/2019/01/22/BZOJ1001-狼抓兔子/index.html">
+<meta property="og:title" content="ACM集训 数学">
+<meta property="og:url" content="http://yoursite.com/2019/01/23/数学整理集锦/index.html">
 <meta property="og:site_name" content="everbelong">
-<meta property="og:description" content="题目链接BZOJ1001  Description现在小朋友们最喜欢的”喜羊羊与灰太狼”,话说灰太狼抓羊不到，但抓兔子还是比较在行的，而且现在的兔子还比较笨，它们只有两个窝，现在你做为狼王，面对下面这样一个网格的地形：左上角点为(1,1),右下角点为(N,M)(上图中N=4,M=5).有以下三种类型的道路1:(x,y)&amp;lt;\==&amp;gt;(x+1,y)2:(x,y)&amp;lt;\==&amp;gt;(x,">
+<meta property="og:description" content="排列的生成 按字典序思想生成下一个排列   排列和组合的计数 两种特殊的排列组合技术公式 Catalan数 公式 应用 操练   Bell数 Stirling数   多重集的排列组合   容斥原理与鸽笼原理 波利亚定理 生成函数与递推关系">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://www.lydsy.com/JudgeOnline/images/1001.jpg">
-<meta property="og:updated_time" content="2019-01-22T14:10:16.181Z">
+<meta property="og:image" content="http://daybreakcx.is-programmer.com/user_files/daybreakcx/Image/Catalan_number_binary_tree_example.png">
+<meta property="og:image" content="http://daybreakcx.is-programmer.com/user_files/daybreakcx/Image/450px-Catalan_number_4x4_grid_example.svg.png">
+<meta property="og:image" content="http://daybreakcx.is-programmer.com/user_files/daybreakcx/Image/400px-Catalan-Hexagons-example.svg.png">
+<meta property="og:image" content="http://daybreakcx.is-programmer.com/user_files/daybreakcx/Image/400px-Catalan_stairsteps_4.svg.png">
+<meta property="og:image" content="http://daybreakcx.is-programmer.com/user_files/daybreakcx/Image/stairs.png">
+<meta property="og:image" content="http://yoursite.com/2019/01/23/数学整理集锦/stirling1.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/01/23/数学整理集锦/stirling2.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/01/23/数学整理集锦/multi.jpg">
+<meta property="og:updated_time" content="2019-01-23T14:19:45.302Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="BZOJ1001 狼抓兔子">
-<meta name="twitter:description" content="题目链接BZOJ1001  Description现在小朋友们最喜欢的”喜羊羊与灰太狼”,话说灰太狼抓羊不到，但抓兔子还是比较在行的，而且现在的兔子还比较笨，它们只有两个窝，现在你做为狼王，面对下面这样一个网格的地形：左上角点为(1,1),右下角点为(N,M)(上图中N=4,M=5).有以下三种类型的道路1:(x,y)&amp;lt;\==&amp;gt;(x+1,y)2:(x,y)&amp;lt;\==&amp;gt;(x,">
-<meta name="twitter:image" content="https://www.lydsy.com/JudgeOnline/images/1001.jpg">
+<meta name="twitter:title" content="ACM集训 数学">
+<meta name="twitter:description" content="排列的生成 按字典序思想生成下一个排列   排列和组合的计数 两种特殊的排列组合技术公式 Catalan数 公式 应用 操练   Bell数 Stirling数   多重集的排列组合   容斥原理与鸽笼原理 波利亚定理 生成函数与递推关系">
+<meta name="twitter:image" content="http://daybreakcx.is-programmer.com/user_files/daybreakcx/Image/Catalan_number_binary_tree_example.png">
 
 
 
@@ -118,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/01/22/BZOJ1001-狼抓兔子/">
+  <link rel="canonical" href="http://yoursite.com/2019/01/23/数学整理集锦/">
 
 
 
 
 
-  <title>BZOJ1001 狼抓兔子 | everbelong</title>
+  <title>ACM集训 数学 | everbelong</title>
   
 
 
@@ -293,7 +300,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/22/BZOJ1001-狼抓兔子/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/23/数学整理集锦/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="everbelong">
@@ -310,7 +317,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">BZOJ1001 狼抓兔子</h1>
+          <h1 class="post-title" itemprop="name headline">ACM集训 数学</h1>
         
 
         <div class="post-meta">
@@ -322,8 +329,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-22T20:56:40+08:00">
-                2019-01-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-23T19:53:57+08:00">
+                2019-01-23
               </time>
             
 
@@ -345,8 +352,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/图论/" itemprop="url" rel="index">
-                    <span itemprop="name">图论</span>
+                  <a href="/categories/数学/" itemprop="url" rel="index">
+                    <span itemprop="name">数学</span>
                   </a>
                 </span>
 
@@ -376,7 +383,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  994
+                  2k
                 </span>
               
 
@@ -392,7 +399,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4
+                  8
                 </span>
               
             </div>
@@ -413,24 +420,98 @@
       
 
       
-        <blockquote>
-<p>题目链接<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=1001" target="_blank" rel="noopener">BZOJ1001</a></p>
-</blockquote>
-<h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>现在小朋友们最喜欢的”喜羊羊与灰太狼”,话说灰太狼抓羊不到，但抓兔子还是比较在行的，<br>而且现在的兔子还比较笨，它们只有两个窝，现在你做为狼王，面对下面这样一个网格的地形：<br><img src="https://www.lydsy.com/JudgeOnline/images/1001.jpg" alt=""><br>左上角点为(1,1),右下角点为(N,M)(上图中N=4,M=5).有以下三种类型的道路<br>1:(x,y)&lt;\==&gt;(x+1,y)<br>2:(x,y)&lt;\==&gt;(x,y+1)<br>3:(x,y)&lt;\==&gt;(x+1,y+1)<br>道路上的权值表示这条路上最多能够通过的兔子数，道路是无向的. 左上角和右下角为兔子的两个窝，<br>开始时所有的兔子都聚集在左上角(1,1)的窝里，现在它们要跑到右下解(N,M)的窝中去，狼王开始伏击<br>这些兔子.当然为了保险起见，如果一条道路上最多通过的兔子数为K，狼王需要安排同样数量的K只狼，<br>才能完全封锁这条道路，你需要帮助狼王安排一个伏击方案，使得在将兔子一网打尽的前提下，参与的<br>狼的数量要最小。因为狼还要去找喜羊羊麻烦.<br><a id="more"></a></p>
-<h1 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h1><p>第一行为N,M.表示网格的大小，N,M均小于等于1000.<br>接下来分三部分<br>第一部分共N行，每行M-1个数，表示横向道路的权值.<br>第二部分共N-1行，每行M个数，表示纵向道路的权值.<br>第三部分共N-1行，每行M-1个数，表示斜向道路的权值.<br>输入文件保证不超过10M</p>
-<h1 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h1><p>输出一个整数，表示参与伏击的狼的最小数量.</p>
-<h1 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h1><p>3 4<br>5 6 4<br>4 3 1<br>7 5 3<br>5 6 7 8<br>8 7 6 5<br>5 5 5<br>6 6 6</p>
-<h1 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h1><p>14</p>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><h2 id="解法一：网络流"><a href="#解法一：网络流" class="headerlink" title="解法一：网络流"></a>解法一：网络流</h2><p>很容易想到题目让求的就是最小割，利用最小割最大流定理，就是一道求最大流的裸题。<br>说几点Dinic的注意点：</p>
+        <!-- toc -->
 <ul>
-<li>tot初始化为1</li>
-<li>当发现一条路无法增光时，将d数组设为0，表示该点不可能继续增广，可以大大提速</li>
-<li>路径是双向边，再加上反向边，总共是4条边</li>
-<li>模板尽可能背的准一点吧，我<del>默写</del>的时候出来很多小问题</li>
+<li><a href="#排列的生成">排列的生成</a><ul>
+<li><a href="#按字典序思想生成下一个排列">按字典序思想生成下一个排列</a></li>
 </ul>
-<h2 id="解法二：耦合图"><a href="#解法二：耦合图" class="headerlink" title="解法二：耦合图"></a>解法二：耦合图</h2><p>这个解法就巧妙多了。</p>
-<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><h2 id="解法一"><a href="#解法一" class="headerlink" title="解法一"></a>解法一</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1010</span>, inf = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, m, head[N*N], ver[N*N*<span class="number">12</span>], Next[N*N*<span class="number">12</span>], edge[N*N*<span class="number">12</span>], tot = <span class="number">1</span>, d[N*N], maxflow, f, s, t;</span><br><span class="line"><span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> z)</span> </span>&#123;</span><br><span class="line">    ver[++tot] = y, edge[tot] = z, Next[tot] = head[x], head[x] = tot;</span><br><span class="line">    ver[++tot] = x, edge[tot] = z, Next[tot] = head[y], head[y] = tot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">bfs</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(q.size()) q.pop();</span><br><span class="line">    <span class="built_in">memset</span>(d, <span class="number">0</span>, <span class="keyword">sizeof</span>(d));</span><br><span class="line">    d[s] = <span class="number">1</span>; q.push(s);</span><br><span class="line">    <span class="keyword">while</span>(q.size()) &#123;</span><br><span class="line">        <span class="keyword">int</span> x = q.front(); q.pop();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = head[x]; i; i = Next[i]) <span class="keyword">if</span>(edge[i] &amp;&amp; !d[ver[i]]) &#123;</span><br><span class="line">            d[ver[i]] = d[x] + <span class="number">1</span>;</span><br><span class="line">            q.push(ver[i]);</span><br><span class="line">            <span class="keyword">if</span>(ver[i] == t) <span class="keyword">return</span> <span class="literal">true</span>; </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dinic</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> flow)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(x == t) <span class="keyword">return</span> flow;</span><br><span class="line">    <span class="keyword">int</span> k, rest = flow;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = head[x]; i &amp;&amp; rest; i = Next[i]) </span><br><span class="line">        <span class="keyword">if</span>(edge[i] &amp;&amp; d[ver[i]] == d[x] + <span class="number">1</span>) &#123;</span><br><span class="line">            k = dinic(ver[i], min(rest, edge[i]));</span><br><span class="line">            <span class="keyword">if</span>(!k) d[ver[i]] = <span class="number">0</span>;</span><br><span class="line">            rest -= k;</span><br><span class="line">            edge[i] -= k;</span><br><span class="line">            edge[i ^ <span class="number">1</span>] += k;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">return</span> flow - rest;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;m); </span><br><span class="line">    <span class="keyword">int</span> z; s = <span class="number">1</span>, t = n * m;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; m; j++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;z), add(i*m+j, i*m+j+<span class="number">1</span>, z), add(i*m+j+<span class="number">1</span>, i*m+j, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;z), add(i*m+j, i*m+m+j, z), add(i*m+m+j, i*m+j, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; m; j++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;z), add(i*m+j, i*m+m+j+<span class="number">1</span>, z), add(i*m+m+j+<span class="number">1</span>, i*m+j, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">while</span>(bfs()) <span class="keyword">while</span>(f = dinic(s, inf)) maxflow += f;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; maxflow &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+</li>
+<li><a href="#排列和组合的计数">排列和组合的计数</a><ul>
+<li><a href="#两种特殊的排列组合技术公式">两种特殊的排列组合技术公式</a><ul>
+<li><a href="#catalan数">Catalan数</a><ul>
+<li><a href="#公式">公式</a></li>
+<li><a href="#应用">应用</a></li>
+<li><a href="#操练">操练</a></li>
+</ul>
+</li>
+<li><a href="#bell数">Bell数</a></li>
+<li><a href="#stirling数">Stirling数</a></li>
+</ul>
+</li>
+<li><a href="#多重集的排列组合">多重集的排列组合</a></li>
+</ul>
+</li>
+<li><a href="#容斥原理与鸽笼原理">容斥原理与鸽笼原理</a></li>
+<li><a href="#波利亚定理">波利亚定理</a></li>
+<li><a href="#生成函数与递推关系">生成函数与递推关系</a></li>
+</ul>
+<!-- tocstop -->
+<a id="more"></a>
+<h1><span id="排列的生成">排列的生成</span></h1><h2><span id="按字典序思想生成下一个排列">按字典序思想生成下一个排列</span></h2><p>设当前序列为$ (p) = p_1p_2p_3…p_n $，按字典序思想生成下一个排列方法如下：</p>
+<ol>
+<li>从右向左，计算最后一个<strong>増序</strong>的尾元素的下标i，即$ i = max{j\ |\ p_{j-1} &lt; p_j,\ p_j \ge p_{j+1} } $</li>
+<li>从右向左找到$p_{i-1}$后面比$p_{i-1}$大的最后一个元素的下标j，即$j = max{ k\ |\ k \ge i,\ p_{i-1} &lt; p_k }$</li>
+<li>交换$p_{i-1}$与$p_j$，得到$p_1…p_{i-2}p_jp_ip_{i+1}…p_{j-1}p_{i-1}p_{j+1}…p_n$</li>
+<li>翻转新的$p_j$后面的元素，使其递增（也就是说原来是递减的），得到$p_1…p_{i-2}p_jp_n…p_{j+1}p_{i-1}p_{j-1}…p_{i+1}p_i$</li>
+</ol>
+<p>原理想想就明白啦，下面有一道题：</p>
+<blockquote>
+<p><a href="http://poj.org/problem?id=1146" target="_blank" rel="noopener">POJ1146 ID Codes</a></p>
+</blockquote>
+<p>就是一道很裸的题，直接来代码：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> str[<span class="number">100</span>];</span><br><span class="line"><span class="keyword">int</span> len;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123; </span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%s"</span>, str) &amp;&amp; <span class="built_in">strcmp</span>(str, <span class="string">"#"</span>)) &#123; </span><br><span class="line">        len = <span class="built_in">strlen</span>(str);</span><br><span class="line">        <span class="keyword">bool</span> flag = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = len - <span class="number">1</span>; i; i--) &#123;</span><br><span class="line">            <span class="keyword">if</span>(str[i<span class="number">-1</span>] &lt; str[i]) &#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> j = len - <span class="number">1</span>; j &gt;= i; j--) <span class="keyword">if</span>(str[i<span class="number">-1</span>] &lt; str[j]) &#123; swap(str[i<span class="number">-1</span>], str[j]); <span class="keyword">break</span>; &#125;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> j = i; j &lt;= len - (j - i + <span class="number">1</span>); j++) swap(str[j], str[len - (j - i + <span class="number">1</span>)]);</span><br><span class="line">                <span class="built_in">puts</span>(str); flag = <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!flag) <span class="built_in">puts</span>(<span class="string">"No Successor"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>再说一句，要注意看清楚流程中的大于号和大于等于号，另外就是当找不到时代表已经找完了，这就是最后一个，算法结束。</p>
+<h1><span id="排列和组合的计数">排列和组合的计数</span></h1><h2><span id="两种特殊的排列组合技术公式">两种特殊的排列组合技术公式</span></h2><h3><span id="catalan数">Catalan数</span></h3><h4><span id="公式">公式</span></h4><blockquote>
+<p>Catalan数是序列｛C｝，其中 $ C_0=1,\ C_1=1,$$$C_n = C_0C_{n-1}+C_!C_{n-2}+…+C_{n-1}C_0,\ n\ge2. $$</p>
+</blockquote>
+<p>在定义中就已经给出了它最一般的递推式，下面还有几个计算是很常用的：</p>
+<blockquote>
+<p>变形递推式$$ C_n = \frac{4n-2}{n+1}\times C_{n-1}, n &gt; 1 $$</p>
+</blockquote>
+<blockquote>
+<p>通项公式$$ C_n = \frac{C(2n, n)}{n+1}, n = 0, 1, 2… $$$$C_n=C(2n,n)-C(2n,n+1),n=0,1,2…$$</p>
+</blockquote>
+<p>酌情使用，方便为上<br>要注意卡特兰数的下标从0开始，不要随意改，会出现意想不到的问题。</p>
+<h4><span id="应用">应用</span></h4><ol>
+<li><p>由n个1和n个0构成2n项满足所有前缀中1比0多的序列个数等于第n个Catalan数。<br>证明：我们先求出所有的序列，然后减去不合法的序列即是答案。所有序列个数直接根据组合数的定义为$C(n,2n)$，现在要证明满足存在一个结论中所说的序列与n+1个0与n-1个1构成的01序列构成一个双射，即11对应关系，因为很显然，后者的数量为$C(n−1,2n)$。<br>对前者，很显然可以找到一个位置为$2p+1$的前缀，使得其中有$p+1$个1和$p$个0，好的我们把它取反，即得到了后者。对后者，同理。于是得到了上述第二个通项公式。<br>&emsp;</p>
+</li>
+<li><p>我们可以将应用1变换形式：将1看成右括号，0看成左括号，就变成了左括号和右括号各有n个时，合法括号表达式的个数。比如2个左括号和2个右括号组成的合法表达式有种，是()()和(())。<br>&emsp;</p>
+</li>
+<li><p>n个节点构造二叉树的所有可能形态数为$C_n$。<img src="http://daybreakcx.is-programmer.com/user_files/daybreakcx/Image/Catalan_number_binary_tree_example.png" alt=""><br>考虑随便取一个节点作为根，那么他左边和右边的儿子节点个数就确定了，假定根节点标号为x，那么左子树的标号就是从1到x-1,共x-1个，右子树的标号就是从x+1到n，共n-x个，那么将x从1取到n，就获得了所有的情况数。得到的为定义递推式。<br>&emsp;</p>
+</li>
+<li><p>n个非叶节点的满二叉树的形态数（对称后得到的二叉树除非自己本身对称，否则算是不同）。对于满二叉树，实际上就是将应用4中的每个子节点的空儿子上都加上叶子，就形成了对应的满二叉树，那么n个非叶节点形成的满二叉树的形态数即为$C_n$<br>&emsp;</p>
+</li>
+<li><p>对于一个n*n的正方形网格，每次只能向右或者向上移动一格，那么从左下角到右上角所有在副对角线右下方的路径总数为$C_n$。<img src="http://daybreakcx.is-programmer.com/user_files/daybreakcx/Image/450px-Catalan_number_4x4_grid_example.svg.png" alt=""><br>可以将一条水平边记为+1,垂直边记为-1,那么就组成了一个n个+1和n个-1的序列，并且保证前k步中水平边数不小于垂直边数，换句话说前k个元素的和非负。<br>&emsp;</p>
+</li>
+<li><p>对凸n+2边形进行不同的三角形分割（只连接顶点对形成n个三角形）数为$C_n$<br><img src="http://daybreakcx.is-programmer.com/user_files/daybreakcx/Image/400px-Catalan-Hexagons-example.svg.png" alt=""><br>&emsp;</p>
+</li>
+<li><p>n个数入栈后的出栈的排列总数是$C_n$。例如1,2,3入栈的出栈排序有123，132，213，231和321五种<br>&emsp;</p>
+</li>
+<li><p>n层的阶梯切割为n个矩形的切法数也是。如下图所示：<img src="http://daybreakcx.is-programmer.com/user_files/daybreakcx/Image/400px-Catalan_stairsteps_4.svg.png" alt=""><br>考虑先绘制如下图片，即n为5的时候的阶梯：<br><img src="http://daybreakcx.is-programmer.com/user_files/daybreakcx/Image/stairs.png" alt=""><br>注意到每个切割出来的矩形都必需包括一块标示为*的小正方形，那么此时枚举每个*与#标示的两角作为矩形，剩下的两个小阶梯就是我们的两个更小的子问题了。</p>
+</li>
+</ol>
+<p>&emsp;<br>事实上，从应用中我们也可以看到很多证明通项公式的方法。</p>
+<h4><span id="操练">操练</span></h4><p>给道题目吧：</p>
+<blockquote>
+<p><a href="https://www.lydsy.com/JudgeOnline/problem.php?id=2822" target="_blank" rel="noopener">BZOJ2822: [AHOI2012]树屋阶梯</a></p>
+</blockquote>
+<p>卡特兰数+高精度，比较裸，代码如下：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> mod = <span class="number">10000</span>;</span><br><span class="line"><span class="keyword">int</span> n, a[<span class="number">100000</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mul</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> &amp;l = a[<span class="number">0</span>]; <span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= l; i++)&#123;</span><br><span class="line">        a[i] = a[i] * x + left;</span><br><span class="line">        left = a[i] / mod;</span><br><span class="line">        a[i] = a[i] % mod;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(left) a[++l] = left % mod, left /= mod;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">div</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> &amp;l = a[<span class="number">0</span>]; <span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = l; i; i--)&#123;</span><br><span class="line">        a[i] += left * mod;</span><br><span class="line">        left = a[i] % x;</span><br><span class="line">        a[i] /= x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(!a[l]) l--;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(<span class="keyword">int</span> a[])</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> l = a[<span class="number">0</span>];</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>, a[l]);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = l - <span class="number">1</span>; i; i--) <span class="built_in">printf</span>(<span class="string">"%04d"</span>, a[i]);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    a[<span class="number">0</span>] = a[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = n + <span class="number">1</span>; i &lt;= <span class="number">2</span> * n; i++) mul(a, i);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) div(a, i);</span><br><span class="line">    div(a, n + <span class="number">1</span>);</span><br><span class="line">    print(a);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3><span id="bell数">Bell数</span></h3><blockquote>
+<p>Bell数是集合的划分数，也是一个集合上的等价关系的数目；Bell数{B}, 其中$B_n$是包含n个元素的集合的划分方法的数目。显然，$B_0=1, B_1=1, B_2=2, B_3=5$$$B_{n+1} = \sum_{k=0}^nC(n, k)B_k $$</p>
+</blockquote>
+<p>很简单吧</p>
+<h3><span id="stirling数">Stirling数</span></h3><blockquote>
+<p>第一类Stirling数是将n个不同元素放入m个环排列的数目。其中，$S(n, 0)=0,\ S(1,1)=1$$$S(n, m) = S(n-1, k-1) + (n-1)*S(n-1, m)$$</p>
+</blockquote>
+<img src="/2019/01/23/数学整理集锦/stirling1.jpg">
+<blockquote>
+<p>第二类Stirling数是将n个元素的集合划分为k个不为空的子集的方式的个数，其中$S(n, n) = S(n, 1) = 1 $$$S(n, m) = S(n-1, m-1) + k * S(n-1, m) $$</p>
+</blockquote>
+<img src="/2019/01/23/数学整理集锦/stirling2.jpg">
+<h2><span id="多重集的排列组合">多重集的排列组合</span></h2><blockquote>
+<p>多重集是可重复出现的元素组成的集合。若多重集中不同元素个数为k，称该多重集为k元多重集。多重集中元素$a_i$出现的次数$n_i$称为元素$ai$的重数。若有限多重集S有$a_1, a_2, …, a_k$共k个不同元素，且ai的重数为ni，则S可记为：${ n_1•a_1, n_2•a_2, ……, n_k•a_k }$。</p>
+</blockquote>
+<img src="/2019/01/23/数学整理集锦/multi.jpg">
+<h1><span id="容斥原理与鸽笼原理">容斥原理与鸽笼原理</span></h1><h1><span id="波利亚定理">波利亚定理</span></h1><h1><span id="生成函数与递推关系">生成函数与递推关系</span></h1>
       
     </div>
     
@@ -447,9 +528,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/网络流-最大流/" rel="tag"><i class="fa fa-tag"></i> 网络流-最大流</a>
+            <a href="/tags/排列组合/" rel="tag"><i class="fa fa-tag"></i> 排列组合</a>
           
-            <a href="/tags/耦合图/" rel="tag"><i class="fa fa-tag"></i> 耦合图</a>
+            <a href="/tags/波利亚定理/" rel="tag"><i class="fa fa-tag"></i> 波利亚定理</a>
+          
+            <a href="/tags/生成函数/" rel="tag"><i class="fa fa-tag"></i> 生成函数</a>
           
         </div>
       
@@ -462,8 +545,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/22/BZOJ2434-阿狸的打字机/" rel="next" title="BZOJ2434 阿狸的打字机">
-                <i class="fa fa-chevron-left"></i> BZOJ2434 阿狸的打字机
+              <a href="/2019/01/22/BZOJ1001-狼抓兔子/" rel="next" title="BZOJ1001 狼抓兔子">
+                <i class="fa fa-chevron-left"></i> BZOJ1001 狼抓兔子
               </a>
             
           </div>
@@ -471,10 +554,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/01/23/数学整理集锦/" rel="prev" title="ACM集训 数学">
-                ACM集训 数学 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -615,7 +694,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Input"><span class="nav-number">2.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Output"><span class="nav-number">3.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Sample-Input"><span class="nav-number">4.</span> <span class="nav-text">Sample Input</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Sample-Output"><span class="nav-number">5.</span> <span class="nav-text">Sample Output</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Solution"><span class="nav-number">6.</span> <span class="nav-text">Solution</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#解法一：网络流"><span class="nav-number">6.1.</span> <span class="nav-text">解法一：网络流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解法二：耦合图"><span class="nav-number">6.2.</span> <span class="nav-text">解法二：耦合图</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Code"><span class="nav-number">7.</span> <span class="nav-text">Code</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#解法一"><span class="nav-number">7.1.</span> <span class="nav-text">解法一</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">排列的生成</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.</span> <span class="nav-text">按字典序思想生成下一个排列</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">排列和组合的计数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.</span> <span class="nav-text">两种特殊的排列组合技术公式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.1.</span> <span class="nav-text">Catalan数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">公式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.1.2.</span> <span class="nav-text">应用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.1.3.</span> <span class="nav-text">操练</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.2.</span> <span class="nav-text">Bell数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.3.</span> <span class="nav-text">Stirling数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.</span> <span class="nav-text">多重集的排列组合</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">容斥原理与鸽笼原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">波利亚定理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">生成函数与递推关系</span></a></li></ol></div>
             
 
           </div>
@@ -1131,6 +1210,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
