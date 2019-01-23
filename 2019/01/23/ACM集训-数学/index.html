@@ -87,7 +87,9 @@
 <meta property="og:image" content="http://daybreakcx.is-programmer.com/user_files/daybreakcx/Image/400px-Catalan-Hexagons-example.svg.png">
 <meta property="og:image" content="http://daybreakcx.is-programmer.com/user_files/daybreakcx/Image/400px-Catalan_stairsteps_4.svg.png">
 <meta property="og:image" content="http://daybreakcx.is-programmer.com/user_files/daybreakcx/Image/stairs.png">
-<meta property="og:updated_time" content="2019-01-23T13:29:41.784Z">
+<meta property="og:image" content="http://yoursite.com/2019/01/23/ACM集训-数学/stirling1.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/01/23/ACM集训-数学/stirling2.jpg">
+<meta property="og:updated_time" content="2019-01-23T13:46:13.287Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ACM集训 数学">
 <meta name="twitter:description" content="排列的生成按字典序思想生成下一个排列设当前序列为$ (p) = p_1p_2p_3…p_n $，按字典序思想生成下一个排列方法如下：  从右向左，计算最后一个増序的尾元素的下标i，即$ i = max{j\ |\ p_{j-1} &amp;lt; p_j,\ p_j \ge p_{j+1} } $ 从右向左找到$p_{i-1}$后面比$p_{i-1}$大的最后一个元素的下标j，即$j = max{ k\">
@@ -416,7 +418,8 @@
       
 
       
-        <h1 id="排列的生成"><a href="#排列的生成" class="headerlink" title="排列的生成"></a>排列的生成</h1><h2 id="按字典序思想生成下一个排列"><a href="#按字典序思想生成下一个排列" class="headerlink" title="按字典序思想生成下一个排列"></a>按字典序思想生成下一个排列</h2><p>设当前序列为$ (p) = p_1p_2p_3…p_n $，按字典序思想生成下一个排列方法如下：</p>
+        <a id="more"></a>
+<h1 id="排列的生成"><a href="#排列的生成" class="headerlink" title="排列的生成"></a>排列的生成</h1><h2 id="按字典序思想生成下一个排列"><a href="#按字典序思想生成下一个排列" class="headerlink" title="按字典序思想生成下一个排列"></a>按字典序思想生成下一个排列</h2><p>设当前序列为$ (p) = p_1p_2p_3…p_n $，按字典序思想生成下一个排列方法如下：</p>
 <ol>
 <li>从右向左，计算最后一个<strong>増序</strong>的尾元素的下标i，即$ i = max{j\ |\ p_{j-1} &lt; p_j,\ p_j \ge p_{j+1} } $</li>
 <li>从右向左找到$p_{i-1}$后面比$p_{i-1}$大的最后一个元素的下标j，即$j = max{ k\ |\ k \ge i,\ p_{i-1} &lt; p_k }$</li>
@@ -471,10 +474,11 @@
 <h3 id="Stirling数"><a href="#Stirling数" class="headerlink" title="Stirling数"></a>Stirling数</h3><blockquote>
 <p>第一类Stirling数是将n个不同元素放入m个环排列的数目。其中，$S(n, 0)=0,\ S(1,1)=1$$$S(n, m) = S(n-1, k-1) + (n-1)*S(n-1, m)$$</p>
 </blockquote>
-<p>！<a href="ACM集训-数学/stirling1.jpg"></a></p>
+<img src="/2019/01/23/ACM集训-数学/stirling1.jpg" title="prove">
 <blockquote>
 <p>第二类Stirling数是将n个元素的集合划分为k个不为空的子集的方式的个数，其中$S(n, n) = S(n, 1) = 1 $$$S(n, m) = S(n-1, m-1) + k * S(n-1, m) $$</p>
 </blockquote>
+<img src="/2019/01/23/ACM集训-数学/stirling2.jpg" title="prove">
 <h1 id="容斥原理与鸽笼原理"><a href="#容斥原理与鸽笼原理" class="headerlink" title="容斥原理与鸽笼原理"></a>容斥原理与鸽笼原理</h1><h1 id="波利亚定理"><a href="#波利亚定理" class="headerlink" title="波利亚定理"></a>波利亚定理</h1><h1 id="生成函数与递推关系"><a href="#生成函数与递推关系" class="headerlink" title="生成函数与递推关系"></a>生成函数与递推关系</h1>
       
     </div>
