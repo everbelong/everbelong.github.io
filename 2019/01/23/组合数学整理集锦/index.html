@@ -75,13 +75,13 @@
 
 
 
-<meta name="description" content="排列的生成 按字典序思想生成下一个排列   排列和组合的计数 基本组合恒等式 两种特殊的排列组合技术公式 Catalan数 公式 应用 操练   Bell数 Stirling数   多重集的排列组合   容斥原理与鸽笼原理 鸽笼原理 容斥原理 计算并集元素个数 计算错排的方案数   Ramsey定理 Ramsey数     波利亚定理 生成函数与递推关系">
+<meta name="description" content="排列的生成 按字典序思想生成下一个排列   排列和组合的计数 基本组合恒等式 两种特殊的排列组合技术公式 Catalan数 公式 应用 操练   Bell数 Stirling数   多重集的排列组合 多重集的排列     容斥原理与鸽笼原理 鸽笼原理 容斥原理 计算并集元素个数 计算错排的方案数   Ramsey定理 Ramsey数     波利亚定理">
 <meta name="keywords" content="排列组合,波利亚定理,生成函数">
 <meta property="og:type" content="article">
 <meta property="og:title" content="组合数学整理集锦">
 <meta property="og:url" content="http://yoursite.com/2019/01/23/组合数学整理集锦/index.html">
 <meta property="og:site_name" content="everbelong">
-<meta property="og:description" content="排列的生成 按字典序思想生成下一个排列   排列和组合的计数 基本组合恒等式 两种特殊的排列组合技术公式 Catalan数 公式 应用 操练   Bell数 Stirling数   多重集的排列组合   容斥原理与鸽笼原理 鸽笼原理 容斥原理 计算并集元素个数 计算错排的方案数   Ramsey定理 Ramsey数     波利亚定理 生成函数与递推关系">
+<meta property="og:description" content="排列的生成 按字典序思想生成下一个排列   排列和组合的计数 基本组合恒等式 两种特殊的排列组合技术公式 Catalan数 公式 应用 操练   Bell数 Stirling数   多重集的排列组合 多重集的排列     容斥原理与鸽笼原理 鸽笼原理 容斥原理 计算并集元素个数 计算错排的方案数   Ramsey定理 Ramsey数     波利亚定理">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://daybreakcx.is-programmer.com/user_files/daybreakcx/Image/Catalan_number_binary_tree_example.png">
 <meta property="og:image" content="http://daybreakcx.is-programmer.com/user_files/daybreakcx/Image/450px-Catalan_number_4x4_grid_example.svg.png">
@@ -96,10 +96,20 @@
 <meta property="og:image" content="http://yoursite.com/2019/01/23/组合数学整理集锦/capdefine.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/01/23/组合数学整理集锦/solution2.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/01/23/组合数学整理集锦/otherway.jpg">
-<meta property="og:updated_time" content="2019-01-24T14:33:28.938Z">
+<meta property="og:image" content="http://yoursite.com/2019/01/23/组合数学整理集锦/xunhuan.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/01/23/组合数学整理集锦/xunhuan2.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/01/23/组合数学整理集锦/共轭类.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/01/23/组合数学整理集锦/burnside.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/01/23/组合数学整理集锦/square.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/01/23/组合数学整理集锦/squ2.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/01/23/组合数学整理集锦/squ3.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/01/23/组合数学整理集锦/squ4.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/01/23/组合数学整理集锦/polya.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/01/23/组合数学整理集锦/solution4.jpg">
+<meta property="og:updated_time" content="2019-01-25T13:53:18.932Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="组合数学整理集锦">
-<meta name="twitter:description" content="排列的生成 按字典序思想生成下一个排列   排列和组合的计数 基本组合恒等式 两种特殊的排列组合技术公式 Catalan数 公式 应用 操练   Bell数 Stirling数   多重集的排列组合   容斥原理与鸽笼原理 鸽笼原理 容斥原理 计算并集元素个数 计算错排的方案数   Ramsey定理 Ramsey数     波利亚定理 生成函数与递推关系">
+<meta name="twitter:description" content="排列的生成 按字典序思想生成下一个排列   排列和组合的计数 基本组合恒等式 两种特殊的排列组合技术公式 Catalan数 公式 应用 操练   Bell数 Stirling数   多重集的排列组合 多重集的排列     容斥原理与鸽笼原理 鸽笼原理 容斥原理 计算并集元素个数 计算错排的方案数   Ramsey定理 Ramsey数     波利亚定理">
 <meta name="twitter:image" content="http://daybreakcx.is-programmer.com/user_files/daybreakcx/Image/Catalan_number_binary_tree_example.png">
 
 
@@ -388,7 +398,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  4.6k
+                  5.8k
                 </span>
               
 
@@ -404,7 +414,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  20
+                  26
                 </span>
               
             </div>
@@ -444,7 +454,10 @@
 <li><a href="#stirling数">Stirling数</a></li>
 </ul>
 </li>
-<li><a href="#多重集的排列组合">多重集的排列组合</a></li>
+<li><a href="#多重集的排列组合">多重集的排列组合</a><ul>
+<li><a href="#多重集的排列">多重集的排列</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#容斥原理与鸽笼原理">容斥原理与鸽笼原理</a><ul>
@@ -461,7 +474,6 @@
 </ul>
 </li>
 <li><a href="#波利亚定理">波利亚定理</a></li>
-<li><a href="#生成函数与递推关系">生成函数与递推关系</a></li>
 </ul>
 <!-- tocstop -->
 <a id="more"></a>
@@ -533,8 +545,7 @@
 <p>多重集是可重复出现的元素组成的集合。若多重集中不同元素个数为k，称该多重集为k元多重集。多重集中元素$a_i$出现的次数$n_i$称为元素$ai$的重数。若有限多重集S有$a_1, a_2, …, a_k$共k个不同元素，且ai的重数为ni，则S可记为：${ n_1•a_1, n_2•a_2, ……, n_k•a_k }$。</p>
 </blockquote>
 <img src="/2019/01/23/组合数学整理集锦/multi.jpg">
-<p>###多重集的排列</p>
-<blockquote>
+<h3><span id="多重集的排列">多重集的排列</span></h3><blockquote>
 <p>设有限多重集$S={ n_1•a_1, n_2•a_2, …, n_k•a_k }$，且$n=n_1+n_2+ ……+n_k$，从S中有序选取r个元素称为S的一个r-排列$(r\le|S|=n)$，当$r=n$时，称为S的一个全排列。</p>
 </blockquote>
 <p>从k元多重集$S= { \infty•a_1,  \infty•a_2, …,  \infty•a_k }$中有序选取r个元素我们也称为S的一个r-排列。</p>
@@ -602,7 +613,58 @@
 <p>Ramsey数有如下性质。<br>$R(a, b)= R(b, a)；R(a, 2)=2$。<br>对任意的整数$a, b \ge 2$，$R(a, b)$存在。<br>对任意的整数$a, b，R(a, b)\le R(a-1, b)+ R(a, b-1)$；<br>如果$a, b \ge 2，且R(a-1, b)$和$R(a, b-1)$是偶数，则<br>$$R(a, b)\le R(a-1, b)+ R(a, b-1)-1。<br>R(a, b)\le C(a+b-2, a-1)。$$</p>
 </blockquote>
 <h1><span id="波利亚定理">波利亚定理</span></h1><p>终于写到这了，首先要介绍群论：</p>
-<h1><span id="生成函数与递推关系">生成函数与递推关系</span></h1>
+<p>群的定义</p>
+<blockquote>
+<p>一个群是一个集合G和一个在集合G上被称为G的群法则的操作，这一操作将任意两个元素a和b合成为一个新元素，标志为a * b或ab。(G, *)满足下述4个条件。<br>[1] 封闭性；对于任意$a, b\in G，a<em>b\in G$。<br>[2] 结合律；对于任意$a, b, c\in G，(a</em>b)<em>c = a</em>(b<em>c)$。<br>[3] 存在单位元素；在G中存在一个元素e，使得对于任意$a\in G，e</em>a = a<em>e = a$。<br>[4] 存在逆元素；对于任意$a\in G$，在G中存在元素$b$，使得$a</em>b = b*a = e$，其中$e$是单位元素。</p>
+</blockquote>
+<p>置换的定义：</p>
+<blockquote>
+<p>设集合A由n个不同元素$a_1, a_2, …, a_n$组成。A中的元素之间的一个置换是$a_1$被A中的某个元素$b_1$所取代，$a_2$被A中的某个元素$b_2$所取代，…，$a_n$ 被A中的某个元素$b_n$；并且$b_1, b_2, …, b_n$互不相同。</p>
+</blockquote>
+<p>置换群：</p>
+<blockquote>
+<p>一个置换群是一个群(G, *)，其元素是${a_1, a_2, ……, a_n}$的置换，而*是置换的合成。<br>也就是说，置换群的元素是置换，操作是置换的合成。Pólya计数公式基于置换群。</p>
+</blockquote>
+<img src="/2019/01/23/组合数学整理集锦/xunhuan.jpg">
+<p>例如，{1, 2, 3, 4}的所有置换$S_4＝{(1)(2)(3)(4), (12), (13), (14), (23), (24), (34),\ (123), (124), (132), (134), (142), (143), (234), (243), \(1234), (1243), (1324), (1342), (1423), (1432), \(12)(34), (13)(24), (14)(23)}$。</p>
+<img src="/2019/01/23/组合数学整理集锦/xunhuan2.jpg">
+<p>在$S_4$中，具有相同格式的置换所示如下：<br>$(1)^0(2)^2(3)^0(4)^0$，也就是$(2)^2$，有3个置换：<br>$(12)(34)，(13)(24)$和$(14)(23)$；<br>$(1)^1(3)^1$有8个置换：$(123)，(124)，(132)，(134)，(142)，(143)，(234)$和$(243)$；<br>$(1)^2(2)^1$有6个置换：<br>$(12)，(13)，(14)，(23)，(24)$和$(34)$；<br>$(1)^4$只有1个置换：<br>$(1)(2)(3)(4)$；<br>$(4)^1$有6个置换：<br>$(1234)，(1243)，(1324)，(1342)，(1423)$和$(1432)$。</p>
+<p>共轭类以及其计算定理：<br><img src="/2019/01/23/组合数学整理集锦/共轭类.jpg"></p>
+<p>K不动置换类：</p>
+<blockquote>
+<p>设$K$是${1, 2, …, n}$中的一个数。$G$中使$K$保持不变的置换全体，记为$Z_K$，叫做$G$中使$K$不动的置换类，或简称K不动置换类。</p>
+</blockquote>
+<p>例如，$G={e, (1 2), (3 4), (1 2)(3 4)}。Z_1={e, (3 4)}；Z_2={e, (3 4)}；Z_3={e, (1 2)}；Z_4＝{e, (1 2)}。e$是单位元。显然，$Z_K$是$G$的子群，$K$是${1, 2, 3, 4}$中的一个数。对于$G$，在这一置换下，1可以置换为2，2可以置换为1；3可以置换为4，4可以置换为3。但1或2不可能置换为3或4，而且3或4也不可能置换为1或2。所以，1和2在一个等价类中，3和4在另一个等价类中。</p>
+<p>等价类：</p>
+<blockquote>
+<p>设G是${1, 2, …, n}$的置换群，K是${1, 2, …, n}$中的一个数。在这一置换下，${1, 2, …, n}$可以被划分为若干等价类，K所属的等价类记为$E_K$。</p>
+</blockquote>
+<p>例如，$G={e, (1 2), (3 4), (1 2)(3 4)}$。1和2在一个等价类中，3和4在另一个等价类中。$E_1=E_2={1, 2}，E_3=E_4={3, 4}$。<br>因此，对于数$K，1\le K\le 4$，置换群G有对应的等价类$E_K$和不动置换类$Z_K$。</p>
+<p>长舒一口气，终于介绍完定义了。<br>下面，最关键部分来了。</p>
+<p>一个小结论，但很重要：</p>
+<blockquote>
+<p>设G是${1, 2, …, n}$的置换群，K是${1, 2, …, n}$中的一个数，则$|E_K|*|Z_K| = |G|$。</p>
+</blockquote>
+<p>例如，$G={e, (1 2), (3 4), (1 2) (3 4)}；\E_1=E_2={1, 2}，E_3=E_4={3, 4};\|E_1|=|E_2|=|E_3|=|E_4|=2；\Z_1＝Z_2＝{e, (3 4)}，Z_3＝Z_4＝{e, (1 2)}；\|Z_1|=|Z_2|=|Z_3|=|Z_4|=2$。<br>则$|E_1|<em>|Z_1|=|E_2|</em>|Z_2|=|E_3|<em>|Z_3|=|E_4|</em>|Z_4|=4=|G|$</p>
+<p>设$G={\alpha_1, \alpha_2, …, \alpha_m}$是一个在${1, 2, …, n}$上的置换群，其中$\alpha_1=e$；$\alpha_k$可以被记为一个若干循环节的乘积，$c_1(\alpha_k)$是置换$\alpha_k$中1阶循环节的个数，$k=1, 2, …, m$。</p>
+<p>要到一个小高潮了</p>
+<img src="/2019/01/23/组合数学整理集锦/burnside.jpg">
+<p>可以利用上面的结论进行证明：<br>不妨设$ N={ 1, 2, …n } $中共有$L$个等价类，$ N=E_1+E_2+…+E_n $<br>$$<br>\sum_{k=1}^n|Z_k| = \sum_{i=1}^L\sum_{k\in E_i}|Z_k| = \sum_{i=1}^L|E_i|\cdot |Z_i| = L\cdot |G|<br>$$<br>L就是我们要求的等价类数，于是，<br>$$<br>L = \frac{1}{|G|}\sum_{k=1}^n|Z_k| = \frac{1}{|G|}\sum_{j=1}^s|C(\alpha_j)|<br>$$</p>
+<img src="/2019/01/23/组合数学整理集锦/square.jpg">
+<img src="/2019/01/23/组合数学整理集锦/squ2.jpg">
+<img src="/2019/01/23/组合数学整理集锦/squ3.jpg">
+<img src="/2019/01/23/组合数学整理集锦/squ4.jpg">
+<p>下面，最主要的部分，波利亚定理，闪亮登场</p>
+<img src="/2019/01/23/组合数学整理集锦/polya.jpg">
+<p>可以做题了</p>
+<blockquote>
+<p><a href="http://poj.org/problem?id=1286" target="_blank" rel="noopener">POJ 1286 Necklace of Beads</a></p>
+</blockquote>
+<img src="/2019/01/23/组合数学整理集锦/solution4.jpg">
+<p>code:<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> ans[<span class="number">30</span>], n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!y) <span class="keyword">return</span> x;</span><br><span class="line">    <span class="keyword">return</span> gcd(y, x % y);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">pow</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> res = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= y; i++) res *= x;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(n = <span class="number">1</span>; n &lt;= <span class="number">25</span>; n++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) ans[n] += <span class="built_in">pow</span>(<span class="number">3</span>, gcd(i, n));</span><br><span class="line">        <span class="keyword">if</span>(n % <span class="number">2</span> == <span class="number">1</span>) ans[n] += <span class="built_in">pow</span>(<span class="number">3</span>, n / <span class="number">2</span> + <span class="number">1</span>) * n;</span><br><span class="line">        <span class="keyword">else</span> ans[n] += <span class="built_in">pow</span>(<span class="number">3</span>, n / <span class="number">2</span>) * n / <span class="number">2</span> + <span class="built_in">pow</span>(<span class="number">3</span>, n / <span class="number">2</span> + <span class="number">1</span>) * n / <span class="number">2</span>;</span><br><span class="line">        ans[n] /= <span class="number">2</span> * n;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;n) == <span class="number">1</span> &amp;&amp; n != <span class="number">-1</span>) <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans[n]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><br><br><br><br><br><br><br><br><br></p>
+<p>组合数学就先整理到这里，还有一些东西比如生成函数、莫比乌斯反演没有整理，以后有时间会补充。<br>。。。</p>
+
       
     </div>
     
@@ -785,7 +847,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">排列的生成</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.</span> <span class="nav-text">按字典序思想生成下一个排列</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">排列和组合的计数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.</span> <span class="nav-text">基本组合恒等式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.</span> <span class="nav-text">两种特殊的排列组合技术公式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.1.</span> <span class="nav-text">Catalan数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">公式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.1.2.</span> <span class="nav-text">应用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.1.3.</span> <span class="nav-text">操练</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.2.</span> <span class="nav-text">Bell数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.3.</span> <span class="nav-text">Stirling数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.3.</span> <span class="nav-text">多重集的排列组合</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">容斥原理与鸽笼原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.1.</span> <span class="nav-text">鸽笼原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.2.</span> <span class="nav-text">容斥原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.2.1.</span> <span class="nav-text">计算并集元素个数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.2.2.</span> <span class="nav-text">计算错排的方案数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.3.</span> <span class="nav-text">Ramsey定理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.3.1.</span> <span class="nav-text">Ramsey数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">波利亚定理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">生成函数与递推关系</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">排列的生成</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.</span> <span class="nav-text">按字典序思想生成下一个排列</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">排列和组合的计数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.</span> <span class="nav-text">基本组合恒等式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.</span> <span class="nav-text">两种特殊的排列组合技术公式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.1.</span> <span class="nav-text">Catalan数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">公式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.1.2.</span> <span class="nav-text">应用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.1.3.</span> <span class="nav-text">操练</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.2.</span> <span class="nav-text">Bell数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.3.</span> <span class="nav-text">Stirling数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.3.</span> <span class="nav-text">多重集的排列组合</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.3.1.</span> <span class="nav-text">多重集的排列</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">容斥原理与鸽笼原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.1.</span> <span class="nav-text">鸽笼原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.2.</span> <span class="nav-text">容斥原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.2.1.</span> <span class="nav-text">计算并集元素个数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.2.2.</span> <span class="nav-text">计算错排的方案数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.3.</span> <span class="nav-text">Ramsey定理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.3.1.</span> <span class="nav-text">Ramsey数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">波利亚定理</span></a></li></ol></div>
             
 
           </div>
@@ -818,7 +880,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共10.4k字</span>
+  <span class="post-count">博客全站共11.6k字</span>
 </div>
         
 
