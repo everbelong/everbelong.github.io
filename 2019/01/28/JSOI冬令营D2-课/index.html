@@ -62,7 +62,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="树形dp,基环树,树上乱搞,">
 
 
 
@@ -75,17 +75,18 @@
 
 
 
-<meta name="description" content="#树形dp 给定一个图G，求两点之间最短距离的最大值G是普通图G是树G是基环树  基环树情况：先不考虑环，每一棵树求一个到根的最长路径。这棵树就没用了。然后把环拆成链，单调队列维护dp就可以。   给定一棵树T，求k条不想交的路径的方案数（点构成的路径）  k = 2：考虑树上的一条链有一个lca，这两条链的lca会有一个lca。如果他们位于大lca的不同子树，则求出每个子树的大小，答案贡献为$\">
+<meta name="description" content="树形dp一些关于树和dp的题，比较有难度，请谨慎">
+<meta name="keywords" content="树形dp,基环树,树上乱搞">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JSOI冬令营D2 课">
 <meta property="og:url" content="http://yoursite.com/2019/01/28/JSOI冬令营D2-课/index.html">
 <meta property="og:site_name" content="everbelong">
-<meta property="og:description" content="#树形dp 给定一个图G，求两点之间最短距离的最大值G是普通图G是树G是基环树  基环树情况：先不考虑环，每一棵树求一个到根的最长路径。这棵树就没用了。然后把环拆成链，单调队列维护dp就可以。   给定一棵树T，求k条不想交的路径的方案数（点构成的路径）  k = 2：考虑树上的一条链有一个lca，这两条链的lca会有一个lca。如果他们位于大lca的不同子树，则求出每个子树的大小，答案贡献为$\">
+<meta property="og:description" content="树形dp一些关于树和dp的题，比较有难度，请谨慎">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-28T03:42:28.595Z">
+<meta property="og:updated_time" content="2019-01-28T03:48:19.526Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JSOI冬令营D2 课">
-<meta name="twitter:description" content="#树形dp 给定一个图G，求两点之间最短距离的最大值G是普通图G是树G是基环树  基环树情况：先不考虑环，每一棵树求一个到根的最长路径。这棵树就没用了。然后把环拆成链，单调队列维护dp就可以。   给定一棵树T，求k条不想交的路径的方案数（点构成的路径）  k = 2：考虑树上的一条链有一个lca，这两条链的lca会有一个lca。如果他们位于大lca的不同子树，则求出每个子树的大小，答案贡献为$\">
+<meta name="twitter:description" content="树形dp一些关于树和dp的题，比较有难度，请谨慎">
 
 
 
@@ -330,6 +331,39 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/动态规划/" itemprop="url" rel="index">
+                    <span itemprop="name">动态规划</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/动态规划/树/" itemprop="url" rel="index">
+                    <span itemprop="name">树</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -388,7 +422,9 @@
       
 
       
-        <h2><span id="树形dp">#树形dp</span></h2><blockquote>
+        <h1><span id="树形dp">树形dp</span></h1><p>一些关于树和dp的题，比较有难度，请谨慎<br><a id="more"></a></p>
+<hr>
+<blockquote>
 <p>给定一个图G，求两点之间最短距离的最大值<br>G是普通图<br>G是树<br>G是基环树</p>
 </blockquote>
 <p>基环树情况：<br>先不考虑环，每一棵树求一个到根的最长路径。这棵树就没用了。然后把环拆成链，单调队列维护dp就可以。</p>
@@ -453,6 +489,16 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/树形dp/" rel="tag"><i class="fa fa-tag"></i> 树形dp</a>
+          
+            <a href="/tags/基环树/" rel="tag"><i class="fa fa-tag"></i> 基环树</a>
+          
+            <a href="/tags/树上乱搞/" rel="tag"><i class="fa fa-tag"></i> 树上乱搞</a>
+          
+        </div>
+      
 
       
       
@@ -471,6 +517,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/28/JSOI冬令营D1-题/" rel="prev" title="JSOI冬令营D1 题">
+                JSOI冬令营D1 题 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -549,7 +599,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -560,7 +610,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -571,7 +621,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -611,7 +661,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">#树形dp</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">树形dp</span></a></li></ol></div>
             
 
           </div>
@@ -1127,6 +1177,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
