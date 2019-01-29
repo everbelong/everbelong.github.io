@@ -75,18 +75,18 @@
 
 
 
-<meta name="description" content="这场比赛真是不难啊不难，但是我还是只会写暴力啊暴力~~~ T1 箱子考试时想了各种方法，什么dp、网络流、数据结构，总觉得昨天那么难，今天不可能只出一道贪心。结果谁知道，就是一道极水极水的小贪心。 $a \le b$ 的那部分显然按照a递增排序。 $a &amp;gt; b$ 的部分按b递减排序。证明如下：假设$ b_x &amp;gt; b_y $若x排在y的前面不合法，也就是$ sumV+b_x-a_x &amp;l">
+<meta name="description" content="这场比赛真是不难啊不难，但是我还是只会写暴力啊暴力~~~   T1 箱子 T2 准备 T3 回忆">
 <meta name="keywords" content="线段树,贪心,差分">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JSOI冬令营D2 题">
 <meta property="og:url" content="http://yoursite.com/2019/01/28/JSOI冬令营D2-题/index.html">
 <meta property="og:site_name" content="everbelong">
-<meta property="og:description" content="这场比赛真是不难啊不难，但是我还是只会写暴力啊暴力~~~ T1 箱子考试时想了各种方法，什么dp、网络流、数据结构，总觉得昨天那么难，今天不可能只出一道贪心。结果谁知道，就是一道极水极水的小贪心。 $a \le b$ 的那部分显然按照a递增排序。 $a &amp;gt; b$ 的部分按b递减排序。证明如下：假设$ b_x &amp;gt; b_y $若x排在y的前面不合法，也就是$ sumV+b_x-a_x &amp;l">
+<meta property="og:description" content="这场比赛真是不难啊不难，但是我还是只会写暴力啊暴力~~~   T1 箱子 T2 准备 T3 回忆">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-28T13:52:25.572Z">
+<meta property="og:updated_time" content="2019-01-28T14:04:36.645Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JSOI冬令营D2 题">
-<meta name="twitter:description" content="这场比赛真是不难啊不难，但是我还是只会写暴力啊暴力~~~ T1 箱子考试时想了各种方法，什么dp、网络流、数据结构，总觉得昨天那么难，今天不可能只出一道贪心。结果谁知道，就是一道极水极水的小贪心。 $a \le b$ 的那部分显然按照a递增排序。 $a &amp;gt; b$ 的部分按b递减排序。证明如下：假设$ b_x &amp;gt; b_y $若x排在y的前面不合法，也就是$ sumV+b_x-a_x &amp;l">
+<meta name="twitter:description" content="这场比赛真是不难啊不难，但是我还是只会写暴力啊暴力~~~   T1 箱子 T2 准备 T3 回忆">
 
 
 
@@ -434,6 +434,14 @@
 
       
         <p>这场比赛真是不难啊不难，但是我还是只会写暴力啊暴力~~~</p>
+<!-- toc -->
+<ul>
+<li><a href="#t1-箱子">T1 箱子</a></li>
+<li><a href="#t2-准备">T2 准备</a></li>
+<li><a href="#t3-回忆">T3 回忆</a></li>
+</ul>
+<!-- tocstop -->
+<a id="more"></a>
 <h1><span id="t1-箱子">T1 箱子</span></h1><p>考试时想了各种方法，什么dp、网络流、数据结构，总觉得昨天那么难，今天不可能只出一道贪心。结果谁知道，就是一道极水极水的小贪心。</p>
 <p>$a \le b$ 的那部分显然按照a递增排序。</p>
 <p>$a &gt; b$ 的部分按b递减排序。证明如下：<br>假设$ b_x &gt; b_y $<br>若x排在y的前面不合法，也就是$ sumV+b_x-a_x &lt; a_y $<br>则易得$ sumV + b_y - a_y &lt; a_x $<br>也就是说y排在x的前面也一定不合法。<br>所以x排在前面一定不会更差。<br>因此把b较大的x排在前面。</p>
