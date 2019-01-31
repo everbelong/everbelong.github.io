@@ -106,7 +106,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/01/23/组合数学整理集锦/squ4.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/01/23/组合数学整理集锦/polya.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/01/23/组合数学整理集锦/solution4.jpg">
-<meta property="og:updated_time" content="2019-01-25T14:21:49.455Z">
+<meta property="og:updated_time" content="2019-01-31T03:01:13.526Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="组合数学整理集锦">
 <meta name="twitter:description" content="排列的生成 按字典序思想生成下一个排列   排列和组合的计数 基本组合恒等式 两种特殊的排列组合技术公式 Catalan数 公式 应用 操练   Bell数 Stirling数   多重集的排列组合 多重集的排列 多重集的组合     容斥原理与鸽笼原理 鸽笼原理 容斥原理 计算并集元素个数 计算错排的方案数   Ramsey定理 Ramsey数     波利亚定理 定义们 Bornside引">
@@ -398,7 +398,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  5.8k
+                  6.8k
                 </span>
               
 
@@ -414,7 +414,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  26
+                  30
                 </span>
               
             </div>
@@ -480,6 +480,11 @@
 <li><a href="#波利亚定理-1">波利亚定理</a></li>
 </ul>
 </li>
+<li><a href="#递推与生成函数">递推与生成函数</a><ul>
+<li><a href="#k阶常系数线性齐次递推关系">k阶常系数线性齐次递推关系</a></li>
+<li><a href="#生成函数">生成函数</a></li>
+</ul>
+</li>
 </ul>
 <!-- tocstop -->
 <a id="more"></a>
@@ -498,7 +503,7 @@
 <p>再说一句，要注意看清楚流程中的大于号和大于等于号，另外就是当找不到时代表已经找完了，这就是最后一个，算法结束。</p>
 <h1><span id="排列和组合的计数">排列和组合的计数</span></h1><h2><span id="基本组合恒等式">基本组合恒等式</span></h2><p>$$<br>\sum_{i=0}^{n} {n \choose i} = 2 ^ n $$$$<br> \sum_{i=0}^{n} {i \choose x} = {n+1 \choose x+1} $$$$<br> \sum_{i=0}^{n} {k+i \choose i} = {k+n+1 \choose n} $$$$<br> \sum_{i=0}^{m} {m \choose i} {n-m \choose m-i} = {n \choose m}<br>$$</p>
 <h2><span id="两种特殊的排列组合技术公式">两种特殊的排列组合技术公式</span></h2><h3><span id="catalan数">Catalan数</span></h3><h4><span id="公式">公式</span></h4><blockquote>
-<p>Catalan数是序列｛C｝，其中 $ C_0=1,\ C_1=1,$$$C_n = C_0C_{n-1}+C_!C_{n-2}+…+C_{n-1}C_0,\ n\ge2. $$</p>
+<p>Catalan数是序列｛C｝，其中 $ C_0=1,\ C_1=1,$$$C_n = C_0C_{n-1}+C_1C_{n-2}+…+C_{n-1}C_0,\ n\ge2. $$</p>
 </blockquote>
 <p>在定义中就已经给出了它最一般的递推式，下面还有几个计算是很常用的：</p>
 <blockquote>
@@ -667,8 +672,22 @@
 </blockquote>
 <img src="/2019/01/23/组合数学整理集锦/solution4.jpg">
 <p>code:<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> ans[<span class="number">30</span>], n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!y) <span class="keyword">return</span> x;</span><br><span class="line">    <span class="keyword">return</span> gcd(y, x % y);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">pow</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> res = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= y; i++) res *= x;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(n = <span class="number">1</span>; n &lt;= <span class="number">25</span>; n++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) ans[n] += <span class="built_in">pow</span>(<span class="number">3</span>, gcd(i, n));</span><br><span class="line">        <span class="keyword">if</span>(n % <span class="number">2</span> == <span class="number">1</span>) ans[n] += <span class="built_in">pow</span>(<span class="number">3</span>, n / <span class="number">2</span> + <span class="number">1</span>) * n;</span><br><span class="line">        <span class="keyword">else</span> ans[n] += <span class="built_in">pow</span>(<span class="number">3</span>, n / <span class="number">2</span>) * n / <span class="number">2</span> + <span class="built_in">pow</span>(<span class="number">3</span>, n / <span class="number">2</span> + <span class="number">1</span>) * n / <span class="number">2</span>;</span><br><span class="line">        ans[n] /= <span class="number">2</span> * n;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;n) == <span class="number">1</span> &amp;&amp; n != <span class="number">-1</span>) <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans[n]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><br><br><br><br><br><br><br><br><br></p>
-<p>组合数学就先整理到这里，还有一些东西比如生成函数、莫比乌斯反演没有整理，以后有时间会补充。<br>。。。</p>
+<h1><span id="递推与生成函数">递推与生成函数</span></h1><h2><span id="k阶常系数线性齐次递推关系">k阶常系数线性齐次递推关系</span></h2><p>$ h_n-a_ih_{n-1}-a_2h_{n-2}-…-a_kh_{n-k} = 0 $ … …(1)<br>求解形如$ q^n $的解，得q是下面方程的根（需要同时约去$ q^{n-k} $）<br>$ x^b-a_1x^{k-1}-a_2x^{k-2}-…-a_{k-1}x-a_k = 0 $ … …(2)<br>称(2)为(1)的特征方程（耳熟）<br>称(2)的k个根为(1)的特征根</p>
+<p>若$ p\not=q $是(1)的特征根，则$ c_1p^n+c_2q^n $是(1)的解<br>若$q$是(2)的重根，则$ nq^n $是(1)的解</p>
+<p>求解$ c_1, c_2 $时可以有已知的几项列方程组求解<br>可以证明一定只要有k个不一样的根，方程(1)一定有解。(使用范德蒙矩阵)。</p>
+<p>也就是说，最后一定会有k个特征根（可以相同），通项里就一定有k项（可以合并），分别为每个特征根的n次方。<br>（这是我提炼出来的，意思差不多~）</p>
+<p>举例：对于递推关系$ h_n - 5h_{n-1} + 6h_{n-2}，h_1 = 4, h_2 = 5 $，求通项。<br>解：通项一定形如$ h_n = c_1\cdot 2^n + c_2\cdot 3^n $<br>列方程求出$ c_1, c_2 $，做完了。</p>
+<p>一般情况（跟我想的一样）：<br>对于线性常系数齐次递推关系<br>$ h_n + a_1h_{n-1} + a_2h_{n-2} + … + a_kh_{n-k} = 0$<br>它的k个特征根为$ q_1, q_2, …, q_k $，它们的重数为$ r_1, r_2, …, r_k $，且<br>$ r_1 + r_2 + .. + r_k = k $<br>那么，通项为<br>$ h_n = c_1r_1q_1^n + c_2r_2q_2^n + … + c_kr_kq_k^n $<br>$ c_1, c_2, …, c_k $为常数，可以由已知的前几项解出来。<br>完美。</p>
+<p>叠加原理：<br>设$ x_1, x_2, …, x_k $满足递推关系<br>$ h_n + a_1h_{n-1} + … + a_kh_{n-k} = f(n) $<br>$ y_1, y_2, …, y_k $满足递推关系<br>$ h_n + a_1h_{n-1} + … + a_kh_{n-k} = g(n) $<br>则$ x_1+y_1, x_2+y_2, …, x_k+y_k $满足递推关系<br>$ h_n + a_1h_{n-1} + … + a_kh_{n-k} = f(n) + g(n) $<br>一个重要的应用，有他可知<br>(1)的<strong>通解</strong> + (2)的<strong>特解</strong> = (2)的<strong>通解</strong><br>这样可以求带有常数项的通项公式了，<br>例如$h_n = 2h_{n-1} + 1$ （汉诺塔步数）<br>$ h_n - 2h_{n-1} = 0 $ … …(1)<br>$ h_n - 2h_{n-1} = 1 $ … …(2)<br>(1)的通解可以轻松求出为$ h_n = 2^n $<br>(2)有特解-1<br>因此(2)通解为$ h_n = 2^n - 1 $</p>
+<p>特解求法<br>定理:（未完）<br>待定系数法吧</p>
+<p>转移矩阵与递推关系有相同的特征多项式<br>（转移矩阵就是矩阵优化里那个搭配快速幂的东西）</p>
+<h2><span id="生成函数">生成函数</span></h2><p>数列$ h_1, h_2, h_3, … $对应的生成函数定义为<br>$ g(x) = h_0 + h_1x + h_2x^2 + h_3x^3 … $<br>有限数列$ h_n $可补零变成无限</p>
+<p>例：无限序列$ h_n = 1 $的生成函数是<br>$ g(x) = 1 + x + x^2 + x^3 + … $<br>在$ |x|&lt;1 $时，上式为$ g(x) = \frac{1}{1-x} $</p>
+<p>$$ \frac{1}{1-x} = 1 + x + x^2 + x^3 + … \<br> \frac{1}{(1-x)^2} = 1 + 2x + 3x^2 + … \<br>\frac{1}{(1-x)^k} = \sum_{n=0}^{+\infty}C_{k+n-1}^{k-1}x^n \<br>e^x = 1 + \frac{x}{1!} + \frac{x^2}{2!} + \frac{x^2}{3!} $$</p>
+<p>多重集组合可以使用生成函数</p>
+<p>例：2个1袋的苹果无限，5个1提的香蕉无限，4个散橘子，1个梨子，求从中组合出n个水果的方案数<br>解：$ h_n = (\sum_{a=0}^{+\infty}x^{2a})\cdot (\sum_{b=0}^{+\infty}x^{5b})\cdot (\sum_{c=0}^4x^c)\cdot (\sum_{d=0}^1x^c)  \ = (1 + x^2 + x^4 + …)(1 + x^5 + x^{10} + …)(1 + x + x^2 + x^3 + x^4)(1 + x) \ = \frac{1}{1-x^2}\cdot \frac{1}{1-x^5}\cdot (1+x+x^2+x^3+x^4)(1+x) \ = \frac{1}{(1-x)(1+x)}\cdot\frac{1}{(1+x+x^2+x^3+x^4)(1-x)}\cdot(1+x+x^2+x^3+x^4)\cdot(1+x)\ = \frac{1}{(1-x)^2} $<br>的n次项系数<br>答案为$ n + 1 $</p>
+<p>泰勒展开公式<br>$ f(x) = f(0) + \frac{f’(0)}{1!}x + \frac{f’’(0)}{2!}x^2 + \frac{f’’’(0)}{3!}x^3 + … $<br>哇喔</p>
+<p>求卷积：<br>求卷积利用生成函数具有天然的优势<br>原数列生成函数的平方做多项式乘法，$x^n$前的系数，就是n的卷积</p>
 
       
     </div>
@@ -816,7 +835,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -856,7 +875,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">排列的生成</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.</span> <span class="nav-text">按字典序思想生成下一个排列</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">排列和组合的计数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.</span> <span class="nav-text">基本组合恒等式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.</span> <span class="nav-text">两种特殊的排列组合技术公式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.1.</span> <span class="nav-text">Catalan数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">公式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.1.2.</span> <span class="nav-text">应用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.1.3.</span> <span class="nav-text">操练</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.2.</span> <span class="nav-text">Bell数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.3.</span> <span class="nav-text">Stirling数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.3.</span> <span class="nav-text">多重集的排列组合</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.3.1.</span> <span class="nav-text">多重集的排列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.3.2.</span> <span class="nav-text">多重集的组合</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">容斥原理与鸽笼原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.1.</span> <span class="nav-text">鸽笼原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.2.</span> <span class="nav-text">容斥原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.2.1.</span> <span class="nav-text">计算并集元素个数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.2.2.</span> <span class="nav-text">计算错排的方案数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.3.</span> <span class="nav-text">Ramsey定理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.3.1.</span> <span class="nav-text">Ramsey数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">波利亚定理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">4.1.</span> <span class="nav-text">定义们</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">4.2.</span> <span class="nav-text">Bornside引理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">4.3.</span> <span class="nav-text">波利亚定理</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">排列的生成</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.</span> <span class="nav-text">按字典序思想生成下一个排列</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">排列和组合的计数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.</span> <span class="nav-text">基本组合恒等式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.</span> <span class="nav-text">两种特殊的排列组合技术公式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.1.</span> <span class="nav-text">Catalan数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">公式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.1.2.</span> <span class="nav-text">应用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.1.3.</span> <span class="nav-text">操练</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.2.</span> <span class="nav-text">Bell数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.3.</span> <span class="nav-text">Stirling数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.3.</span> <span class="nav-text">多重集的排列组合</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.3.1.</span> <span class="nav-text">多重集的排列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.3.2.</span> <span class="nav-text">多重集的组合</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">容斥原理与鸽笼原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.1.</span> <span class="nav-text">鸽笼原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.2.</span> <span class="nav-text">容斥原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.2.1.</span> <span class="nav-text">计算并集元素个数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.2.2.</span> <span class="nav-text">计算错排的方案数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.3.</span> <span class="nav-text">Ramsey定理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.3.1.</span> <span class="nav-text">Ramsey数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">波利亚定理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">4.1.</span> <span class="nav-text">定义们</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">4.2.</span> <span class="nav-text">Bornside引理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">4.3.</span> <span class="nav-text">波利亚定理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">递推与生成函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">5.1.</span> <span class="nav-text">k阶常系数线性齐次递推关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">5.2.</span> <span class="nav-text">生成函数</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -889,7 +908,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共17k字</span>
+  <span class="post-count">博客全站共17.9k字</span>
 </div>
         
 
