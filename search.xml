@@ -6,6 +6,7 @@
     <content type="text"><![CDATA[题目链接BZOJ1002 Description 轮状病毒有很多变种，所有轮状病毒的变种都是从一个轮状基产生的。一个N轮状基由圆环上N个不同的基原子和圆心处一个核原子构成的，2个原子之间的边表示这2个原子之间的信息通道。如下图所示.png) N轮状病毒的产生规律是在一个N轮状基中删去若干条边，使得各原子之间有唯一的信息通道，例如共有16个不同的3轮状病毒，如下图所示.png) 现给定n(N&lt;=100)，编程计算有多少个不同的n轮状病毒 Input 第一行有1个正整数n Output 计算出的不同的n轮状病毒数输出 Sample Input3 Sample Output16 Solution组合数学，要么递推，要么通项公式本题可以求出一个类递推式 用一个类似dp的方法。考虑分配周围这个圆的联通，就是一个线性dp了，过程中考虑和中间点的联通。令$f[i]$表示考虑了圆上的前i个的方案数$$f[i] = \sum_{j=1}^if[i-j]\times j$$但这相当于把环拆成了链，还要考虑1和n连接的情况。如果有j个周围的点连成一条，且跨越了1和n，我们将所有这样的情况累加到答案中去。考虑如果这样的点有j个，剩下的点肯定不与这j个点相连，所以连边方案数就是$f[i-j]​$，这j个点有$(j-1)​$种选法(跨越1和n)，与中心点连边的方案数是j。设这种情况为$g[i]$$$g[i] = \sum_{j=2}^if[i-j]\times j\times (j-1)$$ 剩下的就是高精了，建一个结构体，写一个加法和乘法。 但这道题让我感受到了常数的力量。 最开始我写了一个+=，写了一个*，乘法会返回一个大整数类型，加等于就直接穿引用修改。这样在洛谷上94ms过。但BZOJ上TLE了（时限1000ms）。。。 于是我不得不常数优化。把改成\=，所有运算都是传引用，避免了频繁的复制操作。结果洛谷上76ms，看起来没差多少然而，BZOJ上108ms成功AC。。。 BZOJ是有毒吧，或者还是洛谷有毒？ 所以告诉我们写高精是注意能引用就引用，尽量不要复制，常数很大的。 还有就是乘法运算进位不能直接加上去，要用一个变量先存一下，这个调了很久。（太菜了） 其实这个做法可以用差分序列来优化，复杂度小一些，也不用写乘法了，但我最后卡常成功（暗笑，冷笑） Code1234567891011121314151617181920212223242526272829303132333435363738394041#include &lt;bits/stdc++.h&gt;using namespace std; struct bigint&#123; int n[10010], len; &#125;f[110], g[110], ans, tmp; void print(bigint &amp;a) &#123; for(int i = a.len - 1; i &gt;= 0; i--) printf("%d", a.n[i]); printf("\n");&#125; void operator += (bigint &amp;a, bigint &amp;b) &#123; a.len = max(a.len, b.len); for(int i = 0; i &lt; a.len; i++) a.n[i] += b.n[i], a.n[i+1] += a.n[i] / 10, a.n[i] %= 10; while(a.n[a.len]) a.len++;&#125; void operator *= (bigint &amp;a, int b) &#123; int x = 0; for(int i = 0; i &lt; a.len; i++) a.n[i] *= b, a.n[i] += x, x = a.n[i] / 10, a.n[i] %= 10; a.n[a.len] = x; while(a.n[a.len]) a.n[a.len + 1] += a.n[a.len] / 10, a.n[a.len] %= 10, a.len++;&#125; int main() &#123; int n; scanf("%d", &amp;n); f[0].n[0] = 1; f[0].len = 1; f[1].n[0] = 1; f[1].len = 1; for(int i = 2; i &lt;= n; i++) for(int j = 1; j &lt;= i; j++) tmp = f[i - j], tmp *= j, f[i] += tmp; //cout &lt;&lt; i &lt;&lt; ' '; print(f[i]); ans += f[n]; for(int j = 2; j &lt;= n; j++) tmp = f[n - j], tmp *= (j - 1) * j, ans += tmp; print(ans); return 0;&#125;]]></content>
       <tags>
         <tag>组合数学</tag>
+        <tag>高精度</tag>
       </tags>
   </entry>
   <entry>
@@ -66,8 +67,8 @@
       </categories>
       <tags>
         <tag>组合数学</tag>
-        <tag>树状数组</tag>
         <tag>树形动态规划</tag>
+        <tag>树状数组</tag>
       </tags>
   </entry>
   <entry>
