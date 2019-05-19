@@ -386,7 +386,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  815
+                  538
                 </span>
               
 
@@ -402,7 +402,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  2
                 </span>
               
             </div>
@@ -425,7 +425,9 @@
       
         
           <blockquote>
-<p>题目链接：<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=4653" target="_blank" rel="noopener">BZOJ4653</a><br>
+<p>题目链接：<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=4653" target="_blank" rel="noopener">BZOJ4653</a></p>
+</blockquote>
+<p>#Solution<br>第一步离散化<br>我们先把所有区间按长度排序<br>然后可能成为答案的一定是排序后的某一段，否则的话我把他补成完整的一段答案不会更劣<br>同时我们希望作为答案的那一段短一些更好，也就是在可能的情况下不要向两边扩展了<br>所以可以使用单调队列<br>从左到右加入队列，每一次判断队列中的区间是否有m个覆盖了同一个点，是，则更新答案，head++，继续判断<br>判断可以使用线段树实现<br>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/05/19/BZOJ4653-Noi2016-区间/#more" rel="contents">
@@ -435,7 +437,7 @@
           <!--/noindex-->
         
       
-    </p></blockquote></div>
+    </p></div>
     
     
     
@@ -575,7 +577,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  951
+                  756
                 </span>
               
 
@@ -591,7 +593,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4
+                  3
                 </span>
               
             </div>
@@ -614,7 +616,18 @@
       
         
           <blockquote>
-<p>题目链接<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=1002" target="_blank" rel="noopener">BZOJ1002</a><br>
+<p>题目链接<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=1002" target="_blank" rel="noopener">BZOJ1002</a></p>
+</blockquote>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>组合数学，要么递推，要么通项公式<br>本题可以求出一个类递推式</p>
+<p>用一个类似dp的方法。考虑分配周围这个圆的联通，就是一个线性dp了，过程中考虑和中间点的联通。<br>令$f[i]$表示考虑了圆上的前i个的方案数<br>$$<br>f[i] = \sum_{j=1}^if[i-j]\times j<br>$$<br>但这相当于把环拆成了链，还要考虑1和n连接的情况。如果有j个周围的点连成一条，且跨越了1和n，我们将所有这样的情况累加到答案中去。考虑如果这样的点有j个，剩下的点肯定不与这j个点相连，所以连边方案数就是$f[i-j]​$，这j个点有$(j-1)​$种选法(跨越1和n)，与中心点连边的方案数是j。设这种情况为$g[i]$<br>$$<br>g[i] = \sum_{j=2}^if[i-j]\times j\times (j-1)<br>$$</p>
+<p>剩下的就是高精了，建一个结构体，写一个加法和乘法。</p>
+<p>但这道题让我感受到了常数的力量。</p>
+<p>最开始我写了一个+=，写了一个*，乘法会返回一个大整数类型，加等于就直接穿引用修改。<br>这样在洛谷上94ms过。<br>但BZOJ上TLE了（时限1000ms）。。。</p>
+<p>于是我不得不常数优化。<br>把乘法改成乘等于，所有运算都是传引用，避免了频繁的复制操作。<br>结果洛谷上76ms，看起来没差多少<br>然而，BZOJ上108ms成功AC。。。</p>
+<p>BZOJ是有毒吧，或者还是洛谷有毒？</p>
+<p>所以告诉我们写高精是注意能引用就引用，尽量不要复制，常数很大的。</p>
+<p>还有就是乘法运算进位不能直接加上去，要用一个变量先存一下，这个调了很久。（太菜了）</p>
+<p>其实这个做法可以用差分序列来优化，复杂度小一些，也不用写乘法了，但我最后卡常成功（暗笑，冷笑）<br>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/02/03/BZOJ1002-轮状病毒/#more" rel="contents">
@@ -624,7 +637,7 @@
           <!--/noindex-->
         
       
-    </p></blockquote></div>
+    </p></div>
     
     
     
@@ -953,7 +966,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.3k
+                  928
                 </span>
               
 
@@ -969,7 +982,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  6
+                  4
                 </span>
               
             </div>
@@ -992,7 +1005,19 @@
       
         
           <blockquote>
-<p>题目链接<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=4698" target="_blank" rel="noopener">BZOJ4698</a><br>
+<p>题目链接<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=4698" target="_blank" rel="noopener">BZOJ4698</a></p>
+</blockquote>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>题目中说道相同的子串，也就提示我们用后缀数组了。（这是套路）<br>把所有字符拼在一起，中间加一个不会出现的字符（这也是套路）<br>两个子串差一个固定的数，我们可以使用差分，求出相邻两个字符串的差，就转化为很裸的字符串相等了。（这还是套路）</p>
+<p>构建后缀数组和lcp，二分答案，假设当前判断x是否可行。<br>从前向后扫描后缀数组，所有height大于等于x的后缀会把sa分成很多段。统计是否有一段出现了所有n个字符串。<br>统计的过程中可以使用v数组加时间戳维护，先处理出每个字符属于n个字符串中的哪个，统计过程中每遇到一个新的段就tim++，v数组在每次check开始时清就可以了，这样可以保证时间复杂度为O(nlogn)</p>
+<p>最后二分出来的相同长度+1就是答案，之所以要加一是因为前面差分时去掉了第一个。</p>
+<p>注意点：</p>
+<ul>
+<li>后缀数组的模板实在容易写错啊！！</li>
+<li>统计时开启新的一段要把当前位置的这个字符算在里面（包括cnt=1和维护v）</li>
+<li>拼在一起时加的那个字符最好不一样，至于为什么我还没有搞清楚，但最开始我放一样的字符似乎总有问题</li>
+<li>差分的时候为了防止负数出现，要一起加一个值，最好是所有字符的max值</li>
+</ul>
+<p>总之就是一道很套路的题吧。<br>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/02/02/BZOJ4698-Sandy的卡片/#more" rel="contents">
@@ -1002,7 +1027,7 @@
           <!--/noindex-->
         
       
-    </p></blockquote></div>
+    </p></div>
     
     
     
@@ -1925,7 +1950,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  994
+                  529
                 </span>
               
 
@@ -1941,7 +1966,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4
+                  2
                 </span>
               
             </div>
@@ -1964,7 +1989,16 @@
       
         
           <blockquote>
-<p>题目链接<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=1001" target="_blank" rel="noopener">BZOJ1001</a><br>
+<p>题目链接<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=1001" target="_blank" rel="noopener">BZOJ1001</a></p>
+</blockquote>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><h2 id="解法一：网络流"><a href="#解法一：网络流" class="headerlink" title="解法一：网络流"></a>解法一：网络流</h2><p>很容易想到题目让求的就是最小割，利用最小割最大流定理，就是一道求最大流的裸题。<br>说几点Dinic的注意点：</p>
+<ul>
+<li>tot初始化为1</li>
+<li>当发现一条路无法增光时，将d数组设为0，表示该点不可能继续增广，可以大大提速</li>
+<li>路径是双向边，再加上反向边，总共是4条边</li>
+<li>模板尽可能背的准一点吧，我<del>默写</del>的时候出来很多小问题</li>
+</ul>
+<h2 id="解法二：耦合图"><a href="#解法二：耦合图" class="headerlink" title="解法二：耦合图"></a>解法二：耦合图</h2><p>这个解法就巧妙多了。<br>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/01/22/BZOJ1001-狼抓兔子/#more" rel="contents">
@@ -1974,7 +2008,7 @@
           <!--/noindex-->
         
       
-    </p></blockquote></div>
+    </p></div>
     
     
     
@@ -2114,7 +2148,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.7k
+                  1.2k
                 </span>
               
 
@@ -2130,7 +2164,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  8
+                  6
                 </span>
               
             </div>
@@ -2325,7 +2359,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共22k字</span>
+  <span class="post-count">博客全站共19.1k字</span>
 </div>
         
 

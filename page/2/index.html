@@ -386,7 +386,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.7k
+                  945
                 </span>
               
 
@@ -402,7 +402,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  7
+                  4
                 </span>
               
             </div>
@@ -425,7 +425,15 @@
       
         
           <blockquote>
-<p>题目链接<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=1926" target="_blank" rel="noopener">BZOJ1926</a><br>
+<p>题目链接<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=1926" target="_blank" rel="noopener">BZOJ1926</a></p>
+</blockquote>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><h2 id="前50-的数据"><a href="#前50-的数据" class="headerlink" title="前50%的数据"></a>前50%的数据</h2><p>注意到P不大于1000，因此可以预处理出与P有关的数组。<br>val[i][j][k]表示(i, j)左上方的子矩阵中大于等于k的数的总和<br>num[i][j][k]表示(i, j)左上方的子矩阵中大于等于k的数的个数<br>然后就可以<code>二分答案</code>了，二分k，求矩阵前缀和，判定一下OK。</p>
+<h2 id="后50-的数据"><a href="#后50-的数据" class="headerlink" title="后50%的数据"></a>后50%的数据</h2><p>沿用前面的二分思路，但预处理时间和空间都会爆。<del>这里可以用比较暴力的方法乱搞，但我们要追求高效嘛。</del> 因此想到前缀和就要想到主席树，可以大大节省时间空间。<br>具体来说，对每个前缀维护一个线段树，节点(l, r)维护两个信息：<br>P处于l、r之间的数的总和…(1)<br>P处于l、r之间的数的个数…(2)<br>(就和上面的前缀和意义一样)。<br>对这个线段树可持久化，得到一棵<code>主席树</code>。查询时，在要求的区间的线段树上用(1)判断左走还是右走，用(2)计算答案。</p>
+<h2 id="注意点："><a href="#注意点：" class="headerlink" title="注意点："></a>注意点：</h2><ul>
+<li><strong>一个区间可能有很多相同的数，只要取其中的一部分</strong>，计算得到要取多少，具体看代码。</li>
+<li>前缀和左端点-1</li>
+<li>递归到头后控制返回</li>
+<li>为了防止混淆，我在代码中把两种解法放在不同的命名空间里。
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/01/22/BZOJ1926-粟粟的书架/#more" rel="contents">
@@ -435,7 +443,7 @@
           <!--/noindex-->
         
       
-    </p></blockquote></div>
+    </li></ul></div>
     
     
     
@@ -575,7 +583,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1k
+                  773
                 </span>
               
 
@@ -591,7 +599,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4
+                  3
                 </span>
               
             </div>
@@ -614,7 +622,19 @@
       
         
           <blockquote>
-<p>题目链接<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=1070" target="_blank" rel="noopener">BZOJ1070</a><br>
+<p>题目链接<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=1070" target="_blank" rel="noopener">BZOJ1070</a></p>
+</blockquote>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>对于像这样的对应匹配的问题，一般可以使用网络流求解，即构建二分图，大部分时候求最大匹配（当然也不仅是匹配）。本题中一次维修要消耗一定的时间，因此需要使用最小费用最大流。</p>
+<p>最原始的思路是，左部工人，右部客户的二部图，但本题的特殊之处在于排在后面的人会有更长的等待时间。我们仍需保持这是一个二分图，因此需要对点或边进行一些调整。</p>
+<p>首先，要使用一个重要的思想，考虑每辆车对总等待时间的贡献，即<strong>不计算每个顾客等多久，而计算他让别人等了多久</strong></p>
+<p>每一个工人一个车一个车的修，每修一辆车会让后面的人多等一会儿。</p>
+<p>此时就可以想到拆点。把每一个工人节点k拆成个N点，等同于正在修他将要修的倒数第i辆车，向另外一部j点连边即代表他这个修的是j号车， 费用为$a[j][k]*i$，乘以i是因为后面的i辆车都要等待这个时间。</p>
+<p>事实上本题的构图体现了一个<strong>阶段化拆点</strong>的思想，一个点拆成它的不同阶段，相互独立。</p>
+<p>至于二部图的网络流构图法就不累述了，这里说几个注意点：</p>
+<ol>
+<li>边编号要从2开始计</li>
+<li>不要忘记建反向边，容量0，费用-w</li>
+<li>清空数组神马的别忘了
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/01/17/BZOJ1070-修车/#more" rel="contents">
@@ -624,7 +644,7 @@
           <!--/noindex-->
         
       
-    </p></blockquote></div>
+    </li></ol></div>
     
     
     
@@ -764,7 +784,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1k
+                  898
                 </span>
               
 
@@ -803,7 +823,12 @@
       
         
           <blockquote>
-<p>题目链接：<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=3994" target="_blank" rel="noopener">BZOJ3994</a><br>
+<p>题目链接：<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=3994" target="_blank" rel="noopener">BZOJ3994</a></p>
+</blockquote>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>首先，要先介绍一个可爱的结论：<br>$$ d(ij) = \sum_{x|i}\sum_{y|j}[gcd(x, y) = 1] $$<br>简单证明一下：<br>当$(i, j)=1$时，结果显然为i的约数个数乘j的约数个数。<br>否则，会有一部分重复，因为i*j的某一个因数可以有不同方式得到。怎样得到另一种方式呢？比如现在有$x|i,\ y|j,\ xy|ij,\ d|x$此时让x除以d，y乘以d，得到新的$xy|ij$，而这样做合法的前提是d同时是i和j的因数，或者说$gcd(x, yd)\ne 1$，当有这样的一对约数时，把结果减1，就可以得到这个式子。</p>
+<p>结合其他几道题目，可以发现反演似乎非常青睐gcd，所有的数论函数都要尽量往最大公约数上面靠，然后再开始套路。</p>
+<p>之后就是一道比较经典的反演题目了，总之就是推式子吧。求$$ \sum_{i=1}^N\sum_{j=1}^M\sum_{x|i}\sum_{y|j}[gcd(x, y) = 1] $$<br>相同的x, y枚举了很多次，因此先枚举x, y，贡献可以直接计算得到，原式即<br>$$\sum_{i=1}^N\sum_{j=1}^M\lfloor\frac{N}{i}\rfloor\lfloor\frac{M}{j}\rfloor[gcd(i, j) = 1]$$<br>我们令$$ f(n) = \sum_{i=1}^N\sum_{j=1}^M\lfloor\frac{N}{i}\rfloor\lfloor\frac{M}{j}\rfloor[gcd(i, j) = n] $$$$ F(d) = \sum_{d|n}f(n) = \sum_{i=1}^N\sum_{j=1}^M\lfloor\frac{N}{i}\rfloor\lfloor\frac{M}{j}\rfloor[d\ |\ gcd(i, j)] $$此处可以开心得去掉gcd，用漂亮的除法代替，枚举i和j分别是d的多少倍，得到$$ F(x) = \sum_{i=1}^{\lfloor\frac{N}{d}\rfloor}\sum_{j=1}^{\lfloor\frac{M}{d}\rfloor}\lfloor\frac{N}{id}\rfloor\lfloor\frac{M}{jd}\rfloor$$<br>这时就可以使用<code>莫比乌斯反演</code>了，因为可以看到我们已经消去了gcd，也就是说式子里不存在数论函数了，于是<br>$$ f(d) = \sum_{d|n}\mu(\frac{n}{d})F(n) $$得到答案为$$ ans = f(1) = \sum_{d=1}^{min(N, M)}\mu(d)F(d) =<br>\sum_{d=1}^{min(N, M)}\sum_{i=1}^{\lfloor\frac{N}{d}\rfloor}\sum_{j=1}^{\lfloor\frac{M}{d}\rfloor}\mu(d)\lfloor\frac{N}{id}\rfloor\lfloor\frac{M}{jd}\rfloor $$<br>现在讨论代码实现，暴力需要三层循环，因此需要用<code>线性筛</code>预处理，对于每一个x，处理出$s[x] = \sum_{i=1}^x\lfloor\frac{x}{i}\rfloor$，未来查询$s[\frac{N}{d}]$，因此只需要枚举d这一个变量。<br>再利用<code>整除分块</code>，$\lfloor\frac{N}{d}\rfloor$且$\lfloor\frac{M}{d}\rfloor$相同的部分只计算一次，就可以在$O(\sqrt{n})$的时间完成一次询问，总复杂度$O(T\sqrt{n})$</p>
+<p>关于$\mu$的计算最好作为一个模板记下啦。<br>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/01/13/BZOJ3994-约数个数和/#more" rel="contents">
@@ -813,7 +838,7 @@
           <!--/noindex-->
         
       
-    </p></blockquote></div>
+    </p></div>
     
     
     
@@ -1152,7 +1177,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共22k字</span>
+  <span class="post-count">博客全站共19.1k字</span>
 </div>
         
 

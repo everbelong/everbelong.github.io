@@ -75,18 +75,18 @@
 
 
 
-<meta name="description" content="题目链接BZOJ1070">
+<meta name="description" content="题目链接BZOJ1070  Solution对于像这样的对应匹配的问题，一般可以使用网络流求解，即构建二分图，大部分时候求最大匹配（当然也不仅是匹配）。本题中一次维修要消耗一定的时间，因此需要使用最小费用最大流。 最原始的思路是，左部工人，右部客户的二部图，但本题的特殊之处在于排在后面的人会有更长的等待时间。我们仍需保持这是一个二分图，因此需要对点或边进行一些调整。 首先，要使用一个重要的思想，">
 <meta name="keywords" content="网络流-费用流">
 <meta property="og:type" content="article">
 <meta property="og:title" content="BZOJ1070 修车">
 <meta property="og:url" content="http://yoursite.com/2019/01/17/BZOJ1070-修车/index.html">
 <meta property="og:site_name" content="everbelong">
-<meta property="og:description" content="题目链接BZOJ1070">
+<meta property="og:description" content="题目链接BZOJ1070  Solution对于像这样的对应匹配的问题，一般可以使用网络流求解，即构建二分图，大部分时候求最大匹配（当然也不仅是匹配）。本题中一次维修要消耗一定的时间，因此需要使用最小费用最大流。 最原始的思路是，左部工人，右部客户的二部图，但本题的特殊之处在于排在后面的人会有更长的等待时间。我们仍需保持这是一个二分图，因此需要对点或边进行一些调整。 首先，要使用一个重要的思想，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-19T08:19:25.949Z">
+<meta property="og:updated_time" content="2019-05-19T08:39:23.802Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BZOJ1070 修车">
-<meta name="twitter:description" content="题目链接BZOJ1070">
+<meta name="twitter:description" content="题目链接BZOJ1070  Solution对于像这样的对应匹配的问题，一般可以使用网络流求解，即构建二分图，大部分时候求最大匹配（当然也不仅是匹配）。本题中一次维修要消耗一定的时间，因此需要使用最小费用最大流。 最原始的思路是，左部工人，右部客户的二部图，但本题的特殊之处在于排在后面的人会有更长的等待时间。我们仍需保持这是一个二分图，因此需要对点或边进行一些调整。 首先，要使用一个重要的思想，">
 
 
 
@@ -385,7 +385,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1k
+                  773
                 </span>
               
 
@@ -401,7 +401,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4
+                  3
                 </span>
               
             </div>
@@ -423,14 +423,8 @@
 
       
         <blockquote>
-<p>题目链接<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=1070" target="_blank" rel="noopener">BZOJ1070</a><br><a id="more"></a></p>
+<p>题目链接<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=1070" target="_blank" rel="noopener">BZOJ1070</a></p>
 </blockquote>
-<h1><span id="description">Description</span></h1><p>　　同一时刻有N位车主带着他们的爱车来到了汽车维修中心。维修中心共有M位技术人员，不同的技术人员对不同<br>的车进行维修所用的时间是不同的。现在需要安排这M位技术人员所维修的车及顺序，使得顾客平均等待的时间最<br>小。 说明：顾客的等待时间是指从他把车送至维修中心到维修完毕所用的时间。</p>
-<h1><span id="input">Input</span></h1><p>　　第一行有两个m,n，表示技术人员数与顾客数。 接下来n行，每行m个整数。第i+1行第j个数表示第j位技术人<br>员维修第i辆车需要用的时间T。</p>
-<h1><span id="output">Output</span></h1><p>　　最小平均等待时间，答案精确到小数点后2位。</p>
-<h1><span id="sample-input">Sample Input</span></h1><p>2 2<br>3 2<br>1 4</p>
-<h1><span id="sample-output">Sample Output</span></h1><p>1.50</p>
-<h1><span id="hint">HINT</span></h1><p>数据范围: (2&lt;=M&lt;=9,1&lt;=N&lt;=60), (1&lt;=T&lt;=1000)</p>
 <h1><span id="solution">Solution</span></h1><p>对于像这样的对应匹配的问题，一般可以使用网络流求解，即构建二分图，大部分时候求最大匹配（当然也不仅是匹配）。本题中一次维修要消耗一定的时间，因此需要使用最小费用最大流。</p>
 <p>最原始的思路是，左部工人，右部客户的二部图，但本题的特殊之处在于排在后面的人会有更长的等待时间。我们仍需保持这是一个二分图，因此需要对点或边进行一些调整。</p>
 <p>首先，要使用一个重要的思想，考虑每辆车对总等待时间的贡献，即<strong>不计算每个顾客等多久，而计算他让别人等了多久</strong></p>
@@ -441,7 +435,8 @@
 <ol>
 <li>边编号要从2开始计</li>
 <li>不要忘记建反向边，容量0，费用-w</li>
-<li>清空数组神马的别忘了</li>
+<li>清空数组神马的别忘了<a id="more"></a>
+</li>
 </ol>
 <h1><span id="code">Code</span></h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> V = <span class="number">1010</span>, E = <span class="number">200010</span>, inf = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, m, tot = <span class="number">1</span>, head[V], ver[E], Next[E], cap[E], cost[E], a[<span class="number">20</span>][<span class="number">100</span>];</span><br><span class="line"><span class="keyword">int</span> s, t, pe[V], pv[V], maxflow, mincost, d[V], v[V];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> c, <span class="keyword">int</span> w)</span></span>&#123;</span><br><span class="line">    ver[++tot] = y, cap[tot] = c, cost[tot] = w;</span><br><span class="line">    Next[tot] = head[x], head[x] = tot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>) &#123;</span><br><span class="line">        <span class="built_in">memset</span>(v, <span class="number">0</span>, <span class="keyword">sizeof</span>(v));</span><br><span class="line">        <span class="built_in">memset</span>(d, <span class="number">0x3f</span>, <span class="keyword">sizeof</span>(d));</span><br><span class="line">        <span class="keyword">while</span>(q.size()) q.pop();</span><br><span class="line">        q.push(s); d[s] = <span class="number">0</span>; v[s] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(q.size()) &#123;</span><br><span class="line">            <span class="keyword">int</span> x = q.front(); q.pop();</span><br><span class="line">            v[x] = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = head[x]; i; i = Next[i]) <span class="keyword">if</span>(cap[i]) &#123;</span><br><span class="line">                <span class="keyword">int</span> y = ver[i];</span><br><span class="line">                <span class="keyword">if</span>(d[y] &gt; d[x] + cost[i]) &#123;</span><br><span class="line">                    d[y] = d[x] + cost[i]; pv[y] = x; pe[y] = i;</span><br><span class="line">                    <span class="keyword">if</span>(!v[y]) v[y] = <span class="number">1</span>, q.push(y);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(d[t] == inf) <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">int</span> flow = inf;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = t; i != s; i = pv[i]) flow = min(flow, cap[pe[i]]);</span><br><span class="line">        maxflow += flow;</span><br><span class="line">        mincost += flow * d[t];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = t; i != s; i = pv[i]) cap[pe[i]] -= flow, cap[pe[i] ^ <span class="number">1</span>] += flow;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;m, &amp;n);</span><br><span class="line">    s = n * m + n + <span class="number">1</span>, t = s + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;a[j][i]);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++) </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++) </span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">1</span>; k &lt;= n; k++) </span><br><span class="line">                add(i * n + j, m * n + k, <span class="number">1</span>, a[i+<span class="number">1</span>][k] * j), </span><br><span class="line">                add(n * m + k, i * n + j, <span class="number">0</span>, -a[i+<span class="number">1</span>][k] * j);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n * m; i++) add(s, i, <span class="number">1</span>, <span class="number">0</span>), add(i, s, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = n * m + <span class="number">1</span>; i &lt;= n * m + n; i++) add(i, t, <span class="number">1</span>, <span class="number">0</span>), add(t, i, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">    solve();</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%.2lf"</span>, (<span class="keyword">double</span>)mincost / n);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
@@ -626,7 +621,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">Sample Input</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">Sample Output</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text">HINT</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">7.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">8.</span> <span class="nav-text">Code</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Code</span></a></li></ol></div>
             
 
           </div>
@@ -659,7 +654,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共22k字</span>
+  <span class="post-count">博客全站共19.1k字</span>
 </div>
         
 
