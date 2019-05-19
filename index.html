@@ -427,7 +427,7 @@
           <blockquote>
 <p>题目链接：<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=4653" target="_blank" rel="noopener">BZOJ4653</a></p>
 </blockquote>
-<p>#Solution<br>第一步离散化<br>我们先把所有区间按长度排序<br>然后可能成为答案的一定是排序后的某一段，否则的话我把他补成完整的一段答案不会更劣<br>同时我们希望作为答案的那一段短一些更好，也就是在可能的情况下不要向两边扩展了<br>所以可以使用单调队列<br>从左到右加入队列，每一次判断队列中的区间是否有m个覆盖了同一个点，是，则更新答案，head++，继续判断<br>判断可以使用线段树实现<br>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>第一步离散化<br>我们先把所有区间按长度排序<br>然后可能成为答案的一定是排序后的某一段，否则的话我把他补成完整的一段答案不会更劣<br>同时我们希望作为答案的那一段短一些更好，也就是在可能的情况下不要向两边扩展了<br>所以可以使用单调队列<br>从左到右加入队列，每一次判断队列中的区间是否有m个覆盖了同一个点，是，则更新答案，head++，继续判断<br>判断可以使用线段树实现<br>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/05/19/BZOJ4653-Noi2016-区间/#more" rel="contents">
