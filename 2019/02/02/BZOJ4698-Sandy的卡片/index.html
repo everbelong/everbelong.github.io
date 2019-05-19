@@ -75,18 +75,18 @@
 
 
 
-<meta name="description" content="题目链接BZOJ4698  DescriptionSandy和Sue的热衷于收集干脆面中的卡片。然而，Sue收集卡片是因为卡片上漂亮的人物形象，而Sandy则是为了积攒卡片兑换超炫的人物模型。每一张卡片都由一些数字进行标记，第i张卡片的序列长度为Mi，要想兑换人物模型，首先必须要集够N张卡片，对于这N张卡片，如果他们都有一个相同的子串长度为k，则可以兑换一个等级为k的人物模型。相同的定义为：两个">
+<meta name="description" content="题目链接BZOJ4698">
 <meta name="keywords" content="后缀数组">
 <meta property="og:type" content="article">
 <meta property="og:title" content="BZOJ4698 Sandy的卡片">
 <meta property="og:url" content="http://yoursite.com/2019/02/02/BZOJ4698-Sandy的卡片/index.html">
 <meta property="og:site_name" content="everbelong">
-<meta property="og:description" content="题目链接BZOJ4698  DescriptionSandy和Sue的热衷于收集干脆面中的卡片。然而，Sue收集卡片是因为卡片上漂亮的人物形象，而Sandy则是为了积攒卡片兑换超炫的人物模型。每一张卡片都由一些数字进行标记，第i张卡片的序列长度为Mi，要想兑换人物模型，首先必须要集够N张卡片，对于这N张卡片，如果他们都有一个相同的子串长度为k，则可以兑换一个等级为k的人物模型。相同的定义为：两个">
+<meta property="og:description" content="题目链接BZOJ4698">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-02T13:14:55.177Z">
+<meta property="og:updated_time" content="2019-05-19T08:20:08.251Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BZOJ4698 Sandy的卡片">
-<meta name="twitter:description" content="题目链接BZOJ4698  DescriptionSandy和Sue的热衷于收集干脆面中的卡片。然而，Sue收集卡片是因为卡片上漂亮的人物形象，而Sandy则是为了积攒卡片兑换超炫的人物模型。每一张卡片都由一些数字进行标记，第i张卡片的序列长度为Mi，要想兑换人物模型，首先必须要集够N张卡片，对于这N张卡片，如果他们都有一个相同的子串长度为k，则可以兑换一个等级为k的人物模型。相同的定义为：两个">
+<meta name="twitter:description" content="题目链接BZOJ4698">
 
 
 
@@ -423,9 +423,9 @@
 
       
         <blockquote>
-<p>题目链接<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=4698" target="_blank" rel="noopener">BZOJ4698</a></p>
+<p>题目链接<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=4698" target="_blank" rel="noopener">BZOJ4698</a><br><a id="more"></a></p>
 </blockquote>
-<h1><span id="description">Description</span></h1><p>Sandy和Sue的热衷于收集干脆面中的卡片。然而，Sue收集卡片是因为卡片上漂亮的人物形象，而Sandy则是为了积<br>攒卡片兑换超炫的人物模型。每一张卡片都由一些数字进行标记，第i张卡片的序列长度为Mi，要想兑换人物模型<br>，首先必须要集够N张卡片，对于这N张卡片，如果他们都有一个相同的子串长度为k，则可以兑换一个等级为k的人<br>物模型。相同的定义为：两个子串长度相同且一个串的全部元素加上一个数就会变成另一个串。Sandy的卡片数远<br>远小于要求的N，于是Sue决定在Sandy的生日将自己的卡片送给Sandy，在Sue的帮助下，Sandy终于集够了N张卡片<br>，但是，Sandy并不清楚他可以兑换到哪个等级的人物模型，现在，请你帮助Sandy和Sue，看看他们最高能够得到<br>哪个等级的人物模型。<br><a id="more"></a></p>
+<h1><span id="description">Description</span></h1><p>Sandy和Sue的热衷于收集干脆面中的卡片。然而，Sue收集卡片是因为卡片上漂亮的人物形象，而Sandy则是为了积<br>攒卡片兑换超炫的人物模型。每一张卡片都由一些数字进行标记，第i张卡片的序列长度为Mi，要想兑换人物模型<br>，首先必须要集够N张卡片，对于这N张卡片，如果他们都有一个相同的子串长度为k，则可以兑换一个等级为k的人<br>物模型。相同的定义为：两个子串长度相同且一个串的全部元素加上一个数就会变成另一个串。Sandy的卡片数远<br>远小于要求的N，于是Sue决定在Sandy的生日将自己的卡片送给Sandy，在Sue的帮助下，Sandy终于集够了N张卡片<br>，但是，Sandy并不清楚他可以兑换到哪个等级的人物模型，现在，请你帮助Sandy和Sue，看看他们最高能够得到<br>哪个等级的人物模型。</p>
 <h1><span id="input">Input</span></h1><p>第一行为一个数N，表示可以兑换人物模型最少需要的卡片数，即Sandy现在有的卡片数<br>第i+1行到第i+N行每行第一个数为第i张卡片序列的长度Mi，之后j+1到j+1+Mi个数，用空格分隔，分别表示序列中<br>的第j个数<br>n&lt;=1000,M&lt;=1000,2&lt;=Mi&lt;=101</p>
 <h1><span id="output">Output</span></h1><p>一个数k，表示可以获得的最高等级。</p>
 <h1><span id="sample-input">Sample Input</span></h1><p>2<br>2 1 2<br>3 4 5 9</p>
@@ -562,7 +562,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -573,7 +573,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -584,7 +584,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -657,7 +657,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共21.1k字</span>
+  <span class="post-count">博客全站共22k字</span>
 </div>
         
 

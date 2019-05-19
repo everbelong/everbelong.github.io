@@ -75,18 +75,18 @@
 
 
 
-<meta name="description" content="题目链接BZOJ1926  Description幸福幼儿园B29班的粟粟是一个聪明机灵、乖巧可爱的小朋友，她的爱好是画画和读书，尤其喜欢Thomas H. Cormen的文章。粟粟家中有一个R行C列的巨型书架，书架的每一个位置都摆有一本书，上数第i行、左数第j列摆放的书有Pi,j页厚。 粟粟每天除了读书之外，还有一件必不可少的工作就是摘苹果，她每天必须摘取一个指定的苹果。粟粟家果树上的苹果有的">
+<meta name="description" content="题目链接BZOJ1926">
 <meta name="keywords" content="主席树">
 <meta property="og:type" content="article">
 <meta property="og:title" content="BZOJ1926 粟粟的书架">
 <meta property="og:url" content="http://yoursite.com/2019/01/22/BZOJ1926-粟粟的书架/index.html">
 <meta property="og:site_name" content="everbelong">
-<meta property="og:description" content="题目链接BZOJ1926  Description幸福幼儿园B29班的粟粟是一个聪明机灵、乖巧可爱的小朋友，她的爱好是画画和读书，尤其喜欢Thomas H. Cormen的文章。粟粟家中有一个R行C列的巨型书架，书架的每一个位置都摆有一本书，上数第i行、左数第j列摆放的书有Pi,j页厚。 粟粟每天除了读书之外，还有一件必不可少的工作就是摘苹果，她每天必须摘取一个指定的苹果。粟粟家果树上的苹果有的">
+<meta property="og:description" content="题目链接BZOJ1926">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-29T14:39:59.657Z">
+<meta property="og:updated_time" content="2019-05-19T08:19:39.889Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BZOJ1926 粟粟的书架">
-<meta name="twitter:description" content="题目链接BZOJ1926  Description幸福幼儿园B29班的粟粟是一个聪明机灵、乖巧可爱的小朋友，她的爱好是画画和读书，尤其喜欢Thomas H. Cormen的文章。粟粟家中有一个R行C列的巨型书架，书架的每一个位置都摆有一本书，上数第i行、左数第j列摆放的书有Pi,j页厚。 粟粟每天除了读书之外，还有一件必不可少的工作就是摘苹果，她每天必须摘取一个指定的苹果。粟粟家果树上的苹果有的">
+<meta name="twitter:description" content="题目链接BZOJ1926">
 
 
 
@@ -423,12 +423,12 @@
 
       
         <blockquote>
-<p>题目链接<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=1926" target="_blank" rel="noopener">BZOJ1926</a></p>
+<p>题目链接<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=1926" target="_blank" rel="noopener">BZOJ1926</a><br><a id="more"></a></p>
 </blockquote>
 <h1><span id="description">Description</span></h1><p>幸福幼儿园B29班的粟粟是一个聪明机灵、乖巧可爱的小朋友，她的爱好是画画和读书，尤其喜欢Thomas H. Cormen的文章。粟粟家中有一个R行C列的巨型书架，书架的每一个位置都摆有一本书，上数第i行、左数第j列摆放的书有Pi,j页厚。</p>
 <p>粟粟每天除了读书之外，还有一件必不可少的工作就是摘苹果，她每天必须摘取一个指定的苹果。粟粟家果树上的苹果有的高、有的低，但无论如何凭粟粟自己的个头都难以摘到。不过她发现，如果在脚下放上几本书，就可以够着苹果；她同时注意到，对于第i天指定的那个苹果，只要她脚下放置书的总页数之和不低于Hi，就一定能够摘到。</p>
 <p>由于书架内的书过多，父母担心粟粟一天内就把所有书看完而耽误了上幼儿园，于是每天只允许粟粟在一个特定区域内拿书。这个区域是一个矩形，第i天给定区域的左上角是上数第x1i行的左数第y1i本书，右下角是上数第x2i行的左数第y2i本书。换句话说，粟粟在这一天，只能在这﹙x2i－x1i＋1﹚×﹙y2i－y1i＋1﹚本书中挑选若干本垫在脚下，摘取苹果。</p>
-<p>粟粟每次取书时都能及时放回原位，并且她的书架不会再撤下书目或换上新书，摘苹果的任务会一直持续M天。给出每本书籍的页数和每天的区域限制及采摘要求，请你告诉粟粟，她每天至少拿取多少本书，就可以摘到当天指定的苹果。<br><a id="more"></a></p>
+<p>粟粟每次取书时都能及时放回原位，并且她的书架不会再撤下书目或换上新书，摘苹果的任务会一直持续M天。给出每本书籍的页数和每天的区域限制及采摘要求，请你告诉粟粟，她每天至少拿取多少本书，就可以摘到当天指定的苹果。</p>
 <h1><span id="input">Input</span></h1><p>第一行是三个正整数R，C，M。<br>接下来是一个R行C列的矩阵，从上到下、从左向右依次给出了每本书的页数Pi，j。<br>接下来M行，第i行给出正整数x1i，y1i，x2i，y2i，Hi，表示第i天的指定区域是﹙x1i，y1i﹚与﹙x2i，y2i﹚间<br>的矩形，总页数之和要求不低于Hi。<br>保证1≤x1i≤x2i≤R，1≤y1i≤y2i≤C。</p>
 <h1><span id="output">Output</span></h1><p>有M行，第i 行回答粟粟在第 i 天时为摘到苹果至少需要 拿取多少本书。如果即使取走所有书都无法摘到苹果，<br>则在该行输出“Poor QLW” （不含引号）。</p>
 <h1><span id="sample-input">Sample Input</span></h1><p>5 5 7<br>14 15 9 26 53<br>58 9 7 9 32<br>38 46 26 43 38<br>32 7 9 50 28<br>8 41 9 7 17<br>1 2 5 3 139<br>3 1 5 5 399<br>3 3 4 5 91<br>4 1 4 1 33<br>1 3 5 4 185<br>3 3 4 3 23<br>3 1 3 3 108 </p>
@@ -563,7 +563,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -574,7 +574,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -585,7 +585,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -658,7 +658,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共21.1k字</span>
+  <span class="post-count">博客全站共22k字</span>
 </div>
         
 
