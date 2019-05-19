@@ -777,7 +777,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  954
+                  702
                 </span>
               
 
@@ -816,7 +816,25 @@
       
         
           <blockquote>
-<p>网络流24题 最长不下降子序列问题<br><a href="https://www.luogu.org/problemnew/show/P2766" target="_blank" rel="noopener">洛谷P2766</a><br>
+<p>网络流24题 最长不下降子序列问题<br><a href="https://www.luogu.org/problemnew/show/P2766" target="_blank" rel="noopener">洛谷P2766</a></p>
+</blockquote>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>（1）最基本的dp，记答案为ans<br>（2）每个数拆成两个点$a_i, b_i$，用$\to$代表连边：</p>
+<ul>
+<li>$ s\to a_i\ \ cap = 1\ \ \ \ if(f[i] = 1) $</li>
+<li>$ b_i\to t\ \ cap = 1\ \ \ \ if(f[i] = ans) $</li>
+<li>$ a_i\to b_i\ \ cap = 1 $</li>
+<li>$ b_i\to a_i\ \ cap = 1\ \ \ \ if(h[i] \le h[j] 且f[i] + 1 = f[j]) $ 就是说j由i转移而来</li>
+</ul>
+<p>跑一遍最大流即可</p>
+<p>（3）再加四条边</p>
+<ul>
+<li>$ s\to a_1\ \ cap = +\infty $</li>
+<li>$ a_1\to b_1\ \ cap = +\infty $</li>
+<li>$ b_n \to t\ \ cap = +\infty\ \ \ \ if(f[n] = ans)$</li>
+<li>$ a_n\to b_n\ \ cap = +\infty $</li>
+</ul>
+<p>千万不要忘记了第三条边里的if，这是若不满足则不用加这条边，多的第n个数相当于没用。</p>
+<p>这是最大流里比较经典的一个问题<br>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/02/02/最长不下降子序列问题/#more" rel="contents">
@@ -826,7 +844,7 @@
           <!--/noindex-->
         
       
-    </p></blockquote></div>
+    </p></div>
     
     
     
@@ -2359,7 +2377,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共19.1k字</span>
+  <span class="post-count">博客全站共18.8k字</span>
 </div>
         
 
