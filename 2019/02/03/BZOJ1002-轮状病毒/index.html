@@ -85,7 +85,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/02/03/BZOJ1002-轮状病毒/1.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/02/03/BZOJ1002-轮状病毒/2.jpg">
-<meta property="og:updated_time" content="2019-02-03T14:46:38.916Z">
+<meta property="og:updated_time" content="2019-02-03T14:56:42.683Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BZOJ1002 轮状病毒">
 <meta name="twitter:description" content="题目链接BZOJ1002  Description　　轮状病毒有很多变种，所有轮状病毒的变种都是从一个轮状基产生的。一个N轮状基由圆环上N个不同的基原子和圆心处一个核原子构成的，2个原子之间的边表示这2个原子之间的信息通道。如下图所示　　N轮状病毒的产生规律是在一个N轮状基中删去若干条边，使得各原子之间有唯一的信息通道，例如共有16个不同的3轮状病毒，如下图所示　　现给定n(N&amp;lt;=100)">
@@ -334,6 +334,39 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/数学/" itemprop="url" rel="index">
+                    <span itemprop="name">数学</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/数学/组合/" itemprop="url" rel="index">
+                    <span itemprop="name">组合</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -355,7 +388,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  946
+                  951
                 </span>
               
 
@@ -405,7 +438,7 @@
 <p>剩下的就是高精了，建一个结构体，写一个加法和乘法。</p>
 <p>但这道题让我感受到了常数的力量。</p>
 <p>最开始我写了一个+=，写了一个*，乘法会返回一个大整数类型，加等于就直接穿引用修改。<br>这样在洛谷上94ms过。<br>但BZOJ上TLE了（时限1000ms）。。。</p>
-<p>于是我不得不常数优化。<br>把<em>改成\</em>=，所有运算都是传引用，避免了频繁的复制操作。<br>结果洛谷上76ms，看起来没差多少<br>然而，BZOJ上108ms成功AC。。。</p>
+<p>于是我不得不常数优化。<br>把乘法改成乘等于，所有运算都是传引用，避免了频繁的复制操作。<br>结果洛谷上76ms，看起来没差多少<br>然而，BZOJ上108ms成功AC。。。</p>
 <p>BZOJ是有毒吧，或者还是洛谷有毒？</p>
 <p>所以告诉我们写高精是注意能引用就引用，尽量不要复制，常数很大的。</p>
 <p>还有就是乘法运算进位不能直接加上去，要用一个变量先存一下，这个调了很久。（太菜了）</p>
@@ -540,7 +573,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -551,7 +584,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
