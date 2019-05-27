@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[BZOJ1563 [Noi2009]诗人小G]]></title>
+    <url>%2F2019%2F05%2F27%2FBZOJ1563-Noi2009-%E8%AF%97%E4%BA%BA%E5%B0%8FG%2F</url>
+    <content type="text"><![CDATA[题目链接：BZOJ1563 Solutiondp转移方程$$f[i] = min_{j=0}^{i-1}{ f[j] + | s[i] - s[j] - 1 - L | ^ p }$$其中$ s[i] = i + \sum_{j=1}^{i}len[j] $采取了别人说的暴力打表法，发现确实具有决策单调性证明？我不会。因此以后见到这种1D1D的dp方程先写出来暴力，然后打表决策看有无单调性，没有的话一定是斜率优化了每一时刻，所有位置对应的决策形成的数列一定是单调不减的，就是下面的样子111111111111111111222222231111333344555这个数列在每次计算出新的位置后会更新，之后下一个位置的决策实际上就确定了，更新的时候仍会保持单调性具体实现可以使用单调队列配二分每一个决策是一个区间，新的可能出现的决策会把队尾的区间弹掉当队尾的区间无法弹掉后，使用二分确定在哪个位置之前是可以保留的，剩下的仍要更新最后把当前决策补到队尾下一轮的队首就是最终决策同时及时把队首无用的决策区间弹掉 Code12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758#include &lt;bits/stdc++.h&gt;using namespace std;const int maxn = 100010;typedef long double ld;ld f[maxn];int n, L, p, s[maxn], cho[maxn], las[maxn];char str[maxn][35];struct Inter&#123; int l, r, x; Inter(int l = 0, int r = 0, int x = 0) : l(l), r(r), x(x) &#123;&#125;&#125;q[maxn];ld Power(int x, int pp) &#123; ld res = 1; while(pp--) res *= x; return res;&#125;ld calc(int j, int i) &#123; return f[j] + Power(abs(s[i] - s[j] - 1 - L), p);&#125;int main() &#123; int T; scanf("%d", &amp;T); while(T--) &#123; scanf("%d%d%d", &amp;n, &amp;L, &amp;p); memset(las, 0, sizeof(las)); memset(cho, 0, sizeof(cho)); for(int i = 1; i &lt;= n; i++) scanf("%s", str[i]), s[i] = strlen(str[i]); for(int i = 1; i &lt;= n; i++) s[i] += s[i-1] + 1; q[1] = Inter(1, n, 0); int head = 1, tail = 1; for(int i = 1; i &lt;= n; i++) &#123; las[i] = q[head].x; f[i] = calc(las[i], i); //cout &lt;&lt; head &lt;&lt; ' ' &lt;&lt; tail &lt;&lt; endl; //cout &lt;&lt; calc(q[tail].x, q[tail].l) &lt;&lt; ' ' &lt;&lt; calc(i, q[tail].l) &lt;&lt; endl; while(head &lt;= tail &amp;&amp; calc(q[tail].x, q[tail].l) &gt; calc(i, q[tail].l)) tail--; if(head &gt; tail) &#123; q[++tail] = Inter(i + 1, n, i); continue; &#125; int l = q[tail].l, r = q[tail].r + 1, x = q[tail].x; while(l &lt; r) &#123; int mid = (l + r) &gt;&gt; 1; if(calc(x, mid) &gt; calc(i, mid)) r = mid; else l = mid + 1; &#125; l = q[tail].l; q[tail] = Inter(l, r - 1, x); if(r &lt;= n) q[++tail] = Inter(r, n, i); while(head &lt;= tail &amp;&amp; q[head].r &lt;= i) head++; //for(int i = head; i &lt;= tail; i++) cout &lt;&lt; q[i].l &lt;&lt; ' ' &lt;&lt; q[i].r &lt;&lt; ' ' &lt;&lt; q[i].x &lt;&lt; endl; &#125; for(int i = n; i; i = las[i]) cho[las[i]] = i; if(f[n] &gt; 1e18) printf("Too hard to arrange\n"); else &#123; printf("%.0LF\n", f[n]); for(int i = 0; i &lt; n; i = cho[i]) for(int j = i + 1; j &lt;= cho[i]; j++) printf("%s%c", str[j], j == cho[i] ? '\n' : ' '); &#125; printf("--------------------\n"); &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>动态规划</category>
+        <category>决策单调性优化</category>
+      </categories>
+      <tags>
+        <tag>决策单调性</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[BZOJ4653 [Noi2016]区间]]></title>
     <url>%2F2019%2F05%2F19%2FBZOJ4653-Noi2016-%E5%8C%BA%E9%97%B4%2F</url>
     <content type="text"><![CDATA[题目链接：BZOJ4653 Solution第一步离散化我们先把所有区间按长度排序然后可能成为答案的一定是排序后的某一段，否则的话我把他补成完整的一段答案不会更劣同时我们希望作为答案的那一段短一些更好，也就是在可能的情况下不要向两边扩展了所以可以使用单调队列从左到右加入队列，每一次判断队列中的区间是否有m个覆盖了同一个点，是，则更新答案，head++，继续判断判断可以使用线段树实现 Code12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849#include &lt;bits/stdc++.h&gt;using namespace std;const int maxn = 500010, inf = 0x3f3f3f3f;int ans = inf, pp[maxn * 2], cnt, n, m, q[maxn];struct Inter&#123; int l, r;&#125;t[maxn];bool cmp(Inter a, Inter b) &#123; return pp[a.r] - pp[a.l] &lt; pp[b.r] - pp[b.l]; &#125;int len(Inter a, Inter b) &#123; return pp[a.r] - pp[a.l] - pp[b.r] + pp[b.l]; &#125;int tag[maxn * 8], mx[maxn * 8];void pushdown(int p) &#123; if(!tag[p]) return; mx[p*2] += tag[p]; mx[p*2+1] += tag[p]; tag[p*2] += tag[p]; tag[p*2+1] += tag[p]; tag[p] = 0;&#125;void change(int p, int l, int r, int L, int R, int x) &#123; if(L &lt;= l &amp;&amp; r &lt;= R) &#123; mx[p] += x; tag[p] += x; return; &#125; pushdown(p); int mid = (l + r) &gt;&gt; 1; if(L &lt;= mid) change(p*2, l, mid, L, R, x); if(R &gt; mid) change(p*2+1, mid + 1, r, L, R, x); mx[p] = max(mx[p*2], mx[p*2+1]);&#125;int main() &#123; scanf("%d%d", &amp;n, &amp;m); for(int i = 1; i &lt;= n; i++) scanf("%d%d", &amp;t[i].l, &amp;t[i].r), pp[++cnt] = t[i].l, pp[++cnt] = t[i].r; sort(pp + 1, pp + 1 + cnt); cnt = unique(pp + 1, pp + 1 + cnt) - pp - 1; for(int i = 1; i &lt;= n; i++) &#123; t[i].l = lower_bound(pp + 1, pp + 1 + cnt, t[i].l) - pp; t[i].r = lower_bound(pp + 1, pp + 1 + cnt, t[i].r) - pp; &#125; sort(t + 1, t + 1 + n, cmp); int head = 1, tail = 0; for(int i = 1; i &lt;= n; i++) &#123; q[++tail] = i; change(1, 1, cnt, t[i].l, t[i].r, 1); while(head &lt;= tail &amp;&amp; mx[1] &gt;= m) &#123; ans = min(ans, len(t[q[tail]], t[q[head]])); change(1, 1, cnt, t[q[head]].l, t[q[head]].r, -1); head++; &#125; &#125; if(ans == inf) ans = -1; printf("%d\n", ans); return 0;&#125;]]></content>
@@ -72,8 +84,8 @@
       </categories>
       <tags>
         <tag>组合数学</tag>
-        <tag>树状数组</tag>
         <tag>树形动态规划</tag>
+        <tag>树状数组</tag>
       </tags>
   </entry>
   <entry>
