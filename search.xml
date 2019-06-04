@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LOJ3103 [JSOI2019]节日庆典]]></title>
+    <url>%2F2019%2F06%2F04%2FLOJ3103-JSOI2019-%E8%8A%82%E6%97%A5%E5%BA%86%E5%85%B8%2F</url>
+    <content type="text"><![CDATA[题目链接：LOJ3103 Solution先，这题我看别人代码才做出来的，要记得复习要求求前缀最小表示法感觉会有大量可以重复利用的信息，这些信息可以通过寻找性质来优化算法下面来找性质：(假设目前处于前缀S[1-k]，我们比较两个位置i、j，其中$i \lt j$)(我们需要维护一个答案的候选集合，我们的目标是尽可能减小这个集合) 若$LCP(i, j) \lt k - i$，那么i和j只有一个可能作为结果 很显然，这种情况下，i和j在后续的过程中大小关系是确定了的，即使添加字符也不会造成影响，因此可以及时排除掉一个 剩下的情况，$LCP(i, j) \gt k - i $，此时如果$ k - i \gt i - j $，那么j永远不可能成为答案，可以扔掉了 这个并不显然的结论是问题的关键首先我们是否还记得之前做KMP的时候，同一字符串的LCP较长时会有循环节对，这里也出现了循环节我们可以将i，j对应的后缀表示成如下形式S[i-k] = AAAABS[j-k] =&emsp;AAAB其中B是A的前缀由于$k - i \gt i - j$，一定可以找到一个位置$l$，使S[l-k] =&emsp;&emsp;&emsp;B其实就是向右跳过所有完整的循环节后续的操作中会将k++，也就是在B的后面填一个字符若这个字符比A中对应的位置大，那么$i&gt;j&gt;k$若这个字符比A中对应的位置大，那么$i&lt;j&lt;k$总之j永远不会是最优的，所以可以扔掉了这个性质巧妙地利用了循环节我上课想了画了很久才明白啊 候选集合大小为$O(logn)$ 从$i$到$\frac{i+k}{2}$，只会有一个存在于候选集合中，于是每次缩小一半，最终是$O(logn)$ 性质结束，本题可做了下面要说说怎么求LCP当然可以用后缀数组，但这里有更好的方法还有一个隐藏的结论，候选集合中任意两个元素的LCP会延伸到k-1即使排除无用元素后就能延伸到k了因此我们两个都去掉后缀的那一段，比较的就是某个后缀和原串的LCP，也就是z-algorithm/扩展KMP所以先预处理出z-box(nxt[])维护一个队列是之前的候选集合再维护一个现在的候选集合一个一个判断能够弹出队尾（利用性质1）再判断当前能否加进去（利用性质1和2） 得到当前的候选集合后，计算答案就是比较了按照前面说的方法，分成后缀的那一段、截断的差值（delta）（或者说就是长为j-i的那一段）、以及剩下的部分，分开比较。理解代码吧。 最后总结一些一句话的套路：LCP配循环节循环节可以有很多性质维护答案集合，确保它足够小同一字符串很多匹配啊重复啊什么的，想想循环节，想想z-algorithm字典序的比较也可以转化为LCP万能的LCP Code1234567891011121314151617181920212223242526272829303132333435363738#include &lt;bits/stdc++.h&gt;using namespace std;const int maxn = 3000010;char str[maxn];int nxt[maxn], n;vector&lt;int&gt; f, g;int cmp(int x, int y) &#123; if(nxt[x] &gt;= y) return 0; return str[1 + nxt[x]] &lt; str[x + nxt[x]] ? 1 : -1;&#125;int main() &#123; scanf("%s", str + 1); n = strlen(str + 1); int l = 1, r = 1; for(int i = 2; i &lt;= n; i++) &#123; nxt[i] = r &lt; i ? 0 : min(nxt[i - l + 1], r - i + 1); while(str[i + nxt[i]] == str[1 + nxt[i]]) nxt[i]++; if(nxt[i] + i - 1 &gt; r) r = nxt[i] + i - 1, l = i; &#125; for(int i = 1; i &lt;= n; i++) &#123; f.clear(); g.push_back(i); for(int j = 0; j &lt; g.size(); j++) &#123; while(f.size() &amp;&amp; str[i] &lt; str[f.back() + i - g[j]]) f.pop_back(); if(!f.size() || (str[i] == str[f.back() + i - g[j]] &amp;&amp; i - g[j] &lt; g[j] - f.back())) f.push_back(g[j]); &#125; g = f; int ans = f[0]; for(int j = 0; j &lt; f.size(); j++) &#123; int x = f[j], t = cmp(ans + i - x + 1, x - ans); if(t == 1) ans = x; else if(t == 0 &amp;&amp; cmp(x - ans + 1, ans - 1) == -1) ans = x; &#125; printf("%d ", ans); &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>字符串</category>
+        <category>性质至上</category>
+      </categories>
+      <tags>
+        <tag>最小表示法</tag>
+        <tag>扩展KMP</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[BZOJ2160 啦啦队排练]]></title>
     <url>%2F2019%2F06%2F02%2FBZOJ2160-%E5%95%A6%E5%95%A6%E9%98%9F%E6%8E%92%E7%BB%83%2F</url>
     <content type="text"><![CDATA[题目链接：BZOJ2160 Solutionmanachar因为只考虑奇数，所以不用添加额外字符差分 桶排序快速幂在桶上统计 Code1234567891011121314151617181920212223242526272829303132333435#include &lt;bits/stdc++.h&gt;using namespace std;const int maxn = 1000010, mod = 19930726;int n, f[maxn], s[maxn];long long ans = 1, k;char str[maxn];void manachar() &#123; f[0] = 1; int mx = 0, pos = 0; for(int i = 1; i &lt; n; i++) &#123; if(i &lt; mx) f[i] = min(f[pos * 2 - i], mx - i); while(f[i] &lt;= i &amp;&amp; str[i + f[i]] == str[i - f[i]]) f[i]++; if(i + f[i] &gt; mx) mx = i + f[i], pos = i; //cout &lt;&lt; i &lt;&lt; ' ' &lt;&lt; f[i] &lt;&lt; endl; s[1]++; s[f[i] + 1]--; &#125;&#125;long long Power(long long x, int p) &#123; long long res = 1; for(; p; p &gt;&gt;= 1, x = x * x % mod) if(p &amp; 1) res = res * x % mod; return res;&#125;int main() &#123; scanf("%d%lld", &amp;n, &amp;k); scanf("%s", str); manachar(); for(int i = 1; i &lt;= n; i++) s[i] += s[i-1]; for(int i = n / 2 + 2; i &amp;&amp; k; i--) &#123; if(s[i] &lt;= k) ans = (ans * Power(i * 2 - 1, s[i])) % mod, k -= s[i]; else ans = (ans * Power(i * 2 - 1, k)) % mod, k = 0; &#125; if(k &gt; 0) printf("-1\n"); else printf("%lld\n", ans); return 0;&#125;]]></content>
@@ -15,7 +28,7 @@
   <entry>
     <title><![CDATA[字符串算法总结]]></title>
     <url>%2F2019%2F06%2F02%2F%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93%2F</url>
-    <content type="text"><![CDATA[比较简单的比如kmp，trie，manachar在此就不写了 AC自动机AC自动机是trie + KMP在trie上设置fail指针，匹配失败就往上跳 那么在跳的过程中经过的每个点其实都是当前字符串的后缀 匹配的过程就是从字符串对应trie的链上的每一个点向上跳fail 也就是相当于枚举了所有前缀的后缀 然而实际上并没有枚举那么多，因为后缀并未完全枚举，这就是复杂度稳定在$O(M+N)$的原因(N为模式串总长，M为母串长)关于时间复杂度，走trie共M次，跳fail次数不会大于走trie的次数，因此匹配是$O(M)$的 然后我们把fail指针想象成一棵树 一个点的子树是以他为后缀的所有串 所以 一个点对应的字符串x出现在另一个字符串y中，当且仅当 y对应的trie链 和 x对应的fail子树 有交集其中x和y都是AC自动机上的字符串 以上就是AC自动机的一些性质，以及本质的理解，其实和后缀自动机有点联系 扩展KMP求给定字符串S的所有后缀与另一字符串T的最长公共前缀也叫z-algorithm其实和KMP思路一样，就是先算nxt[]，再算extend[]，都用已经算好的nxt来算 extend：$S[i~N]$前缀与$T$前缀最长公共长度nxt：$T[i~M]$前缀与$T$前缀最长公共长度 对比一下KMP(T子串，S母串) f：$S[1~i]$后缀与$T[1~i]$前缀最长公共长度nxt：$T[1~i]$后缀与$T[1~i]$前缀最长公共长度 看起来这是字符串的常见套路啊 啥的（前缀/后缀）与啥的（前缀/后缀）的最长公共长度 而AC和后缀自动机也是在纠结前缀和后缀⊙﹏⊙ 后缀数组]]></content>
+    <content type="text"><![CDATA[对于一些字符串算法的个人心得其实就是记一些性质，还有容易忘的东西，不然未来还要上网查(┬＿┬)比较简单的比如kmp，trie，manachar在此就不写了 AC自动机AC自动机是trie + KMP在trie上设置fail指针，匹配失败就往上跳 那么在跳的过程中经过的每个点其实都是当前字符串的后缀 匹配的过程就是从字符串对应trie的链上的每一个点向上跳fail 也就是相当于枚举了所有前缀的后缀 然而实际上并没有枚举那么多，因为后缀并未完全枚举，这就是复杂度稳定在$O(M+N)$的原因(N为模式串总长，M为母串长)关于时间复杂度，走trie共M次，跳fail次数不会大于走trie的次数，因此匹配是$O(M)$的 然后我们把fail指针想象成一棵树 一个点的子树是以他为后缀的所有串 所以 一个点对应的字符串x出现在另一个字符串y中，当且仅当 y对应的trie链 和 x对应的fail子树 有交集其中x和y都是AC自动机上的字符串 以上就是AC自动机的一些性质，以及本质的理解，其实和后缀自动机有点联系 扩展KMP求给定字符串S的所有后缀与另一字符串T的最长公共前缀也叫z-algorithm其实和KMP思路一样，就是先算nxt[]，再算extend[]，都用已经算好的nxt来算 extend：$S[i~N]$前缀与$T$前缀最长公共长度nxt：$T[i~M]$前缀与$T$前缀最长公共长度 对比一下KMP(T子串，S母串) f：$S[1~i]$后缀与$T[1~i]$前缀最长公共长度nxt：$T[1~i]$后缀与$T[1~i]$前缀最长公共长度 看起来这是字符串的常见套路啊 啥的（前缀/后缀）与啥的（前缀/后缀）的最长公共长度 而AC和后缀自动机也是在纠结前缀和后缀⊙﹏⊙ 后缀数组]]></content>
       <categories>
         <category>字符串</category>
       </categories>
@@ -116,8 +129,8 @@
       </categories>
       <tags>
         <tag>组合数学</tag>
-        <tag>树状数组</tag>
         <tag>树形动态规划</tag>
+        <tag>树状数组</tag>
       </tags>
   </entry>
   <entry>
