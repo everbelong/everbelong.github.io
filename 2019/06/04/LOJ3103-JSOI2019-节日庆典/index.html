@@ -83,7 +83,7 @@
 <meta property="og:site_name" content="everbelong">
 <meta property="og:description" content="题目链接：LOJ3103  Solution先，这题我看别人代码才做出来的，要记得复习要求求前缀最小表示法感觉会有大量可以重复利用的信息，这些信息可以通过寻找性质来优化算法下面来找性质：(假设目前处于前缀S[1-k]，我们比较两个位置i、j，其中$i \lt j$)(我们需要维护一个答案的候选集合，我们的目标是尽可能减小这个集合)  若$LCP(i, j) \lt k - i$，那么i和j只有一">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-04T13:00:25.289Z">
+<meta property="og:updated_time" content="2019-06-06T09:55:07.727Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LOJ3103 [JSOI2019]节日庆典">
 <meta name="twitter:description" content="题目链接：LOJ3103  Solution先，这题我看别人代码才做出来的，要记得复习要求求前缀最小表示法感觉会有大量可以重复利用的信息，这些信息可以通过寻找性质来优化算法下面来找性质：(假设目前处于前缀S[1-k]，我们比较两个位置i、j，其中$i \lt j$)(我们需要维护一个答案的候选集合，我们的目标是尽可能减小这个集合)  若$LCP(i, j) \lt k - i$，那么i和j只有一">
@@ -1147,6 +1147,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
