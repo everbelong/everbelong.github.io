@@ -82,10 +82,13 @@
 <meta property="og:site_name" content="everbelong">
 <meta property="og:description" content="对于一些字符串算法的个人心得其实就是记一些性质，还有容易忘的东西，不然未来还要上网查(┬＿┬)">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-02T09:55:42.338Z">
+<meta property="og:image" content="http://yoursite.com/2019/06/02/字符串算法总结/1.JPG">
+<meta property="og:image" content="http://yoursite.com/2019/06/02/字符串算法总结/2.JPG">
+<meta property="og:updated_time" content="2019-06-10T11:30:48.900Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="字符串算法总结">
 <meta name="twitter:description" content="对于一些字符串算法的个人心得其实就是记一些性质，还有容易忘的东西，不然未来还要上网查(┬＿┬)">
+<meta name="twitter:image" content="http://yoursite.com/2019/06/02/字符串算法总结/1.JPG">
 
 
 
@@ -373,7 +376,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  534
+                  807
                 </span>
               
 
@@ -389,7 +392,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -440,7 +443,19 @@
 <p>啥的（前缀/后缀）与啥的（前缀/后缀）的最长公共长度</p>
 </blockquote>
 <p>而AC和后缀自动机也是在纠结前缀和后缀⊙﹏⊙</p>
-<h1><span id="后缀数组">后缀数组</span></h1>
+<h1><span id="后缀数组">后缀数组</span></h1><p>后缀数组主要是以下几个用法：</p>
+<ul>
+<li>$O(1)$求后缀的LCP，搭配其他算法和数据结构，比如调和级数法、倍增法（利用$f[][]$求匹配的区间，转化为区间问题）</li>
+<li>二分长度，在height数组上划分成很多段，每一段进行判定，很多时候也可以用单调栈优化</li>
+<li>直接在height上统计，比如相同子串个数、不同子串个数</li>
+<li>height重叠之后就有循环节了，然后搞事情，关于循环节，经常使用调和级数法，然后处理不满一段的部分</li>
+<li>处理很多串时可以连在一起，中间加入特殊字符，注意每一个特殊字符都不同</li>
+</ul>
+<p>例题<a href="https://www.cnblogs.com/Przz/p/5409570.html" target="_blank" rel="noopener">这篇博客</a>总结的很好<br>最后两题没有很想明白<br>课件已经下载在本地了</p>
+<p>后缀数组是在数组（sa，height）上搞事情，后缀自动机是在DAG和树上搞事情</p>
+<h1><span id="后缀自动机">后缀自动机</span></h1><p><a href="https://wenku.baidu.com/view/7afa5828ed630b1c59eeb512.html" target="_blank" rel="noopener">陈立杰课件</a><br><a href="https://oi.men.ci/suffix-automaton-notes/" target="_blank" rel="noopener">一个比较好的博客</a><br>利用这个图比较好纠结</p>
+<img src="/2019/06/02/字符串算法总结/1.JPG">
+<img src="/2019/06/02/字符串算法总结/2.JPG">
       
     </div>
     
@@ -566,7 +581,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -617,7 +632,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">AC自动机</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">扩展KMP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">后缀数组</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">AC自动机</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">扩展KMP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">后缀数组</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">后缀自动机</span></a></li></ol></div>
             
 
           </div>
@@ -650,7 +665,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共24.2k字</span>
+  <span class="post-count">博客全站共24.5k字</span>
 </div>
         
 
