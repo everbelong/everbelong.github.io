@@ -84,7 +84,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/06/02/字符串算法总结/1.JPG">
 <meta property="og:image" content="http://yoursite.com/2019/06/02/字符串算法总结/2.JPG">
-<meta property="og:updated_time" content="2019-06-10T11:30:48.900Z">
+<meta property="og:updated_time" content="2019-06-16T13:28:08.468Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="字符串算法总结">
 <meta name="twitter:description" content="对于一些字符串算法的个人心得其实就是记一些性质，还有容易忘的东西，不然未来还要上网查(┬＿┬)">
@@ -376,7 +376,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  807
+                  1.1k
                 </span>
               
 
@@ -392,7 +392,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  4
                 </span>
               
             </div>
@@ -413,7 +413,7 @@
       
 
       
-        <p>对于一些字符串算法的个人心得<br>其实就是记一些性质，还有容易忘的东西，不然未来还要上网查(┬＿┬)<br><a id="more"></a><br>比较简单的比如kmp，trie，manachar在此就不写了</p>
+        <p>对于一些字符串算法的个人心得<br>其实就是记一些性质，还有容易忘的东西，不然未来还要上网查(┬＿┬)<br><a id="more"></a></p>
 <h1><span id="ac自动机">AC自动机</span></h1><p>AC自动机是trie + KMP<br>在trie上设置fail指针，匹配失败就往上跳</p>
 <blockquote>
 <p>那么在跳的过程中经过的每个点其实都是当前字符串的后缀 </p>
@@ -443,6 +443,11 @@
 <p>啥的（前缀/后缀）与啥的（前缀/后缀）的最长公共长度</p>
 </blockquote>
 <p>而AC和后缀自动机也是在纠结前缀和后缀⊙﹏⊙</p>
+<h1><span id="manachar">manachar</span></h1><p>只记一个东西</p>
+<blockquote>
+<p>马拉车求出所有本质不同的回文串是$ O(n) $的，也就是每次更新mx的时候才会产生新的一个回文子串，否则就是前面算过了的</p>
+</blockquote>
+<p>于是就可以有很多manachar + 的算法</p>
 <h1><span id="后缀数组">后缀数组</span></h1><p>后缀数组主要是以下几个用法：</p>
 <ul>
 <li>$O(1)$求后缀的LCP，搭配其他算法和数据结构，比如调和级数法、倍增法（利用$f[][]$求匹配的区间，转化为区间问题）</li>
@@ -456,6 +461,38 @@
 <h1><span id="后缀自动机">后缀自动机</span></h1><p><a href="https://wenku.baidu.com/view/7afa5828ed630b1c59eeb512.html" target="_blank" rel="noopener">陈立杰课件</a><br><a href="https://oi.men.ci/suffix-automaton-notes/" target="_blank" rel="noopener">一个比较好的博客</a><br>利用这个图比较好纠结</p>
 <img src="/2019/06/02/字符串算法总结/1.JPG">
 <img src="/2019/06/02/字符串算法总结/2.JPG">
+<p>我们关心的并不是他是怎么想出自动机的，而是自动机能怎么用，因此通过性质理解即可：</p>
+<blockquote>
+<p>每一个节点表示很多字符串，这些字符串按长度排序后每一个都是前一个加一个前缀字符，因此字符串长度是一个区间</p>
+</blockquote>
+<blockquote>
+<p>所有这些字符串的结尾位置的集合就是end_pos</p>
+</blockquote>
+<blockquote>
+<p>某个节点的end_pos是他的父节点的end_pos的子集</p>
+</blockquote>
+<blockquote>
+<p>每个节点代表的不同子串个数是$ max - min + 1 $</p>
+</blockquote>
+<blockquote>
+<p>每个节点匹配位置个数是end_pos大小，可由bfs求sz数组，每个点的sz是其子树的sz和，若为原串前缀则+1</p>
+</blockquote>
+<blockquote>
+<p>拓扑排序用基数排序</p>
+</blockquote>
+<blockquote>
+<p>DAG按字典序走可按字典序遍历子串</p>
+</blockquote>
+<blockquote>
+<p>一个点的父亲所有字符串是他自己所有字符串的后缀</p>
+</blockquote>
+<blockquote>
+<p>end_pos中的所有元素都可以匹配该节点代表的每一个子串</p>
+</blockquote>
+<blockquote>
+<p>因此实际上每个节点可以匹配的所有子串（不同位置算多个）个数为$ |end_pos| * (max - min + 1) $</p>
+</blockquote>
+
       
     </div>
     
@@ -632,7 +669,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">AC自动机</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">扩展KMP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">后缀数组</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">后缀自动机</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">AC自动机</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">扩展KMP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">manachar</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">后缀数组</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">后缀自动机</span></a></li></ol></div>
             
 
           </div>
@@ -665,7 +702,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共24.5k字</span>
+  <span class="post-count">博客全站共24.8k字</span>
 </div>
         
 
