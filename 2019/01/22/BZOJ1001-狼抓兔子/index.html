@@ -62,7 +62,7 @@
 
 
 
-  <meta name="keywords" content="网络流-最大流,耦合图,">
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -76,14 +76,13 @@
 
 
 <meta name="description" content="题目链接BZOJ1001  Solution解法一：网络流很容易想到题目让求的就是最小割，利用最小割最大流定理，就是一道求最大流的裸题。说几点Dinic的注意点：  tot初始化为1 当发现一条路无法增光时，将d数组设为0，表示该点不可能继续增广，可以大大提速 路径是双向边，再加上反向边，总共是4条边 模板尽可能背的准一点吧，我默写的时候出来很多小问题  解法二：耦合图这个解法就巧妙多了。">
-<meta name="keywords" content="网络流-最大流,耦合图">
 <meta property="og:type" content="article">
 <meta property="og:title" content="BZOJ1001 狼抓兔子">
 <meta property="og:url" content="http://yoursite.com/2019/01/22/BZOJ1001-狼抓兔子/index.html">
 <meta property="og:site_name" content="everbelong">
 <meta property="og:description" content="题目链接BZOJ1001  Solution解法一：网络流很容易想到题目让求的就是最小割，利用最小割最大流定理，就是一道求最大流的裸题。说几点Dinic的注意点：  tot初始化为1 当发现一条路无法增光时，将d数组设为0，表示该点不可能继续增广，可以大大提速 路径是双向边，再加上反向边，总共是4条边 模板尽可能背的准一点吧，我默写的时候出来很多小问题  解法二：耦合图这个解法就巧妙多了。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-19T08:39:41.858Z">
+<meta property="og:updated_time" content="2019-06-29T10:43:14.703Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BZOJ1001 狼抓兔子">
 <meta name="twitter:description" content="题目链接BZOJ1001  Solution解法一：网络流很容易想到题目让求的就是最小割，利用最小割最大流定理，就是一道求最大流的裸题。说几点Dinic的注意点：  tot初始化为1 当发现一条路无法增光时，将d数组设为0，表示该点不可能继续增广，可以大大提速 路径是双向边，再加上反向边，总共是4条边 模板尽可能背的准一点吧，我默写的时候出来很多小问题  解法二：耦合图这个解法就巧妙多了。">
@@ -98,7 +97,7 @@
     version: '5.1.4',
     sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
-    tabs: true,
+    tabs: false,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
@@ -193,16 +192,6 @@
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             关于
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
-            
-            标签
           </a>
         </li>
       
@@ -449,14 +438,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/网络流-最大流/" rel="tag"><i class="fa fa-tag"></i> 网络流-最大流</a>
-          
-            <a href="/tags/耦合图/" rel="tag"><i class="fa fa-tag"></i> 耦合图</a>
-          
-        </div>
-      
 
       
       
@@ -568,7 +549,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -578,10 +559,10 @@
               
               
               <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">24</span>
+                
+                  <span class="site-state-item-count">1</span>
                   <span class="site-state-item-name">标签</span>
-                </a>
+                
               </div>
             
 
@@ -602,6 +583,28 @@
           
 
           
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/cjyyb/" title="小蒟蒻（才怪）yyb的博客" target="_blank">小蒟蒻（才怪）yyb的博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/candy99/" title="Candy?巨佬" target="_blank">Candy?巨佬</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://hzwer.com/" title="hwzer巨佬" target="_blank">hwzer巨佬</a>
+                  </li>
+                
+              </ul>
+            </div>
           
 
           
@@ -652,7 +655,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共24.8k字</span>
+  <span class="post-count">博客全站共24.9k字</span>
 </div>
         
 

@@ -62,7 +62,7 @@
 
 
 
-  <meta name="keywords" content="后缀数组,">
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -76,14 +76,13 @@
 
 
 <meta name="description" content="题目链接BZOJ4698  Solution题目中说道相同的子串，也就提示我们用后缀数组了。（这是套路）把所有字符拼在一起，中间加一个不会出现的字符（这也是套路）两个子串差一个固定的数，我们可以使用差分，求出相邻两个字符串的差，就转化为很裸的字符串相等了。（这还是套路） 构建后缀数组和lcp，二分答案，假设当前判断x是否可行。从前向后扫描后缀数组，所有height大于等于x的后缀会把sa分成很多">
-<meta name="keywords" content="后缀数组">
 <meta property="og:type" content="article">
 <meta property="og:title" content="BZOJ4698 Sandy的卡片">
 <meta property="og:url" content="http://yoursite.com/2019/02/02/BZOJ4698-Sandy的卡片/index.html">
 <meta property="og:site_name" content="everbelong">
 <meta property="og:description" content="题目链接BZOJ4698  Solution题目中说道相同的子串，也就提示我们用后缀数组了。（这是套路）把所有字符拼在一起，中间加一个不会出现的字符（这也是套路）两个子串差一个固定的数，我们可以使用差分，求出相邻两个字符串的差，就转化为很裸的字符串相等了。（这还是套路） 构建后缀数组和lcp，二分答案，假设当前判断x是否可行。从前向后扫描后缀数组，所有height大于等于x的后缀会把sa分成很多">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-02T07:45:26.377Z">
+<meta property="og:updated_time" content="2019-06-29T10:44:16.100Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BZOJ4698 Sandy的卡片">
 <meta name="twitter:description" content="题目链接BZOJ4698  Solution题目中说道相同的子串，也就提示我们用后缀数组了。（这是套路）把所有字符拼在一起，中间加一个不会出现的字符（这也是套路）两个子串差一个固定的数，我们可以使用差分，求出相邻两个字符串的差，就转化为很裸的字符串相等了。（这还是套路） 构建后缀数组和lcp，二分答案，假设当前判断x是否可行。从前向后扫描后缀数组，所有height大于等于x的后缀会把sa分成很多">
@@ -98,7 +97,7 @@
     version: '5.1.4',
     sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
-    tabs: true,
+    tabs: false,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
@@ -193,16 +192,6 @@
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             关于
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
-            
-            标签
           </a>
         </li>
       
@@ -451,12 +440,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/后缀数组/" rel="tag"><i class="fa fa-tag"></i> 后缀数组</a>
-          
-        </div>
-      
 
       
       
@@ -568,7 +551,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -578,10 +561,10 @@
               
               
               <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">24</span>
+                
+                  <span class="site-state-item-count">1</span>
                   <span class="site-state-item-name">标签</span>
-                </a>
+                
               </div>
             
 
@@ -602,6 +585,28 @@
           
 
           
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/cjyyb/" title="小蒟蒻（才怪）yyb的博客" target="_blank">小蒟蒻（才怪）yyb的博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/candy99/" title="Candy?巨佬" target="_blank">Candy?巨佬</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://hzwer.com/" title="hwzer巨佬" target="_blank">hwzer巨佬</a>
+                  </li>
+                
+              </ul>
+            </div>
           
 
           
@@ -652,7 +657,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共24.8k字</span>
+  <span class="post-count">博客全站共24.9k字</span>
 </div>
         
 

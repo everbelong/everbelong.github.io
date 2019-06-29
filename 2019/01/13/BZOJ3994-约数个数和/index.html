@@ -62,7 +62,7 @@
 
 
 
-  <meta name="keywords" content="莫比乌斯反演,">
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -76,14 +76,13 @@
 
 
 <meta name="description" content="题目链接：BZOJ3994  Solution首先，要先介绍一个可爱的结论：$$ d(ij) = \sum_{x|i}\sum_{y|j}[gcd(x, y) = 1] $$简单证明一下：当$(i, j)=1$时，结果显然为i的约数个数乘j的约数个数。否则，会有一部分重复，因为i*j的某一个因数可以有不同方式得到。怎样得到另一种方式呢？比如现在有$x|i,\ y|j,\ xy|ij,\ d|x$">
-<meta name="keywords" content="莫比乌斯反演">
 <meta property="og:type" content="article">
 <meta property="og:title" content="BZOJ3994 约数个数和">
 <meta property="og:url" content="http://yoursite.com/2019/01/13/BZOJ3994-约数个数和/index.html">
 <meta property="og:site_name" content="everbelong">
 <meta property="og:description" content="题目链接：BZOJ3994  Solution首先，要先介绍一个可爱的结论：$$ d(ij) = \sum_{x|i}\sum_{y|j}[gcd(x, y) = 1] $$简单证明一下：当$(i, j)=1$时，结果显然为i的约数个数乘j的约数个数。否则，会有一部分重复，因为i*j的某一个因数可以有不同方式得到。怎样得到另一种方式呢？比如现在有$x|i,\ y|j,\ xy|ij,\ d|x$">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-19T08:40:35.381Z">
+<meta property="og:updated_time" content="2019-06-29T10:43:55.899Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BZOJ3994 约数个数和">
 <meta name="twitter:description" content="题目链接：BZOJ3994  Solution首先，要先介绍一个可爱的结论：$$ d(ij) = \sum_{x|i}\sum_{y|j}[gcd(x, y) = 1] $$简单证明一下：当$(i, j)=1$时，结果显然为i的约数个数乘j的约数个数。否则，会有一部分重复，因为i*j的某一个因数可以有不同方式得到。怎样得到另一种方式呢？比如现在有$x|i,\ y|j,\ xy|ij,\ d|x$">
@@ -98,7 +97,7 @@
     version: '5.1.4',
     sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
-    tabs: true,
+    tabs: false,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
@@ -193,16 +192,6 @@
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             关于
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
-            
-            标签
           </a>
         </li>
       
@@ -354,8 +343,8 @@
                 
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/数学/数论/" itemprop="url" rel="index">
-                    <span itemprop="name">数论</span>
+                  <a href="/categories/数学/莫比乌斯反演/" itemprop="url" rel="index">
+                    <span itemprop="name">莫比乌斯反演</span>
                   </a>
                 </span>
 
@@ -443,12 +432,6 @@
     
 
     <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/莫比乌斯反演/" rel="tag"><i class="fa fa-tag"></i> 莫比乌斯反演</a>
-          
-        </div>
       
 
       
@@ -561,7 +544,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -571,10 +554,10 @@
               
               
               <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">24</span>
+                
+                  <span class="site-state-item-count">1</span>
                   <span class="site-state-item-name">标签</span>
-                </a>
+                
               </div>
             
 
@@ -595,6 +578,28 @@
           
 
           
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/cjyyb/" title="小蒟蒻（才怪）yyb的博客" target="_blank">小蒟蒻（才怪）yyb的博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/candy99/" title="Candy?巨佬" target="_blank">Candy?巨佬</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://hzwer.com/" title="hwzer巨佬" target="_blank">hwzer巨佬</a>
+                  </li>
+                
+              </ul>
+            </div>
           
 
           
@@ -645,7 +650,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共24.8k字</span>
+  <span class="post-count">博客全站共24.9k字</span>
 </div>
         
 

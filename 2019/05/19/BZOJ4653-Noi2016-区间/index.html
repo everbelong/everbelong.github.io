@@ -62,7 +62,7 @@
 
 
 
-  <meta name="keywords" content="线段树,单调队列,">
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -76,14 +76,13 @@
 
 
 <meta name="description" content="题目链接：BZOJ4653  Solution第一步离散化我们先把所有区间按长度排序然后可能成为答案的一定是排序后的某一段，否则的话我把他补成完整的一段答案不会更劣同时我们希望作为答案的那一段短一些更好，也就是在可能的情况下不要向两边扩展了所以可以使用单调队列从左到右加入队列，每一次判断队列中的区间是否有m个覆盖了同一个点，是，则更新答案，head++，继续判断判断可以使用线段树实现">
-<meta name="keywords" content="线段树,单调队列">
 <meta property="og:type" content="article">
 <meta property="og:title" content="BZOJ4653 [Noi2016]区间">
 <meta property="og:url" content="http://yoursite.com/2019/05/19/BZOJ4653-Noi2016-区间/index.html">
 <meta property="og:site_name" content="everbelong">
 <meta property="og:description" content="题目链接：BZOJ4653  Solution第一步离散化我们先把所有区间按长度排序然后可能成为答案的一定是排序后的某一段，否则的话我把他补成完整的一段答案不会更劣同时我们希望作为答案的那一段短一些更好，也就是在可能的情况下不要向两边扩展了所以可以使用单调队列从左到右加入队列，每一次判断队列中的区间是否有m个覆盖了同一个点，是，则更新答案，head++，继续判断判断可以使用线段树实现">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-19T08:44:09.977Z">
+<meta property="og:updated_time" content="2019-06-29T10:44:10.039Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BZOJ4653 [Noi2016]区间">
 <meta name="twitter:description" content="题目链接：BZOJ4653  Solution第一步离散化我们先把所有区间按长度排序然后可能成为答案的一定是排序后的某一段，否则的话我把他补成完整的一段答案不会更劣同时我们希望作为答案的那一段短一些更好，也就是在可能的情况下不要向两边扩展了所以可以使用单调队列从左到右加入队列，每一次判断队列中的区间是否有m个覆盖了同一个点，是，则更新答案，head++，继续判断判断可以使用线段树实现">
@@ -98,7 +97,7 @@
     version: '5.1.4',
     sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
-    tabs: true,
+    tabs: false,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
@@ -193,16 +192,6 @@
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             关于
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
-            
-            标签
           </a>
         </li>
       
@@ -441,14 +430,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/线段树/" rel="tag"><i class="fa fa-tag"></i> 线段树</a>
-          
-            <a href="/tags/单调队列/" rel="tag"><i class="fa fa-tag"></i> 单调队列</a>
-          
-        </div>
-      
 
       
       
@@ -560,7 +541,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -570,10 +551,10 @@
               
               
               <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">24</span>
+                
+                  <span class="site-state-item-count">1</span>
                   <span class="site-state-item-name">标签</span>
-                </a>
+                
               </div>
             
 
@@ -594,6 +575,28 @@
           
 
           
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/cjyyb/" title="小蒟蒻（才怪）yyb的博客" target="_blank">小蒟蒻（才怪）yyb的博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/candy99/" title="Candy?巨佬" target="_blank">Candy?巨佬</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://hzwer.com/" title="hwzer巨佬" target="_blank">hwzer巨佬</a>
+                  </li>
+                
+              </ul>
+            </div>
           
 
           
@@ -644,7 +647,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共24.8k字</span>
+  <span class="post-count">博客全站共24.9k字</span>
 </div>
         
 

@@ -62,7 +62,7 @@
 
 
 
-  <meta name="keywords" content="后缀数组,">
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -76,7 +76,6 @@
 
 
 <meta name="description" content="题目链接：LOJ3049  Solution这是一道还没有A掉的题，能过小样例，大数据过不了，测试点只过了一个，调不出来，先留着吧 本题有两个做法，后缀数组和后缀自动机，这里我写的是后缀数组根据题意就是在a和b之间连一些边，求最长路我们要搞定的是b向a连得边，也就是每个$b_i$是哪些$a$前缀先建好后缀数组，这样每一个a中的元素就是这个二维中的一个点$ (la_i,\ ra_i-la_i+1)">
-<meta name="keywords" content="后缀数组">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LOJ3049 [十二省联考2019]字符串问题">
 <meta property="og:url" content="http://yoursite.com/2019/06/07/LOJ3049-十二省联考2019-字符串问题/index.html">
@@ -84,7 +83,7 @@
 <meta property="og:description" content="题目链接：LOJ3049  Solution这是一道还没有A掉的题，能过小样例，大数据过不了，测试点只过了一个，调不出来，先留着吧 本题有两个做法，后缀数组和后缀自动机，这里我写的是后缀数组根据题意就是在a和b之间连一些边，求最长路我们要搞定的是b向a连得边，也就是每个$b_i$是哪些$a$前缀先建好后缀数组，这样每一个a中的元素就是这个二维中的一个点$ (la_i,\ ra_i-la_i+1)">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/06/07/LOJ3049-十二省联考2019-字符串问题/1.png">
-<meta property="og:updated_time" content="2019-06-07T10:42:33.880Z">
+<meta property="og:updated_time" content="2019-06-29T10:44:47.777Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LOJ3049 [十二省联考2019]字符串问题">
 <meta name="twitter:description" content="题目链接：LOJ3049  Solution这是一道还没有A掉的题，能过小样例，大数据过不了，测试点只过了一个，调不出来，先留着吧 本题有两个做法，后缀数组和后缀自动机，这里我写的是后缀数组根据题意就是在a和b之间连一些边，求最长路我们要搞定的是b向a连得边，也就是每个$b_i$是哪些$a$前缀先建好后缀数组，这样每一个a中的元素就是这个二维中的一个点$ (la_i,\ ra_i-la_i+1)">
@@ -100,7 +99,7 @@
     version: '5.1.4',
     sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
-    tabs: true,
+    tabs: false,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
@@ -195,16 +194,6 @@
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             关于
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
-            
-            标签
           </a>
         </li>
       
@@ -446,12 +435,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/后缀数组/" rel="tag"><i class="fa fa-tag"></i> 后缀数组</a>
-          
-        </div>
-      
 
       
       
@@ -559,7 +542,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -569,10 +552,10 @@
               
               
               <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">24</span>
+                
+                  <span class="site-state-item-count">1</span>
                   <span class="site-state-item-name">标签</span>
-                </a>
+                
               </div>
             
 
@@ -593,6 +576,28 @@
           
 
           
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/cjyyb/" title="小蒟蒻（才怪）yyb的博客" target="_blank">小蒟蒻（才怪）yyb的博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/candy99/" title="Candy?巨佬" target="_blank">Candy?巨佬</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://hzwer.com/" title="hwzer巨佬" target="_blank">hwzer巨佬</a>
+                  </li>
+                
+              </ul>
+            </div>
           
 
           
@@ -643,7 +648,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共24.8k字</span>
+  <span class="post-count">博客全站共24.9k字</span>
 </div>
         
 

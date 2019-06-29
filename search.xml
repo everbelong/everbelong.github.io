@@ -8,9 +8,6 @@
         <category>字符串</category>
         <category>后缀数组</category>
       </categories>
-      <tags>
-        <tag>后缀数组</tag>
-      </tags>
   </entry>
   <entry>
     <title><![CDATA[LOJ3103 [JSOI2019]节日庆典]]></title>
@@ -20,10 +17,6 @@
         <category>字符串</category>
         <category>KMP/扩展KMP</category>
       </categories>
-      <tags>
-        <tag>最小表示法</tag>
-        <tag>扩展KMP</tag>
-      </tags>
   </entry>
   <entry>
     <title><![CDATA[BZOJ2160 啦啦队排练]]></title>
@@ -33,14 +26,11 @@
         <category>字符串</category>
         <category>manachar</category>
       </categories>
-      <tags>
-        <tag>manachar</tag>
-      </tags>
   </entry>
   <entry>
     <title><![CDATA[字符串算法总结]]></title>
     <url>%2F2019%2F06%2F02%2F%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93%2F</url>
-    <content type="text"><![CDATA[对于一些字符串算法的个人心得其实就是记一些性质，还有容易忘的东西，不然未来还要上网查(┬＿┬) AC自动机AC自动机是trie + KMP在trie上设置fail指针，匹配失败就往上跳 那么在跳的过程中经过的每个点其实都是当前字符串的后缀 匹配的过程就是从字符串对应trie的链上的每一个点向上跳fail 也就是相当于枚举了所有前缀的后缀 然而实际上并没有枚举那么多，因为后缀并未完全枚举，这就是复杂度稳定在$O(M+N)$的原因(N为模式串总长，M为母串长)关于时间复杂度，走trie共M次，跳fail次数不会大于走trie的次数，因此匹配是$O(M)$的 然后我们把fail指针想象成一棵树 一个点的子树是以他为后缀的所有串 所以 一个点对应的字符串x出现在另一个字符串y中，当且仅当 y对应的trie链 和 x对应的fail子树 有交集其中x和y都是AC自动机上的字符串 以上就是AC自动机的一些性质，以及本质的理解，其实和后缀自动机有点联系 扩展KMP求给定字符串S的所有后缀与另一字符串T的最长公共前缀也叫z-algorithm其实和KMP思路一样，就是先算nxt[]，再算extend[]，都用已经算好的nxt来算 extend：$S[i~N]$前缀与$T$前缀最长公共长度nxt：$T[i~M]$前缀与$T$前缀最长公共长度 对比一下KMP(T子串，S母串) f：$S[1~i]$后缀与$T[1~i]$前缀最长公共长度nxt：$T[1~i]$后缀与$T[1~i]$前缀最长公共长度 看起来这是字符串的常见套路啊 啥的（前缀/后缀）与啥的（前缀/后缀）的最长公共长度 而AC和后缀自动机也是在纠结前缀和后缀⊙﹏⊙ manachar只记一个东西 马拉车求出所有本质不同的回文串是$ O(n) $的，也就是每次更新mx的时候才会产生新的一个回文子串，否则就是前面算过了的 于是就可以有很多manachar + 的算法 后缀数组后缀数组主要是以下几个用法： $O(1)$求后缀的LCP，搭配其他算法和数据结构，比如调和级数法、倍增法（利用$f[][]$求匹配的区间，转化为区间问题） 二分长度，在height数组上划分成很多段，每一段进行判定，很多时候也可以用单调栈优化 直接在height上统计，比如相同子串个数、不同子串个数 height重叠之后就有循环节了，然后搞事情，关于循环节，经常使用调和级数法，然后处理不满一段的部分 处理很多串时可以连在一起，中间加入特殊字符，注意每一个特殊字符都不同 例题这篇博客总结的很好最后两题没有很想明白课件已经下载在本地了 后缀数组是在数组（sa，height）上搞事情，后缀自动机是在DAG和树上搞事情 后缀自动机陈立杰课件一个比较好的博客利用这个图比较好纠结 我们关心的并不是他是怎么想出自动机的，而是自动机能怎么用，因此通过性质理解即可： 每一个节点表示很多字符串，这些字符串按长度排序后每一个都是前一个加一个前缀字符，因此字符串长度是一个区间 所有这些字符串的结尾位置的集合就是end_pos 某个节点的end_pos是他的父节点的end_pos的子集 每个节点代表的不同子串个数是$ max - min + 1 $ 每个节点匹配位置个数是end_pos大小，可由bfs求sz数组，每个点的sz是其子树的sz和，若为原串前缀则+1 拓扑排序用基数排序 DAG按字典序走可按字典序遍历子串 一个点的父亲所有字符串是他自己所有字符串的后缀 end_pos中的所有元素都可以匹配该节点代表的每一个子串 因此实际上每个节点可以匹配的所有子串（不同位置算多个）个数为$ |end_pos| * (max - min + 1) $]]></content>
+    <content type="text"><![CDATA[对于一些字符串算法的个人心得其实就是记一些性质，还有容易忘的东西，不然未来还要上网查(┬＿┬) AC自动机AC自动机是trie + KMP在trie上设置fail指针，匹配失败就往上跳 那么在跳的过程中经过的每个点其实都是当前字符串的后缀 匹配的过程就是从字符串对应trie的链上的每一个点向上跳fail 也就是相当于枚举了所有前缀的后缀 然而实际上并没有枚举那么多，因为后缀并未完全枚举，这就是复杂度稳定在$O(M+N)$的原因(N为模式串总长，M为母串长)关于时间复杂度，走trie共M次，跳fail次数不会大于走trie的次数，因此匹配是$O(M)$的 然后我们把fail指针想象成一棵树 一个点的子树是以他为后缀的所有串 所以 一个点对应的字符串x出现在另一个字符串y中，当且仅当 y对应的trie链 和 x对应的fail子树 有交集其中x和y都是AC自动机上的字符串 以上就是AC自动机的一些性质，以及本质的理解，其实和后缀自动机有点联系 扩展KMP求给定字符串S的所有后缀与另一字符串T的最长公共前缀也叫z-algorithm其实和KMP思路一样，就是先算nxt[]，再算extend[]，都用已经算好的nxt来算 extend：$S[i~N]$前缀与$T$前缀最长公共长度nxt：$T[i~M]$前缀与$T$前缀最长公共长度 对比一下KMP(T子串，S母串) f：$S[1~i]$后缀与$T[1~i]$前缀最长公共长度nxt：$T[1~i]$后缀与$T[1~i]$前缀最长公共长度 看起来这是字符串的常见套路啊 啥的（前缀/后缀）与啥的（前缀/后缀）的最长公共长度 而AC和后缀自动机也是在纠结前缀和后缀⊙﹏⊙ manachar只记一个东西 马拉车求出所有本质不同的回文串是$ O(n) $的，也就是每次更新mx的时候才会产生新的一个回文子串，否则就是前面算过了的 于是就可以有很多manachar + 的算法 后缀数组后缀数组主要是以下几个用法： $O(1)$求后缀的LCP，搭配其他算法和数据结构，比如调和级数法、倍增法（利用$f[][]$求匹配的区间，转化为区间问题） 二分长度，在height数组上划分成很多段，每一段进行判定，很多时候也可以用单调栈优化 直接在height上统计，比如相同子串个数、不同子串个数 height重叠之后就有循环节了，然后搞事情，关于循环节，经常使用调和级数法，然后处理不满一段的部分 处理很多串时可以连在一起，中间加入特殊字符，注意每一个特殊字符都不同 例题这篇博客总结的很好最后两题没有很想明白课件已经下载在本地了 后缀数组是在数组（sa，height）上搞事情，后缀自动机是在DAG和树上搞事情 后缀自动机陈立杰课件一个比较好的博客利用这个图比较好纠结 我们关心的并不是他是怎么想出自动机的，而是自动机能怎么用，因此通过性质理解即可： 每一个节点表示很多字符串，这些字符串按长度排序后每一个都是前一个加一个前缀字符，因此字符串长度是一个区间 所有这些字符串的结尾位置的集合就是end_pos 某个节点的end_pos是他的父节点的end_pos的子集 每个节点代表的不同子串个数是$ max - min + 1 $ 每个节点匹配位置个数是end_pos大小，可由bfs求sz数组，每个点的sz是其子树的sz和，若为原串前缀则+1 拓扑排序用基数排序 DAG按字典序走可按字典序遍历子串 一个点的祖先所有字符串是他自己所有字符串的后缀 end_pos中的所有元素都可以匹配该节点代表的每一个子串 因此实际上每个节点可以匹配的所有子串（不同位置算多个）个数为$ |end_pos| * (max - min + 1) $ 后缀自动机其实也就是那几个用法，先写这些，以后慢慢加 树上倍增可以$O(logn)$快速定位到一个子串的位置 按字典序遍历DAG，可以按字典序遍历所有子串，适合离线询问等操作 经常dfs一趟求出end_pos大小（若不同位置算多次则初始为$max - min + 1$，否则初始为1），之后定位后方便计数]]></content>
       <categories>
         <category>字符串</category>
       </categories>
@@ -53,9 +43,6 @@
         <category>字符串</category>
         <category>后缀数组</category>
       </categories>
-      <tags>
-        <tag>后缀数组</tag>
-      </tags>
   </entry>
   <entry>
     <title><![CDATA[BZOJ1563 [Noi2009]诗人小G]]></title>
@@ -65,9 +52,6 @@
         <category>动态规划</category>
         <category>决策单调性优化</category>
       </categories>
-      <tags>
-        <tag>决策单调性</tag>
-      </tags>
   </entry>
   <entry>
     <title><![CDATA[BZOJ4653 [Noi2016]区间]]></title>
@@ -77,10 +61,6 @@
         <category>数据结构</category>
         <category>树形数据结构</category>
       </categories>
-      <tags>
-        <tag>线段树</tag>
-        <tag>单调队列</tag>
-      </tags>
   </entry>
   <entry>
     <title><![CDATA[BZOJ1002 轮状病毒]]></title>
@@ -90,10 +70,6 @@
         <category>数学</category>
         <category>组合</category>
       </categories>
-      <tags>
-        <tag>组合数学</tag>
-        <tag>高精度</tag>
-      </tags>
   </entry>
   <entry>
     <title><![CDATA[最长不下降子序列问题]]></title>
@@ -115,9 +91,6 @@
         <category>字符串</category>
         <category>后缀数组</category>
       </categories>
-      <tags>
-        <tag>后缀数组</tag>
-      </tags>
   </entry>
   <entry>
     <title><![CDATA[JSOI冬令营D2 题]]></title>
@@ -126,11 +99,6 @@
       <categories>
         <category>集训</category>
       </categories>
-      <tags>
-        <tag>线段树</tag>
-        <tag>贪心</tag>
-        <tag>差分</tag>
-      </tags>
   </entry>
   <entry>
     <title><![CDATA[JSOI冬令营D1 题]]></title>
@@ -139,11 +107,6 @@
       <categories>
         <category>集训</category>
       </categories>
-      <tags>
-        <tag>组合数学</tag>
-        <tag>树形动态规划</tag>
-        <tag>树状数组</tag>
-      </tags>
   </entry>
   <entry>
     <title><![CDATA[JSOI冬令营D2 课]]></title>
@@ -152,11 +115,6 @@
       <categories>
         <category>集训</category>
       </categories>
-      <tags>
-        <tag>树形动态规划</tag>
-        <tag>基环树</tag>
-        <tag>树上乱搞</tag>
-      </tags>
   </entry>
   <entry>
     <title><![CDATA[组合数学整理集锦]]></title>
@@ -166,11 +124,6 @@
         <category>数学</category>
         <category>组合</category>
       </categories>
-      <tags>
-        <tag>排列组合</tag>
-        <tag>波利亚定理</tag>
-        <tag>生成函数</tag>
-      </tags>
   </entry>
   <entry>
     <title><![CDATA[BZOJ1001 狼抓兔子]]></title>
@@ -180,10 +133,6 @@
         <category>图论</category>
         <category>网络流</category>
       </categories>
-      <tags>
-        <tag>网络流-最大流</tag>
-        <tag>耦合图</tag>
-      </tags>
   </entry>
   <entry>
     <title><![CDATA[BZOJ2434 阿狸的打字机]]></title>
@@ -193,9 +142,6 @@
         <category>字符串</category>
         <category>AC自动机</category>
       </categories>
-      <tags>
-        <tag>AC自动机</tag>
-      </tags>
   </entry>
   <entry>
     <title><![CDATA[BZOJ1926 粟粟的书架]]></title>
@@ -205,9 +151,6 @@
         <category>数据结构</category>
         <category>可持久化</category>
       </categories>
-      <tags>
-        <tag>主席树</tag>
-      </tags>
   </entry>
   <entry>
     <title><![CDATA[BZOJ1070 修车]]></title>
@@ -217,9 +160,6 @@
         <category>图论</category>
         <category>网络流</category>
       </categories>
-      <tags>
-        <tag>网络流-费用流</tag>
-      </tags>
   </entry>
   <entry>
     <title><![CDATA[BZOJ3994 约数个数和]]></title>
@@ -227,11 +167,8 @@
     <content type="text"><![CDATA[题目链接：BZOJ3994 Solution首先，要先介绍一个可爱的结论：$$ d(ij) = \sum_{x|i}\sum_{y|j}[gcd(x, y) = 1] $$简单证明一下：当$(i, j)=1$时，结果显然为i的约数个数乘j的约数个数。否则，会有一部分重复，因为i*j的某一个因数可以有不同方式得到。怎样得到另一种方式呢？比如现在有$x|i,\ y|j,\ xy|ij,\ d|x$此时让x除以d，y乘以d，得到新的$xy|ij$，而这样做合法的前提是d同时是i和j的因数，或者说$gcd(x, yd)\ne 1$，当有这样的一对约数时，把结果减1，就可以得到这个式子。 结合其他几道题目，可以发现反演似乎非常青睐gcd，所有的数论函数都要尽量往最大公约数上面靠，然后再开始套路。 之后就是一道比较经典的反演题目了，总之就是推式子吧。求$$ \sum_{i=1}^N\sum_{j=1}^M\sum_{x|i}\sum_{y|j}[gcd(x, y) = 1] $$相同的x, y枚举了很多次，因此先枚举x, y，贡献可以直接计算得到，原式即$$\sum_{i=1}^N\sum_{j=1}^M\lfloor\frac{N}{i}\rfloor\lfloor\frac{M}{j}\rfloor[gcd(i, j) = 1]$$我们令$$ f(n) = \sum_{i=1}^N\sum_{j=1}^M\lfloor\frac{N}{i}\rfloor\lfloor\frac{M}{j}\rfloor[gcd(i, j) = n] $$$$ F(d) = \sum_{d|n}f(n) = \sum_{i=1}^N\sum_{j=1}^M\lfloor\frac{N}{i}\rfloor\lfloor\frac{M}{j}\rfloor[d\ |\ gcd(i, j)] $$此处可以开心得去掉gcd，用漂亮的除法代替，枚举i和j分别是d的多少倍，得到$$ F(x) = \sum_{i=1}^{\lfloor\frac{N}{d}\rfloor}\sum_{j=1}^{\lfloor\frac{M}{d}\rfloor}\lfloor\frac{N}{id}\rfloor\lfloor\frac{M}{jd}\rfloor$$这时就可以使用莫比乌斯反演了，因为可以看到我们已经消去了gcd，也就是说式子里不存在数论函数了，于是$$ f(d) = \sum_{d|n}\mu(\frac{n}{d})F(n) $$得到答案为$$ ans = f(1) = \sum_{d=1}^{min(N, M)}\mu(d)F(d) =\sum_{d=1}^{min(N, M)}\sum_{i=1}^{\lfloor\frac{N}{d}\rfloor}\sum_{j=1}^{\lfloor\frac{M}{d}\rfloor}\mu(d)\lfloor\frac{N}{id}\rfloor\lfloor\frac{M}{jd}\rfloor $$现在讨论代码实现，暴力需要三层循环，因此需要用线性筛预处理，对于每一个x，处理出$s[x] = \sum_{i=1}^x\lfloor\frac{x}{i}\rfloor$，未来查询$s[\frac{N}{d}]$，因此只需要枚举d这一个变量。再利用整除分块，$\lfloor\frac{N}{d}\rfloor$且$\lfloor\frac{M}{d}\rfloor$相同的部分只计算一次，就可以在$O(\sqrt{n})$的时间完成一次询问，总复杂度$O(T\sqrt{n})$ 关于$\mu$的计算最好作为一个模板记下啦。 Code123456789101112131415161718192021222324252627282930313233343536373839404142#include &lt;bits/stdc++.h&gt;using namespace std;const int N = 50010;int miu[N], smiu[N], v[N];long long s[N];void init(int n)&#123; for(int i = 1; i &lt;= n; i++) miu[i] = 1, v[i] = 0; for(int i = 2; i &lt;= n; i++)&#123; if(v[i]) continue; miu[i] = -1; for(int j = i + i; j &lt;= n; j += i)&#123; v[j] = 1; if((j / i) % i == 0) miu[j] = 0; else miu[j] *= -1; &#125; &#125; for(int i = 1; i &lt;= n; i++) smiu[i] = smiu[i-1] + miu[i]; for(int i = 1; i &lt;= n; i++) &#123; for(int l = 1, r; l &lt;= i; l = r + 1) &#123; r = i / (i / l); s[i] += 1ll * (r - l + 1) * (i / l); &#125; &#125;&#125;int main()&#123; init(50000); int T; scanf("%d", &amp;T); while(T--)&#123; int n, m; scanf("%d%d", &amp;n, &amp;m); if(n &gt; m) swap(n, m); long long ans = 0; for(int i = 1, j; i &lt;= n; i = j + 1)&#123; j = min(n / (n / i), m / (m / i)); ans += 1ll * (smiu[j] - smiu[i - 1]) * s[n / i] * s[m / i]; &#125; cout &lt;&lt; ans &lt;&lt; endl; &#125; return 0;&#125;]]></content>
       <categories>
         <category>数学</category>
-        <category>数论</category>
+        <category>莫比乌斯反演</category>
       </categories>
-      <tags>
-        <tag>莫比乌斯反演</tag>
-      </tags>
   </entry>
   <entry>
     <title><![CDATA[施工结束]]></title>
