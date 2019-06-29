@@ -75,16 +75,17 @@
 
 
 
-<meta name="description" content="looking up to sky, crawling">
-<meta property="og:type" content="website">
-<meta property="og:title" content="everbelong">
-<meta property="og:url" content="http://yoursite.com/categories/字符串/AC自动机/index.html">
+<meta name="description" content="题目链接：BZOJ3676  Solution1.找出回文串2.查询他出现次数，更新答案第一步使用马拉车，需要注意，只有更新mx是会产生新的回文串，数量是$O(n)$的，也就是只有$O(n)$次询问询问使用后缀自动机，从右端对应的节点开始树上倍增，由于祖先上全都是其后缀，所以定位到长度合适的节点。更新答案即可。比较水，基本方法，基本性质">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BZOJ3676 [Apio2014]回文串">
+<meta property="og:url" content="http://yoursite.com/2019/06/29/BZOJ3676-Apio2014-回文串/index.html">
 <meta property="og:site_name" content="everbelong">
-<meta property="og:description" content="looking up to sky, crawling">
+<meta property="og:description" content="题目链接：BZOJ3676  Solution1.找出回文串2.查询他出现次数，更新答案第一步使用马拉车，需要注意，只有更新mx是会产生新的回文串，数量是$O(n)$的，也就是只有$O(n)$次询问询问使用后缀自动机，从右端对应的节点开始树上倍增，由于祖先上全都是其后缀，所以定位到长度合适的节点。更新答案即可。比较水，基本方法，基本性质">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-06-29T13:38:07.719Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="everbelong">
-<meta name="twitter:description" content="looking up to sky, crawling">
+<meta name="twitter:title" content="BZOJ3676 [Apio2014]回文串">
+<meta name="twitter:description" content="题目链接：BZOJ3676  Solution1.找出回文串2.查询他出现次数，更新答案第一步使用马拉车，需要注意，只有更新mx是会产生新的回文串，数量是$O(n)$的，也就是只有$O(n)$次询问询问使用后缀自动机，从右端对应的节点开始树上倍增，由于祖先上全都是其后缀，所以定位到长度合适的节点。更新答案即可。比较水，基本方法，基本性质">
 
 
 
@@ -114,13 +115,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/字符串/AC自动机/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/29/BZOJ3676-Apio2014-回文串/">
 
 
 
 
 
-  <title>分类: AC自动机 | everbelong</title>
+  <title>BZOJ3676 [Apio2014]回文串 | everbelong</title>
   
 
 
@@ -139,7 +140,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
     <a href="https://github.com/you"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -265,53 +266,212 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block category">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>AC自动机<small>分类</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/29/BZOJ3676-Apio2014-回文串/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="everbelong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head-image.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="everbelong">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/01/22/BZOJ2434-阿狸的打字机/" itemprop="url">
-              
-                <span itemprop="name">BZOJ2434 阿狸的打字机</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">BZOJ3676 [Apio2014]回文串</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-22T19:44:58+08:00" content="2019-01-22">
-          01-22
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-29T19:34:16+08:00">
+                2019-06-29
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/字符串/" itemprop="url" rel="index">
+                    <span itemprop="name">字符串</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/字符串/后缀自动机/" itemprop="url" rel="index">
+                    <span itemprop="name">后缀自动机</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  575
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    </div>
+      
 
+      
+        <blockquote>
+<p>题目链接：<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=3676" target="_blank" rel="noopener">BZOJ3676</a></p>
+</blockquote>
+<h1><span id="solution">Solution</span></h1><p>1.找出回文串<br>2.查询他出现次数，更新答案<br>第一步使用马拉车，需要注意，只有更新mx是会产生新的回文串，数量是$O(n)$的，也就是只有$O(n)$次询问<br>询问使用后缀自动机，从右端对应的节点开始树上倍增，由于祖先上全都是其后缀，所以定位到长度合适的节点。更新答案即可。<br>比较水，基本方法，基本性质<br><a id="more"></a></p>
+<h1><span id="code">Code</span></h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">600005</span>;</span><br><span class="line"><span class="keyword">char</span> strr[maxn], str[maxn];</span><br><span class="line"><span class="keyword">int</span> ch[maxn][<span class="number">26</span>], val[maxn], par[maxn], n, nn, cnt = <span class="number">1</span>, p[maxn], rt = <span class="number">1</span>, las = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">int</span> epos[maxn], sz[maxn], f[maxn][<span class="number">21</span>], c[maxn], a[maxn];</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> ans;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">extend</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> p = las, np = ++cnt; val[np] = val[p] + <span class="number">1</span>; sz[np] = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(p &amp;&amp; !ch[p][x]) ch[p][x] = np, p = par[p];</span><br><span class="line">	<span class="keyword">if</span>(!p) par[np] = rt;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">int</span> q = ch[p][x];</span><br><span class="line">		<span class="keyword">if</span>(val[q] == val[p] + <span class="number">1</span>) par[np] = q;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">int</span> nq = ++cnt; val[nq] = val[p] + <span class="number">1</span>;</span><br><span class="line">			<span class="built_in">memcpy</span>(ch[nq], ch[q], <span class="keyword">sizeof</span>(ch[q]));</span><br><span class="line">			par[nq] = par[q];</span><br><span class="line">			par[q] = par[np] = nq;</span><br><span class="line">			<span class="keyword">while</span>(p &amp;&amp; ch[p][x] == q) ch[p][x] = nq, p = par[p];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	las = np;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(l &lt; <span class="number">1</span> || r &lt; <span class="number">1</span>) <span class="keyword">return</span>;</span><br><span class="line">	<span class="comment">//cout &lt;&lt; l &lt;&lt; ' ' &lt;&lt; r &lt;&lt; endl;</span></span><br><span class="line">	<span class="keyword">int</span> len = r - l + <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">int</span> x = epos[r];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">20</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">		<span class="keyword">if</span>(f[x][i] &amp;&amp; val[f[x][i]] &gt;= len) x = f[x][i];</span><br><span class="line">	&#125;</span><br><span class="line">	ans = max(ans, (<span class="keyword">long</span> <span class="keyword">long</span>)len * sz[x]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">manachar</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= nn; i++) str[++n] = <span class="string">'#'</span>, str[++n] = strr[i];</span><br><span class="line">	str[++n] = <span class="string">'\n'</span>;</span><br><span class="line">	<span class="keyword">int</span> mx = <span class="number">0</span>, pos = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">		<span class="keyword">if</span>(i &lt; mx) p[i] = min(mx - i, p[pos * <span class="number">2</span> - i]);</span><br><span class="line">		<span class="keyword">while</span>(str[i + p[i]] == str[i - p[i]]) &#123;</span><br><span class="line">			<span class="keyword">if</span>(i + p[i] &gt;= mx) check((i - p[i] + <span class="number">1</span>) / <span class="number">2</span>, (i + p[i]) / <span class="number">2</span>); </span><br><span class="line">			p[i]++; </span><br><span class="line">		&#125; </span><br><span class="line">		<span class="keyword">if</span>(mx &lt; i + p[i]) mx = i + p[i], pos = i; </span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="comment">//freopen("testdata.in", "r", stdin);</span></span><br><span class="line">	<span class="comment">//freopen("testdata.my", "w", stdout);</span></span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%s"</span>, strr + <span class="number">1</span>); nn = <span class="built_in">strlen</span>(strr + <span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= nn; i++) extend(strr[i] - <span class="string">'a'</span>), epos[i] = las;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= cnt; i++) c[val[i]]++;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= nn; i++) c[i] += c[i<span class="number">-1</span>];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= cnt; i++) a[c[val[i]]--] = i;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = cnt; i; i--) sz[par[a[i]]] += sz[a[i]];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= cnt; i++) &#123;</span><br><span class="line">		<span class="keyword">int</span> x = a[i];</span><br><span class="line">		f[x][<span class="number">0</span>] = par[x];</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">1</span>; k &lt;= <span class="number">20</span>; k++) f[x][k] =  f[f[x][k<span class="number">-1</span>]][k<span class="number">-1</span>];</span><br><span class="line">	&#125;</span><br><span class="line">	manachar();</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/07/LOJ3049-十二省联考2019-字符串问题/" rel="next" title="LOJ3049 [十二省联考2019]字符串问题">
+                <i class="fa fa-chevron-left"></i> LOJ3049 [十二省联考2019]字符串问题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/29/BZOJ2154-Crash的数字表格/" rel="prev" title="BZOJ2154 Crash的数字表格">
+                BZOJ2154 Crash的数字表格 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -319,6 +479,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -339,8 +503,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -431,6 +604,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Code</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -570,6 +759,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

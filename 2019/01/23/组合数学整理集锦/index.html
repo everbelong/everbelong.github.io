@@ -105,7 +105,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/01/23/组合数学整理集锦/squ4.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/01/23/组合数学整理集锦/polya.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/01/23/组合数学整理集锦/solution4.jpg">
-<meta property="og:updated_time" content="2019-06-29T10:45:07.797Z">
+<meta property="og:updated_time" content="2019-06-29T11:17:04.658Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="组合数学整理集锦">
 <meta name="twitter:description" content="排列的生成 按字典序思想生成下一个排列   排列和组合的计数 基本组合恒等式 两种特殊的排列组合技术公式 Catalan数 公式 应用 操练   Bell数 Stirling数   多重集的排列组合 多重集的排列 多重集的组合     容斥原理与鸽笼原理 鸽笼原理 容斥原理 计算并集元素个数 计算错排的方案数   Ramsey定理 Ramsey数     波利亚定理 定义们 Bornside引">
@@ -398,7 +398,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  6.8k
+                  6.9k
                 </span>
               
 
@@ -622,6 +622,11 @@
 <blockquote>
 <p>Ramsey数有如下性质。<br>$R(a, b)= R(b, a)；R(a, 2)=2$。<br>对任意的整数$a, b \ge 2$，$R(a, b)$存在。<br>对任意的整数$a, b，R(a, b)\le R(a-1, b)+ R(a, b-1)$；<br>如果$a, b \ge 2，且R(a-1, b)$和$R(a, b-1)$是偶数，则<br>$$R(a, b)\le R(a-1, b)+ R(a, b-1)-1。<br>R(a, b)\le C(a+b-2, a-1)。$$</p>
 </blockquote>
+<p>说了那么多，其实很简单的burnside引理：</p>
+<ul>
+<li><strong>所有置换写成循环节的形式<br>每个循环节看成一样的，求出染色方案数<br>把所有置换这样求出的方案数算平均数<br>就好了</strong></li>
+</ul>
+<p>根据这一句话，所有类似问题都可以解决了，不用纠结定义，也不用背波利亚定理</p>
 <h1><span id="波利亚定理">波利亚定理</span></h1><p>终于写到这了，首先要介绍群论：</p>
 <h2><span id="定义们">定义们</span></h2><p>群的定义</p>
 <blockquote>
@@ -803,7 +808,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -814,7 +819,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -920,7 +925,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共24.9k字</span>
+  <span class="post-count">博客全站共26.1k字</span>
 </div>
         
 
