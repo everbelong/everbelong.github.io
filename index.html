@@ -280,6 +280,197 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/30/BZOJ4407-于神之怒加强版/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="everbelong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head-image.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="everbelong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/30/BZOJ4407-于神之怒加强版/" itemprop="url">BZOJ4407 于神之怒加强版</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-30T15:37:38+08:00">
+                2019-06-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/数学/" itemprop="url" rel="index">
+                    <span itemprop="name">数学</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/数学/莫比乌斯反演/" itemprop="url" rel="index">
+                    <span itemprop="name">莫比乌斯反演</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  470
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>题目链接：<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=4407" target="_blank" rel="noopener">BZOJ4407</a></p>
+</blockquote>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>求<br>$$<br>\sum_{i=1}^n\sum_{j=1}^mgcd(i, j)^k<br>$$<br>提取最大公约数d得到<br>$$<br>\sum_{d=1}^nd^k\sum_{i=1}^{n/d}\sum_{j=1}^{m/d}[gcd(i, j) = 1]<br>$$<br>常见的套用反演，得到<br>$$<br>\sum_{d=1}^nd^k\sum_{i=1}^n\mu(i)\lfloor\frac{n}{id}\rfloor\lfloor\frac{m}{id}\rfloor<br>$$<br>令$T=id$<br>$$<br>\sum_{T=1}^n\lfloor\frac{n}{T}\rfloor\lfloor\frac{m}{T}\rfloor\sum_{d|T}d^k\mu(\frac{T}{d})<br>$$<br>前者整除分块，后者线性筛<br>对于线性筛，还是只需要想想枚举到一个已出现的质因子的情况，新的所有的因数可以看成旧的所有因数*p，再并上原来不含p的因数<br>前者更改前后$\mu$值没有变，后者在操作后变成了0<br>所以只要乘上$p^k$即可<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/06/30/BZOJ4407-于神之怒加强版/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </p></div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/29/BZOJ2154-Crash的数字表格/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -376,7 +567,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  547
+                  656
                 </span>
               
 
@@ -417,7 +608,7 @@
           <blockquote>
 <p>题目链接：<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=2154" target="_blank" rel="noopener">BZOJ2154</a></p>
 </blockquote>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>题意求<br>$$<br>\sum_{i=1}^n\sum_{j=1}^mlcm(i, j)<br>$$<br>$$<br> = \sum_{i=1}^n\sum_{j=1}^m\frac{ij}{gcd(i,i)}<br>$$<br>$$<br> = \sum_{d=1}^n\sum_{i=1}^n\sum_{j=1}^m[gcd(i, j)=d]\frac{ij}{d}<br>$$<br>套路地提取d<br>$$<br> = \sum_{d=1}^nd\sum_{i=1}^{n/d}\sum_{j=1}^{m/d}[gcd(i, j) = 1]ij<br>$$<br>先处理后面一部分<br>令<br>$$<br>f(d) = \sum_{i=1}^x\sum_{j=1}^{y}[gcd(i, j)=d]ij \<br>F(d) = \sum_{i=1}^x\sum_{j=1}^{y}[d|gcd(i, j)]ij \<br> = \sum_{d|n}f(n) = d^2S(\frac{x}{d})S(\frac{y}{d})<br>$$<br>其中$S(n)$表示从1加到n，也就是$\frac{n(n+1)}{2}$<br>利用莫比乌斯反演<br>$$<br>f(d) = \sum_{d|k}\mu(\frac{k}{d})F(k)<br>$$<br>$$<br>ans = \sum_{d=1}^{n}df(1) = \sum_{d=1}^nd\sum_{i=1}^n\mu(i)i^2S(\frac{n}{id})S(\frac{m}{id})<br>$$<br>为了减少复杂度，从$O(n)$降到$O(\sqrt{n})$，令$T=id$，改为枚举T<br>$$<br>ans = \sum_{T=1}^nS(\frac{n}{T})S(\frac{m}{T})\sum_{d|T}dT\mu(d)<br>$$<br>至此，考虑如何实现<br>前面整除分块不用多说，讲讲后面的$\sum_{d|T}dT\mu(d)$，这是个积性函数，可以线性筛预处理出来，具体如下：</p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>题意求<br>$$<br>\sum_{i=1}^n\sum_{j=1}^mlcm(i, j)<br>$$<br>$$<br> = \sum_{i=1}^n\sum_{j=1}^m\frac{ij}{gcd(i,i)}<br>$$<br>$$<br> = \sum_{d=1}^n\sum_{i=1}^n\sum_{j=1}^m[gcd(i, j)=d]\frac{ij}{d}<br>$$<br>套路地提取d<br>$$<br> = \sum_{d=1}^nd\sum_{i=1}^{n/d}\sum_{j=1}^{m/d}[gcd(i, j) = 1]ij<br>$$<br>先处理后面一部分<br>令<br>$$<br>f(d) = \sum_{i=1}^x\sum_{j=1}^{y}[gcd(i, j)=d]ij \<br>F(d) = \sum_{i=1}^x\sum_{j=1}^{y}[d|gcd(i, j)]ij \<br> = \sum_{d|n}f(n) = d^2S(\frac{x}{d})S(\frac{y}{d})<br>$$<br>其中$S(n)$表示从1加到n，也就是$\frac{n(n+1)}{2}$<br>利用莫比乌斯反演<br>$$<br>f(d) = \sum_{d|k}\mu(\frac{k}{d})F(k)<br>$$<br>$$<br>ans = \sum_{d=1}^{n}df(1) = \sum_{d=1}^nd\sum_{i=1}^n\mu(i)i^2S(\frac{n}{id})S(\frac{m}{id})<br>$$<br>为了减少复杂度，从$O(n)$降到$O(\sqrt{n})$，令$T=id$，改为枚举T<br>$$<br>ans = \sum_{T=1}^nS(\frac{n}{T})S(\frac{m}{T})\sum_{d|T}dT\mu(d)<br>$$<br>至此，考虑如何实现<br>前面整除分块不用多说，讲讲后面的$\sum_{d|T}dT\mu(d)$，这是个积性函数，可以线性筛预处理出来，具体如下：<br>如果当前质因数p次数不为1<br>那么前面的所有因数要么包含一个p，要么不含p，否则贡献为零，不用考虑<br>前者会产生0和包含一个p的因数，后者会产生包含一个或不包含的<br>因此最终与没有p时相同，再乘上T的变化也就是p即可<br>如果p的次数唯一，则互质，由积性算即可</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/06/29/BZOJ2154-Crash的数字表格/#more" rel="contents">
@@ -1991,206 +2182,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/03/BZOJ1002-轮状病毒/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="everbelong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head-image.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="everbelong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/02/03/BZOJ1002-轮状病毒/" itemprop="url">BZOJ1002 轮状病毒</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-03T22:04:15+08:00">
-                2019-02-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/数学/" itemprop="url" rel="index">
-                    <span itemprop="name">数学</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/数学/组合/" itemprop="url" rel="index">
-                    <span itemprop="name">组合</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  756
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>题目链接<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=1002" target="_blank" rel="noopener">BZOJ1002</a></p>
-</blockquote>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>组合数学，要么递推，要么通项公式<br>本题可以求出一个类递推式</p>
-<p>用一个类似dp的方法。考虑分配周围这个圆的联通，就是一个线性dp了，过程中考虑和中间点的联通。<br>令$f[i]$表示考虑了圆上的前i个的方案数<br>$$<br>f[i] = \sum_{j=1}^if[i-j]\times j<br>$$<br>但这相当于把环拆成了链，还要考虑1和n连接的情况。如果有j个周围的点连成一条，且跨越了1和n，我们将所有这样的情况累加到答案中去。考虑如果这样的点有j个，剩下的点肯定不与这j个点相连，所以连边方案数就是$f[i-j]​$，这j个点有$(j-1)​$种选法(跨越1和n)，与中心点连边的方案数是j。设这种情况为$g[i]$<br>$$<br>g[i] = \sum_{j=2}^if[i-j]\times j\times (j-1)<br>$$</p>
-<p>剩下的就是高精了，建一个结构体，写一个加法和乘法。</p>
-<p>但这道题让我感受到了常数的力量。</p>
-<p>最开始我写了一个+=，写了一个*，乘法会返回一个大整数类型，加等于就直接穿引用修改。<br>这样在洛谷上94ms过。<br>但BZOJ上TLE了（时限1000ms）。。。</p>
-<p>于是我不得不常数优化。<br>把乘法改成乘等于，所有运算都是传引用，避免了频繁的复制操作。<br>结果洛谷上76ms，看起来没差多少<br>然而，BZOJ上108ms成功AC。。。</p>
-<p>BZOJ是有毒吧，或者还是洛谷有毒？</p>
-<p>所以告诉我们写高精是注意能引用就引用，尽量不要复制，常数很大的。</p>
-<p>还有就是乘法运算进位不能直接加上去，要用一个变量先存一下，这个调了很久。（太菜了）</p>
-<p>其实这个做法可以用差分序列来优化，复杂度小一些，也不用写乘法了，但我最后卡常成功（暗笑，冷笑）<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/02/03/BZOJ1002-轮状病毒/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </p></div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2243,7 +2234,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2344,7 +2335,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共26.1k字</span>
+  <span class="post-count">博客全站共26.7k字</span>
 </div>
         
 
