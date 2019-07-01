@@ -280,6 +280,197 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/01/BZOJ4827-Hnoi2017-礼物/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="everbelong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head-image.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="everbelong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/01/BZOJ4827-Hnoi2017-礼物/" itemprop="url">BZOJ4827 [Hnoi2017]礼物</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-01T22:19:45+08:00">
+                2019-07-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/数学/" itemprop="url" rel="index">
+                    <span itemprop="name">数学</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/数学/多项式/" itemprop="url" rel="index">
+                    <span itemprop="name">多项式</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  592
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>题目链接：<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=4827" target="_blank" rel="noopener">BZOJ4827</a></p>
+</blockquote>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>题意求<br>$$<br>min{\sum_{i=1}^n(x_i - y_{i+k} + C)}<br>$$<br>C是每个增加的亮度，k是旋转的位数<br>把他拆开可以写成<br>$$<br>\sum_{i=1}^n(x_i^2+y_i^2) +\sum_{i=1}^n2C(x_i-y_i)+nC^2-2\sum_{i=1}^nx_iy_{i+k}<br>$$<br>难点是求最后一项$\sum_{i=1}^nx_iy_{i+k}$的最大值<br>这种形式经常使用多项式卷积<br>把x数组倒序，y后面再连一个y，得到的两个新数组卷积<br>最后上面的式子就是$x^{n+1+k}$的系数，从$x^{n+1}$到$x^{n+n}$取最大值就可以了<br>之后C可以在m的值域内枚举，也可以直接得到，利用二次函数最值，可知$C=\frac{\sum_{i=1}^ny_i-\sum_{i=1}^nx_i}{n} $<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/07/01/BZOJ4827-Hnoi2017-礼物/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </p></div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/30/BZOJ3930-CQOI2015-选数/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -345,8 +536,8 @@
                 
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/数学/杜教筛/" itemprop="url" rel="index">
-                    <span itemprop="name">杜教筛</span>
+                  <a href="/categories/数学/莫比乌斯反演/" itemprop="url" rel="index">
+                    <span itemprop="name">莫比乌斯反演</span>
                   </a>
                 </span>
 
@@ -356,8 +547,8 @@
                 
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/数学/莫比乌斯反演/" itemprop="url" rel="index">
-                    <span itemprop="name">莫比乌斯反演</span>
+                  <a href="/categories/数学/杜教筛/" itemprop="url" rel="index">
+                    <span itemprop="name">杜教筛</span>
                   </a>
                 </span>
 
@@ -2001,199 +2192,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/01/BZOJ4650-Noi2016-优秀的拆分/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="everbelong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head-image.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="everbelong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/01/BZOJ4650-Noi2016-优秀的拆分/" itemprop="url">BZOJ4650 [Noi2016]优秀的拆分</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-01T21:44:52+08:00">
-                2019-06-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/字符串/" itemprop="url" rel="index">
-                    <span itemprop="name">字符串</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/字符串/后缀数组/" itemprop="url" rel="index">
-                    <span itemprop="name">后缀数组</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.2k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  6
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>题目链接：<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=4650" target="_blank" rel="noopener">BZOJ4650</a></p>
-</blockquote>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>感觉这道题的方法在SA里还是很常见的<br>考虑枚举AA和BB的分界点，对答案的贡献是以当前为结尾的XX的个数和以当前为结束的XX的个数<br>因此实际上要计算以每个字符开头的XX（两个相同字符串）的个数，同理也要算以他结尾的<br>枚举X字符串的长度$len$，每隔长度$len$设一个关键点<br>那么每一个XX一定过两个相邻的关键点<br>枚举每一对相邻的关键点，考虑其可能对那些位置产生贡献（所谓对某个位置产生贡献就是所这个位置开头的XX字符串个数+1）<br>请看下图，我们求出两个位置的最长公共前缀和最长公共后缀<br><img src="/2019/06/01/BZOJ4650-Noi2016-优秀的拆分/1.png"><br>此时两者没有交点，也就是长度之和$\le len$，不可能产生贡献（因为总会每截断）<br>但是下面这种情况<br><img src="/2019/06/01/BZOJ4650-Noi2016-优秀的拆分/2.png"><br>两者有了交点，就会产生贡献<br>两条橙色线都是可以产生的XX，在两者之间的每一条同样长度的字符串也是<br>因此紫色的那一段向后的XX会$+1$，棕色的那一段有向前的XX会$+1$<br>区间加一可以直接差分<br>至于LCP和LCS就是后缀数组的常见操作了，前后要构造两个</p>
-<p>1.枚举 $len$ ，每隔 $len$ 设置关键点：这个的复杂度是调和级数 $O(n \log n)$<br>2.求 后缀LCP，前缀LCS：使用后缀数组 + st 表 做到 $O(1)$ 查询<br>3.区间加上 1 ： 差分维护就可以了。</p>
-<p>记住这个方法，我叫他“调和级数法”<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/06/01/BZOJ4650-Noi2016-优秀的拆分/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </p></div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2246,7 +2244,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2257,7 +2255,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2347,7 +2345,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共27.6k字</span>
+  <span class="post-count">博客全站共28.2k字</span>
 </div>
         
 
