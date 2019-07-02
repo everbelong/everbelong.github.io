@@ -75,17 +75,17 @@
 
 
 
-<meta name="description" content="题目链接：BZOJ2440  Solution二分答案，转化为求小于等于N的非完全平方数倍数的数有几个使用容斥原理，$$ans=n-1个质因子平方+2个质因子平方-3质因子平方+…$$枚举所有次数为2的因数i，个数有$\frac{n}{i^2}$个，系数就是$\mu(i)$不要忘记莫比乌斯函数本质就是数论中的容斥我不会透露自己想反演做法想了半天">
+<meta name="description" content="题目链接：BZOJ3527  Solution我们要快速的求出$$\sum_{j=1}^i\frac{q_j}{(i-j)^2} \\\sum_{j=i}^n\frac{q_j}{(i-j)^2}$$可以看成是分子*分母的倒数，分母递增或递减构建两个个数组$$b_i = \frac{1}{i^2} \\c_i = \frac{1}{(n+1-i)^2}$$分别与q卷积，得到的新b数组的第$i$项">
 <meta property="og:type" content="article">
-<meta property="og:title" content="BZOJ2440 完全平方数">
-<meta property="og:url" content="http://yoursite.com/2019/06/30/BZOJ2440-完全平方数/index.html">
+<meta property="og:title" content="BZOJ3527 [Zjoi2014]力">
+<meta property="og:url" content="http://yoursite.com/2019/07/02/BZOJ3527-Zjoi2014-力/index.html">
 <meta property="og:site_name" content="everbelong">
-<meta property="og:description" content="题目链接：BZOJ2440  Solution二分答案，转化为求小于等于N的非完全平方数倍数的数有几个使用容斥原理，$$ans=n-1个质因子平方+2个质因子平方-3质因子平方+…$$枚举所有次数为2的因数i，个数有$\frac{n}{i^2}$个，系数就是$\mu(i)$不要忘记莫比乌斯函数本质就是数论中的容斥我不会透露自己想反演做法想了半天">
+<meta property="og:description" content="题目链接：BZOJ3527  Solution我们要快速的求出$$\sum_{j=1}^i\frac{q_j}{(i-j)^2} \\\sum_{j=i}^n\frac{q_j}{(i-j)^2}$$可以看成是分子*分母的倒数，分母递增或递减构建两个个数组$$b_i = \frac{1}{i^2} \\c_i = \frac{1}{(n+1-i)^2}$$分别与q卷积，得到的新b数组的第$i$项">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-30T13:39:00.433Z">
+<meta property="og:updated_time" content="2019-07-02T10:56:16.580Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="BZOJ2440 完全平方数">
-<meta name="twitter:description" content="题目链接：BZOJ2440  Solution二分答案，转化为求小于等于N的非完全平方数倍数的数有几个使用容斥原理，$$ans=n-1个质因子平方+2个质因子平方-3质因子平方+…$$枚举所有次数为2的因数i，个数有$\frac{n}{i^2}$个，系数就是$\mu(i)$不要忘记莫比乌斯函数本质就是数论中的容斥我不会透露自己想反演做法想了半天">
+<meta name="twitter:title" content="BZOJ3527 [Zjoi2014]力">
+<meta name="twitter:description" content="题目链接：BZOJ3527  Solution我们要快速的求出$$\sum_{j=1}^i\frac{q_j}{(i-j)^2} \\\sum_{j=i}^n\frac{q_j}{(i-j)^2}$$可以看成是分子*分母的倒数，分母递增或递减构建两个个数组$$b_i = \frac{1}{i^2} \\c_i = \frac{1}{(n+1-i)^2}$$分别与q卷积，得到的新b数组的第$i$项">
 
 
 
@@ -115,13 +115,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/06/30/BZOJ2440-完全平方数/">
+  <link rel="canonical" href="http://yoursite.com/2019/07/02/BZOJ3527-Zjoi2014-力/">
 
 
 
 
 
-  <title>BZOJ2440 完全平方数 | everbelong</title>
+  <title>BZOJ3527 [Zjoi2014]力 | everbelong</title>
   
 
 
@@ -280,7 +280,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/30/BZOJ2440-完全平方数/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/02/BZOJ3527-Zjoi2014-力/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="everbelong">
@@ -297,7 +297,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">BZOJ2440 完全平方数</h1>
+          <h1 class="post-title" itemprop="name headline">BZOJ3527 [Zjoi2014]力</h1>
         
 
         <div class="post-meta">
@@ -309,8 +309,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-30T19:28:49+08:00">
-                2019-06-30
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-02T18:50:01+08:00">
+                2019-07-02
               </time>
             
 
@@ -343,8 +343,8 @@
                 
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/数学/容斥原理/" itemprop="url" rel="index">
-                    <span itemprop="name">容斥原理</span>
+                  <a href="/categories/数学/多项式/" itemprop="url" rel="index">
+                    <span itemprop="name">多项式</span>
                   </a>
                 </span>
 
@@ -374,7 +374,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  307
+                  424
                 </span>
               
 
@@ -390,7 +390,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -412,10 +412,10 @@
 
       
         <blockquote>
-<p>题目链接：<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=2440" target="_blank" rel="noopener">BZOJ2440</a></p>
+<p>题目链接：<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=3527" target="_blank" rel="noopener">BZOJ3527</a></p>
 </blockquote>
-<h1><span id="solution">Solution</span></h1><p>二分答案，转化为求小于等于N的非完全平方数倍数的数有几个<br>使用容斥原理，<br>$$ans=n-1个质因子平方+2个质因子平方-3质因子平方+…$$<br>枚举所有次数为2的因数i，个数有$\frac{n}{i^2}$个，系数就是$\mu(i)$<br>不要忘记莫比乌斯函数本质就是数论中的容斥<br>我不会透露自己想反演做法想了半天<br><a id="more"></a></p>
-<h1><span id="code">Code</span></h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">100010</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line">ll miu[maxn], v[maxn], prim[maxn], cnt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(<span class="keyword">int</span> N)</span> </span>&#123;</span><br><span class="line">	v[<span class="number">0</span>] = v[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">	miu[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= N; i++) &#123;</span><br><span class="line">		<span class="keyword">if</span>(!v[i]) &#123; prim[++cnt] = i; miu[i] = <span class="number">-1</span>; &#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= cnt &amp;&amp; i * prim[j] &lt;= N; j++) &#123;</span><br><span class="line">			v[i * prim[j]] = <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">if</span>(i % prim[j]) miu[i * prim[j]] = -miu[i];</span><br><span class="line">			<span class="keyword">else</span> &#123; miu[i * prim[j]] = <span class="number">0</span>; <span class="keyword">break</span>; &#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">ll <span class="title">calc</span><span class="params">(ll n)</span> </span>&#123;</span><br><span class="line">	ll res = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(ll i = <span class="number">1</span>; i * i &lt;= n; i++) &#123;</span><br><span class="line">		res += miu[i] * (n / (i * i));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> T; <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;T);</span><br><span class="line">	init(<span class="number">100000</span>);</span><br><span class="line">	<span class="keyword">while</span>(T--) &#123;</span><br><span class="line">		ll k;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;k);</span><br><span class="line">		ll l = <span class="number">1</span>, r = <span class="number">1e10</span>;</span><br><span class="line">		<span class="keyword">while</span>(l &lt; r) &#123;</span><br><span class="line">			ll mid = (l + r) / <span class="number">2</span>;</span><br><span class="line">			<span class="keyword">if</span>(calc(mid) &lt; k) l = mid + <span class="number">1</span>; <span class="keyword">else</span> r = mid; </span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, l);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1><span id="solution">Solution</span></h1><p>我们要快速的求出<br>$$<br>\sum_{j=1}^i\frac{q_j}{(i-j)^2} \\<br>\sum_{j=i}^n\frac{q_j}{(i-j)^2}<br>$$<br>可以看成是分子*分母的倒数，分母递增或递减<br>构建两个个数组<br>$$b_i = \frac{1}{i^2} \\<br>c_i = \frac{1}{(n+1-i)^2}$$<br>分别与q卷积，<br>得到的新b数组的第$i$项是前部分的结果<br>新c数组的第$i+n+1$项是后半部分<br>怎么得出来的可以画图看看<br><a id="more"></a></p>
+<h1><span id="code">Code</span></h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">400010</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> pi = <span class="built_in">acos</span>(<span class="number">-1</span>);</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">complex</span>&lt;<span class="keyword">double</span>&gt; cp;</span><br><span class="line"><span class="keyword">double</span> q[maxn];</span><br><span class="line">cp a[maxn], b[maxn], c[maxn];</span><br><span class="line"><span class="keyword">int</span> n, r[maxn];</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">sq</span><span class="params">(<span class="keyword">double</span> x)</span> </span>&#123; <span class="keyword">return</span> x * x; &#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fft</span><span class="params">(cp *p, <span class="keyword">int</span> N, <span class="keyword">int</span> inv)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= N; i++) <span class="keyword">if</span>(i &lt; r[i]) swap(p[i], p[r[i]]);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> mid = <span class="number">1</span>; mid &lt; N; mid &lt;&lt;= <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="function">cp <span class="title">omega</span><span class="params">(<span class="built_in">cos</span>(pi / mid), inv * <span class="built_in">sin</span>(pi / mid))</span></span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i += mid &lt;&lt; <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="function">cp <span class="title">w</span><span class="params">(<span class="number">1</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; mid; j++, w *= omega) &#123;</span><br><span class="line">                cp x = p[i + j], y = w * p[i + j + mid];</span><br><span class="line">                p[i + j] = x + y, p[i + j + mid] = x - y;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) <span class="built_in">scanf</span>(<span class="string">"%lf"</span>, &amp;q[i]);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) a[i] = cp(q[i], <span class="number">0</span>), b[i] = cp(<span class="number">1.0</span> / sq(i), <span class="number">0</span>), c[i] = cp(<span class="number">1.0</span> / sq(n - i + <span class="number">1</span>), <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">int</span> N = <span class="number">1</span>, wei = <span class="number">0</span>; <span class="keyword">while</span>(N &lt; <span class="number">2</span> * n) N &lt;&lt;= <span class="number">1</span>, wei++;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= N; i++) r[i] = (r[i &gt;&gt; <span class="number">1</span>] &gt;&gt; <span class="number">1</span>) | ((i &amp; <span class="number">1</span>) &lt;&lt; (wei - <span class="number">1</span>));</span><br><span class="line">    fft(a, N, <span class="number">1</span>); fft(b, N, <span class="number">1</span>); fft(c, N, <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= N; i++) b[i] *= a[i], c[i] *= a[i];</span><br><span class="line">    fft(b, N, <span class="number">-1</span>), fft(c, N, <span class="number">-1</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%lf\n"</span>, b[i].real() / N - c[i + n + <span class="number">1</span>].real() / N);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -440,8 +440,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/30/BZOJ4407-于神之怒加强版/" rel="next" title="BZOJ4407 于神之怒加强版">
-                <i class="fa fa-chevron-left"></i> BZOJ4407 于神之怒加强版
+              <a href="/2019/07/01/BZOJ4827-Hnoi2017-礼物/" rel="next" title="BZOJ4827 [Hnoi2017]礼物">
+                <i class="fa fa-chevron-left"></i> BZOJ4827 [Hnoi2017]礼物
               </a>
             
           </div>
@@ -449,10 +449,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/30/BZOJ3930-CQOI2015-选数/" rel="prev" title="BZOJ3930 [CQOI2015]选数">
-                BZOJ3930 [CQOI2015]选数 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -1138,6 +1134,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
