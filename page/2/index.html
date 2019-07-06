@@ -280,6 +280,197 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/29/BZOJ2154-Crash的数字表格/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="everbelong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head-image.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="everbelong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/29/BZOJ2154-Crash的数字表格/" itemprop="url">BZOJ2154 Crash的数字表格</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-29T21:32:13+08:00">
+                2019-06-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/数学/" itemprop="url" rel="index">
+                    <span itemprop="name">数学</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/数学/莫比乌斯反演/" itemprop="url" rel="index">
+                    <span itemprop="name">莫比乌斯反演</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  656
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>题目链接：<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=2154" target="_blank" rel="noopener">BZOJ2154</a></p>
+</blockquote>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>题意求<br>$$<br>\sum_{i=1}^n\sum_{j=1}^mlcm(i, j)<br>$$<br>$$<br> = \sum_{i=1}^n\sum_{j=1}^m\frac{ij}{gcd(i,i)}<br>$$<br>$$<br> = \sum_{d=1}^n\sum_{i=1}^n\sum_{j=1}^m[gcd(i, j)=d]\frac{ij}{d}<br>$$<br>套路地提取d<br>$$<br> = \sum_{d=1}^nd\sum_{i=1}^{n/d}\sum_{j=1}^{m/d}[gcd(i, j) = 1]ij<br>$$<br>先处理后面一部分<br>令<br>$$<br>f(d) = \sum_{i=1}^x\sum_{j=1}^{y}[gcd(i, j)=d]ij \\<br>F(d) = \sum_{i=1}^x\sum_{j=1}^{y}[d|gcd(i, j)]ij \\<br> = \sum_{d|n}f(n) = d^2S(\frac{x}{d})S(\frac{y}{d})<br>$$<br>其中$S(n)$表示从1加到n，也就是$\frac{n(n+1)}{2}$<br>利用莫比乌斯反演<br>$$<br>f(d) = \sum_{d|k}\mu(\frac{k}{d})F(k)<br>$$<br>$$<br>ans = \sum_{d=1}^{n}df(1) = \sum_{d=1}^nd\sum_{i=1}^n\mu(i)i^2S(\frac{n}{id})S(\frac{m}{id})<br>$$<br>为了减少复杂度，从$O(n)$降到$O(\sqrt{n})$，令$T=id$，改为枚举T<br>$$<br>ans = \sum_{T=1}^nS(\frac{n}{T})S(\frac{m}{T})\sum_{d|T}dT\mu(d)<br>$$<br>至此，考虑如何实现<br>前面整除分块不用多说，讲讲后面的$\sum_{d|T}dT\mu(d)$，这是个积性函数，可以线性筛预处理出来，具体如下：<br>如果当前质因数p次数不为1<br>那么前面的所有因数要么包含一个p，要么不含p，否则贡献为零，不用考虑<br>前者会产生0和包含一个p的因数，后者会产生包含一个或不包含的<br>因此最终与没有p时相同，再乘上T的变化也就是p即可<br>如果p的次数唯一，则互质，由积性算即可</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/06/29/BZOJ2154-Crash的数字表格/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/29/BZOJ3676-Apio2014-回文串/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2000,213 +2191,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/02/最长不下降子序列问题/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="everbelong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head-image.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="everbelong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/02/02/最长不下降子序列问题/" itemprop="url">最长不下降子序列问题</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-02T21:12:02+08:00">
-                2019-02-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/图论/" itemprop="url" rel="index">
-                    <span itemprop="name">图论</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/图论/网络流/" itemprop="url" rel="index">
-                    <span itemprop="name">网络流</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  702
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  4
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>网络流24题 最长不下降子序列问题<br><a href="https://www.luogu.org/problemnew/show/P2766" target="_blank" rel="noopener">洛谷P2766</a></p>
-</blockquote>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>（1）最基本的dp，记答案为ans<br>（2）每个数拆成两个点$a_i, b_i$，用$\to$代表连边：</p>
-<ul>
-<li>$ s\to a_i\ \ cap = 1\ \ \ \ if(f[i] = 1) $</li>
-<li>$ b_i\to t\ \ cap = 1\ \ \ \ if(f[i] = ans) $</li>
-<li>$ a_i\to b_i\ \ cap = 1 $</li>
-<li>$ b_i\to a_i\ \ cap = 1\ \ \ \ if(h[i] \le h[j] 且f[i] + 1 = f[j]) $ 就是说j由i转移而来</li>
-</ul>
-<p>跑一遍最大流即可</p>
-<p>（3）再加四条边</p>
-<ul>
-<li>$ s\to a_1\ \ cap = +\infty $</li>
-<li>$ a_1\to b_1\ \ cap = +\infty $</li>
-<li>$ b_n \to t\ \ cap = +\infty\ \ \ \ if(f[n] = ans)$</li>
-<li>$ a_n\to b_n\ \ cap = +\infty $</li>
-</ul>
-<p>千万不要忘记了第三条边里的if，这是若不满足则不用加这条边，多的第n个数相当于没用。</p>
-<p>这是最大流里比较经典的一个问题<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/02/02/最长不下降子序列问题/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </p></div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2259,7 +2243,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2360,7 +2344,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共30.2k字</span>
+  <span class="post-count">博客全站共32.6k字</span>
 </div>
         
 
