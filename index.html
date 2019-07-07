@@ -745,7 +745,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  7
+                  820
                 </span>
               
 
@@ -761,7 +761,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  4
                 </span>
               
             </div>
@@ -786,7 +786,10 @@
           <blockquote>
 <p>题目链接：<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=4945" target="_blank" rel="noopener">BZOJ4945</a></p>
 </blockquote>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>本题标记着2-sat达到一个高潮<br>如果没有x，那就是一个裸的2-sat<br>然而x的个数很小，可以暴力枚举，所以实际上还是裸的2-sat<br>每个x枚举<br>1.不能选A，那么就是B、C二选一<br>2.不能选B，那么就是A、C二选一<br>这样就已经包含了ABC三种情况，所以暴力枚举的复杂度为$2^d$</p>
+<p>下面说一说裸的2-sat怎么做<br>用tarjan算法求出所有的强连通分量<br>如果某个对偶的两点位于同一分量，则无解<br>否则有解，那么问题就是如何输出任意一解<br>对于缩点后的反图，按拓扑序，选当前节点，把她得姐妹节点删除<br>事实上不用拓扑排序，节点scc编号的大小就是反图拓扑序的大小，因此姐妹点选scc小的即可</p>
+<p>tarjan比dfs快，我终于明白了，dfs是$O(nm)$的</p>
+<p>这里还有一些要注意的地方，如果一个限制中提到了一定不会出现赛车，设此限制为$(x\to y)$，若x不可能选，则直接continue，若y不可能选，则x连向他的姐妹节点，巧妙地表达了x不可能选</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/07/04/BZOJ4945-Noi2017-游戏/#more" rel="contents">
@@ -2329,7 +2332,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共32.6k字</span>
+  <span class="post-count">博客全站共33.5k字</span>
 </div>
         
 
