@@ -4,6 +4,10 @@
     <title><![CDATA[BZOJ3926 [Zjoi2015]诸神眷顾的幻想乡]]></title>
     <url>%2F2019%2F07%2F12%2FBZOJ3926-Zjoi2015-%E8%AF%B8%E7%A5%9E%E7%9C%B7%E9%A1%BE%E7%9A%84%E5%B9%BB%E6%83%B3%E4%B9%A1%2F</url>
     <content type="text"><![CDATA[题目链接：BZOJ3926 Solution20min 1A庆祝一下国家队论文写过一个trie上SAM的科技其实可以类比广义后缀自动机加入多个串，trie树上无非是每个点插入前将las移到其父亲对应的节点本题由于叶子不超过20个，以每个叶子为根，分别遍历一遍trie，全部加入一个广义自动机中，累计每个节点的max-min+1即可由于所有有向路径都可以看成以一个叶子为根的一个直的路径（也就是trie上的“子串”），因此正确性可以保证 Code1234567891011121314151617181920212223242526272829303132333435363738394041#include &lt;bits/stdc++.h&gt;using namespace std;const int maxn = 100010;int n, C, col[maxn], head[maxn], ver[maxn * 2], Next[maxn * 2], tot;int du[maxn], cnt = 1, rt = 1, ch[maxn * 40][10], par[maxn * 40], val[maxn * 40], pos[maxn];void add(int x, int y) &#123; ver[++tot] = y, Next[tot] = head[x], head[x] = tot;&#125;int extend(int x, int p) &#123; int np = ++cnt; val[np] = val[p] + 1; while(p &amp;&amp; !ch[p][x]) ch[p][x] = np, p = par[p]; if(!p) par[np] = rt; else &#123; int q = ch[p][x]; if(val[q] == val[p] + 1) par[np] = q; else &#123; int nq = ++cnt; val[nq] = val[p] + 1; memcpy(ch[nq], ch[q], sizeof(ch[nq])); par[nq] = par[q]; par[q] = par[np] = nq; while(p &amp;&amp; ch[p][x] == q) ch[p][x] = nq, p = par[p]; &#125; &#125; return np;&#125;void dfs(int x, int fa) &#123; pos[x] = extend(col[x], pos[fa]); for(int i = head[x]; i; i = Next[i]) if(ver[i] != fa) dfs(ver[i], x);&#125;int main() &#123; int x, y; scanf("%d%d", &amp;n, &amp;C); for(int i = 1; i &lt;= n; i++) scanf("%d", &amp;col[i]); for(int i = 1; i &lt; n; i++) scanf("%d%d", &amp;x, &amp;y), add(x, y), add(y, x), du[x]++, du[y]++; pos[0] = 1; for(int i = 1; i &lt;= n; i++) if(du[i] == 1) dfs(i, 0); long long ans = 0; for(int i = 1; i &lt;= cnt; i++) ans += val[i] - val[par[i]]; printf("%lld\n", ans); return 0;&#125;]]></content>
+      <categories>
+        <category>字符串</category>
+        <category>后缀自动机</category>
+      </categories>
   </entry>
   <entry>
     <title><![CDATA[BZOJ3277 串]]></title>
