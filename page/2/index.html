@@ -280,6 +280,392 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/05/BZOJ1997-Hnoi2010-Planar/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="RheToXic">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head-image.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="RheToXic">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/05/BZOJ1997-Hnoi2010-Planar/" itemprop="url">BZOJ1997 [Hnoi2010]Planar</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-05T18:18:09+08:00">
+                2019-07-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/图论/" itemprop="url" rel="index">
+                    <span itemprop="name">图论</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/图论/2-sat/" itemprop="url" rel="index">
+                    <span itemprop="name">2-sat</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  781
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>题目链接：<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=1997" target="_blank" rel="noopener">BZOJ1997</a></p>
+</blockquote>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>题意判断是否是平面图<br>首先平面图边数$\leq3n-6$，这样边数是$O(n)$的了<br>题目中给了一条曼哈顿回路，也就是说要做的是把剩下的边加入这个环里，加入的边要么在里面，要么在外面，两两不想交<br>这就是一个2-sat问题了<br>每条边拆成两个点，有一些要加入的边无法同时在里或同时在外，这时把他们连一些边，然后跑tarjan，存在一条边对应的两个点在同一强联通分量则不行</p>
+<p>然而这题我做了整整半天的时间<br>最开始用dfs，一直觉得dfs和tarjan没什么区别，dfs还好写<br>但20分过不了<br>迫不得已改写tarjan，结果依旧20分<br>最后发现判定边数过多直接continue太早了，还没读完剩下的数据呢。。。<br>洛谷终于过了，但BZOJ总是TLE<br>最后原来是我因为最开始RE所以数组开的特别大，卡MLE的那种，结果多组数据清数组时花了大量的时间。。。<br>所以事实上数组不是开的越大越好，即使不会MLE也不行<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/07/05/BZOJ1997-Hnoi2010-Planar/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </p></div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/04/BZOJ4945-Noi2017-游戏/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="RheToXic">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head-image.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="RheToXic">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/04/BZOJ4945-Noi2017-游戏/" itemprop="url">BZOJ4945 [Noi2017]游戏</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-04T18:18:39+08:00">
+                2019-07-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/图论/" itemprop="url" rel="index">
+                    <span itemprop="name">图论</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/图论/2-sat/" itemprop="url" rel="index">
+                    <span itemprop="name">2-sat</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  820
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>题目链接：<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=4945" target="_blank" rel="noopener">BZOJ4945</a></p>
+</blockquote>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>本题标记着2-sat达到一个高潮<br>如果没有x，那就是一个裸的2-sat<br>然而x的个数很小，可以暴力枚举，所以实际上还是裸的2-sat<br>每个x枚举<br>1.不能选A，那么就是B、C二选一<br>2.不能选B，那么就是A、C二选一<br>这样就已经包含了ABC三种情况，所以暴力枚举的复杂度为$2^d$</p>
+<p>下面说一说裸的2-sat怎么做<br>用tarjan算法求出所有的强连通分量<br>如果某个对偶的两点位于同一分量，则无解<br>否则有解，那么问题就是如何输出任意一解<br>对于缩点后的反图，按拓扑序，选当前节点，把她得姐妹节点删除<br>事实上不用拓扑排序，节点scc编号的大小就是反图拓扑序的大小，因此姐妹点选scc小的即可</p>
+<p>tarjan比dfs快，我终于明白了，dfs是$O(nm)$的</p>
+<p>这里还有一些要注意的地方，如果一个限制中提到了一定不会出现赛车，设此限制为$(x\to y)$，若x不可能选，则直接continue，若y不可能选，则x连向他的姐妹节点，巧妙地表达了x不可能选</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/07/04/BZOJ4945-Noi2017-游戏/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/04/BZOJ2208-Jsoi2010-连通数/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1807,389 +2193,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/29/BZOJ3676-Apio2014-回文串/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="RheToXic">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head-image.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="RheToXic">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/29/BZOJ3676-Apio2014-回文串/" itemprop="url">BZOJ3676 [Apio2014]回文串</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-29T19:34:16+08:00">
-                2019-06-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/字符串/" itemprop="url" rel="index">
-                    <span itemprop="name">字符串</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/字符串/后缀自动机/" itemprop="url" rel="index">
-                    <span itemprop="name">后缀自动机</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  575
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>题目链接：<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=3676" target="_blank" rel="noopener">BZOJ3676</a></p>
-</blockquote>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>1.找出回文串<br>2.查询他出现次数，更新答案<br>第一步使用马拉车，需要注意，只有更新mx是会产生新的回文串，数量是$O(n)$的，也就是只有$O(n)$次询问<br>询问使用后缀自动机，从右端对应的节点开始树上倍增，由于祖先上全都是其后缀，所以定位到长度合适的节点。更新答案即可。<br>比较水，基本方法，基本性质<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/06/29/BZOJ3676-Apio2014-回文串/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </p></div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/07/LOJ3049-十二省联考2019-字符串问题/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="RheToXic">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head-image.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="RheToXic">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/07/LOJ3049-十二省联考2019-字符串问题/" itemprop="url">LOJ3049 [十二省联考2019]字符串问题</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-07T18:17:59+08:00">
-                2019-06-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/字符串/" itemprop="url" rel="index">
-                    <span itemprop="name">字符串</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/字符串/后缀数组/" itemprop="url" rel="index">
-                    <span itemprop="name">后缀数组</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.6k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  8
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>题目链接：<a href="https://loj.ac/problem/3049" target="_blank" rel="noopener">LOJ3049</a></p>
-</blockquote>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>这是一道还没有A掉的题，能过小样例，大数据过不了，测试点只过了一个，调不出来，先留着吧</p>
-<p>本题有两个做法，后缀数组和后缀自动机，这里我写的是后缀数组<br>根据题意就是在a和b之间连一些边，求最长路<br>我们要搞定的是b向a连得边，也就是每个$b_i$是哪些$a$前缀<br>先建好后缀数组，这样每一个a中的元素就是这个二维中的一个点$ (la_i,\ ra_i-la_i+1) $<br>每一个b中的元素可以匹配的是sa中的一个区间，这个区间都以$b_i$为前缀<br>那么这个$b_i$会向这个区间的后面一部分的a连边，具体看图<br><img src="/2019/06/07/LOJ3049-十二省联考2019-字符串问题/1.png"><br>红色的圈为a的位置，绿色是b的匹配<br>那么此时实心的红点是要连边的<br>注意到有两个红圈虽然在sa的区间内，但仍不连边，这是对应最后两个测试点的状况<br>具体实现时，肯定不可能暴力连边，每次连得都是区间，可以使用线段树优化建图<br>但仅仅线段树还是不够，因为即使是这个区间也不是全都连边，必须是长度大于$blen_i$的，所以考虑使用主席树，可持久化<br>从右往左每一列加入时可持久化一下，连边时在对应的版本上查区间，每一个版本对应的是右缀(自己起的名字)<br>最后使用拓扑排序判环与求最长路</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/06/07/LOJ3049-十二省联考2019-字符串问题/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2242,7 +2245,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-count">40</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2253,7 +2256,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2350,7 +2353,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共36.9k字</span>
+  <span class="post-count">博客全站共38.1k字</span>
 </div>
         
 
