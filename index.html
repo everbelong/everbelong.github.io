@@ -280,6 +280,221 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/18/BZOJ3672-Noi2014-购票/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="RheToXic">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head-image.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="RheToXic">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/18/BZOJ3672-Noi2014-购票/" itemprop="url">BZOJ3672 [Noi2014]购票</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-18T14:56:13+08:00">
+                2019-07-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/动态规划/" itemprop="url" rel="index">
+                    <span itemprop="name">动态规划</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据结构/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据结构/树链剖分/" itemprop="url" rel="index">
+                    <span itemprop="name">树链剖分</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/动态规划/斜率优化/" itemprop="url" rel="index">
+                    <span itemprop="name">斜率优化</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>题目链接：<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=3672" target="_blank" rel="noopener">BZOJ3672</a></p>
+</blockquote>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>$O(n^2)$的暴力dp很好想<br>$$<br>f[i] = min(f[j] + (dis[i] - dis[j])\times p_i + q_i),\quad dis[i] - dis[j] &lt;= l_i<br>$$<br>如果在一个序列上的话，这应该是一个经典的斜率优化，对于任意$ a &lt; b $，若要求对于i来说决策a比b更优，则<br>$$<br>p_i &lt; \frac{f[b] - f[a]}{dis[b] - dis[a]}<br>$$<br>由于p不具有单调性，因此不能从队头删除元素，而应在队列中二分查找最优的决策<br>再加上对于决策的位置有l的限制，因此还需要用线段树</p>
+<p>那么对于本题，在树上进行转移，就需要树链剖分了<br>剖分后的线段树上每个节点开一个vector，维护这个节点的决策集合，一个原树上的点最多出现在log个vector中，因此空间复杂度是对的<br>一遍dfs进行转移，维护一个根到当前节点的栈，转移时通过跳top将所有满足小于等于$l_x$的点分割成线段树上的区间，在线段树的各个vector上二分查找最优决策，取最小值，得到当前dp值，再在线段树上进行修改，最多修改log个节点，每个节点把队尾不优的决策弹出，再压如新决策<br>网上的题解都把这个方法叫树剖线段树维护凸包</p>
+<p>下面的代码洛谷上可过，BZOJ上会RE<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/07/18/BZOJ3672-Noi2014-购票/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </p></div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/17/BZOJ4543-POI2014-Hotel加强版/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1078,7 +1293,11 @@
 <ul>
 <li>伯努利数</li>
 <li>递推</li>
-<li>差分序列<br>我使用了另外两种方法<h2 id="拉格朗日插值"><a href="#拉格朗日插值" class="headerlink" title="拉格朗日插值"></a>拉格朗日插值</h2>$m$次自然数幂和是一个$m+1$次多项式，可以举$m=1$的例子，容易发现这一点<br>这样将$x=0…m+1$带进去，得到$m+2$个点，然后插值即可<br>暴力做法$O(m^2)$，但由于取的是等间隔的x，因此可以优化到$O(m)$<h2 id="第二类斯特林数"><a href="#第二类斯特林数" class="headerlink" title="第二类斯特林数"></a>第二类斯特林数</h2>下文中加点表示降阶函数，也就是下划线<br>第二类斯特林数有生成函数<br>$$<br>x^n=\sum_{i=0}^n<br>\begin{Bmatrix}<br>n \\<br>i \\<br>\end{Bmatrix}x^{i.}<br>$$<br>因此原式可以这样展开<br>$$<br>\sum_{i=0}^ni^m = \sum_{i=0}^n\sum_{j=0}^m<br>\begin{Bmatrix}<br>m \\<br>j \\<br>\end{Bmatrix}i^{j.}<br>$$<br>$$<br>=\sum_{j=0}^m\begin{Bmatrix}<br>m \\<br>j \\<br>\end{Bmatrix}j!\sum_{i=0}^n\begin{pmatrix}<br>i \\<br>j \\<br>\end{pmatrix}<br>$$<br>$$<br>= \sum_{j=0}^m\begin{Bmatrix}<br>m \\<br>j \\<br>\end{Bmatrix}j!\begin{pmatrix}<br>n + 1 \\<br>j + 1 \\<br>\end{pmatrix}<br>$$<br>$$<br>=\sum_{j=1}^m\begin{Bmatrix}<br>m \\<br>j \\<br>\end{Bmatrix}\frac{(n+1)^{(j+1).}}{j+1}<br>$$<br>然后就可以$O(n^2)$算了
+<li>差分序列</li>
+</ul>
+<p>我使用了另外两种方法</p>
+<h2 id="拉格朗日插值"><a href="#拉格朗日插值" class="headerlink" title="拉格朗日插值"></a>拉格朗日插值</h2><p>$m$次自然数幂和是一个$m+1$次多项式，可以举$m=1$的例子，容易发现这一点<br>这样将$x=0…m+1$带进去，得到$m+2$个点，然后插值即可<br>暴力做法$O(m^2)$，但由于取的是等间隔的x，因此可以优化到$O(m)$</p>
+<h2 id="第二类斯特林数"><a href="#第二类斯特林数" class="headerlink" title="第二类斯特林数"></a>第二类斯特林数</h2><p>下文中加点表示降阶函数，也就是下划线<br>第二类斯特林数有生成函数<br>$$<br>x^n=\sum_{i=0}^n<br>\begin{Bmatrix}<br>n \\<br>i \\<br>\end{Bmatrix}x^{i.}<br>$$<br>因此原式可以这样展开<br>$$<br>\sum_{i=0}^ni^m = \sum_{i=0}^n\sum_{j=0}^m<br>\begin{Bmatrix}<br>m \\<br>j \\<br>\end{Bmatrix}i^{j.}<br>$$<br>$$<br>=\sum_{j=0}^m\begin{Bmatrix}<br>m \\<br>j \\<br>\end{Bmatrix}j!\sum_{i=0}^n\begin{pmatrix}<br>i \\<br>j \\<br>\end{pmatrix}<br>$$<br>$$<br>= \sum_{j=0}^m\begin{Bmatrix}<br>m \\<br>j \\<br>\end{Bmatrix}j!\begin{pmatrix}<br>n + 1 \\<br>j + 1 \\<br>\end{pmatrix}<br>$$<br>$$<br>=\sum_{j=1}^m\begin{Bmatrix}<br>m \\<br>j \\<br>\end{Bmatrix}\frac{(n+1)^{(j+1).}}{j+1}<br>$$<br>然后就可以$O(n^2)$算了<br>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/07/14/BZOJ5339-TJOI2018-教科书般的亵渎/#more" rel="contents">
@@ -1088,7 +1307,7 @@
           <!--/noindex-->
         
       
-    </li></ul></div>
+    </p></div>
     
     
     
@@ -2099,164 +2318,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/08/BZOJ2729-HNOI2012-排队/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="RheToXic">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head-image.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="RheToXic">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/08/BZOJ2729-HNOI2012-排队/" itemprop="url">BZOJ2729 [HNOI2012]排队</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-08T12:47:19+08:00">
-                2019-07-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  316
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>题目链接：<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=2729" target="_blank" rel="noopener">BZOJ2729</a></p>
-</blockquote>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>插板法<br>以男生为基准，先插老师，再插女生<br>若老师之间有男生，就是n插2，再插m<br>若老师之间无男生，则之间只有一个女生，看成一个男生，n+1插m-1<br>答案为<br>$$<br>n!A_{n+1}^2A_{n+3}^m + 2m(n+1)!A_{n+2}^{m-1}<br>$$<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/07/08/BZOJ2729-HNOI2012-排队/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </p></div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2309,7 +2370,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2320,7 +2381,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2417,7 +2478,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共40.5k字</span>
+  <span class="post-count">博客全站共41.5k字</span>
 </div>
         
 

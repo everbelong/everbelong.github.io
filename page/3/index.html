@@ -280,6 +280,209 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/30/BZOJ3930-CQOI2015-选数/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="RheToXic">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head-image.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="RheToXic">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/30/BZOJ3930-CQOI2015-选数/" itemprop="url">BZOJ3930 [CQOI2015]选数</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-30T21:58:11+08:00">
+                2019-06-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/数学/" itemprop="url" rel="index">
+                    <span itemprop="name">数学</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/数学/杜教筛/" itemprop="url" rel="index">
+                    <span itemprop="name">杜教筛</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/数学/莫比乌斯反演/" itemprop="url" rel="index">
+                    <span itemprop="name">莫比乌斯反演</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  569
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>题目链接：<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=3930" target="_blank" rel="noopener">BZOJ3930</a></p>
+</blockquote>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>整体除以gcd，相当于在一个区间内选gcd=1的方案数<br>$$<br>f(d) = \sum [gcd(a_i)=d] \\<br>F(d) = \sum [d|gcd(a_i)] = \sum_{d|n}f(n)<br>$$<br>$$<br>f(1) = \sum_{i=1}^{R}\mu(i)(\frac{R}{i}-\frac{L-1}{i})^k<br>$$<br>难点在$\mu$的计算上，因为左右端点都可能很大<br>所以使用杜教筛，很裸地计算$\mu$的前缀和<br>在这道题里记一下杜教筛<br>记$S(n)=\sum_{i=1}^nf(i)$，有$h=f*g$<br>$$<br>\sum_{i=1}^Nh(i) = \sum_{i=1}^N\sum_{d|i}g(d)f(\frac{i}{d}) \\<br>= \sum_{d=1}^N\sum_{i=1}^{\frac{N}{d}}g(d)f(i) \\<br>= \sum_{d=1}^Ng(d)\sum_{i=1}^{\frac{N}{d}}f(i) \\<br>= \sum_{d=1}^Ng(d)S(\frac{N}{d})<br>$$<br>关键的一步，提取后面的第一项<br>$$<br>\sum_{i=1}^Nh(i) = g(1)S(N) + \sum_{d=2}^Ng(d)S(\frac{N}{d})<br>$$<br>$$<br>g(1)S(N) = \sum_{i=1}^Nh(i) - \sum_{d=2}^Ng(d)S(\frac{N}{d})<br>$$<br>要求前面h的前缀和好求，后面可以整除分块<br>此乃杜教筛也</p>
+<p>对于现在要求的mu，就是这样<br>$$<br>S(N) = 1 - \sum_{d=2}^NS(\frac{N}{d})<br>$$<br>就做完了<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/06/30/BZOJ3930-CQOI2015-选数/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </p></div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/30/BZOJ2440-完全平方数/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1991,197 +2194,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/27/BZOJ1563-Noi2009-诗人小G/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="RheToXic">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head-image.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="RheToXic">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/27/BZOJ1563-Noi2009-诗人小G/" itemprop="url">BZOJ1563 [Noi2009]诗人小G</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-27T17:35:29+08:00">
-                2019-05-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/动态规划/" itemprop="url" rel="index">
-                    <span itemprop="name">动态规划</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/动态规划/决策单调性优化/" itemprop="url" rel="index">
-                    <span itemprop="name">决策单调性优化</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  741
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>题目链接：<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=1563" target="_blank" rel="noopener">BZOJ1563</a></p>
-</blockquote>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>dp转移方程<br>$$<br>f[i] = min_{j=0}^{i-1}{ f[j] + | s[i] - s[j] - 1 - L | ^ p }<br>$$<br>其中$ s[i] = i + \sum_{j=1}^{i}len[j] $<br>采取了别人说的暴力打表法，发现确实具有决策单调性<br>证明？我不会。<br>因此以后见到这种1D1D的dp方程先写出来暴力，然后打表决策看有无单调性，没有的话一定是斜率优化了<br>每一时刻，所有位置对应的决策形成的数列一定是单调不减的，就是下面的样子<br>1111111111111<br>1111122222223<br>1111333344555<br>这个数列在每次计算出新的位置后会更新，之后下一个位置的决策实际上就确定了，更新的时候仍会保持单调性<br>具体实现可以使用单调队列配二分<br>每一个决策是一个区间，新的可能出现的决策会把队尾的区间弹掉<br>当队尾的区间无法弹掉后，使用二分确定在哪个位置之前是可以保留的，剩下的仍要更新<br>最后把当前决策补到队尾<br>下一轮的队首就是最终决策<br>同时及时把队首无用的决策区间弹掉<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/05/27/BZOJ1563-Noi2009-诗人小G/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </p></div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2234,7 +2246,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2245,7 +2257,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2342,7 +2354,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共40.5k字</span>
+  <span class="post-count">博客全站共41.5k字</span>
 </div>
         
 
