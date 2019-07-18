@@ -398,7 +398,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  812
+                  814
                 </span>
               
 
@@ -446,7 +446,7 @@
 </ol>
 <p>考虑都在最上方的LCA处统计，鉴于第二种比较特殊，我们定义两个dp数组</p>
 <p>令$f[i][j]$表示i的子树中与i距离为j的点数<br>令$g[i][j]$表示i的子树中，两个点到其lca距离均为d，且lca到i的距离为$d - j$的点对数</p>
-<p>这样就可以在最上方的LCA由f和g拼接出两种情况，转移方程如下：(v是u的儿子)<br>$$<br>f[u][j] += f[v][j-1] $$$$<br>g[u][j] += g[v][j+1] $$$$<br>ans += f[u][j-1] <em> g[v][j] + f[v][j] </em> g[u][j+1] $$$$<br>ans += g[u][0]<br>$$<br>这样的做法是$O(n^2)$的<br>可以使用长链剖分优化到$ O(nlogn) $<br>每个点的f和g数组可以由重儿子继承来，再讲请儿子合并进去<br>巧妙的地方在于，合并轻儿子时并不需要枚举满的第二维，只要枚举轻儿子的链长，因为轻儿子向下的最长长度就是链长。因此总共枚举的第二维实际上是$ O(n) $的<br>正是这一点巧妙地保证了时间复杂度。从重儿子继承只是其中必要的一环，优化的关键在于转移是可以与深度有关的。<br>不仅仅是状态与深度有关，转移也要与深度有关</p>
+<p>这样就可以在最上方的LCA由f和g拼接出两种情况，转移方程如下：(v是u的儿子)<br>$$<br>f[u][j] += f[v][j-1]<br>$$$$<br>g[u][j] += g[v][j+1]<br>$$$$<br>ans += f[u][j-1] \times g[v][j] + f[v][j] \times g[u][j+1]<br>$$$$<br>ans += g[u][0]<br>$$<br>这样的做法是$O(n^2)$的<br>可以使用长链剖分优化到$ O(nlogn) $<br>每个点的f和g数组可以由重儿子继承来，再讲请儿子合并进去<br>巧妙的地方在于，合并轻儿子时并不需要枚举满的第二维，只要枚举轻儿子的链长，因为轻儿子向下的最长长度就是链长。因此总共枚举的第二维实际上是$ O(n) $的<br>正是这一点巧妙地保证了时间复杂度。从重儿子继承只是其中必要的一环，优化的关键在于转移是可以与深度有关的。<br>不仅仅是状态与深度有关，转移也要与深度有关</p>
 <p>还有关于如何从重儿子继承的问题，可以直接复制指针，但数组指针无法修改，单单是一个指针的话没有内存是无法下标访问的，因此事先为所有点声明好空间（也是$O(n)$)的。代码中的id变量的作用就是为每个指针预留下足够的空间。<br>具体可以研究代码，是一个新技巧。<br>
           <!--noindex-->
           <div class="post-button text-center">
@@ -830,7 +830,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  591
+                  593
                 </span>
               
 
@@ -871,7 +871,7 @@
           <blockquote>
 <p>题目链接：<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=2655" target="_blank" rel="noopener">BZOJ2655</a></p>
 </blockquote>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>我真是见识到了插值这个东西的好处<br>第一步的想法是直接退出一个式子，这样最好，如果没有两两不同的限制，那么式子很简单就是$[\frac{A(A+1)}{2}]^n$<br>多了不同这个限制，那么容斥就好了，总方案$-$一对相同$+$两对相同$-…$<br>这样写出式子看看<br>$$<br>(\sum_{i=1}^Ai)^n-C_{n-1}^1(\sum_{i=1}^Ai)^{n-2}(\sum_{i=1}^Ai^2)+…<br>$$<br>但是第三项开始就不好写了，因为可能是三连等，也可能有两对分别相同<br>然而我们可以发现不管怎么写，这个式子始终是一个关于A的$2n$次多项式。每一项都是这个次数。<br>然后用插值就好了，根本不用考虑什么烦人的容斥，反正插出来都一样<br>这样A再大都可以被降到2n的级别，考虑暴力做法算$0…2n$的函数值就可以了<br>实在是太神了，感觉什么都没做，就解决了容斥的问题！<br>暴力的部分用dp就可以了，令$f[i][j]$表示j个小于等于i的正整数的所有序列的值得和，则<br>$$<br>f[i][j] = f[i-1][j-1] <em>i </em> j + f[i-1][j]<br>$$<br>意思是，如果j个数中有i，共有j种情况，每种的值都会乘以i，从f[i-1][j-1]转移，否则和f[i-1][j]相同</p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>我真是见识到了插值这个东西的好处<br>第一步的想法是直接退出一个式子，这样最好，如果没有两两不同的限制，那么式子很简单就是$[\frac{A(A+1)}{2}]^n$<br>多了不同这个限制，那么容斥就好了，总方案$-$一对相同$+$两对相同$-…$<br>这样写出式子看看<br>$$<br>(\sum_{i=1}^Ai)^n-C_{n-1}^1(\sum_{i=1}^Ai)^{n-2}(\sum_{i=1}^Ai^2)+…<br>$$<br>但是第三项开始就不好写了，因为可能是三连等，也可能有两对分别相同<br>然而我们可以发现不管怎么写，这个式子始终是一个关于A的$2n$次多项式。每一项都是这个次数。<br>然后用插值就好了，根本不用考虑什么烦人的容斥，反正插出来都一样<br>这样A再大都可以被降到2n的级别，考虑暴力做法算$0…2n$的函数值就可以了<br>实在是太神了，感觉什么都没做，就解决了容斥的问题！<br>暴力的部分用dp就可以了，令$f[i][j]$表示j个小于等于i的正整数的所有序列的值得和，则<br>$$<br>f[i][j] = f[i-1][j-1] \times i \times j + f[i-1][j]<br>$$<br>意思是，如果j个数中有i，共有j种情况，每种的值都会乘以i，从f[i-1][j-1]转移，否则和f[i-1][j]相同</p>
 <p>感觉如果发现某题的式子是个多项式，那么这题就可以转化为暴力题了<br>
           <!--noindex-->
           <div class="post-button text-center">
@@ -1033,7 +1033,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  929
+                  943
                 </span>
               
 
@@ -1078,7 +1078,7 @@
 <ul>
 <li>伯努利数</li>
 <li>递推</li>
-<li>差分序列<br>我使用了另外两种方法<h2 id="拉格朗日插值"><a href="#拉格朗日插值" class="headerlink" title="拉格朗日插值"></a>拉格朗日插值</h2>$m$次自然数幂和是一个$m+1$次多项式，可以举$m=1$的例子，容易发现这一点<br>这样将$x=0…m+1$带进去，得到$m+2$个点，然后插值即可<br>暴力做法$O(m^2)$，但由于取的是等间隔的x，因此可以优化到$O(m)$<h2 id="第二类斯特林数"><a href="#第二类斯特林数" class="headerlink" title="第二类斯特林数"></a>第二类斯特林数</h2>第二类斯特林数有生成函数<br>$$<br>x^n=\sum_{i=0}^n<br>\begin{Bmatrix}<br>n \<br>i \<br>\end{Bmatrix}x^{i{_}}<br>$$<br>因此原式可以这样展开<br>$$<br>\sum_{i=0}^ni^m = \sum_{i=0}^n\sum_{j=0}^m<br>\begin{Bmatrix}<br>m \<br>j \<br>\end{Bmatrix}i^{j{_}}<br>$$<br>$$<br>=\sum_{j=0}^m\begin{Bmatrix}<br>m \<br>j \<br>\end{Bmatrix}j!\sum_{i=0}^n\begin{pmatrix}<br>i \<br>j \<br>\end{pmatrix}<br>$$<br>$$<br>= \sum_{j=0}^m\begin{Bmatrix}<br>m \<br>j \<br>\end{Bmatrix}j!\begin{pmatrix}<br>n + 1 \<br>j + 1 \<br>\end{pmatrix}<br>$$<br>$$<br>=\sum_{j=1}^m\begin{Bmatrix}<br>m \<br>j \<br>\end{Bmatrix}\frac{(n+1)^{(j+1)_}}{j+1}<br>$$<br>然后就可以$O(n^2)$算了
+<li>差分序列<br>我使用了另外两种方法<h2 id="拉格朗日插值"><a href="#拉格朗日插值" class="headerlink" title="拉格朗日插值"></a>拉格朗日插值</h2>$m$次自然数幂和是一个$m+1$次多项式，可以举$m=1$的例子，容易发现这一点<br>这样将$x=0…m+1$带进去，得到$m+2$个点，然后插值即可<br>暴力做法$O(m^2)$，但由于取的是等间隔的x，因此可以优化到$O(m)$<h2 id="第二类斯特林数"><a href="#第二类斯特林数" class="headerlink" title="第二类斯特林数"></a>第二类斯特林数</h2>下文中加点表示降阶函数，也就是下划线<br>第二类斯特林数有生成函数<br>$$<br>x^n=\sum_{i=0}^n<br>\begin{Bmatrix}<br>n \\<br>i \\<br>\end{Bmatrix}x^{i.}<br>$$<br>因此原式可以这样展开<br>$$<br>\sum_{i=0}^ni^m = \sum_{i=0}^n\sum_{j=0}^m<br>\begin{Bmatrix}<br>m \\<br>j \\<br>\end{Bmatrix}i^{j.}<br>$$<br>$$<br>=\sum_{j=0}^m\begin{Bmatrix}<br>m \\<br>j \\<br>\end{Bmatrix}j!\sum_{i=0}^n\begin{pmatrix}<br>i \\<br>j \\<br>\end{pmatrix}<br>$$<br>$$<br>= \sum_{j=0}^m\begin{Bmatrix}<br>m \\<br>j \\<br>\end{Bmatrix}j!\begin{pmatrix}<br>n + 1 \\<br>j + 1 \\<br>\end{pmatrix}<br>$$<br>$$<br>=\sum_{j=1}^m\begin{Bmatrix}<br>m \\<br>j \\<br>\end{Bmatrix}\frac{(n+1)^{(j+1).}}{j+1}<br>$$<br>然后就可以$O(n^2)$算了
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/07/14/BZOJ5339-TJOI2018-教科书般的亵渎/#more" rel="contents">
