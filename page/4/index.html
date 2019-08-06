@@ -280,6 +280,199 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/01/BZOJ4650-Noi2016-优秀的拆分/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="RheToXic">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head-image.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="RheToXic">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/01/BZOJ4650-Noi2016-优秀的拆分/" itemprop="url">BZOJ4650 [Noi2016]优秀的拆分</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-01T21:44:52+08:00">
+                2019-06-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/字符串/" itemprop="url" rel="index">
+                    <span itemprop="name">字符串</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/字符串/后缀数组/" itemprop="url" rel="index">
+                    <span itemprop="name">后缀数组</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>题目链接：<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=4650" target="_blank" rel="noopener">BZOJ4650</a></p>
+</blockquote>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>感觉这道题的方法在SA里还是很常见的<br>考虑枚举AA和BB的分界点，对答案的贡献是以当前为结尾的XX的个数和以当前为结束的XX的个数<br>因此实际上要计算以每个字符开头的XX（两个相同字符串）的个数，同理也要算以他结尾的<br>枚举X字符串的长度$len$，每隔长度$len$设一个关键点<br>那么每一个XX一定过两个相邻的关键点<br>枚举每一对相邻的关键点，考虑其可能对那些位置产生贡献（所谓对某个位置产生贡献就是所这个位置开头的XX字符串个数+1）<br>请看下图，我们求出两个位置的最长公共前缀和最长公共后缀<br><img src="/2019/06/01/BZOJ4650-Noi2016-优秀的拆分/1.png"><br>此时两者没有交点，也就是长度之和$\le len$，不可能产生贡献（因为总会每截断）<br>但是下面这种情况<br><img src="/2019/06/01/BZOJ4650-Noi2016-优秀的拆分/2.png"><br>两者有了交点，就会产生贡献<br>两条橙色线都是可以产生的XX，在两者之间的每一条同样长度的字符串也是<br>因此紫色的那一段向后的XX会$+1$，棕色的那一段有向前的XX会$+1$<br>区间加一可以直接差分<br>至于LCP和LCS就是后缀数组的常见操作了，前后要构造两个</p>
+<p>1.枚举 $len$ ，每隔 $len$ 设置关键点：这个的复杂度是调和级数 $O(n \log n)$<br>2.求 后缀LCP，前缀LCS：使用后缀数组 + st 表 做到 $O(1)$ 查询<br>3.区间加上 1 ： 差分维护就可以了。</p>
+<p>记住这个方法，我叫他“调和级数法”<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/06/01/BZOJ4650-Noi2016-优秀的拆分/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </p></div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/27/BZOJ1563-Noi2009-诗人小G/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2047,198 +2240,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/22/BZOJ2434-阿狸的打字机/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="RheToXic">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head-image.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="RheToXic">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/22/BZOJ2434-阿狸的打字机/" itemprop="url">BZOJ2434 阿狸的打字机</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-22T19:44:58+08:00">
-                2019-01-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/字符串/" itemprop="url" rel="index">
-                    <span itemprop="name">字符串</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/字符串/AC自动机/" itemprop="url" rel="index">
-                    <span itemprop="name">AC自动机</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.2k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  6
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>题目链接<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=2434" target="_blank" rel="noopener">BZOJ2434</a></p>
-</blockquote>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><h2 id="40分做法"><a href="#40分做法" class="headerlink" title="40分做法"></a>40分做法</h2><p>第一想法，AC自动机，记录每个字符串以及它们在Trie上的哪个节点结束，直接匹配（好暴力啊）。<br>事实上，这种做法，仅仅是记录所有的字符串都会超时超内存，都轮不到匹配的事。但可以作为一个模板题写写嘛。</p>
-<h3 id="100分做法"><a href="#100分做法" class="headerlink" title="100分做法"></a>100分做法</h3><p>这道题作为一道NOI题，非常巧妙地运用了AC自动机的一系列扩展性质。<br>我们考虑构建自动机之后做了什么，无非是在fail数组上跳来跳去来寻找匹配。而每一个节点有唯一的fail节点，这让我们联想到一棵新的树，“fail树”，它以fail数组为边。<br>于是，惊喜地发现，要想出现字符串x，就要出现在x的尾节点在“fail树”上的子树中。<br>要发现，<strong>若字符串x在字符串y中出现，则y所在Trie的节点会出现在x对应在“fail树”上的子树中，出现的次数即为匹配数</strong><br>因此，题目就转化为，搞出AC自动机，搞出“fail树”，求出x的子树，求出y在Trie上的链，回答他们有多少公共节点。<br>但如果对于每个询问都这样求一边，依旧是40分，因此我们考虑一起计算。这里在代码实现上比较巧妙。子树可以用dfs序变成区间问题，而对于链，我们可以只用一遍dfs，进入一个节点时把他+1，出来时-1，<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/01/22/BZOJ2434-阿狸的打字机/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </p></div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2291,7 +2292,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-count">45</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2399,7 +2400,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共41.5k字</span>
+  <span class="post-count">博客全站共42.3k字</span>
 </div>
         
 
