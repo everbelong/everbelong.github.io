@@ -68,7 +68,7 @@
 
 
 
-  <link rel="alternate" href="/atom.xml" title="RheToXic" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xml" title="Ratexxxx" type="application/atom+xml">
 
 
 
@@ -77,13 +77,13 @@
 
 <meta name="description" content="可以的">
 <meta property="og:type" content="website">
-<meta property="og:title" content="RheToXic">
+<meta property="og:title" content="Ratexxxx">
 <meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="RheToXic">
+<meta property="og:site_name" content="Ratexxxx">
 <meta property="og:description" content="可以的">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="RheToXic">
+<meta name="twitter:title" content="Ratexxxx">
 <meta name="twitter:description" content="可以的">
 
 
@@ -120,7 +120,7 @@
 
 
 
-  <title>RheToXic</title>
+  <title>Ratexxxx</title>
   
 
 
@@ -151,7 +151,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">RheToXic</span>
+        <span class="site-title">Ratexxxx</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -280,16 +280,663 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/19/BZOJ4538-Hnoi2016-网络/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/28/BZOJ1921-Ctsc2010-珠宝商/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="RheToXic">
+      <meta itemprop="name" content="Ratexxxx">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/head-image.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="RheToXic">
+      <meta itemprop="name" content="Ratexxxx">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/28/BZOJ1921-Ctsc2010-珠宝商/" itemprop="url">BZOJ1921 [Ctsc2010]珠宝商</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-28T21:09:46+08:00">
+                2019-08-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/字符串/" itemprop="url" rel="index">
+                    <span itemprop="name">字符串</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/字符串/后缀自动机/" itemprop="url" rel="index">
+                    <span itemprop="name">后缀自动机</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/字符串/后缀树/" itemprop="url" rel="index">
+                    <span itemprop="name">后缀树</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.7k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>题目链接<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=1921" target="_blank" rel="noopener">BZOJ1921</a></p>
+</blockquote>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>本题综合利用后缀自动机的呀</p>
+<p>首先第一想法是怎么写暴力，从每个点为起点开始想下走，同时在SAM上走DAG，对于树上的每走到一个点，把答案加上其SAM对应节点的endpos大小即可，复杂度$ O(n^2) $</p>
+<p>然后看到这种统计路径的题，回想到点分和DSU，先试试点分，那么需要做的是统计以经过某个点x的路径的贡献，假设这条路径是$ u \to x \to v $<br>点分的一般思路，如果可以单独算出$ u \to x $和$ x \to v $，那么拼在一起就好了<br>但是如何拼在一起呢<br>考虑可以在M串上统计，每个u到x在匹配的位置上加一个标记，那么最后的答案就是每个位置 向前匹配的标记和*向后匹配的标记和 之和<br>发现上面说的两种路径其中一种可以变成反串上的另一种，因此只需考虑一种就可以</p>
+<p>然后就要求后缀自动机理解透彻了<br>网上的题解都说要在后缀树上统计$ u \to x $的路径贡献<br>然后我就想，为什么还要搞后缀树，直接在DAG上统计$ x \to v $的贡献不就可以啦，每次在后面加一个字符，方法同第一种暴力一样啊<br>然而在网上找不到这种做法，于是我就手画了好多后缀自动机和后缀树（因为画挂了很多次），然后找到了原因<br>如果我们走DAG来计算贡献，那么走到一个点时，要计入的是以$ x…v $为前缀的串的个数，但在DAG上走到一个位置，这个节点代表的字串可以有在$x…v$前面加了几个字符，然后就不满足要求了，但我们同样会计入答案。也就是说这样会统计多<br>但如果在后缀树上统计$ u \to x $，那么每次是在前面加一个字符，需要向儿子走，但可以保证之后走到的每一个点代表的所有串都是以$ u…x $为后缀的，就是当且仅当的意思，所以可以正确统计<br>这个还是要搞张图看看啊</p>
+<p>后缀自动机一个重要性质：自动机的par树即是其反串的后缀树（所以par树也叫前缀树，前缀树是反串的后缀树，多好）<br>然后建后缀树时记录一下每个点到其儿子走的是哪个字符的转移边</p>
+<p>这样点分的做法就完善了，由于在每个分治点都要在后缀树上将标记推到儿子并统计，复杂度是$ O(nlogn + nm) $，后面一部分成了瓶颈</p>
+<p>前人想出了一个很神仙的操作，我们发现第一个解法（暴力）复杂度与m无关，因此可以考虑当分治的子树大小低于某个值时直接暴力统计即可<br>当这个值设为$ \sqrt n $时最优，复杂度可以控制在$ O((n + m)\sqrt n) $</p>
+<p>写在最后<br>后缀系列算法真的好神啊，后缀自动机和后缀树的坑好深啊<br>主要是有各种各样的性质，互相转换又即为方便<br>然后通过这道题我还练熟了手画自动机[滑稽]</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/08/28/BZOJ1921-Ctsc2010-珠宝商/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/28/BZOJ1920-Ctsc2010-产品销售/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ratexxxx">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head-image.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ratexxxx">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/28/BZOJ1920-Ctsc2010-产品销售/" itemprop="url">BZOJ1920 [Ctsc2010]产品销售</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-28T21:06:37+08:00">
+                2019-08-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/图论/" itemprop="url" rel="index">
+                    <span itemprop="name">图论</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/图论/网络流/" itemprop="url" rel="index">
+                    <span itemprop="name">网络流</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据结构/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据结构/线段树/" itemprop="url" rel="index">
+                    <span itemprop="name">线段树</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/图论/网络流/费用流/" itemprop="url" rel="index">
+                    <span itemprop="name">费用流</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  10
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>题目链接:<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=1920" target="_blank" rel="noopener">BZOJ1920</a></p>
+</blockquote>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>对于30分的部分分，就是建出图后跑最小费用最大流<br>对于100分，就是模拟费用流的过程，中间用数据结构（线段树）维护</p>
+<p>建图方式如下<br>$ s \to i $ 容量为U，费用为P<br>$ i \to i+1$ 容量为$ \infty$，费用为M<br>$ i+1 \to i$ 容量为$ \infty$，费用为C<br>$ i \to t$ 容量为D，费用为0<br>还有他们的反向边</p>
+<p>考虑如何模拟费用流，首先得性质是，源点和汇点都是满流的，并且他们可以不退流，因此可以考虑枚举每个点i，分配他到汇点的流量使之满流<br>可以发现源点到i的流有两种：<br>$ s \to k \to k+1 \to … \to i-1 \to i ……(1)$<br>$ s \to k \to k-1 \to … \to i+1 \to i ……(2)$<br>我们每次选两种决策中费用较少的进行扩流，直到$D[i]$流满为止<br>也就是过程分为三步，<br>一、计算两种决策的代价<br>二、取较优的方式扩流，维护信息，更新答案，直到流满<br>三、从i移动到i+1，维护信息</p>
+<h3 id="决策（2）"><a href="#决策（2）" class="headerlink" title="决策（2）"></a>决策（2）</h3><p>由于i是递增枚举的，所以从右到左的流只可能走C的正向边，可以不考虑M的反响边，代价为$ P[k] + sumC[k-1] - sumC[i] $，前面只与k有关，可以先排好序，每次跳过非法的（$k \le i || U[k]==0$）的k就可以直接询问</p>
+<p>扩流的话，流量为$flow = min(U[k], D[i])$，将$[i, k-1]$的区间流量加上$flow$即可</p>
+<h3 id="决策（1）"><a href="#决策（1）" class="headerlink" title="决策（1）"></a>决策（1）</h3><p>M的正向边有无限容量，但代价大，C的反向边代价小（为负），但有容量限制，为路径上所有正向边流量的最小值，因此前面每条边的代价有两种情况，$-C $或$ +M$<br>如果可以对C的流量进行维护的话，那么就可以维护正确的代价，进而求最小值<br>这个维护，需要在流量从0边成非0时设置代价为$-C$，在其又退回0后将代价加上$C+M$，可以发现每条边最多在右边时变大，在左边时变小，因此只有这两个过程就够了</p>
+<p>扩流同上</p>
+<p>考虑这个0的维护，如果最开始初值设为0的话，那么很难区分0到底是初值还是后来减回来的，所以一个比较好的办法是初值设为inf<br>在没有用到它的时候默认inf就是初值的0<br>然后会面临在决策（2）的时候，流量被区间加，这时需要先把所有inf设为0，再区间加，可以发现每个inf最多被设为0一次，可以用并查集优化，每次跳到下一个inf的位置即可<br>然后面临在决策（1）时区间减，会出现减到0的情况这标志着要修改代价了，只有在这个时候会真正出现0。修改完代价后我们立刻把0再变回inf，代表它已经没有流量了。之所以他可以改成inf而不会继续对区间的容量有所限制，是因为我们已经修改过费用了，新的容量正好对应着新的费用。<br>这样就完美解决了最棘手的问题。</p>
+<h3 id="维护的信息"><a href="#维护的信息" class="headerlink" title="维护的信息"></a>维护的信息</h3><p>需要维护C的流量flow，支持区间加减，查询最小值及其位置，以及获得每个0的位置，单点置为某值。<br>还要维护i之前每个点到i的代价（费用）cost，支持区间加减，查询最小值及其位置，单点置为某值<br>实际上操作是类似的，可以写成一个结构体的两个对象</p>
+<p>具体怎么维护</p>
+<p>在$cost[1…i-1] $中查询最小值和位置k，作为决策（1）<br>从排序好的那个序列首取出合法位置k，作为决策（2）<br>判断用那个决策，<br>对于（1）在$ flow[k…i-1] $中查询最小值，和U和D取min，得到流量，将$ flow[k…i-1] $区间减这个流量。在$flow$同样的区间递归找到每个为0的位置j，在$cost[1…j]$中区间加$ C[j]+M[j] $<br>对于（2），取U和D的min作为流量，$flow$区间加流量，加之前跳并查集将inf改为0<br>直到D[i]为0<br>将$cost[1…i]$区间加P[i]（前提是U[i]不为0）<br>将$cost[1…i]$区间加M[i]或-C[i]，取决于C[i]是否有流量，这是i对于前面每个点贡献的费用</p>
+<p>然后终于结束了</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/08/28/BZOJ1920-Ctsc2010-产品销售/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/28/BZOJ1919-Ctsc2010-性能优化/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ratexxxx">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head-image.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ratexxxx">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/28/BZOJ1919-Ctsc2010-性能优化/" itemprop="url">BZOJ1919 [Ctsc2010]性能优化</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-28T21:02:06+08:00">
+                2019-08-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/数学/" itemprop="url" rel="index">
+                    <span itemprop="name">数学</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/数学/多项式/" itemprop="url" rel="index">
+                    <span itemprop="name">多项式</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/数学/多项式/FFT/" itemprop="url" rel="index">
+                    <span itemprop="name">FFT</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>题目链接：<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=1919" target="_blank" rel="noopener">BZOJ1919</a></p>
+</blockquote>
+<h1><span id="solution">Solution</span></h1><p>据说是循环卷积板子题 需要对FFT有深刻的理解（不能只会敲模板）</p>
+<p>FFT本身就是支持循环卷积的，只要把长度定为n就可以<br>令$ A,B,C $分别是点值表示的数组, $ a,b,c $为原数组<br>$$<br>A(\omega_n^k) = \sum_{i=0}^{n-1}a_i\omega_n^{ik} \\<br>B(\omega_n^k) = \sum_{i=0}^{n-1}b_i\omega_n^{ik} \\<br>C(\omega_n^k) = A(\omega_n^k) \times B(\omega_n^k)<br>= \sum_{i=0}^{n-1}a_i\omega_n^{ik}\sum_{i=0}^{n-1}b_i\omega_n^{ik}<br>$$<br>由于$ \omega_n^{k}=\omega_n^{k+n} $, 所以将其展开可得<br>$$<br>C(\omega_n^k) = \sum_{s=0}^{n-1}T_s\omega_n^{is}\\<br>T_s = \sum_{(i+j)mod(n+1)=s}a_i\cdot b_j<br>$$<br>我们要求的循环卷积$c$也就是$T$<br>所以实际上$C$就是$c$的卷积, 直接逆卷积回去就可以了. 证毕</p>
+<p>然后要解决的问题是如何求任意长度FFT, 因为无法将其补成2的幂, 所以原来的板子行不通了<br>考虑n可以分解成P=2、3、5、7的幂，因此每次分治可以考虑分成P段，而不是单一的2段，但式子要重新搞。下面以3为例推一边，然后给出一个一般式子<br>$$<br>A(\omega_n^k) = \sum_{i=0}^{n-1}a_i\omega_n^{ik} \\<br>=(a_0\omega_n^k+a_3\omega_n^{3k}+a_6\omega_n^{6k}+…) \\+(a_1\omega_n^k+a_4\omega_n^{3k}+a_7\omega_n^{6k}+…) \\+(a_2\omega_n^k+a_5\omega_n^{3k}+a_8\omega_n^{6k}+…)  \\<br>= A_0(\omega_n^{3k}) + \omega_n^kA_1(\omega_n^{3k}) + \omega_n^{2k}A_2(\omega_n^{3k})<br>$$<br>这里按照3的同余系进行分组，$A_i$代表将a按照膜3的余数分组后递归求出的点值，同理可得<br>$$<br>A(\omega_n^{k+\frac{n}{3}})= A_0(\omega_n^{3k}) + \omega_n^{k+\frac{n}{3}}A_1(\omega_n^{3k}) + \omega_n^{2k+\frac{2k}{3}}A_2(\omega_n^{3k}) \\<br>A(\omega_n^{k+\frac{2n}{3}})= A_0(\omega_n^{3k}) + \omega_n^{k+\frac{2n}{3}}A_1(\omega_n^{3k}) + \omega_n^{2k+\frac{4n}{3}}A_2(\omega_n^{3k}) \\<br>$$<br>然后这三个数就可以一起算了，方法类似FFT<br>对于其他的P，同理有如下式子<br>$$<br>A(\omega_n^{k+\frac{in}{P}}) = \sum_{j=0}^{P-1}(\omega_n^{k+\frac{in}{P}})^j A_j(\omega_n^{Pk})<br>$$<br>或者写成如下形式更能看出来如何递归子问题<br>$$<br>A(\omega_n^{k+\frac{in}{P}}) = \sum_{j=0}^{P-1}(\omega_n^{k+\frac{in}{P}})^j A_j(\omega_{\frac{n}{P}}^{k})<br>$$<br>也就是n的规模缩小了$\frac{1}{P}$，递归后每一个对应位置都枚举i，j求一下，需要一个临时数组来备份上一层的结果<br>也可以写非递归的，好像要预处理一下每个位置最后会移到哪里，但是递归也能A，我就没写迭代的（其实是懒）</p>
+<p>最后的问题是FFT复数运算会存在极大精度问题，因为本题要快速幂算C次方，值域极大。<br>所以改成NTT，题目保证n+1是质数，又已经说了n最多4个质因数，因此求一下原根就好，这里在提一下原根求法（这里的n是题目中的n，求的是n+1的原根）<br>从2到n-1枚举g，验证g是原根的条件是：任意p是n的质因数，有<br>$$<br>g^{\frac{n}{p}} \neq 1\quad mod\ (n+1)<br>$$</p>
+<p>为了做这题不得不复习一遍FFT的推导，本来只会敲板子的ε=(´ο｀*)))</p>
+<h1><span id="code">Code</span></h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rep(i, a, b) for(int i(a), i##_AWSL(b); i &lt;= i##_AWSL; i++)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> drep(i, a, b) for(int i(a), i##_AWSL(b); i &gt;= i##_AWSL; i--)</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">500010</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">int</span> n, C, mod, g, pr[<span class="number">10</span>], cnt;</span><br><span class="line">ll a[maxn], b[maxn], tmp[maxn];</span><br><span class="line"><span class="function">ll <span class="title">Power</span><span class="params">(ll x, ll p)</span> </span>&#123;</span><br><span class="line">	ll res = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(; p; p &gt;&gt;= <span class="number">1</span>, x = x * x % mod) <span class="keyword">if</span>(p &amp; <span class="number">1</span>) res = res * x % mod;</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">getg</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(n % <span class="number">2</span> == <span class="number">0</span>) pr[++cnt] = <span class="number">2</span>;</span><br><span class="line">	<span class="keyword">if</span>(n % <span class="number">3</span> == <span class="number">0</span>) pr[++cnt] = <span class="number">3</span>;</span><br><span class="line">	<span class="keyword">if</span>(n % <span class="number">5</span> == <span class="number">0</span>) pr[++cnt] = <span class="number">5</span>;</span><br><span class="line">	<span class="keyword">if</span>(n % <span class="number">7</span> == <span class="number">0</span>) pr[++cnt] = <span class="number">7</span>;</span><br><span class="line">	<span class="keyword">for</span>(g = <span class="number">2</span>; g &lt;= n; g++) &#123;</span><br><span class="line">		<span class="keyword">int</span> tag = <span class="number">0</span>;</span><br><span class="line">		rep(i, <span class="number">1</span>, cnt) <span class="keyword">if</span>(Power(g, n / pr[i]) % mod == <span class="number">1</span>) tag = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span>(!tag) <span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ntt</span><span class="params">(ll *p, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> inv)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(l == r) <span class="keyword">return</span>;</span><br><span class="line">	<span class="keyword">int</span> len = r - l + <span class="number">1</span>, P = <span class="number">2</span>;</span><br><span class="line">	rep(i, <span class="number">1</span>, cnt) <span class="keyword">if</span>(len % pr[i] == <span class="number">0</span>) P = pr[i];</span><br><span class="line">	<span class="keyword">int</span> lp = len / P;</span><br><span class="line">	rep(i, <span class="number">0</span>, len - <span class="number">1</span>) tmp[(i % P) * lp + i / P] = p[l + i]; </span><br><span class="line">	rep(i, <span class="number">0</span>, len - <span class="number">1</span>) p[l + i] = tmp[i];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = l; i &lt;= r; i += lp) ntt(p, i, i + lp - <span class="number">1</span>, inv);</span><br><span class="line">	ll omega = Power(g, n / len), w = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(inv &lt; <span class="number">0</span>) omega = Power(omega, mod - <span class="number">2</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = l; i &lt;= l + lp - <span class="number">1</span>; i++, w = w * omega % mod) &#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = i; j &lt;= r; j += lp) tmp[j] = p[j];</span><br><span class="line">		ll x = w, delta = Power(g, n / P);</span><br><span class="line">		<span class="keyword">if</span>(inv &lt; <span class="number">0</span>) delta = Power(delta, mod - <span class="number">2</span>);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = i; j &lt;= r; j += lp, x = x * delta % mod) &#123;</span><br><span class="line">			ll tim = <span class="number">1</span>; p[j] = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> k = i; k &lt;= r; k += lp, tim = tim * x % mod)</span><br><span class="line">				p[j] = (p[j] + tmp[k] * tim % mod) % mod;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;C); mod = n + <span class="number">1</span>;</span><br><span class="line">	rep(i, <span class="number">0</span>, n - <span class="number">1</span>) <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;a[i]);</span><br><span class="line">	rep(i, <span class="number">0</span>, n - <span class="number">1</span>) <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;b[i]);</span><br><span class="line">	getg();</span><br><span class="line">	ntt(a, <span class="number">0</span>, n - <span class="number">1</span>, <span class="number">1</span>); ntt(b, <span class="number">0</span>, n - <span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">	rep(i, <span class="number">0</span>, n - <span class="number">1</span>) a[i] = a[i] * Power(b[i], C) % mod;</span><br><span class="line">	ntt(a, <span class="number">0</span>, n - <span class="number">1</span>, <span class="number">-1</span>);</span><br><span class="line">	ll tmp = Power(n, mod - <span class="number">2</span>);</span><br><span class="line">	rep(i, <span class="number">0</span>, n - <span class="number">1</span>) a[i] = a[i] * tmp % mod;</span><br><span class="line">	rep(i, <span class="number">0</span>, n - <span class="number">1</span>) <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, a[i]);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/19/BZOJ4538-Hnoi2016-网络/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ratexxxx">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head-image.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ratexxxx">
     </span>
 
     
@@ -475,13 +1122,13 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/18/BZOJ3672-Noi2014-购票/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="RheToXic">
+      <meta itemprop="name" content="Ratexxxx">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/head-image.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="RheToXic">
+      <meta itemprop="name" content="Ratexxxx">
     </span>
 
     
@@ -526,8 +1173,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/动态规划/" itemprop="url" rel="index">
-                    <span itemprop="name">动态规划</span>
+                  <a href="/categories/数据结构/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
                   </a>
                 </span>
 
@@ -537,8 +1184,8 @@
                 
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据结构/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构</span>
+                  <a href="/categories/动态规划/" itemprop="url" rel="index">
+                    <span itemprop="name">动态规划</span>
                   </a>
                 </span>
 
@@ -690,13 +1337,13 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/17/BZOJ4543-POI2014-Hotel加强版/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="RheToXic">
+      <meta itemprop="name" content="Ratexxxx">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/head-image.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="RheToXic">
+      <meta itemprop="name" content="Ratexxxx">
     </span>
 
     
@@ -741,8 +1388,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/动态规划/" itemprop="url" rel="index">
-                    <span itemprop="name">动态规划</span>
+                  <a href="/categories/数据结构/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
                   </a>
                 </span>
 
@@ -752,8 +1399,8 @@
                 
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据结构/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构</span>
+                  <a href="/categories/动态规划/" itemprop="url" rel="index">
+                    <span itemprop="name">动态规划</span>
                   </a>
                 </span>
 
@@ -911,13 +1558,13 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/15/BZOJ1488-HNOI2009-图的同构/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="RheToXic">
+      <meta itemprop="name" content="Ratexxxx">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/head-image.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="RheToXic">
+      <meta itemprop="name" content="Ratexxxx">
     </span>
 
     
@@ -1122,13 +1769,13 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/15/BZOJ2655-calc/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="RheToXic">
+      <meta itemprop="name" content="Ratexxxx">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/head-image.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="RheToXic">
+      <meta itemprop="name" content="Ratexxxx">
     </span>
 
     
@@ -1173,8 +1820,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/动态规划/" itemprop="url" rel="index">
-                    <span itemprop="name">动态规划</span>
+                  <a href="/categories/数学/" itemprop="url" rel="index">
+                    <span itemprop="name">数学</span>
                   </a>
                 </span>
 
@@ -1184,8 +1831,8 @@
                 
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/数学/" itemprop="url" rel="index">
-                    <span itemprop="name">数学</span>
+                  <a href="/categories/动态规划/" itemprop="url" rel="index">
+                    <span itemprop="name">动态规划</span>
                   </a>
                 </span>
 
@@ -1336,13 +1983,13 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/14/BZOJ5339-TJOI2018-教科书般的亵渎/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="RheToXic">
+      <meta itemprop="name" content="Ratexxxx">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/head-image.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="RheToXic">
+      <meta itemprop="name" content="Ratexxxx">
     </span>
 
     
@@ -1546,13 +2193,13 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/13/BZOJ2806-Ctsc2012-Cheat/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="RheToXic">
+      <meta itemprop="name" content="Ratexxxx">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/head-image.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="RheToXic">
+      <meta itemprop="name" content="Ratexxxx">
     </span>
 
     
@@ -1597,8 +2244,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/动态规划/" itemprop="url" rel="index">
-                    <span itemprop="name">动态规划</span>
+                  <a href="/categories/字符串/" itemprop="url" rel="index">
+                    <span itemprop="name">字符串</span>
                   </a>
                 </span>
 
@@ -1608,8 +2255,8 @@
                 
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/字符串/" itemprop="url" rel="index">
-                    <span itemprop="name">字符串</span>
+                  <a href="/categories/动态规划/" itemprop="url" rel="index">
+                    <span itemprop="name">动态规划</span>
                   </a>
                 </span>
 
@@ -1743,582 +2390,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/BZOJ3926-Zjoi2015-诸神眷顾的幻想乡/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="RheToXic">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head-image.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="RheToXic">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/12/BZOJ3926-Zjoi2015-诸神眷顾的幻想乡/" itemprop="url">BZOJ3926 [Zjoi2015]诸神眷顾的幻想乡</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-12T22:44:52+08:00">
-                2019-07-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/字符串/" itemprop="url" rel="index">
-                    <span itemprop="name">字符串</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/字符串/后缀自动机/" itemprop="url" rel="index">
-                    <span itemprop="name">后缀自动机</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  445
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>题目链接：<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=3926" target="_blank" rel="noopener">BZOJ3926</a></p>
-</blockquote>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>20min 1A庆祝一下<br>国家队论文写过一个trie上SAM的科技<br>其实可以类比广义后缀自动机加入多个串，trie树上无非是每个点插入前将las移到其父亲对应的节点<br>本题由于叶子不超过20个，以每个叶子为根，分别遍历一遍trie，全部加入一个广义自动机中，累计每个节点的max-min+1即可<br>由于所有有向路径都可以看成以一个叶子为根的一个直的路径（也就是trie上的“子串”），因此正确性可以保证<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/07/12/BZOJ3926-Zjoi2015-诸神眷顾的幻想乡/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </p></div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/BZOJ3277-串/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="RheToXic">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head-image.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="RheToXic">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/12/BZOJ3277-串/" itemprop="url">BZOJ3277 串</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-12T20:04:13+08:00">
-                2019-07-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/字符串/" itemprop="url" rel="index">
-                    <span itemprop="name">字符串</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/字符串/后缀自动机/" itemprop="url" rel="index">
-                    <span itemprop="name">后缀自动机</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  735
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>题目链接：<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=3277" target="_blank" rel="noopener">BZOJ3277</a></p>
-</blockquote>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>第一道广义后缀自动机<br>其实广义后缀自动机就是每加入一个串后，将las移到根，然后毫无变化地继续建就可以<br>厉害的是这样建出来后就可以匹配原来所有字符串的子串</p>
-<p>对于本题，每个节点开一个set记录该位置子串出现的母字符串集合，建完自动机后dfs将子树set合并到父亲上去，有用的是每个节点最后的set大小<br>然后对于每个字符串开始在自动机上跑，首先按字符在DAG上转移，若当前set大小小于k，则不停跳父亲，知道大于等于位置，然后直接将此节点的max长度累加入答案。<br>之所以直接累加max，是因为该节点的祖先们一定也满足条件<br>可以发现，这样就不重不漏的统计了该字符串所有合法的子串（走DAG相当于右端点后移，跳父亲相当于将左端点调到合适位置，累加max便是将所有右端点为此的合法子串统计了）</p>
-<p>有一个关键点，经过亲身测试和调试，广义后缀自动机不能使用基数排序得到拓扑序，必须dfs</p>
-<p>最后的问题是，set合并的过程看起来很暴力，那为什么他是对的？<br>目前不知道，连自动机的复杂度都不会证，回头再填坑<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/07/12/BZOJ3277-串/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </p></div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/10/BZOJ3669-Noi2014-魔法森林/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="RheToXic">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head-image.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="RheToXic">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/10/BZOJ3669-Noi2014-魔法森林/" itemprop="url">BZOJ3669 [Noi2014]魔法森林</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-10T17:22:52+08:00">
-                2019-07-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据结构/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据结构/LCT/" itemprop="url" rel="index">
-                    <span itemprop="name">LCT</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  868
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  4
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>题目链接：<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=3669" target="_blank" rel="noopener">BZOJ3669</a></p>
-</blockquote>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>第一想法是二分<br>然而不能二分a+b，更不能二分a或b<br>因此把a和b分开考虑<br>将所有边按照a排序，把b看成边权，一条一条加进去，维护1到n的最大边权最小的路径，随时更新答案<br>容易证明这条路径一定在最小生成树上<br>因此要在加边的过程中维护最小生成树<br>需要支持询问两点路径上的最大边权，以及最大边权所在的是那条边<br>加边时若构成环，则查询路径上的最大边，若大于当前边，则cut掉，然后加入当前边，否则跳过<br>若不构成环，就直接加入当前边<br>使用LCT维护，每个点记录子树最大权值及取到的位置，由于LCT只能维护点权，因此为每条边新建一个点，连到边的两个端点上<br>本题一遍过！！！<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/07/10/BZOJ3669-Noi2014-魔法森林/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </p></div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2358,9 +2429,9 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/head-image.jpeg" alt="RheToXic">
+              <img class="site-author-image" itemprop="image" src="/images/head-image.jpeg" alt="Ratexxxx">
             
-              <p class="site-author-name" itemprop="name">RheToXic</p>
+              <p class="site-author-name" itemprop="name">Ratexxxx</p>
               <p class="site-description motion-element" itemprop="description">可以的</p>
           </div>
 
@@ -2371,7 +2442,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">45</span>
+                  <span class="site-state-item-count">48</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2382,7 +2453,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2470,7 +2541,7 @@
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">RheToXic</span>
+  <span class="author" itemprop="copyrightHolder">Ratexxxx</span>
 
   
 </div>
@@ -2479,7 +2550,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共42.3k字</span>
+  <span class="post-count">博客全站共47.4k字</span>
 </div>
         
 
