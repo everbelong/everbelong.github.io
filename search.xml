@@ -6,9 +6,16 @@
     <content type="text"><![CDATA[题目链接BZOJ1921 Solution本题综合利用后缀自动机的呀 首先第一想法是怎么写暴力，从每个点为起点开始想下走，同时在SAM上走DAG，对于树上的每走到一个点，把答案加上其SAM对应节点的endpos大小即可，复杂度$ O(n^2) $ 然后看到这种统计路径的题，回想到点分和DSU，先试试点分，那么需要做的是统计以经过某个点x的路径的贡献，假设这条路径是$ u \to x \to v $点分的一般思路，如果可以单独算出$ u \to x $和$ x \to v $，那么拼在一起就好了但是如何拼在一起呢考虑可以在M串上统计，每个u到x在匹配的位置上加一个标记，那么最后的答案就是每个位置 向前匹配的标记和*向后匹配的标记和 之和发现上面说的两种路径其中一种可以变成反串上的另一种，因此只需考虑一种就可以 然后就要求后缀自动机理解透彻了网上的题解都说要在后缀树上统计$ u \to x $的路径贡献然后我就想，为什么还要搞后缀树，直接在DAG上统计$ x \to v $的贡献不就可以啦，每次在后面加一个字符，方法同第一种暴力一样啊然而在网上找不到这种做法，于是我就手画了好多后缀自动机和后缀树（因为画挂了很多次），然后找到了原因如果我们走DAG来计算贡献，那么走到一个点时，要计入的是以$ x…v $为前缀的串的个数，但在DAG上走到一个位置，这个节点代表的字串可以有在$x…v$前面加了几个字符，然后就不满足要求了，但我们同样会计入答案。也就是说这样会统计多但如果在后缀树上统计$ u \to x $，那么每次是在前面加一个字符，需要向儿子走，但可以保证之后走到的每一个点代表的所有串都是以$ u…x $为后缀的，就是当且仅当的意思，所以可以正确统计这个还是要搞张图看看啊 后缀自动机一个重要性质：自动机的par树即是其反串的后缀树（所以par树也叫前缀树，前缀树是反串的后缀树，多好）然后建后缀树时记录一下每个点到其儿子走的是哪个字符的转移边 这样点分的做法就完善了，由于在每个分治点都要在后缀树上将标记推到儿子并统计，复杂度是$ O(nlogn + nm) $，后面一部分成了瓶颈 前人想出了一个很神仙的操作，我们发现第一个解法（暴力）复杂度与m无关，因此可以考虑当分治的子树大小低于某个值时直接暴力统计即可当这个值设为$ \sqrt n $时最优，复杂度可以控制在$ O((n + m)\sqrt n) $ 写在最后后缀系列算法真的好神啊，后缀自动机和后缀树的坑好深啊主要是有各种各样的性质，互相转换又即为方便然后通过这道题我还练熟了手画自动机[滑稽] Code123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124#include &lt;bits/stdc++.h&gt;#define rep(i, a, b) for(int i(a), i##_ORZ(b); i &lt;= i##_ORZ; i++)#define drep(i, a, b) for(int i(a), i##_ORZ(b); i &gt;= i##_ORZ; i--)using namespace std;const int maxn = 200010;char tr[maxn], eg[maxn];int n, m, head[maxn], ver[maxn], Next[maxn], tot, totsz, mn, rt, sz[maxn], v[maxn], B;long long ans;void add(int x, int y) &#123; ver[++tot] = y, Next[tot] = head[x], head[x] = tot; &#125;struct SAM&#123; int par[maxn], ch[maxn][30], val[maxn], cnt, las, rt; int sz[maxn], pos[maxn], nxt[maxn][30], c[maxn], A[maxn], nod[maxn], sum[maxn]; char S[maxn]; void extend(int x, int po) &#123; int p = las, np = ++cnt; nod[po] = np; val[np] = val[p] + 1; sz[np] = 1; pos[np] = po; while(p &amp;&amp; !ch[p][x]) ch[p][x] = np, p = par[p]; if(!p) par[np] = rt; else &#123; int q = ch[p][x]; if(val[q] == val[p] + 1) par[np] = q; else &#123; int nq = ++cnt; val[nq] = val[p] + 1; memcpy(ch[nq], ch[q], sizeof(ch[nq])); par[nq] = par[q]; par[q] = par[np] = nq; while(p &amp;&amp; ch[p][x] == q) ch[p][x] = nq, p = par[p]; &#125; &#125; las = np; &#125; void build() &#123; cnt = rt = las = 1; rep(i, 1, m) extend(S[i] - 'a', i); rep(i, 1, cnt) c[val[i]]++; rep(i, 1, m) c[i] += c[i-1]; rep(i, 1, cnt) A[c[val[i]]--] = i; drep(i, cnt, 1) &#123; int x = A[i]; sz[par[x]] += sz[x]; if(!pos[par[x]]) pos[par[x]] = pos[x]; nxt[par[x]][S[pos[x] - val[par[x]]] - 'a'] = x; &#125; &#125; void clear() &#123; rep(i, 1, cnt) sum[i] = 0; &#125; void pushdown() &#123; rep(i, 1, cnt) sum[A[i]] += sum[par[A[i]]]; &#125; void match(int x, int pa, int cur, int len) &#123; if(len == val[cur]) cur = nxt[cur][tr[x] - 'a']; else if(S[pos[cur] - len] != tr[x]) cur = 0; if(!cur) return; len++; sum[cur]++; for(int i = head[x]; i; i = Next[i]) if(ver[i] != pa &amp;&amp; !v[ver[i]]) match(ver[i], x, cur, len); &#125;&#125;sam[2];void getroot(int x, int pa) &#123; sz[x] = 1; int res = 0; for(int i = head[x]; i; i = Next[i]) if(ver[i] != pa &amp;&amp; !v[ver[i]]) &#123; getroot(ver[i], x); sz[x] += sz[ver[i]]; res = max(res, sz[ver[i]]); &#125; res = max(res, totsz - sz[x]); if(res &lt; mn) rt = x, mn = res;&#125;void calc(int x, int pa, int cur) &#123; cur = sam[0].ch[cur][tr[x] - 'a']; if(!cur) return; ans += sam[0].sz[cur]; for(int i = head[x]; i; i = Next[i]) if(ver[i] != pa &amp;&amp; !v[ver[i]]) calc(ver[i], x, cur);&#125;void brute(int x, int pa) &#123; calc(x, 0, 1); for(int i = head[x]; i; i = Next[i]) if(ver[i] != pa &amp;&amp; !v[ver[i]]) brute(ver[i], x);&#125;void Insert(int x) &#123; sam[0].clear(); sam[1].clear(); sam[0].match(x, 0, 1, 0); sam[0].pushdown(); sam[1].match(x, 0, 1, 0); sam[1].pushdown(); rep(i, 1, m) ans += 1ll * sam[0].sum[sam[0].nod[i]] * sam[1].sum[sam[1].nod[m - i + 1]];&#125;void Delete(int x, int pa) &#123; sam[0].clear(); sam[1].clear(); sam[0].match(x, 0, sam[0].ch[1][tr[pa] - 'a'], 1); sam[0].pushdown(); sam[1].match(x, 0, sam[1].ch[1][tr[pa] - 'a'], 1); sam[1].pushdown(); rep(i, 1, m) ans -= 1ll * sam[0].sum[sam[0].nod[i]] * sam[1].sum[sam[1].nod[m - i + 1]];&#125;void getsz(int x, int pa) &#123; sz[x] = 1; for(int i = head[x]; i; i = Next[i]) if(!v[ver[i]] &amp;&amp; ver[i] != pa) getsz(ver[i], x), sz[x] += sz[ver[i]];&#125;void DFS(int x) &#123; if(totsz &lt;= B) &#123; brute(x, 0); return; &#125; Insert(x); v[x] = 1; for(int i = head[x]; i; i = Next[i]) if(!v[ver[i]]) Delete(ver[i], x); for(int i = head[x]; i; i = Next[i]) if(!v[ver[i]]) &#123; getsz(ver[i], x); totsz = mn = sz[ver[i]]; getroot(ver[i], x); DFS(rt); &#125;&#125;int main() &#123; int x, y; scanf("%d%d", &amp;n, &amp;m); rep(i, 1, n - 1) scanf("%d%d", &amp;x, &amp;y), add(x, y), add(y, x); B = ceil(sqrt(n)); scanf("%s%s", tr + 1, eg + 1); m = strlen(eg + 1); rep(i, 1, m) sam[0].S[i] = eg[i], sam[1].S[m - i + 1] = eg[i]; sam[0].build(); sam[1].build(); totsz = mn = n; getroot(1, 0); DFS(rt); printf("%lld\n", ans); return 0;&#125;]]></content>
       <categories>
         <category>字符串</category>
+        <category>数据结构</category>
         <category>后缀自动机</category>
         <category>后缀树</category>
+        <category>点分治</category>
       </categories>
+      <tags>
+        <tag>后缀自动机</tag>
+        <tag>后缀树</tag>
+        <tag>点分治</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[BZOJ1920 [Ctsc2010]产品销售]]></title>
@@ -21,6 +28,11 @@
         <category>线段树</category>
         <category>费用流</category>
       </categories>
+      <tags>
+        <tag>线段树</tag>
+        <tag>费用流</tag>
+        <tag>模拟</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[BZOJ1919 [Ctsc2010]性能优化]]></title>
@@ -29,8 +41,12 @@
       <categories>
         <category>数学</category>
         <category>多项式</category>
-        <category>FFT</category>
       </categories>
+      <tags>
+        <tag>多项式</tag>
+        <tag>NTT</tag>
+        <tag>任意长度FFT</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[BZOJ4538 [Hnoi2016]网络]]></title>
@@ -51,6 +67,11 @@
         <category>树链剖分</category>
         <category>斜率优化</category>
       </categories>
+      <tags>
+        <tag>熟练剖分</tag>
+        <tag>线段树</tag>
+        <tag>斜率优化</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[BZOJ4543 [POI2014]Hotel加强版]]></title>
@@ -62,6 +83,10 @@
         <category>长链剖分</category>
         <category>树形dp</category>
       </categories>
+      <tags>
+        <tag>长链剖分</tag>
+        <tag>树形dp</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[BZOJ1488 [HNOI2009]图的同构]]></title>
@@ -72,6 +97,10 @@
         <category>组合</category>
         <category>Burnside引理</category>
       </categories>
+      <tags>
+        <tag>组合数学</tag>
+        <tag>Burnside引理</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[BZOJ2655 calc]]></title>
@@ -83,6 +112,10 @@
         <category>拉格朗日插值</category>
         <category>计数dp</category>
       </categories>
+      <tags>
+        <tag>计数dp</tag>
+        <tag>拉格朗日插值</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[BZOJ5339 [TJOI2018]教科书般的亵渎]]></title>
@@ -93,6 +126,11 @@
         <category>拉格朗日插值</category>
         <category>斯特林数</category>
       </categories>
+      <tags>
+        <tag>自然数幂和</tag>
+        <tag>拉拉格朗日插值</tag>
+        <tag>第二类斯特林数</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[BZOJ2806 [Ctsc2012]Cheat]]></title>
@@ -104,6 +142,10 @@
         <category>后缀自动机</category>
         <category>单调队列优化</category>
       </categories>
+      <tags>
+        <tag>后缀自动机</tag>
+        <tag>单调队列</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[BZOJ3926 [Zjoi2015]诸神眷顾的幻想乡]]></title>
@@ -113,6 +155,10 @@
         <category>字符串</category>
         <category>后缀自动机</category>
       </categories>
+      <tags>
+        <tag>后缀自动机</tag>
+        <tag>trie</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[BZOJ3277 串]]></title>
@@ -131,6 +177,10 @@
         <category>数据结构</category>
         <category>LCT</category>
       </categories>
+      <tags>
+        <tag>LCT</tag>
+        <tag>最小生成树</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[BZOJ2049 [Sdoi2008]Cave 洞穴勘测]]></title>
@@ -140,11 +190,21 @@
         <category>数据结构</category>
         <category>LCT</category>
       </categories>
+      <tags>
+        <tag>LCT</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[BZOJ2729 [HNOI2012]排队]]></title>
     <url>%2F2019%2F07%2F08%2FBZOJ2729-HNOI2012-%E6%8E%92%E9%98%9F%2F</url>
     <content type="text"><![CDATA[题目链接：BZOJ2729 Solution插板法以男生为基准，先插老师，再插女生若老师之间有男生，就是n插2，再插m若老师之间无男生，则之间只有一个女生，看成一个男生，n+1插m-1答案为$$n!A_{n+1}^2A_{n+3}^m + 2m(n+1)!A_{n+2}^{m-1}$$ Code1234567891011121314151617181920212223242526272829303132333435363738#include &lt;bits/stdc++.h&gt;using namespace std;const int maxn = 2010;struct bigint&#123; int len, a[maxn * 1000];&#125;ans, ans1, ans2;void operator += (bigint &amp;x, bigint &amp;y) &#123; int t = 0; x.len = max(x.len, y.len); for(int i = 1; i &lt;= x.len; i++) x.a[i] += y.a[i] + t, t = x.a[i] / 10, x.a[i] %= 10; while(t) x.a[++x.len] = t % 10, t /= 10;&#125;void operator *= (bigint &amp;x, int y) &#123; int t = 0; for(int i = 1; i &lt;= x.len; i++) x.a[i] *= y, x.a[i] += t, t = x.a[i] / 10, x.a[i] %= 10; while(t) x.a[++x.len] = t % 10, t /= 10;&#125;void print(bigint &amp;x) &#123; for(int i = x.len; i; i--) printf("%d", x.a[i]); printf("\n");&#125;int n, m;int main() &#123; scanf("%d%d", &amp;n, &amp;m); ans1.len = 1; ans1.a[1] = 1; ans2 = ans1; ans1 *= n + 1; ans1 *= n; for(int i = 1; i &lt;= m; i++) ans1 *= n + 4 - i; for(int i = 1; i &lt;= n; i++) ans1 *= i; ans2 *= 2 * m; for(int i = 1; i &lt; m; i++) ans2 *= n + 3 - i; for(int i = 1; i &lt;= n + 1; i++) ans2 *= i; ans1 += ans2; print(ans1); return 0;&#125;]]></content>
+      <categories>
+        <category>数学</category>
+        <category>组合</category>
+      </categories>
+      <tags>
+        <tag>组合数学</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[BZOJ2212 [Poi2011]Tree Rotations]]></title>
@@ -154,6 +214,9 @@
         <category>数据结构</category>
         <category>线段树</category>
       </categories>
+      <tags>
+        <tag>线段树合并</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[BZOJ3653 谈笑风生]]></title>
@@ -161,8 +224,11 @@
     <content type="text"><![CDATA[题目链接：BZOJ3653和洛谷P3899 Solution由题意，b和a一定是祖先关系若b是a的祖先，c在a的子树内，直接乘法累计即可若a是b的祖先，题意转换为以a为根的子树内，与a距离$\leq k$的点的sz之和可以使用主席树或线段树合并主席树：构造欧拉序列，以dfn为时间轴建立以dep为下标的权值线段树一个节点的子树在欧拉序列上是一个区间，查分询问即可线段树合并：每个点建一颗以dep为下表的权值线段树，父节点由子节点得来，考虑空间会炸，所以父节点由子节点线段树合并来代码为主席树，注意long long Code1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950#include &lt;bits/stdc++.h&gt;using namespace std;const int maxn = 300010, maxm = 600010;int head[maxn], ver[maxm], Next[maxm], tot;void add(int x, int y) &#123; ver[++tot] = y, Next[tot] = head[x], head[x] = tot;&#125;int n, sz[maxn], d[maxn], dfn[maxn], num;int rt[maxn * 4], cnt, lc[maxn * 40], rc[maxn * 40];long long sum[maxn * 40];int update(int las, int l, int r, int pos, int x) &#123; int p = ++cnt; sum[p] = sum[las] + x; if(l == r) return p; lc[p] = lc[las]; rc[p] = rc[las]; int mid = (l + r) &gt;&gt; 1; if(pos &lt;= mid) lc[p] = update(lc[las], l, mid, pos, x); else rc[p] = update(rc[las], mid + 1, r, pos, x); return p;&#125;void dfs(int x, int fa) &#123; d[x] = d[fa] + 1; sz[x] = 1; for(int i = head[x]; i; i = Next[i]) if(ver[i] != fa) dfs(ver[i], x), sz[x] += sz[ver[i]];&#125;void build(int x, int fa) &#123; dfn[x] = ++num; rt[num] = update(rt[num - 1], 1, n, d[x], sz[x] - 1); for(int i = head[x]; i; i = Next[i]) if(ver[i] != fa) build(ver[i], x);&#125;long long query(int rp, int lp, int l, int r, int L, int R) &#123; if(L &lt;= l &amp;&amp; r &lt;= R) return sum[rp] - sum[lp]; int mid = (l + r) &gt;&gt; 1; long long res = 0; if(L &lt;= mid) res += query(lc[rp], lc[lp], l, mid, L, R); if(R &gt; mid) res += query(rc[rp], rc[lp], mid + 1, r, L, R); return res;&#125;int main() &#123; int x, y, Q, a, k; scanf("%d%d", &amp;n, &amp;Q); for(int i = 1; i &lt; n; i++) scanf("%d%d", &amp;x, &amp;y), add(x, y), add(y, x); dfs(1, 0); build(1, 0); while(Q--) &#123; scanf("%d%d", &amp;a, &amp;k); long long ans = min(d[a] - 1, k) * ((long long)sz[a] - 1); ans += query(rt[dfn[a] + sz[a] - 1], rt[dfn[a] - 1], 1, n, d[a] + 1, d[a] + k); printf("%lld\n", ans); &#125; return 0;&#125;]]></content>
       <categories>
         <category>数据结构</category>
-        <category>主席树</category>
+        <category>可持久化</category>
       </categories>
+      <tags>
+        <tag>主席树</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[2019扬中Day2]]></title>
@@ -171,6 +237,11 @@
       <categories>
         <category>集训</category>
       </categories>
+      <tags>
+        <tag>组合数学</tag>
+        <tag>博弈论</tag>
+        <tag>树上动规</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[BZOJ1997 [Hnoi2010]Planar]]></title>
@@ -184,11 +255,14 @@
   <entry>
     <title><![CDATA[BZOJ4945 [Noi2017]游戏]]></title>
     <url>%2F2019%2F07%2F04%2FBZOJ4945-Noi2017-%E6%B8%B8%E6%88%8F%2F</url>
-    <content type="text"><![CDATA[题目链接：BZOJ4945 Solution本题标记着2-sat达到一个高潮如果没有x，那就是一个裸的2-sat然而x的个数很小，可以暴力枚举，所以实际上还是裸的2-sat每个x枚举1.不能选A，那么就是B、C二选一2.不能选B，那么就是A、C二选一这样就已经包含了ABC三种情况，所以暴力枚举的复杂度为$2^d$ 下面说一说裸的2-sat怎么做用tarjan算法求出所有的强连通分量如果某个对偶的两点位于同一分量，则无解否则有解，那么问题就是如何输出任意一解对于缩点后的反图，按拓扑序，选当前节点，把她得姐妹节点删除事实上不用拓扑排序，节点scc编号的大小就是反图拓扑序的大小，因此姐妹点选scc小的即可 tarjan比dfs快，我终于明白了，dfs是$O(nm)$的 这里还有一些要注意的地方，如果一个限制中提到了一定不会出现赛车，设此限制为$(x\to y)$，若x不可能选，则直接continue，若y不可能选，则x连向他的姐妹节点，巧妙地表达了x不可能选 Code1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768#include &lt;bits/stdc++.h&gt;using namespace std;const int maxn = 150010, maxm = 400010;int head[maxn], ver[maxm], Next[maxm], tot;void add(int x, int y) &#123; ver[++tot] = y, Next[tot] = head[x], head[x] = tot;&#125;char str[maxn], qx[maxm], qy[maxm], car[3][2] = &#123;&#123;'B', 'C'&#125;, &#123;'A', 'C'&#125;, &#123;'A', 'B'&#125;&#125;;int n, d, m, xpos[10], xcnt, X[maxm], Y[maxm];int dfn[maxn], low[maxn], num, scc, ins[maxn], sta[maxn], top, bel[maxn];const int rnk[3][3] = &#123;&#123;-1, 0, 1&#125;, &#123;0, -1, 1&#125;, &#123;0, 1, -1&#125;&#125;; void tarjan(int x) &#123; ins[x] = 1; sta[++top] = x; dfn[x] = low[x] = ++num; for(int i = head[x]; i; i = Next[i]) &#123; if(!dfn[ver[i]]) tarjan(ver[i]), low[x] = min(low[x], low[ver[i]]); else if(ins[ver[i]] == 1) low[x] = min(low[x], dfn[ver[i]]); &#125; if(dfn[x] == low[x]) &#123; int z = 0; scc++; while(z != x) &#123; z = sta[top--]; ins[z] = 2; bel[z] = scc; &#125; &#125;&#125;bool solve() &#123; //cout &lt;&lt; str + 1 &lt;&lt; endl; memset(dfn, 0, sizeof(dfn)); memset(head, 0, sizeof(head)); memset(ins, 0, sizeof(ins)); memset(low, 0, sizeof(low)); num = scc = top = tot = 0; for(int i = 1; i &lt;= m; i++) &#123; if(str[X[i]] - 'a' == qx[i] - 'A') continue; int x = rnk[str[X[i]] - 'a'][qx[i] - 'A']; int y = rnk[str[Y[i]] - 'a'][qy[i] - 'A']; if(str[Y[i]] - 'a' == qy[i] - 'A') &#123; add(X[i] + x * n, X[i] + n * (1 - x)); continue; &#125; //cout &lt;&lt; x &lt;&lt; ' ' &lt;&lt; y &lt;&lt; endl; add(x * n + X[i], y * n + Y[i]); add((1 - y) * n + Y[i], (1 - x) * n + X[i]); &#125; for(int i = 1; i &lt;= n * 2; i++) if(!dfn[i]) tarjan(i); for(int i = 1; i &lt;= n; i++) if(bel[i] == bel[i + n]) return false; for(int i = 1; i &lt;= n; i++) if(bel[i] &lt; bel[i + n]) printf("%c", car[str[i] - 'a'][0]); else printf("%c", car[str[i] - 'a'][1]); printf("\n"); return true;&#125;bool dfs(int x) &#123; if(x &gt; xcnt) return solve(); str[xpos[x]] = 'a'; if(dfs(x + 1)) return true; str[xpos[x]] = 'b'; if(dfs(x + 1)) return true; return false;&#125;int main() &#123; //freopen("input", "r", stdin); //freopen("user_out", "w", stdout); scanf("%d%d", &amp;n, &amp;d); scanf("%s%d", str + 1, &amp;m); for(int i = 1; i &lt;= n; i++) if(str[i] == 'x') xpos[++xcnt] = i; for(int i = 1; i &lt;= m; i++) scanf("%d %c%d %c", &amp;X[i], &amp;qx[i], &amp;Y[i], &amp;qy[i]); if(!dfs(1)) printf("-1\n"); return 0;&#125;]]></content>
+    <content type="text"><![CDATA[题目链接：BZOJ4945 Solution本题标记着本人练习2-sat达到一个高潮如果没有x，那就是一个裸的2-sat然而x的个数很小，可以暴力枚举，所以实际上还是裸的2-sat每个x枚举1.不能选A，那么就是B、C二选一2.不能选B，那么就是A、C二选一这样就已经包含了ABC三种情况，所以暴力枚举的复杂度为$2^d$ 下面说一说裸的2-sat怎么做用tarjan算法求出所有的强连通分量如果某个对偶的两点位于同一分量，则无解否则有解，那么问题就是如何输出任意一解对于缩点后的反图，按拓扑序，选当前节点，把她得姐妹节点删除事实上不用拓扑排序，节点scc编号的大小就是反图拓扑序的大小，因此姐妹点选scc小的即可 tarjan比dfs快，我终于明白了，dfs是$O(nm)$的 这里还有一些要注意的地方，如果一个限制中提到了一定不会出现赛车，设此限制为$(x\to y)$，若x不可能选，则直接continue，若y不可能选，则x连向他的姐妹节点，巧妙地表达了x不可能选 Code1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768#include &lt;bits/stdc++.h&gt;using namespace std;const int maxn = 150010, maxm = 400010;int head[maxn], ver[maxm], Next[maxm], tot;void add(int x, int y) &#123; ver[++tot] = y, Next[tot] = head[x], head[x] = tot;&#125;char str[maxn], qx[maxm], qy[maxm], car[3][2] = &#123;&#123;'B', 'C'&#125;, &#123;'A', 'C'&#125;, &#123;'A', 'B'&#125;&#125;;int n, d, m, xpos[10], xcnt, X[maxm], Y[maxm];int dfn[maxn], low[maxn], num, scc, ins[maxn], sta[maxn], top, bel[maxn];const int rnk[3][3] = &#123;&#123;-1, 0, 1&#125;, &#123;0, -1, 1&#125;, &#123;0, 1, -1&#125;&#125;; void tarjan(int x) &#123; ins[x] = 1; sta[++top] = x; dfn[x] = low[x] = ++num; for(int i = head[x]; i; i = Next[i]) &#123; if(!dfn[ver[i]]) tarjan(ver[i]), low[x] = min(low[x], low[ver[i]]); else if(ins[ver[i]] == 1) low[x] = min(low[x], dfn[ver[i]]); &#125; if(dfn[x] == low[x]) &#123; int z = 0; scc++; while(z != x) &#123; z = sta[top--]; ins[z] = 2; bel[z] = scc; &#125; &#125;&#125;bool solve() &#123; //cout &lt;&lt; str + 1 &lt;&lt; endl; memset(dfn, 0, sizeof(dfn)); memset(head, 0, sizeof(head)); memset(ins, 0, sizeof(ins)); memset(low, 0, sizeof(low)); num = scc = top = tot = 0; for(int i = 1; i &lt;= m; i++) &#123; if(str[X[i]] - 'a' == qx[i] - 'A') continue; int x = rnk[str[X[i]] - 'a'][qx[i] - 'A']; int y = rnk[str[Y[i]] - 'a'][qy[i] - 'A']; if(str[Y[i]] - 'a' == qy[i] - 'A') &#123; add(X[i] + x * n, X[i] + n * (1 - x)); continue; &#125; //cout &lt;&lt; x &lt;&lt; ' ' &lt;&lt; y &lt;&lt; endl; add(x * n + X[i], y * n + Y[i]); add((1 - y) * n + Y[i], (1 - x) * n + X[i]); &#125; for(int i = 1; i &lt;= n * 2; i++) if(!dfn[i]) tarjan(i); for(int i = 1; i &lt;= n; i++) if(bel[i] == bel[i + n]) return false; for(int i = 1; i &lt;= n; i++) if(bel[i] &lt; bel[i + n]) printf("%c", car[str[i] - 'a'][0]); else printf("%c", car[str[i] - 'a'][1]); printf("\n"); return true;&#125;bool dfs(int x) &#123; if(x &gt; xcnt) return solve(); str[xpos[x]] = 'a'; if(dfs(x + 1)) return true; str[xpos[x]] = 'b'; if(dfs(x + 1)) return true; return false;&#125;int main() &#123; //freopen("input", "r", stdin); //freopen("user_out", "w", stdout); scanf("%d%d", &amp;n, &amp;d); scanf("%s%d", str + 1, &amp;m); for(int i = 1; i &lt;= n; i++) if(str[i] == 'x') xpos[++xcnt] = i; for(int i = 1; i &lt;= m; i++) scanf("%d %c%d %c", &amp;X[i], &amp;qx[i], &amp;Y[i], &amp;qy[i]); if(!dfs(1)) printf("-1\n"); return 0;&#125;]]></content>
       <categories>
         <category>图论</category>
         <category>2-sat</category>
       </categories>
+      <tags>
+        <tag>2-sat</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[BZOJ2208 [Jsoi2010]连通数]]></title>
@@ -205,8 +279,15 @@
     <content type="text"><![CDATA[题目链接：BZOJ3160 Solution题意在题面里已经说过了对于第三点限制，只要算出所有满足1、2点的子序列，再减去回文子串的个数就可以回文子串个数直接裸的马拉车考虑如何求满足的子序列个数枚举对称轴x，由于位置对称，我们只要知道有多少对是相等的就可以（这里的一对指的是位置为$i$和$2x-i$的一对位置这个形式很像多项式卷积，因此用fft实现a和b分开处理，处理a时把a的位置置为1，与自己卷积，得到的多项式中只有对称才会产生贡献，只要询问第$2x$位就可以 Code123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263#include &lt;bits/stdc++.h&gt;using namespace std;const int maxn = 800010, mod = 1e9+7;const double pi = acos(-1);typedef complex&lt;double&gt; cp;typedef long long ll;char str[maxn], nstr[maxn];int n, r[maxn], x[maxn], y[maxn], f[maxn]; ll ans;cp a[maxn], b[maxn];ll Power(ll x, ll p) &#123; ll res = 1; for(; p; p &gt;&gt;= 1, x = x * x % mod) if(p &amp; 1) res = res * x % mod; return res;&#125;void fft(cp *p, int N, int inv) &#123; for(int i = 0; i &lt;= N; i++) if(i &lt; r[i]) swap(p[i], p[r[i]]); for(int mid = 1; mid &lt; N; mid &lt;&lt;= 1) &#123; cp omega(cos(pi / mid), inv * sin(pi / mid)); for(int i = 0; i &lt; N; i += mid &lt;&lt; 1) &#123; cp w(1, 0); for(int j = 0; j &lt; mid; j++, w *= omega) &#123; cp x = p[i + j], y = w * p[i + j + mid]; p[i + j] = x + y, p[i + j + mid] = x - y; &#125; &#125; &#125;&#125;void manacher() &#123; int nn = 0, mx = 1, pos = 1; nstr[0] = '$'; nstr[++nn] = '#'; for(int i = 1; i &lt;= n; i++) nstr[++nn] = str[i], nstr[++nn] = '#'; nstr[++nn] = '\0'; for(int i = 1; i &lt;= nn; i++) &#123; f[i] = min(f[2 * pos - i], mx - i); if(f[i] &lt; 1) f[i] = 1; while(nstr[i + f[i]] == nstr[i - f[i]]) f[i]++; if(i + f[i] &gt; mx) mx = f[i] + i, pos = i; &#125; for(int i = 1; i &lt;= nn; i++) ans = (ans - f[i] / 2 + mod) % mod;&#125;int main() &#123; scanf("%s", str + 1); n = strlen(str + 1); for(int i = 1; i &lt;= n; i++) if(str[i] == 'a') a[i] = cp(1, 0); else b[i] = cp(1, 0); int N = 1, wei = 0; while(N &lt;= 2 * n) N &lt;&lt;= 1, wei++; for(int i = 0; i &lt;= N; i++) r[i] = (r[i &gt;&gt; 1] &gt;&gt; 1) | ((i &amp; 1) &lt;&lt; (wei - 1)); fft(a, N, 1); fft(b, N, 1); for(int i = 0; i &lt;= N; i++) a[i] *= a[i], b[i] *= b[i]; fft(a, N, -1); fft(b, N, -1); for(int i = 0; i &lt;= N; i++) x[i] = (int)(a[i].real() / N + 0.5), y[i] = (int)(b[i].real() / N + 0.5); for(int i = 2; i &lt;= 2 * n; i++) &#123; int tmp = x[i] + y[i]; if(i % 2 == 0) tmp++; tmp /= 2; //cout &lt;&lt; i &lt;&lt; ' ' &lt;&lt; x[i] &lt;&lt; ' ' &lt;&lt; y[i] &lt;&lt; ' ' &lt;&lt; tmp &lt;&lt; endl; ans += (Power(2, tmp) - 1 + mod) % mod; &#125; //cout &lt;&lt; ans &lt;&lt; endl; manacher(); printf("%lld\n", ans); return 0;&#125;]]></content>
       <categories>
         <category>数学</category>
+        <category>字符串</category>
         <category>多项式</category>
+        <category>manachar</category>
       </categories>
+      <tags>
+        <tag>多项式</tag>
+        <tag>manachar</tag>
+        <tag>FFT</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[BZOJ3527 [Zjoi2014]力]]></title>
@@ -216,6 +297,10 @@
         <category>数学</category>
         <category>多项式</category>
       </categories>
+      <tags>
+        <tag>多项式</tag>
+        <tag>FFT</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[BZOJ4827 [Hnoi2017]礼物]]></title>
@@ -225,6 +310,11 @@
         <category>数学</category>
         <category>多项式</category>
       </categories>
+      <tags>
+        <tag>多项式</tag>
+        <tag>FFT</tag>
+        <tag>二次函数</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[BZOJ3930 [CQOI2015]选数]]></title>
@@ -235,6 +325,10 @@
         <category>莫比乌斯反演</category>
         <category>杜教筛</category>
       </categories>
+      <tags>
+        <tag>莫比乌斯反演</tag>
+        <tag>杜教筛</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[BZOJ2440 完全平方数]]></title>
@@ -262,6 +356,10 @@
         <category>数学</category>
         <category>莫比乌斯反演</category>
       </categories>
+      <tags>
+        <tag>莫比乌斯反演</tag>
+        <tag>线性筛</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[BZOJ3676 [Apio2014]回文串]]></title>
@@ -270,7 +368,12 @@
       <categories>
         <category>字符串</category>
         <category>后缀自动机</category>
+        <category>manachar</category>
       </categories>
+      <tags>
+        <tag>后缀自动机</tag>
+        <tag>manachar</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[LOJ3049 [十二省联考2019]字符串问题]]></title>
@@ -315,6 +418,10 @@
         <category>字符串</category>
         <category>后缀数组</category>
       </categories>
+      <tags>
+        <tag>后缀数组</tag>
+        <tag>调和级数</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[BZOJ1563 [Noi2009]诗人小G]]></title>
@@ -324,6 +431,9 @@
         <category>动态规划</category>
         <category>决策单调性优化</category>
       </categories>
+      <tags>
+        <tag>决策单调性</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[BZOJ1002 轮状病毒]]></title>
@@ -333,6 +443,9 @@
         <category>数学</category>
         <category>组合</category>
       </categories>
+      <tags>
+        <tag>计数dp</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[最长不下降子序列问题]]></title>
@@ -354,14 +467,23 @@
         <category>字符串</category>
         <category>后缀数组</category>
       </categories>
+      <tags>
+        <tag>二分答案</tag>
+        <tag>后缀数组</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[JSOI冬令营D2 题]]></title>
     <url>%2F2019%2F01%2F28%2FJSOI%E5%86%AC%E4%BB%A4%E8%90%A5D2-%E9%A2%98%2F</url>
-    <content type="text"><![CDATA[这场比赛真是不难啊不难，但是我还是只会写暴力啊暴力~~~ T1 箱子 T2 准备 T3 回忆 T1 箱子考试时想了各种方法，什么dp、网络流、数据结构，总觉得昨天那么难，今天不可能只出一道贪心。结果谁知道，就是一道极水极水的小贪心。 $a \le b$ 的那部分显然按照a递增排序。 $a &gt; b$ 的部分按b递减排序。证明如下：假设$ b_x &gt; b_y $若x排在y的前面不合法，也就是$ sumV+b_x-a_x &lt; a_y $则易得$ sumV + b_y - a_y &lt; a_x $也就是说y排在x的前面也一定不合法。所以x排在前面一定不会更差。因此把b较大的x排在前面。 my代码：123456789101112131415161718192021222324252627282930313233343536373839#include &lt;bits/stdc++.h&gt;using namespace std;const int N = 100010;int read() &#123; int res = 0, f = 1; char c = getchar(); while(c != '-' &amp;&amp; (c &lt; '0' || c &gt; '9')) c = getchar(); if(c == '-') f = -1, c = getchar(); while(c &gt;= '0' &amp;&amp; c &lt;= '9') res = (res &lt;&lt; 3) + (res &lt;&lt; 1) + c - '0', c = getchar(); return f * res; &#125;int n;long long v;struct P&#123; int a, b; &#125;p[N];bool cmp(P x, P y) &#123; if(x.a &lt; x.b) if(y.a &lt; y.b) return x.a &lt; y.a; else return 1; else if(y.a &lt;= y.b) return 0; else return x.b &gt; y.b;&#125;int main() &#123; freopen("a.in", "r", stdin); freopen("a.out", "w", stdout); int T; T = read(); while(T--) &#123; n = read(); v = read(); int flag = 0; for(int i = 1; i &lt;= n; i++) p[i].a = read(), p[i].b = read(); sort(p + 1, p + 1 + n, cmp); for(int i = 1; i &lt;= n; i++) &#123; if(v - p[i].a &lt; 0) &#123; flag = 1; break; &#125; v -= p[i].a; v += p[i].b; &#125; if(flag) printf("No\n"); else printf("Yes\n"); &#125; return 0;&#125; T2 准备事实上这题我在考场上想到正解了，只是最后没有调出来而已。后来发现有一个地方写错了一个字母。唉~。 考虑用一定计算过的答案得到下一次的答案，也就是维护。容易看出，只要知道每一次有多少个负数就可以$ O(1) $转移了。 而每一次有多少个负数实际上是内定了的，也就是根据$ a[i] $可以预处理出来。考虑每个$ a[i] $对他的贡献，也就是这个a何时会变成负的。所有这样的时刻都是区间，可以用差分实现。 代码实现时要注意差分的位置，我第一也在这个地方晕了。其他没有什么难的。关键注意从不同角度思考问题吧。 my代码：123456789101112131415161718192021222324252627282930313233343536#include &lt;bits/stdc++.h&gt;using namespace std;const int N = 4000020, inf = 0x3f3f3f3f;typedef long long ll;ll read() &#123; ll res = 0, f = 1; char c = getchar(); while(c != '-' &amp;&amp; (c &lt; '0' || c &gt; '9')) c = getchar(); if(c == '-') f = -1, c = getchar(); while(c &gt;= '0' &amp;&amp; c &lt;= '9') res = (res &lt;&lt; 3) + (res &lt;&lt; 1) + c - '0', c = getchar(); return f * res; &#125;ll a[N+N], n, ans = 1e16;ll s[N+N], b[N+N], res;int main() &#123; freopen("b.in", "r", stdin); freopen("b.out", "w", stdout); n = read(); for(int i = 1; i &lt;= n; i++) a[i] = read(); for(int i = 1; i &lt;= n; i++) if(a[i] &lt; i) s[1]++, s[i+1-a[i]]--; for(int i = 1; i &lt;= n; i++) s[i+1]++, s[i + n - a[i] + 1]--; for(int i = 1; i &lt;= n; i++) b[i] = b[i-1] + s[i];// for(int i = 1; i &lt;= n; i++) cout &lt;&lt; b[i] &lt;&lt; ' '; cout &lt;&lt; endl; for(int i = 1; i &lt;= n; i++) res += abs(a[i] - i); ans = min(ans, res); for(int i = 2; i &lt;= n; i++) &#123; res -= b[i-1]; res += n - b[i-1]; res -= a[i-1]; res += abs(a[i-1] - n); ans = min(ans, res); &#125; cout &lt;&lt; ans &lt;&lt; endl; return 0;&#125; T3 回忆其实我考试时也想到用线段树维护了，但但但，没有想到只要单点修改就可以。 我感觉这题就巧妙在这里，我们很容易想到用两个线段树分别维护$ l[i] - r[i] $和$ l[i] + r[i] $，但在哪些点上维护？有在哪个区间查询？ 我们按l从小到大处理每个区间，把每个已处理过的区间的右端点在线段树上单点更新。查询时，不包含情况是查询$ [l,r] $，包含的情况查询$ [r, +\infty] $，这真巧妙，非常棒地区分了两种情况，还十分简洁。以后要记住这种方法。 细节部分脑补一下就可以了，别忘了离散化。 my代码：12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061#include &lt;bits/stdc++.h&gt;using namespace std;const int N = 200010, inf = 1e9;int read() &#123; int res = 0, f = 1; char c = getchar(); while(c != '-' &amp;&amp; (c &lt; '0' || c &gt; '9')) c = getchar(); if(c == '-') f = -1, c = getchar(); while(c &gt;= '0' &amp;&amp; c &lt;= '9') res = (res &lt;&lt; 3) + (res &lt;&lt; 1) + c - '0', c = getchar(); return f * res; &#125;int n, ans, refl[N+N], num;struct intv&#123; int l, r; &#125;p[N];bool cmp(intv x, intv y) &#123; return x.l == y.l ? x.r &gt; y.r : x.l &lt; y.l; &#125;int tr1[N*40], tr2[N*40];void build(int *tr, int p, int l, int r) &#123; tr[p] = inf; if(l == r) return; int mid = (l + r) &gt;&gt; 1; build(tr, p*2, l, mid); build(tr, p*2+1, mid + 1, r);&#125;void change(int *tr, int p, int l, int r, int pos, int x) &#123; tr[p] = min(tr[p], x); if(l == r) return; int mid = (l + r) &gt;&gt; 1; if(pos &lt;= mid) change(tr, p*2, l, mid, pos, x); if(pos &gt; mid) change(tr, p*2+1, mid + 1, r, pos, x);&#125;int query(int *tr, int p, int l, int r, int L, int R) &#123; if(L &lt;= l &amp;&amp; r &lt;= R) return tr[p]; int mid = (l + r) &gt;&gt; 1, res = inf; if(L &lt;= mid) res = min(res, query(tr, p*2, l, mid, L, R)); if(R &gt; mid) res = min(res, query(tr, p*2+1, mid + 1, r, L, R)); return res;&#125;int main() &#123; freopen("c.in", "r", stdin); freopen("c.out", "w", stdout); n = read(); int tmp; for(int i = 1; i &lt;= n; i++) p[i].l = read(), p[i].r = read(), refl[++num] = p[i].l, refl[++num] = p[i].r; sort(p + 1, p + 1 + n, cmp); sort(refl + 1, refl + 1 + num); num = unique(refl + 1, refl + 1 + num) - refl - 1; for(int i = 1; i &lt;= n; i++) p[i].l = lower_bound(refl + 1, refl + 1 + num, p[i].l) - refl, p[i].r = lower_bound(refl + 1, refl + 1 + num, p[i].r) - refl; build(tr1, 1, 1, num); build(tr2, 1, 1, num); for(int i = 1; i &lt;= n; i++) &#123; tmp = query(tr1, 1, 1, num, p[i].l, p[i].r); ans = max(ans, refl[p[i].r] + refl[p[i].l] - tmp); tmp = query(tr2, 1, 1, num, p[i].r, num); ans = max(ans, refl[p[i].l] - refl[p[i].r] - tmp); change(tr1, 1, 1, num, p[i].r, refl[p[i].l] + refl[p[i].r]); change(tr2, 1, 1, num, p[i].r, refl[p[i].l] - refl[p[i].r]); &#125; cout &lt;&lt; ans &lt;&lt; endl; return 0;&#125; 明天再接再厉，不信做不出来水题。]]></content>
+    <content type="text"><![CDATA[这场比赛真是不难啊不难，但是我还是只会写暴力啊暴力~~~ T1 箱子 T2 准备 T3 回忆 T1 箱子考试时想了各种方法，什么dp、网络流、数据结构，总觉得昨天那么难，今天不可能只出一道贪心。结果谁知道，就是一道极水极水的小贪心。 $a \le b$ 的那部分显然按照a递增排序。 $a &gt; b$ 的部分按b递减排序。证明如下：假设$ b_x &gt; b_y $若x排在y的前面不合法，也就是$ sumV+b_x-a_x &lt; a_y $则易得$ sumV + b_y - a_y &lt; a_x $也就是说y排在x的前面也一定不合法。所以x排在前面一定不会更差。因此把b较大的x排在前面。 my代码：123456789101112131415161718192021222324252627282930313233343536373839#include &lt;bits/stdc++.h&gt;using namespace std;const int N = 100010;int read() &#123; int res = 0, f = 1; char c = getchar(); while(c != '-' &amp;&amp; (c &lt; '0' || c &gt; '9')) c = getchar(); if(c == '-') f = -1, c = getchar(); while(c &gt;= '0' &amp;&amp; c &lt;= '9') res = (res &lt;&lt; 3) + (res &lt;&lt; 1) + c - '0', c = getchar(); return f * res; &#125;int n;long long v;struct P&#123; int a, b; &#125;p[N];bool cmp(P x, P y) &#123; if(x.a &lt; x.b) if(y.a &lt; y.b) return x.a &lt; y.a; else return 1; else if(y.a &lt;= y.b) return 0; else return x.b &gt; y.b;&#125;int main() &#123; freopen("a.in", "r", stdin); freopen("a.out", "w", stdout); int T; T = read(); while(T--) &#123; n = read(); v = read(); int flag = 0; for(int i = 1; i &lt;= n; i++) p[i].a = read(), p[i].b = read(); sort(p + 1, p + 1 + n, cmp); for(int i = 1; i &lt;= n; i++) &#123; if(v - p[i].a &lt; 0) &#123; flag = 1; break; &#125; v -= p[i].a; v += p[i].b; &#125; if(flag) printf("No\n"); else printf("Yes\n"); &#125; return 0;&#125; T2 准备事实上这题我在考场上想到正解了，只是最后没有调出来而已。后来发现有一个地方写错了一个字母。唉~。 考虑用已经计算过的答案得到下一次的答案，也就是维护。容易看出，只要知道每一次有多少个负数就可以$ O(1) $转移了。 而每一次有多少个负数实际上是内定了的，也就是根据$ a[i] $可以预处理出来。考虑每个$ a[i] $对他的贡献，也就是这个a何时会变成负的。所有这样的时刻都是区间，可以用差分实现。 代码实现时要注意差分的位置，我第一也在这个地方晕了。其他没有什么难的。关键注意从不同角度思考问题吧。 my代码：123456789101112131415161718192021222324252627282930313233343536#include &lt;bits/stdc++.h&gt;using namespace std;const int N = 4000020, inf = 0x3f3f3f3f;typedef long long ll;ll read() &#123; ll res = 0, f = 1; char c = getchar(); while(c != '-' &amp;&amp; (c &lt; '0' || c &gt; '9')) c = getchar(); if(c == '-') f = -1, c = getchar(); while(c &gt;= '0' &amp;&amp; c &lt;= '9') res = (res &lt;&lt; 3) + (res &lt;&lt; 1) + c - '0', c = getchar(); return f * res; &#125;ll a[N+N], n, ans = 1e16;ll s[N+N], b[N+N], res;int main() &#123; freopen("b.in", "r", stdin); freopen("b.out", "w", stdout); n = read(); for(int i = 1; i &lt;= n; i++) a[i] = read(); for(int i = 1; i &lt;= n; i++) if(a[i] &lt; i) s[1]++, s[i+1-a[i]]--; for(int i = 1; i &lt;= n; i++) s[i+1]++, s[i + n - a[i] + 1]--; for(int i = 1; i &lt;= n; i++) b[i] = b[i-1] + s[i];// for(int i = 1; i &lt;= n; i++) cout &lt;&lt; b[i] &lt;&lt; ' '; cout &lt;&lt; endl; for(int i = 1; i &lt;= n; i++) res += abs(a[i] - i); ans = min(ans, res); for(int i = 2; i &lt;= n; i++) &#123; res -= b[i-1]; res += n - b[i-1]; res -= a[i-1]; res += abs(a[i-1] - n); ans = min(ans, res); &#125; cout &lt;&lt; ans &lt;&lt; endl; return 0;&#125; T3 回忆其实我考试时也想到用线段树维护了，但但但，没有想到只要单点修改就可以。 我感觉这题就巧妙在这里，我们很容易想到用两个线段树分别维护$ l[i] - r[i] $和$ l[i] + r[i] $，但在哪些点上维护？有在哪个区间查询？ 我们按l从小到大处理每个区间，把每个已处理过的区间的右端点在线段树上单点更新。查询时，不包含情况是查询$ [l,r] $，包含的情况查询$ [r, +\infty] $，这真巧妙，非常棒地区分了两种情况，还十分简洁。以后要记住这种方法。 细节部分脑补一下就可以了，别忘了离散化。 my代码：12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061#include &lt;bits/stdc++.h&gt;using namespace std;const int N = 200010, inf = 1e9;int read() &#123; int res = 0, f = 1; char c = getchar(); while(c != '-' &amp;&amp; (c &lt; '0' || c &gt; '9')) c = getchar(); if(c == '-') f = -1, c = getchar(); while(c &gt;= '0' &amp;&amp; c &lt;= '9') res = (res &lt;&lt; 3) + (res &lt;&lt; 1) + c - '0', c = getchar(); return f * res; &#125;int n, ans, refl[N+N], num;struct intv&#123; int l, r; &#125;p[N];bool cmp(intv x, intv y) &#123; return x.l == y.l ? x.r &gt; y.r : x.l &lt; y.l; &#125;int tr1[N*40], tr2[N*40];void build(int *tr, int p, int l, int r) &#123; tr[p] = inf; if(l == r) return; int mid = (l + r) &gt;&gt; 1; build(tr, p*2, l, mid); build(tr, p*2+1, mid + 1, r);&#125;void change(int *tr, int p, int l, int r, int pos, int x) &#123; tr[p] = min(tr[p], x); if(l == r) return; int mid = (l + r) &gt;&gt; 1; if(pos &lt;= mid) change(tr, p*2, l, mid, pos, x); if(pos &gt; mid) change(tr, p*2+1, mid + 1, r, pos, x);&#125;int query(int *tr, int p, int l, int r, int L, int R) &#123; if(L &lt;= l &amp;&amp; r &lt;= R) return tr[p]; int mid = (l + r) &gt;&gt; 1, res = inf; if(L &lt;= mid) res = min(res, query(tr, p*2, l, mid, L, R)); if(R &gt; mid) res = min(res, query(tr, p*2+1, mid + 1, r, L, R)); return res;&#125;int main() &#123; freopen("c.in", "r", stdin); freopen("c.out", "w", stdout); n = read(); int tmp; for(int i = 1; i &lt;= n; i++) p[i].l = read(), p[i].r = read(), refl[++num] = p[i].l, refl[++num] = p[i].r; sort(p + 1, p + 1 + n, cmp); sort(refl + 1, refl + 1 + num); num = unique(refl + 1, refl + 1 + num) - refl - 1; for(int i = 1; i &lt;= n; i++) p[i].l = lower_bound(refl + 1, refl + 1 + num, p[i].l) - refl, p[i].r = lower_bound(refl + 1, refl + 1 + num, p[i].r) - refl; build(tr1, 1, 1, num); build(tr2, 1, 1, num); for(int i = 1; i &lt;= n; i++) &#123; tmp = query(tr1, 1, 1, num, p[i].l, p[i].r); ans = max(ans, refl[p[i].r] + refl[p[i].l] - tmp); tmp = query(tr2, 1, 1, num, p[i].r, num); ans = max(ans, refl[p[i].l] - refl[p[i].r] - tmp); change(tr1, 1, 1, num, p[i].r, refl[p[i].l] + refl[p[i].r]); change(tr2, 1, 1, num, p[i].r, refl[p[i].l] - refl[p[i].r]); &#125; cout &lt;&lt; ans &lt;&lt; endl; return 0;&#125; 明天再接再厉，不信做不出来水题。]]></content>
       <categories>
         <category>集训</category>
       </categories>
+      <tags>
+        <tag>线段树</tag>
+        <tag>搞</tag>
+        <tag>贪心</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[JSOI冬令营D1 题]]></title>
@@ -370,6 +492,14 @@
       <categories>
         <category>集训</category>
       </categories>
+      <tags>
+        <tag>组合数学</tag>
+        <tag>树形dp</tag>
+        <tag>搞</tag>
+        <tag>树状数组</tag>
+        <tag>数学期望</tag>
+        <tag>容斥原理</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[JSOI冬令营D2 课]]></title>
@@ -378,6 +508,9 @@
       <categories>
         <category>集训</category>
       </categories>
+      <tags>
+        <tag>树形dp</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[组合数学整理集锦]]></title>
@@ -396,6 +529,11 @@
         <category>图论</category>
         <category>网络流</category>
       </categories>
+      <tags>
+        <tag>网络流</tag>
+        <tag>最短路</tag>
+        <tag>对偶图</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[BZOJ2434 阿狸的打字机]]></title>
@@ -405,6 +543,9 @@
         <category>字符串</category>
         <category>AC自动机</category>
       </categories>
+      <tags>
+        <tag>AC自动机</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[BZOJ1926 粟粟的书架]]></title>
@@ -414,6 +555,10 @@
         <category>数据结构</category>
         <category>可持久化</category>
       </categories>
+      <tags>
+        <tag>二分答案</tag>
+        <tag>主席树</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[BZOJ1070 修车]]></title>
@@ -423,6 +568,10 @@
         <category>图论</category>
         <category>网络流</category>
       </categories>
+      <tags>
+        <tag>网络流</tag>
+        <tag>二分图</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[BZOJ3994 约数个数和]]></title>
@@ -432,6 +581,10 @@
         <category>数学</category>
         <category>莫比乌斯反演</category>
       </categories>
+      <tags>
+        <tag>莫比乌斯反演</tag>
+        <tag>线性筛</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[施工结束]]></title>
