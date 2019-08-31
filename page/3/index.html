@@ -238,8 +238,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/07/04/BZOJ2208-Jsoi2010-连通数/">
-      BZOJ2208 [Jsoi2010]连通数
+    <a href="/2019/07/04/BZOJ4945-Noi2017-游戏/">
+      BZOJ4945 [Noi2017]游戏
     </a>
   </h2>
 
@@ -277,9 +277,9 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/图论/传递闭包/' rel="nofollow">
+    <a href='/categories/图论/2-sat/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>图论&nbsp;/&nbsp;传递闭包</p>
+      <p>图论&nbsp;/&nbsp;2-sat</p>
     </a>
   </div>
 
@@ -307,18 +307,27 @@
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
       <blockquote>
-<p>题目链接：<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=2208" target="_blank" rel="noopener">BZOJ2208</a></p>
+<p>题目链接：<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=4945" target="_blank" rel="noopener">BZOJ4945</a></p>
 </blockquote>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>传递闭包裸题<br>只是想写写bitset如何优化<br>看代码就明白了<br>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>本题标记着本人练习2-sat达到一个高潮<br>如果没有x，那就是一个裸的2-sat<br>然而x的个数很小，可以暴力枚举，所以实际上还是裸的2-sat<br>每个x枚举<br>1.不能选A，那么就是B、C二选一<br>2.不能选B，那么就是A、C二选一<br>这样就已经包含了ABC三种情况，所以暴力枚举的复杂度为$2^d$</p>
+<p>下面说一说裸的2-sat怎么做<br>用tarjan算法求出所有的强连通分量<br>如果某个对偶的两点位于同一分量，则无解<br>否则有解，那么问题就是如何输出任意一解<br>对于缩点后的反图，按拓扑序，选当前节点，把她得姐妹节点删除<br>事实上不用拓扑排序，节点scc编号的大小就是反图拓扑序的大小，因此姐妹点选scc小的即可</p>
+<p>tarjan比dfs快，我终于明白了，dfs是$O(nm)$的</p>
+<p>这里还有一些要注意的地方，如果一个限制中提到了一定不会出现赛车，设此限制为$(x\to y)$，若x不可能选，则直接continue，若y不可能选，则x连向他的姐妹节点，巧妙地表达了x不可能选</p>
       
         <div class="readmore">
-          <a href="/2019/07/04/BZOJ2208-Jsoi2010-连通数/" class="flat-box">
+          <a href="/2019/07/04/BZOJ4945-Noi2017-游戏/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             Read More
           </a>
         </div>
       
     </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/2-sat/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>2-sat</a>
+        
+      </div>
     
   </section>
 </article>
@@ -380,7 +389,7 @@
   <div class='new-meta-item category'>
     <a href='/categories/字符串/manachar/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>数学&nbsp;/&nbsp;字符串&nbsp;/&nbsp;多项式&nbsp;/&nbsp;manachar</p>
+      <p>数学&nbsp;/&nbsp;多项式&nbsp;/&nbsp;字符串&nbsp;/&nbsp;manachar</p>
     </a>
   </div>
 
@@ -780,208 +789,6 @@
       
         
   <h2 class="title">
-    <a href="/2019/06/30/BZOJ2440-完全平方数/">
-      BZOJ2440 完全平方数
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    <a href="http://ratexxxx.github.io" rel="nofollow">
-      
-        <i class="fas fa-user" aria-hidden="true"></i>
-      
-      <p>Ratexxxx</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-06-30</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/数学/容斥原理/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>数学&nbsp;/&nbsp;容斥原理</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <blockquote>
-<p>题目链接：<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=2440" target="_blank" rel="noopener">BZOJ2440</a></p>
-</blockquote>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>二分答案，转化为求小于等于N的非完全平方数倍数的数有几个<br>使用容斥原理，<br>$$ans=n-1个质因子平方+2个质因子平方-3质因子平方+…$$<br>枚举所有次数为2的因数i，个数有$\frac{n}{i^2}$个，系数就是$\mu(i)$<br>不要忘记莫比乌斯函数本质就是数论中的容斥<br>我不会透露自己想反演做法想了半天<br>
-      
-        <div class="readmore">
-          <a href="/2019/06/30/BZOJ2440-完全平方数/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/06/30/BZOJ4407-于神之怒加强版/">
-      BZOJ4407 于神之怒加强版
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    <a href="http://ratexxxx.github.io" rel="nofollow">
-      
-        <i class="fas fa-user" aria-hidden="true"></i>
-      
-      <p>Ratexxxx</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-06-30</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/数学/莫比乌斯反演/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>数学&nbsp;/&nbsp;莫比乌斯反演</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <blockquote>
-<p>题目链接：<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=4407" target="_blank" rel="noopener">BZOJ4407</a></p>
-</blockquote>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>求<br>$$<br>\sum_{i=1}^n\sum_{j=1}^mgcd(i, j)^k<br>$$<br>提取最大公约数d得到<br>$$<br>\sum_{d=1}^nd^k\sum_{i=1}^{n/d}\sum_{j=1}^{m/d}[gcd(i, j) = 1]<br>$$<br>常见的套用反演，得到<br>$$<br>\sum_{d=1}^nd^k\sum_{i=1}^n\mu(i)\lfloor\frac{n}{id}\rfloor\lfloor\frac{m}{id}\rfloor<br>$$<br>令$T=id$<br>$$<br>\sum_{T=1}^n\lfloor\frac{n}{T}\rfloor\lfloor\frac{m}{T}\rfloor\sum_{d|T}d^k\mu(\frac{T}{d})<br>$$<br>前者整除分块，后者线性筛<br>对于线性筛，还是只需要想想枚举到一个已出现的质因子的情况，新的所有的因数可以看成旧的所有因数*p，再并上原来不含p的因数<br>前者更改前后$\mu$值没有变，后者在操作后变成了0<br>所以只要乘上$p^k$即可<br>
-      
-        <div class="readmore">
-          <a href="/2019/06/30/BZOJ4407-于神之怒加强版/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
     <a href="/2019/06/29/BZOJ2154-Crash的数字表格/">
       BZOJ2154 Crash的数字表格
     </a>
@@ -1200,8 +1007,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/06/07/LOJ3049-十二省联考2019-字符串问题/">
-      LOJ3049 [十二省联考2019]字符串问题
+    <a href="/2019/06/02/字符串算法总结/">
+      字符串算法总结
     </a>
   </h2>
 
@@ -1229,7 +1036,105 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-06-07</p>
+    <p>2019-06-02</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/字符串/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>字符串</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <p>对于一些字符串算法的个人心得<br>其实就是记一些性质，还有容易忘的东西，不然未来还要上网查(┬＿┬)<br>
+      
+        <div class="readmore">
+          <a href="/2019/06/02/字符串算法总结/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/06/01/BZOJ4650-Noi2016-优秀的拆分/">
+      BZOJ4650 [Noi2016]优秀的拆分
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    <a href="http://ratexxxx.github.io" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>Ratexxxx</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-06-01</p>
   </a>
 </div>
 
@@ -1269,19 +1174,135 @@
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
       <blockquote>
-<p>题目链接：<a href="https://loj.ac/problem/3049" target="_blank" rel="noopener">LOJ3049</a></p>
+<p>题目链接：<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=4650" target="_blank" rel="noopener">BZOJ4650</a></p>
 </blockquote>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>这是一道还没有A掉的题，能过小样例，大数据过不了，测试点只过了一个，调不出来，先留着吧</p>
-<p>本题有两个做法，后缀数组和后缀自动机，这里我写的是后缀数组<br>根据题意就是在a和b之间连一些边，求最长路<br>我们要搞定的是b向a连得边，也就是每个$b_i$是哪些$a$前缀<br>先建好后缀数组，这样每一个a中的元素就是这个二维中的一个点$ (la_i,\ ra_i-la_i+1) $<br>每一个b中的元素可以匹配的是sa中的一个区间，这个区间都以$b_i$为前缀<br>那么这个$b_i$会向这个区间的后面一部分的a连边，具体看图<br><img src="/2019/06/07/LOJ3049-十二省联考2019-字符串问题/1.png"><br>红色的圈为a的位置，绿色是b的匹配<br>那么此时实心的红点是要连边的<br>注意到有两个红圈虽然在sa的区间内，但仍不连边，这是对应最后两个测试点的状况<br>具体实现时，肯定不可能暴力连边，每次连得都是区间，可以使用线段树优化建图<br>但仅仅线段树还是不够，因为即使是这个区间也不是全都连边，必须是长度大于$blen_i$的，所以考虑使用主席树，可持久化<br>从右往左每一列加入时可持久化一下，连边时在对应的版本上查区间，每一个版本对应的是右缀(自己起的名字)<br>最后使用拓扑排序判环与求最长路</p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>感觉这道题的方法在SA里还是很常见的<br>考虑枚举AA和BB的分界点，对答案的贡献是以当前为结尾的XX的个数和以当前为结束的XX的个数<br>因此实际上要计算以每个字符开头的XX（两个相同字符串）的个数，同理也要算以他结尾的<br>枚举X字符串的长度$len$，每隔长度$len$设一个关键点<br>那么每一个XX一定过两个相邻的关键点<br>枚举每一对相邻的关键点，考虑其可能对那些位置产生贡献（所谓对某个位置产生贡献就是所这个位置开头的XX字符串个数+1）<br>请看下图，我们求出两个位置的最长公共前缀和最长公共后缀<br><img src="/2019/06/01/BZOJ4650-Noi2016-优秀的拆分/1.png"><br>此时两者没有交点，也就是长度之和$\le len$，不可能产生贡献（因为总会每截断）<br>但是下面这种情况<br><img src="/2019/06/01/BZOJ4650-Noi2016-优秀的拆分/2.png"><br>两者有了交点，就会产生贡献<br>两条橙色线都是可以产生的XX，在两者之间的每一条同样长度的字符串也是<br>因此紫色的那一段向后的XX会$+1$，棕色的那一段有向前的XX会$+1$<br>区间加一可以直接差分<br>至于LCP和LCS就是后缀数组的常见操作了，前后要构造两个</p>
+<p>1.枚举 $len$ ，每隔 $len$ 设置关键点：这个的复杂度是调和级数 $O(n \log n)$<br>2.求 后缀LCP，前缀LCS：使用后缀数组 + st 表 做到 $O(1)$ 查询<br>3.区间加上 1 ： 差分维护就可以了。</p>
+<p>记住这个方法，我叫他“调和级数法”<br>
       
         <div class="readmore">
-          <a href="/2019/06/07/LOJ3049-十二省联考2019-字符串问题/" class="flat-box">
+          <a href="/2019/06/01/BZOJ4650-Noi2016-优秀的拆分/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             Read More
           </a>
         </div>
       
     </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/后缀数组/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>后缀数组</a>
+        
+          <a href="/tags/调和级数/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>调和级数</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/05/27/BZOJ1563-Noi2009-诗人小G/">
+      BZOJ1563 [Noi2009]诗人小G
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    <a href="http://ratexxxx.github.io" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>Ratexxxx</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-05-27</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/动态规划/决策单调性优化/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>动态规划&nbsp;/&nbsp;决策单调性优化</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <blockquote>
+<p>题目链接：<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=1563" target="_blank" rel="noopener">BZOJ1563</a></p>
+</blockquote>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>dp转移方程<br>$$<br>f[i] = min_{j=0}^{i-1}{ f[j] + | s[i] - s[j] - 1 - L | ^ p }<br>$$<br>其中$ s[i] = i + \sum_{j=1}^{i}len[j] $<br>采取了别人说的暴力打表法，发现确实具有决策单调性<br>证明？我不会。<br>因此以后见到这种1D1D的dp方程先写出来暴力，然后打表决策看有无单调性，没有的话一定是斜率优化了<br>每一时刻，所有位置对应的决策形成的数列一定是单调不减的，就是下面的样子<br>1111111111111<br>1111122222223<br>1111333344555<br>这个数列在每次计算出新的位置后会更新，之后下一个位置的决策实际上就确定了，更新的时候仍会保持单调性<br>具体实现可以使用单调队列配二分<br>每一个决策是一个区间，新的可能出现的决策会把队尾的区间弹掉<br>当队尾的区间无法弹掉后，使用二分确定在哪个位置之前是可以保留的，剩下的仍要更新<br>最后把当前决策补到队尾<br>下一轮的队首就是最终决策<br>同时及时把队首无用的决策区间弹掉<br>
+      
+        <div class="readmore">
+          <a href="/2019/05/27/BZOJ1563-Noi2009-诗人小G/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/决策单调性/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>决策单调性</a>
+        
+      </div>
     
   </section>
 </article>
@@ -1546,7 +1567,7 @@
     <div class='content pure'>
       <ul class="entry">
         
-          <li><a class="flat-box" title="/categories/动态规划/" href="/categories/动态规划/"><div class='name'>动态规划</div><div class='badge'>(5)</div></a></li>
+          <li><a class="flat-box" title="/categories/动态规划/" href="/categories/动态规划/"><div class='name'>动态规划</div><div class='badge'>(7)</div></a></li>
         
           <li><a class="flat-box child" title="/categories/动态规划/决策单调性优化/" href="/categories/动态规划/决策单调性优化/"><div class='name'>决策单调性优化</div><div class='badge'>(1)</div></a></li>
         
@@ -1554,43 +1575,37 @@
         
           <li><a class="flat-box child" title="/categories/动态规划/斜率优化/" href="/categories/动态规划/斜率优化/"><div class='name'>斜率优化</div><div class='badge'>(1)</div></a></li>
         
-          <li><a class="flat-box child" title="/categories/动态规划/树形dp/" href="/categories/动态规划/树形dp/"><div class='name'>树形dp</div><div class='badge'>(1)</div></a></li>
+          <li><a class="flat-box child" title="/categories/动态规划/树形dp/" href="/categories/动态规划/树形dp/"><div class='name'>树形dp</div><div class='badge'>(3)</div></a></li>
+        
+          <li><a class="flat-box child" title="/categories/动态规划/背包dp/" href="/categories/动态规划/背包dp/"><div class='name'>背包dp</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box child" title="/categories/动态规划/计数dp/" href="/categories/动态规划/计数dp/"><div class='name'>计数dp</div><div class='badge'>(1)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/图论/" href="/categories/图论/"><div class='name'>图论</div><div class='badge'>(7)</div></a></li>
+          <li><a class="flat-box" title="/categories/图论/" href="/categories/图论/"><div class='name'>图论</div><div class='badge'>(5)</div></a></li>
         
-          <li><a class="flat-box child" title="/categories/图论/2-sat/" href="/categories/图论/2-sat/"><div class='name'>2-sat</div><div class='badge'>(2)</div></a></li>
+          <li><a class="flat-box child" title="/categories/图论/2-sat/" href="/categories/图论/2-sat/"><div class='name'>2-sat</div><div class='badge'>(1)</div></a></li>
         
-          <li><a class="flat-box child" title="/categories/图论/传递闭包/" href="/categories/图论/传递闭包/"><div class='name'>传递闭包</div><div class='badge'>(1)</div></a></li>
+          <li><a class="flat-box child" title="/categories/图论/染色/" href="/categories/图论/染色/"><div class='name'>染色</div><div class='badge'>(1)</div></a></li>
         
-          <li><a class="flat-box child" title="/categories/图论/网络流/" href="/categories/图论/网络流/"><div class='name'>网络流</div><div class='badge'>(4)</div></a></li>
+          <li><a class="flat-box child" title="/categories/图论/网络流/" href="/categories/图论/网络流/"><div class='name'>网络流</div><div class='badge'>(3)</div></a></li>
         
-          <li><a class="flat-box child" title="/categories/图论/网络流/费用流/" href="/categories/图论/网络流/费用流/"><div class='name'>费用流</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box" title="/categories/字符串/" href="/categories/字符串/"><div class='name'>字符串</div><div class='badge'>(13)</div></a></li>
+          <li><a class="flat-box" title="/categories/字符串/" href="/categories/字符串/"><div class='name'>字符串</div><div class='badge'>(9)</div></a></li>
         
           <li><a class="flat-box child" title="/categories/字符串/AC自动机/" href="/categories/字符串/AC自动机/"><div class='name'>AC自动机</div><div class='badge'>(1)</div></a></li>
         
-          <li><a class="flat-box child" title="/categories/字符串/KMP-扩展KMP/" href="/categories/字符串/KMP-扩展KMP/"><div class='name'>KMP/扩展KMP</div><div class='badge'>(1)</div></a></li>
+          <li><a class="flat-box child" title="/categories/字符串/manachar/" href="/categories/字符串/manachar/"><div class='name'>manachar</div><div class='badge'>(2)</div></a></li>
         
-          <li><a class="flat-box child" title="/categories/字符串/manachar/" href="/categories/字符串/manachar/"><div class='name'>manachar</div><div class='badge'>(3)</div></a></li>
-        
-          <li><a class="flat-box child" title="/categories/字符串/后缀数组/" href="/categories/字符串/后缀数组/"><div class='name'>后缀数组</div><div class='badge'>(3)</div></a></li>
+          <li><a class="flat-box child" title="/categories/字符串/后缀数组/" href="/categories/字符串/后缀数组/"><div class='name'>后缀数组</div><div class='badge'>(2)</div></a></li>
         
           <li><a class="flat-box child" title="/categories/字符串/后缀树/" href="/categories/字符串/后缀树/"><div class='name'>后缀树</div><div class='badge'>(1)</div></a></li>
         
-          <li><a class="flat-box child" title="/categories/字符串/后缀自动机/" href="/categories/字符串/后缀自动机/"><div class='name'>后缀自动机</div><div class='badge'>(5)</div></a></li>
+          <li><a class="flat-box child" title="/categories/字符串/后缀自动机/" href="/categories/字符串/后缀自动机/"><div class='name'>后缀自动机</div><div class='badge'>(4)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/数学/" href="/categories/数学/"><div class='name'>数学</div><div class='badge'>(15)</div></a></li>
+          <li><a class="flat-box" title="/categories/数学/" href="/categories/数学/"><div class='name'>数学</div><div class='badge'>(13)</div></a></li>
         
           <li><a class="flat-box child" title="/categories/数学/Burnside引理/" href="/categories/数学/Burnside引理/"><div class='name'>Burnside引理</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box child" title="/categories/数学/多项式/" href="/categories/数学/多项式/"><div class='name'>多项式</div><div class='badge'>(4)</div></a></li>
-        
-          <li><a class="flat-box child" title="/categories/数学/多项式/FFT/" href="/categories/数学/多项式/FFT/"><div class='name'>FFT</div><div class='badge'>(0)</div></a></li>
-        
-          <li><a class="flat-box child" title="/categories/数学/容斥原理/" href="/categories/数学/容斥原理/"><div class='name'>容斥原理</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box child" title="/categories/数学/拉格朗日插值/" href="/categories/数学/拉格朗日插值/"><div class='name'>拉格朗日插值</div><div class='badge'>(2)</div></a></li>
         
@@ -1600,17 +1615,17 @@
         
           <li><a class="flat-box child" title="/categories/数学/组合/" href="/categories/数学/组合/"><div class='name'>组合</div><div class='badge'>(4)</div></a></li>
         
-          <li><a class="flat-box child" title="/categories/数学/莫比乌斯反演/" href="/categories/数学/莫比乌斯反演/"><div class='name'>莫比乌斯反演</div><div class='badge'>(4)</div></a></li>
+          <li><a class="flat-box child" title="/categories/数学/莫比乌斯反演/" href="/categories/数学/莫比乌斯反演/"><div class='name'>莫比乌斯反演</div><div class='badge'>(3)</div></a></li>
         
           <li><a class="flat-box" title="/categories/数据结构/" href="/categories/数据结构/"><div class='name'>数据结构</div><div class='badge'>(10)</div></a></li>
         
           <li><a class="flat-box child" title="/categories/数据结构/LCT/" href="/categories/数据结构/LCT/"><div class='name'>LCT</div><div class='badge'>(2)</div></a></li>
         
-          <li><a class="flat-box child" title="/categories/数据结构/主席树/" href="/categories/数据结构/主席树/"><div class='name'>主席树</div><div class='badge'>(0)</div></a></li>
-        
           <li><a class="flat-box child" title="/categories/数据结构/可持久化/" href="/categories/数据结构/可持久化/"><div class='name'>可持久化</div><div class='badge'>(2)</div></a></li>
         
-          <li><a class="flat-box child" title="/categories/数据结构/树链剖分/" href="/categories/数据结构/树链剖分/"><div class='name'>树链剖分</div><div class='badge'>(2)</div></a></li>
+          <li><a class="flat-box child" title="/categories/数据结构/树状数组/" href="/categories/数据结构/树状数组/"><div class='name'>树状数组</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child" title="/categories/数据结构/树链剖分/" href="/categories/数据结构/树链剖分/"><div class='name'>树链剖分</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box child" title="/categories/数据结构/点分治/" href="/categories/数据结构/点分治/"><div class='name'>点分治</div><div class='badge'>(1)</div></a></li>
         
@@ -1651,7 +1666,7 @@
 </header>
 
     <div class='content pure'>
-      <a href="/tags/2-sat/" style="font-size: 14px; color: #999">2-sat</a> <a href="/tags/AC自动机/" style="font-size: 14px; color: #999">AC自动机</a> <a href="/tags/Burnside引理/" style="font-size: 14px; color: #999">Burnside引理</a> <a href="/tags/FFT/" style="font-size: 20.67px; color: #6c6c6c">FFT</a> <a href="/tags/LCT/" style="font-size: 17.33px; color: #828282">LCT</a> <a href="/tags/NTT/" style="font-size: 14px; color: #999">NTT</a> <a href="/tags/manachar/" style="font-size: 17.33px; color: #828282">manachar</a> <a href="/tags/trie/" style="font-size: 14px; color: #999">trie</a> <a href="/tags/主席树/" style="font-size: 17.33px; color: #828282">主席树</a> <a href="/tags/二分图/" style="font-size: 14px; color: #999">二分图</a> <a href="/tags/二分答案/" style="font-size: 17.33px; color: #828282">二分答案</a> <a href="/tags/二次函数/" style="font-size: 14px; color: #999">二次函数</a> <a href="/tags/任意长度FFT/" style="font-size: 14px; color: #999">任意长度FFT</a> <a href="/tags/决策单调性/" style="font-size: 14px; color: #999">决策单调性</a> <a href="/tags/单调队列/" style="font-size: 14px; color: #999">单调队列</a> <a href="/tags/博弈论/" style="font-size: 14px; color: #999">博弈论</a> <a href="/tags/后缀数组/" style="font-size: 17.33px; color: #828282">后缀数组</a> <a href="/tags/后缀树/" style="font-size: 14px; color: #999">后缀树</a> <a href="/tags/后缀自动机/" style="font-size: 24px; color: #555">后缀自动机</a> <a href="/tags/多项式/" style="font-size: 24px; color: #555">多项式</a> <a href="/tags/容斥原理/" style="font-size: 14px; color: #999">容斥原理</a> <a href="/tags/对偶图/" style="font-size: 14px; color: #999">对偶图</a> <a href="/tags/拉拉格朗日插值/" style="font-size: 14px; color: #999">拉拉格朗日插值</a> <a href="/tags/拉格朗日插值/" style="font-size: 14px; color: #999">拉格朗日插值</a> <a href="/tags/搞/" style="font-size: 17.33px; color: #828282">搞</a> <a href="/tags/数学期望/" style="font-size: 14px; color: #999">数学期望</a> <a href="/tags/斜率优化/" style="font-size: 14px; color: #999">斜率优化</a> <a href="/tags/最小生成树/" style="font-size: 14px; color: #999">最小生成树</a> <a href="/tags/最短路/" style="font-size: 14px; color: #999">最短路</a> <a href="/tags/杜教筛/" style="font-size: 14px; color: #999">杜教筛</a> <a href="/tags/树上动规/" style="font-size: 14px; color: #999">树上动规</a> <a href="/tags/树形dp/" style="font-size: 20.67px; color: #6c6c6c">树形dp</a> <a href="/tags/树状数组/" style="font-size: 14px; color: #999">树状数组</a> <a href="/tags/模拟/" style="font-size: 14px; color: #999">模拟</a> <a href="/tags/点分治/" style="font-size: 14px; color: #999">点分治</a> <a href="/tags/熟练剖分/" style="font-size: 14px; color: #999">熟练剖分</a> <a href="/tags/第二类斯特林数/" style="font-size: 14px; color: #999">第二类斯特林数</a> <a href="/tags/线性筛/" style="font-size: 17.33px; color: #828282">线性筛</a> <a href="/tags/线段树/" style="font-size: 20.67px; color: #6c6c6c">线段树</a> <a href="/tags/线段树合并/" style="font-size: 14px; color: #999">线段树合并</a> <a href="/tags/组合数学/" style="font-size: 24px; color: #555">组合数学</a> <a href="/tags/网络流/" style="font-size: 17.33px; color: #828282">网络流</a> <a href="/tags/网络流-最大流/" style="font-size: 14px; color: #999">网络流-最大流</a> <a href="/tags/自然数幂和/" style="font-size: 14px; color: #999">自然数幂和</a> <a href="/tags/莫比乌斯反演/" style="font-size: 20.67px; color: #6c6c6c">莫比乌斯反演</a> <a href="/tags/计数dp/" style="font-size: 17.33px; color: #828282">计数dp</a> <a href="/tags/调和级数/" style="font-size: 14px; color: #999">调和级数</a> <a href="/tags/贪心/" style="font-size: 14px; color: #999">贪心</a> <a href="/tags/费用流/" style="font-size: 14px; color: #999">费用流</a> <a href="/tags/长链剖分/" style="font-size: 14px; color: #999">长链剖分</a>
+      <a href="/tags/2-sat/" style="font-size: 14px; color: #999">2-sat</a> <a href="/tags/AC自动机/" style="font-size: 14px; color: #999">AC自动机</a> <a href="/tags/Burnside引理/" style="font-size: 14px; color: #999">Burnside引理</a> <a href="/tags/FFT/" style="font-size: 20.67px; color: #6c6c6c">FFT</a> <a href="/tags/LCT/" style="font-size: 17.33px; color: #828282">LCT</a> <a href="/tags/NTT/" style="font-size: 14px; color: #999">NTT</a> <a href="/tags/manachar/" style="font-size: 17.33px; color: #828282">manachar</a> <a href="/tags/trie/" style="font-size: 14px; color: #999">trie</a> <a href="/tags/主席树/" style="font-size: 17.33px; color: #828282">主席树</a> <a href="/tags/二分图/" style="font-size: 14px; color: #999">二分图</a> <a href="/tags/二分答案/" style="font-size: 17.33px; color: #828282">二分答案</a> <a href="/tags/二次函数/" style="font-size: 14px; color: #999">二次函数</a> <a href="/tags/任意长度FFT/" style="font-size: 14px; color: #999">任意长度FFT</a> <a href="/tags/决策单调性/" style="font-size: 14px; color: #999">决策单调性</a> <a href="/tags/单调队列/" style="font-size: 14px; color: #999">单调队列</a> <a href="/tags/博弈论/" style="font-size: 14px; color: #999">博弈论</a> <a href="/tags/后缀数组/" style="font-size: 17.33px; color: #828282">后缀数组</a> <a href="/tags/后缀树/" style="font-size: 14px; color: #999">后缀树</a> <a href="/tags/后缀自动机/" style="font-size: 24px; color: #555">后缀自动机</a> <a href="/tags/多项式/" style="font-size: 24px; color: #555">多项式</a> <a href="/tags/容斥原理/" style="font-size: 14px; color: #999">容斥原理</a> <a href="/tags/对偶图/" style="font-size: 14px; color: #999">对偶图</a> <a href="/tags/拉拉格朗日插值/" style="font-size: 14px; color: #999">拉拉格朗日插值</a> <a href="/tags/拉格朗日插值/" style="font-size: 14px; color: #999">拉格朗日插值</a> <a href="/tags/搞/" style="font-size: 17.33px; color: #828282">搞</a> <a href="/tags/数学期望/" style="font-size: 14px; color: #999">数学期望</a> <a href="/tags/数形转换/" style="font-size: 14px; color: #999">数形转换</a> <a href="/tags/斜率优化/" style="font-size: 14px; color: #999">斜率优化</a> <a href="/tags/最小生成树/" style="font-size: 14px; color: #999">最小生成树</a> <a href="/tags/最短路/" style="font-size: 14px; color: #999">最短路</a> <a href="/tags/杜教筛/" style="font-size: 14px; color: #999">杜教筛</a> <a href="/tags/染色/" style="font-size: 14px; color: #999">染色</a> <a href="/tags/树上动规/" style="font-size: 14px; color: #999">树上动规</a> <a href="/tags/树形dp/" style="font-size: 24px; color: #555">树形dp</a> <a href="/tags/树状数组/" style="font-size: 17.33px; color: #828282">树状数组</a> <a href="/tags/模拟/" style="font-size: 14px; color: #999">模拟</a> <a href="/tags/点分治/" style="font-size: 14px; color: #999">点分治</a> <a href="/tags/熟练剖分/" style="font-size: 14px; color: #999">熟练剖分</a> <a href="/tags/第二类斯特林数/" style="font-size: 14px; color: #999">第二类斯特林数</a> <a href="/tags/线性筛/" style="font-size: 17.33px; color: #828282">线性筛</a> <a href="/tags/线段树/" style="font-size: 20.67px; color: #6c6c6c">线段树</a> <a href="/tags/线段树合并/" style="font-size: 14px; color: #999">线段树合并</a> <a href="/tags/组合数学/" style="font-size: 24px; color: #555">组合数学</a> <a href="/tags/网络流/" style="font-size: 17.33px; color: #828282">网络流</a> <a href="/tags/自然数幂和/" style="font-size: 14px; color: #999">自然数幂和</a> <a href="/tags/莫比乌斯反演/" style="font-size: 20.67px; color: #6c6c6c">莫比乌斯反演</a> <a href="/tags/计数dp/" style="font-size: 17.33px; color: #828282">计数dp</a> <a href="/tags/调和级数/" style="font-size: 14px; color: #999">调和级数</a> <a href="/tags/贪心/" style="font-size: 14px; color: #999">贪心</a> <a href="/tags/费用流/" style="font-size: 14px; color: #999">费用流</a> <a href="/tags/长链剖分/" style="font-size: 14px; color: #999">长链剖分</a>
     </div>
   </section>
 
