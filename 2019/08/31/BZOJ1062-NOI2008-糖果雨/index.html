@@ -46,7 +46,10 @@
   
 </head>
 
-<body>
+<body background="images\bot.png"
+style=" background-repeat:no-repeat ;
+background-size:100% 100%;
+background-attachment: fixed;">
   
   
   <header class="l_header pure">
@@ -656,7 +659,8 @@
         .then(function (res){return res.json();})
         .then(function (data) {
           var hitokoto = document.getElementById('hitokoto');
-          hitokoto.innerText = data.hitokoto;hitokoto.innerText += "\n——" + data.from;
+          hitokoto.innerText = data.hitokoto;
+          hitokoto.innerText += "\n——" + data.from;
         })
         .catch(function (err) {console.error(err);})
       </script>
