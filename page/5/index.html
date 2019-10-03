@@ -46,10 +46,7 @@
   
 </head>
 
-<body background="images\bot.png"
-style=" background-repeat:no-repeat ;
-background-size:100% 100%;
-background-attachment: fixed;">
+<body>
   
   
   <header class="l_header pure">
@@ -227,6 +224,229 @@ background-attachment: fixed;">
   <section class="post-list">
     
     
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/05/27/BZOJ1563-Noi2009-诗人小G/">
+      BZOJ1563 [Noi2009]诗人小G
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    <a href="http://ratexxxx.github.io" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>Ratexxxx</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-05-27</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/动态规划/决策单调性优化/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>动态规划&nbsp;/&nbsp;决策单调性优化</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <blockquote>
+<p>题目链接：<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=1563" target="_blank" rel="noopener">BZOJ1563</a></p>
+</blockquote>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>dp转移方程<br>$$<br>f[i] = min_{j=0}^{i-1}{ f[j] + | s[i] - s[j] - 1 - L | ^ p }<br>$$<br>其中$ s[i] = i + \sum_{j=1}^{i}len[j] $<br>采取了别人说的暴力打表法，发现确实具有决策单调性<br>证明？我不会。<br>因此以后见到这种1D1D的dp方程先写出来暴力，然后打表决策看有无单调性，没有的话一定是斜率优化了<br>每一时刻，所有位置对应的决策形成的数列一定是单调不减的，就是下面的样子<br>1111111111111<br>1111122222223<br>1111333344555<br>这个数列在每次计算出新的位置后会更新，之后下一个位置的决策实际上就确定了，更新的时候仍会保持单调性<br>具体实现可以使用单调队列配二分<br>每一个决策是一个区间，新的可能出现的决策会把队尾的区间弹掉<br>当队尾的区间无法弹掉后，使用二分确定在哪个位置之前是可以保留的，剩下的仍要更新<br>最后把当前决策补到队尾<br>下一轮的队首就是最终决策<br>同时及时把队首无用的决策区间弹掉<br>
+      
+        <div class="readmore">
+          <a href="/2019/05/27/BZOJ1563-Noi2009-诗人小G/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/决策单调性/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>决策单调性</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/02/03/BZOJ1002-轮状病毒/">
+      BZOJ1002 轮状病毒
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    <a href="http://ratexxxx.github.io" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>Ratexxxx</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-02-03</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/数学/组合/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>数学&nbsp;/&nbsp;组合</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <blockquote>
+<p>题目链接<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=1002" target="_blank" rel="noopener">BZOJ1002</a></p>
+</blockquote>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>组合数学，要么递推，要么通项公式<br>本题可以求出一个类递推式</p>
+<p>用一个类似dp的方法。考虑分配周围这个圆的联通，就是一个线性dp了，过程中考虑和中间点的联通。<br>令$f[i]$表示考虑了圆上的前i个的方案数<br>$$<br>f[i] = \sum_{j=1}^if[i-j]\times j<br>$$<br>但这相当于把环拆成了链，还要考虑1和n连接的情况。如果有j个周围的点连成一条，且跨越了1和n，我们将所有这样的情况累加到答案中去。考虑如果这样的点有j个，剩下的点肯定不与这j个点相连，所以连边方案数就是$f[i-j]​$，这j个点有$(j-1)​$种选法(跨越1和n)，与中心点连边的方案数是j。设这种情况为$g[i]$<br>$$<br>g[i] = \sum_{j=2}^if[i-j]\times j\times (j-1)<br>$$</p>
+<p>剩下的就是高精了，建一个结构体，写一个加法和乘法。</p>
+<p>但这道题让我感受到了常数的力量。</p>
+<p>最开始我写了一个+=，写了一个*，乘法会返回一个大整数类型，加等于就直接穿引用修改。<br>这样在洛谷上94ms过。<br>但BZOJ上TLE了（时限1000ms）。。。</p>
+<p>于是我不得不常数优化。<br>把乘法改成乘等于，所有运算都是传引用，避免了频繁的复制操作。<br>结果洛谷上76ms，看起来没差多少<br>然而，BZOJ上108ms成功AC。。。</p>
+<p>BZOJ是有毒吧，或者还是洛谷有毒？</p>
+<p>所以告诉我们写高精是注意能引用就引用，尽量不要复制，常数很大的。</p>
+<p>还有就是乘法运算进位不能直接加上去，要用一个变量先存一下，这个调了很久。（太菜了）</p>
+<p>其实这个做法可以用差分序列来优化，复杂度小一些，也不用写乘法了，但我最后卡常成功（暗笑，冷笑）<br>
+      
+        <div class="readmore">
+          <a href="/2019/02/03/BZOJ1002-轮状病毒/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/计数dp/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>计数dp</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
       
         
           <div class='post-wrapper'>
@@ -564,11 +784,11 @@ background-attachment: fixed;">
         
           <a href="/tags/树状数组/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>树状数组</a>
         
-          <a href="/tags/搞/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>搞</a>
-        
           <a href="/tags/树形dp/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>树形dp</a>
         
           <a href="/tags/组合数学/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>组合数学</a>
+        
+          <a href="/tags/搞/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>搞</a>
         
           <a href="/tags/数学期望/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>数学期望</a>
         
@@ -1176,237 +1396,6 @@ background-attachment: fixed;">
           </div>
         
       
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/01/17/BZOJ1070-修车/">
-      BZOJ1070 修车
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    <a href="http://ratexxxx.github.io" rel="nofollow">
-      
-        <i class="fas fa-user" aria-hidden="true"></i>
-      
-      <p>Ratexxxx</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-01-17</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/图论/网络流/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>图论&nbsp;/&nbsp;网络流</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <blockquote>
-<p>题目链接<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=1070" target="_blank" rel="noopener">BZOJ1070</a></p>
-</blockquote>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>对于像这样的对应匹配的问题，一般可以使用网络流求解，即构建二分图，大部分时候求最大匹配（当然也不仅是匹配）。本题中一次维修要消耗一定的时间，因此需要使用最小费用最大流。</p>
-<p>最原始的思路是，左部工人，右部客户的二部图，但本题的特殊之处在于排在后面的人会有更长的等待时间。我们仍需保持这是一个二分图，因此需要对点或边进行一些调整。</p>
-<p>首先，要使用一个重要的思想，考虑每辆车对总等待时间的贡献，即<strong>不计算每个顾客等多久，而计算他让别人等了多久</strong></p>
-<p>每一个工人一个车一个车的修，每修一辆车会让后面的人多等一会儿。</p>
-<p>此时就可以想到拆点。把每一个工人节点k拆成个N点，等同于正在修他将要修的倒数第i辆车，向另外一部j点连边即代表他这个修的是j号车， 费用为$a[j][k]*i$，乘以i是因为后面的i辆车都要等待这个时间。</p>
-<p>事实上本题的构图体现了一个<strong>阶段化拆点</strong>的思想，一个点拆成它的不同阶段，相互独立。</p>
-<p>至于二部图的网络流构图法就不累述了，这里说几个注意点：</p>
-<ol>
-<li>边编号要从2开始计</li>
-<li>不要忘记建反向边，容量0，费用-w</li>
-<li>清空数组神马的别忘了
-      
-        <div class="readmore">
-          <a href="/2019/01/17/BZOJ1070-修车/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/网络流/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>网络流</a>
-        
-          <a href="/tags/二分图/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>二分图</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/01/13/BZOJ3994-约数个数和/">
-      BZOJ3994 约数个数和
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    <a href="http://ratexxxx.github.io" rel="nofollow">
-      
-        <i class="fas fa-user" aria-hidden="true"></i>
-      
-      <p>Ratexxxx</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-01-13</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/数学/莫比乌斯反演/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>数学&nbsp;/&nbsp;莫比乌斯反演</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <blockquote>
-<p>题目链接：<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=3994" target="_blank" rel="noopener">BZOJ3994</a></p>
-</blockquote>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>首先，要先介绍一个可爱的结论：<br>$$ d(ij) = \sum_{x|i}\sum_{y|j}[gcd(x, y) = 1] $$<br>简单证明一下：<br>当$(i, j)=1$时，结果显然为i的约数个数乘j的约数个数。<br>否则，会有一部分重复，因为i*j的某一个因数可以有不同方式得到。怎样得到另一种方式呢？比如现在有$x|i,\ y|j,\ xy|ij,\ d|x$此时让x除以d，y乘以d，得到新的$xy|ij$，而这样做合法的前提是d同时是i和j的因数，或者说$gcd(x, yd)\ne 1$，当有这样的一对约数时，把结果减1，就可以得到这个式子。</p>
-<p>结合其他几道题目，可以发现反演似乎非常青睐gcd，所有的数论函数都要尽量往最大公约数上面靠，然后再开始套路。</p>
-<p>之后就是一道比较经典的反演题目了，总之就是推式子吧。求$$ \sum_{i=1}^N\sum_{j=1}^M\sum_{x|i}\sum_{y|j}[gcd(x, y) = 1] $$<br>相同的x, y枚举了很多次，因此先枚举x, y，贡献可以直接计算得到，原式即<br>$$\sum_{i=1}^N\sum_{j=1}^M\lfloor\frac{N}{i}\rfloor\lfloor\frac{M}{j}\rfloor[gcd(i, j) = 1]$$<br>我们令$$ f(n) = \sum_{i=1}^N\sum_{j=1}^M\lfloor\frac{N}{i}\rfloor\lfloor\frac{M}{j}\rfloor[gcd(i, j) = n] $$$$ F(d) = \sum_{d|n}f(n) = \sum_{i=1}^N\sum_{j=1}^M\lfloor\frac{N}{i}\rfloor\lfloor\frac{M}{j}\rfloor[d\ |\ gcd(i, j)] $$此处可以开心得去掉gcd，用漂亮的除法代替，枚举i和j分别是d的多少倍，得到$$ F(x) = \sum_{i=1}^{\lfloor\frac{N}{d}\rfloor}\sum_{j=1}^{\lfloor\frac{M}{d}\rfloor}\lfloor\frac{N}{id}\rfloor\lfloor\frac{M}{jd}\rfloor$$<br>这时就可以使用<code>莫比乌斯反演</code>了，因为可以看到我们已经消去了gcd，也就是说式子里不存在数论函数了，于是<br>$$ f(d) = \sum_{d|n}\mu(\frac{n}{d})F(n) $$得到答案为$$ ans = f(1) = \sum_{d=1}^{min(N, M)}\mu(d)F(d) =<br>\sum_{d=1}^{min(N, M)}\sum_{i=1}^{\lfloor\frac{N}{d}\rfloor}\sum_{j=1}^{\lfloor\frac{M}{d}\rfloor}\mu(d)\lfloor\frac{N}{id}\rfloor\lfloor\frac{M}{jd}\rfloor $$<br>现在讨论代码实现，暴力需要三层循环，因此需要用<code>线性筛</code>预处理，对于每一个x，处理出$s[x] = \sum_{i=1}^x\lfloor\frac{x}{i}\rfloor$，未来查询$s[\frac{N}{d}]$，因此只需要枚举d这一个变量。<br>再利用<code>整除分块</code>，$\lfloor\frac{N}{d}\rfloor$且$\lfloor\frac{M}{d}\rfloor$相同的部分只计算一次，就可以在$O(\sqrt{n})$的时间完成一次询问，总复杂度$O(T\sqrt{n})$</p>
-<p>关于$\mu$的计算最好作为一个模板记下啦。<br>
-      
-        <div class="readmore">
-          <a href="/2019/01/13/BZOJ3994-约数个数和/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/莫比乌斯反演/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>莫比乌斯反演</a>
-        
-          <a href="/tags/线性筛/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>线性筛</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
     
   </section>
   
@@ -1667,6 +1656,10 @@ background-attachment: fixed;">
         
           <li><a class="flat-box" title="/categories/codeforces/" href="/categories/codeforces/"><div class='name'>codeforces</div><div class='badge'>(1)</div></a></li>
         
+          <li><a class="flat-box" title="/categories/其他/" href="/categories/其他/"><div class='name'>其他</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child" title="/categories/其他/性质/" href="/categories/其他/性质/"><div class='name'>性质</div><div class='badge'>(1)</div></a></li>
+        
           <li><a class="flat-box" title="/categories/动态规划/" href="/categories/动态规划/"><div class='name'>动态规划</div><div class='badge'>(11)</div></a></li>
         
           <li><a class="flat-box child" title="/categories/动态规划/决策单调性优化/" href="/categories/动态规划/决策单调性优化/"><div class='name'>决策单调性优化</div><div class='badge'>(1)</div></a></li>
@@ -1713,13 +1706,15 @@ background-attachment: fixed;">
         
           <li><a class="flat-box child" title="/categories/字符串/后缀自动机/" href="/categories/字符串/后缀自动机/"><div class='name'>后缀自动机</div><div class='badge'>(4)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/数学/" href="/categories/数学/"><div class='name'>数学</div><div class='badge'>(14)</div></a></li>
+          <li><a class="flat-box" title="/categories/数学/" href="/categories/数学/"><div class='name'>数学</div><div class='badge'>(15)</div></a></li>
         
           <li><a class="flat-box child" title="/categories/数学/Burnside引理/" href="/categories/数学/Burnside引理/"><div class='name'>Burnside引理</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box child" title="/categories/数学/多项式/" href="/categories/数学/多项式/"><div class='name'>多项式</div><div class='badge'>(4)</div></a></li>
         
           <li><a class="flat-box child" title="/categories/数学/拉格朗日插值/" href="/categories/数学/拉格朗日插值/"><div class='name'>拉格朗日插值</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box child" title="/categories/数学/数论/" href="/categories/数学/数论/"><div class='name'>数论</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box child" title="/categories/数学/斯特林数/" href="/categories/数学/斯特林数/"><div class='name'>斯特林数</div><div class='badge'>(1)</div></a></li>
         
@@ -1780,7 +1775,7 @@ background-attachment: fixed;">
 </header>
 
     <div class='content pure'>
-      <a href="/tags/2-sat/" style="font-size: 16.5px; color: #888">2-sat</a> <a href="/tags/AC自动机/" style="font-size: 14px; color: #999">AC自动机</a> <a href="/tags/Burnside引理/" style="font-size: 14px; color: #999">Burnside引理</a> <a href="/tags/FFT/" style="font-size: 19px; color: #777">FFT</a> <a href="/tags/LCT/" style="font-size: 16.5px; color: #888">LCT</a> <a href="/tags/NTT/" style="font-size: 14px; color: #999">NTT</a> <a href="/tags/Trie/" style="font-size: 14px; color: #999">Trie</a> <a href="/tags/bfs/" style="font-size: 14px; color: #999">bfs</a> <a href="/tags/manachar/" style="font-size: 16.5px; color: #888">manachar</a> <a href="/tags/trie/" style="font-size: 14px; color: #999">trie</a> <a href="/tags/主席树/" style="font-size: 16.5px; color: #888">主席树</a> <a href="/tags/二分图/" style="font-size: 14px; color: #999">二分图</a> <a href="/tags/二分答案/" style="font-size: 16.5px; color: #888">二分答案</a> <a href="/tags/二次函数/" style="font-size: 14px; color: #999">二次函数</a> <a href="/tags/任意长度FFT/" style="font-size: 14px; color: #999">任意长度FFT</a> <a href="/tags/决策单调性/" style="font-size: 14px; color: #999">决策单调性</a> <a href="/tags/动态规划/" style="font-size: 14px; color: #999">动态规划</a> <a href="/tags/区间dp/" style="font-size: 14px; color: #999">区间dp</a> <a href="/tags/单调栈/" style="font-size: 14px; color: #999">单调栈</a> <a href="/tags/单调队列/" style="font-size: 14px; color: #999">单调队列</a> <a href="/tags/博弈论/" style="font-size: 14px; color: #999">博弈论</a> <a href="/tags/后缀数组/" style="font-size: 16.5px; color: #888">后缀数组</a> <a href="/tags/后缀树/" style="font-size: 14px; color: #999">后缀树</a> <a href="/tags/后缀自动机/" style="font-size: 21.5px; color: #666">后缀自动机</a> <a href="/tags/多项式/" style="font-size: 21.5px; color: #666">多项式</a> <a href="/tags/容斥原理/" style="font-size: 14px; color: #999">容斥原理</a> <a href="/tags/对偶图/" style="font-size: 14px; color: #999">对偶图</a> <a href="/tags/拉格朗日插值/" style="font-size: 16.5px; color: #888">拉格朗日插值</a> <a href="/tags/搞/" style="font-size: 19px; color: #777">搞</a> <a href="/tags/数学期望/" style="font-size: 14px; color: #999">数学期望</a> <a href="/tags/数形转换/" style="font-size: 14px; color: #999">数形转换</a> <a href="/tags/斜率优化/" style="font-size: 14px; color: #999">斜率优化</a> <a href="/tags/最小字典序二分图匹配/" style="font-size: 14px; color: #999">最小字典序二分图匹配</a> <a href="/tags/最小生成树/" style="font-size: 14px; color: #999">最小生成树</a> <a href="/tags/最短路/" style="font-size: 14px; color: #999">最短路</a> <a href="/tags/杜教筛/" style="font-size: 14px; color: #999">杜教筛</a> <a href="/tags/染色/" style="font-size: 14px; color: #999">染色</a> <a href="/tags/树上动规/" style="font-size: 14px; color: #999">树上动规</a> <a href="/tags/树形dp/" style="font-size: 21.5px; color: #666">树形dp</a> <a href="/tags/树状数组/" style="font-size: 21.5px; color: #666">树状数组</a> <a href="/tags/树链剖分/" style="font-size: 14px; color: #999">树链剖分</a> <a href="/tags/模拟/" style="font-size: 14px; color: #999">模拟</a> <a href="/tags/点分治/" style="font-size: 14px; color: #999">点分治</a> <a href="/tags/状压dp/" style="font-size: 14px; color: #999">状压dp</a> <a href="/tags/第二类斯特林数/" style="font-size: 14px; color: #999">第二类斯特林数</a> <a href="/tags/线性筛/" style="font-size: 16.5px; color: #888">线性筛</a> <a href="/tags/线段树/" style="font-size: 19px; color: #777">线段树</a> <a href="/tags/线段树合并/" style="font-size: 14px; color: #999">线段树合并</a> <a href="/tags/组合数学/" style="font-size: 24px; color: #555">组合数学</a> <a href="/tags/网络流/" style="font-size: 16.5px; color: #888">网络流</a> <a href="/tags/自然数幂和/" style="font-size: 14px; color: #999">自然数幂和</a> <a href="/tags/莫比乌斯反演/" style="font-size: 19px; color: #777">莫比乌斯反演</a> <a href="/tags/计数dp/" style="font-size: 19px; color: #777">计数dp</a> <a href="/tags/调和级数/" style="font-size: 14px; color: #999">调和级数</a> <a href="/tags/贪心/" style="font-size: 14px; color: #999">贪心</a> <a href="/tags/费用流/" style="font-size: 14px; color: #999">费用流</a> <a href="/tags/链表/" style="font-size: 14px; color: #999">链表</a> <a href="/tags/长链剖分/" style="font-size: 14px; color: #999">长链剖分</a>
+      <a href="/tags/2-sat/" style="font-size: 16.5px; color: #888">2-sat</a> <a href="/tags/AC自动机/" style="font-size: 14px; color: #999">AC自动机</a> <a href="/tags/Burnside引理/" style="font-size: 14px; color: #999">Burnside引理</a> <a href="/tags/FFT/" style="font-size: 19px; color: #777">FFT</a> <a href="/tags/LCT/" style="font-size: 16.5px; color: #888">LCT</a> <a href="/tags/NTT/" style="font-size: 14px; color: #999">NTT</a> <a href="/tags/Trie/" style="font-size: 14px; color: #999">Trie</a> <a href="/tags/bfs/" style="font-size: 14px; color: #999">bfs</a> <a href="/tags/manachar/" style="font-size: 16.5px; color: #888">manachar</a> <a href="/tags/trie/" style="font-size: 14px; color: #999">trie</a> <a href="/tags/主席树/" style="font-size: 16.5px; color: #888">主席树</a> <a href="/tags/二分图/" style="font-size: 14px; color: #999">二分图</a> <a href="/tags/二分答案/" style="font-size: 16.5px; color: #888">二分答案</a> <a href="/tags/二次函数/" style="font-size: 14px; color: #999">二次函数</a> <a href="/tags/任意长度FFT/" style="font-size: 14px; color: #999">任意长度FFT</a> <a href="/tags/决策单调性/" style="font-size: 14px; color: #999">决策单调性</a> <a href="/tags/动态规划/" style="font-size: 14px; color: #999">动态规划</a> <a href="/tags/区间dp/" style="font-size: 14px; color: #999">区间dp</a> <a href="/tags/单调栈/" style="font-size: 14px; color: #999">单调栈</a> <a href="/tags/单调队列/" style="font-size: 14px; color: #999">单调队列</a> <a href="/tags/博弈论/" style="font-size: 14px; color: #999">博弈论</a> <a href="/tags/后缀数组/" style="font-size: 16.5px; color: #888">后缀数组</a> <a href="/tags/后缀树/" style="font-size: 14px; color: #999">后缀树</a> <a href="/tags/后缀自动机/" style="font-size: 21.5px; color: #666">后缀自动机</a> <a href="/tags/多项式/" style="font-size: 21.5px; color: #666">多项式</a> <a href="/tags/定理/" style="font-size: 14px; color: #999">定理</a> <a href="/tags/容斥原理/" style="font-size: 14px; color: #999">容斥原理</a> <a href="/tags/对偶图/" style="font-size: 14px; color: #999">对偶图</a> <a href="/tags/循环节/" style="font-size: 14px; color: #999">循环节</a> <a href="/tags/性质/" style="font-size: 14px; color: #999">性质</a> <a href="/tags/拉格朗日插值/" style="font-size: 16.5px; color: #888">拉格朗日插值</a> <a href="/tags/搞/" style="font-size: 19px; color: #777">搞</a> <a href="/tags/数学期望/" style="font-size: 14px; color: #999">数学期望</a> <a href="/tags/数形转换/" style="font-size: 14px; color: #999">数形转换</a> <a href="/tags/数论/" style="font-size: 14px; color: #999">数论</a> <a href="/tags/斜率优化/" style="font-size: 14px; color: #999">斜率优化</a> <a href="/tags/最小字典序二分图匹配/" style="font-size: 14px; color: #999">最小字典序二分图匹配</a> <a href="/tags/最小生成树/" style="font-size: 14px; color: #999">最小生成树</a> <a href="/tags/最短路/" style="font-size: 14px; color: #999">最短路</a> <a href="/tags/杜教筛/" style="font-size: 14px; color: #999">杜教筛</a> <a href="/tags/染色/" style="font-size: 14px; color: #999">染色</a> <a href="/tags/树上动规/" style="font-size: 14px; color: #999">树上动规</a> <a href="/tags/树形dp/" style="font-size: 21.5px; color: #666">树形dp</a> <a href="/tags/树状数组/" style="font-size: 21.5px; color: #666">树状数组</a> <a href="/tags/树链剖分/" style="font-size: 14px; color: #999">树链剖分</a> <a href="/tags/模拟/" style="font-size: 14px; color: #999">模拟</a> <a href="/tags/点分治/" style="font-size: 14px; color: #999">点分治</a> <a href="/tags/状压dp/" style="font-size: 14px; color: #999">状压dp</a> <a href="/tags/第二类斯特林数/" style="font-size: 14px; color: #999">第二类斯特林数</a> <a href="/tags/线性筛/" style="font-size: 16.5px; color: #888">线性筛</a> <a href="/tags/线段树/" style="font-size: 19px; color: #777">线段树</a> <a href="/tags/线段树合并/" style="font-size: 14px; color: #999">线段树合并</a> <a href="/tags/组合数学/" style="font-size: 24px; color: #555">组合数学</a> <a href="/tags/网络流/" style="font-size: 16.5px; color: #888">网络流</a> <a href="/tags/自然数幂和/" style="font-size: 14px; color: #999">自然数幂和</a> <a href="/tags/莫比乌斯反演/" style="font-size: 21.5px; color: #666">莫比乌斯反演</a> <a href="/tags/计数dp/" style="font-size: 19px; color: #777">计数dp</a> <a href="/tags/调和级数/" style="font-size: 14px; color: #999">调和级数</a> <a href="/tags/贪心/" style="font-size: 14px; color: #999">贪心</a> <a href="/tags/费用流/" style="font-size: 14px; color: #999">费用流</a> <a href="/tags/链表/" style="font-size: 14px; color: #999">链表</a> <a href="/tags/长链剖分/" style="font-size: 14px; color: #999">长链剖分</a>
     </div>
   </section>
 
