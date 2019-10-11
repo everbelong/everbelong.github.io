@@ -81,7 +81,7 @@
                   
                   
                   id="categories">
-									<i class='fas fa-folder-open fa-fw'></i>&nbsp;Categories
+									<i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
 								</a>
 							</li>
       			
@@ -92,7 +92,7 @@
                   
                   
                   id="tags">
-									<i class='fas fa-hashtag fa-fw'></i>&nbsp;Tags
+									<i class='fas fa-hashtag fa-fw'></i>&nbsp;标签
 								</a>
 							</li>
       			
@@ -125,7 +125,7 @@
 			
 				<div class="m_search">
 					<form name="searchform" class="form u-search-form">
-						<input type="text" class="input u-search-input" placeholder="Search" />
+						<input type="text" class="input u-search-input" placeholder="搜索" />
 						<i class="icon fas fa-search fa-fw"></i>
 					</form>
 				</div>
@@ -171,7 +171,7 @@
                 
                 
                 id="categories">
-								<i class='fas fa-folder-open fa-fw'></i>&nbsp;Categories
+								<i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
 							</a>
             </li>
           
@@ -182,7 +182,7 @@
                 
                 
                 id="tags">
-								<i class='fas fa-hashtag fa-fw'></i>&nbsp;Tags
+								<i class='fas fa-hashtag fa-fw'></i>&nbsp;标签
 							</a>
             </li>
           
@@ -193,7 +193,7 @@
                 
                 
                 id="archives">
-								<i class='fas fa-archive fa-fw'></i>&nbsp;Archives
+								<i class='fas fa-archive fa-fw'></i>&nbsp;归档
 							</a>
             </li>
           
@@ -251,6 +251,137 @@
       
     
     
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/10/11/CF1229F-Mateusz-and-Escape-Room/">
+      CF1229F. Mateusz and Escape Room
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    <a href="http://ratexxxx.github.io" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>Ratexxxx</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-10-11</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/动态规划/凸包/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>动态规划&nbsp;/&nbsp;凸包</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <blockquote>
+<p>题目链接：<a href="http://codeforces.com/contest/1229/problem/F" target="_blank" rel="noopener">CF1229F</a></p>
+</blockquote>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>设第i个scale向第i-1个scale移动了$x_i$个硬币，为负则代表向左移动，显然可以列出方程组<br>$$<br>l_i - a_i \le x_{i+1} - x_i \le r_i - a_i<br>$$<br>要求$\sum|x_i|$最小<br>首先考虑对于一个固定的$x_1$如何计算这个最小值。考虑动态规划，令$f[i][x]$表示考虑了前i个，第$x_i$的值为j，最少要移动的硬币数，那么显然有如下转移$$<br>f[i][j] = min{f[i-1][j - r_i + a_i…j - l_i + a_i]} + j<br>$$<br>可以将$f[i]$值看成是关于$x_i$的一个函数$f_i(x)$，自变量是$x_i$的取值，因变量是最小移动数，我们可以维护这个函数，考虑如何从$f_i(x)$转移到$f_{i+1}(x)$<br>每个位置新的函数值是之前的某个区间的最小值再加上横坐标，而这个区间是随着自变量一个一个向右平移的，因此可以把操作看成是以下操作的组合</p>
+<ol>
+<li>整体左右移动</li>
+<li>$ f(x) = min{f(x…x+t)} $</li>
+<li>$ f(x) += |x| $</li>
+</ol>
+<p>可以发现如果原函数是一个单峰函数，那么进行这些操作后仍是单峰函数。该函数的初值是$f(x_1) = |x_1|,\quad f(x) = inf\ (x != x_1) $为开口向上的单峰函数。由这一点又可以发现，第2个操作其实相当于整体左右移动后，再将最小值的长度加长<br>因此每次维护可以简化为如下内容</p>
+<ol>
+<li>将上升部分右移$r_i - a_i$</li>
+<li>将下降部分右移$l_i - a_i$</li>
+<li>$ f(x) += |x|$</li>
+</ol>
+<p>如果维护每个每条斜率相同的线段，那么这些线段的斜率是单调增的，且第3个操作只会将y轴左边的线段斜率减一，右边的线段斜率加一。官方题解使用平衡树维护这些线段的斜率和长度，但实际上只需要一个priority_queue，维护所有斜率变化的转折点。由于斜率每次只会变化1，且恒为整数，因此可以维护每一个整数斜率的转折点，如果一个点的斜率变化超过1，那么这个点会插入队列多次，相当于在这个点斜率多次变化1。</p>
+<p>用两个优先队列维护斜率变化的转折点（可重复），对于第1、2个操作，记录左右部分分别移动的距离，可以方便获取实际位置，对于第3个操作，只会涉及到两个队列之间之多一个元素从一个到另一个里面，需要注意穿过y轴的那个线段，他的斜率变化比较特殊，每次都需要新加入转折点。</p>
+<p>当转移完所有$x_i$后，此时的$f(x_1)$就是要求的最小值（因为构成循环）</p>
+<p>这样对于一个固定的$x_1$，可以$O(nlogn)$求出最小值，然而枚举$x_1$仍需要$O(n)$的时间。令$F(x)$表示如果$x_1 = x$，那么如此转移一轮后得到的最小值。那么可以证明</p>
+<blockquote>
+<p>$F(x)$是一个开口向上的单峰函数</p>
+</blockquote>
+<p>具体证明不会，但可以猜到。。。<br>我的想法是，固定$x_1$后可以得到最优的一组$x_i$，将他们画成一条折线，如果控制$x_{i+1}-x_i$不变，改变$x_1$可以将它上下平移。要求minimize$\sum|x_i|$，也就是x轴要在这些点纵坐标的中位数处，随着折线的上下平移，或者看成x轴的上下平移，这个绝对值之和显然是一个单峰函数<br>但这只是不严谨的理解方式。。。</p>
+<p>由这条性质可以三分$x_1$的值，然后跑一遍维护的过程求出最小值更新答案，时间复杂度$ O(nlognlogS) $，其中$S = \sum a_i$<br>
+      
+        <div class="readmore">
+          <a href="/2019/10/11/CF1229F-Mateusz-and-Escape-Room/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/优先队列/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>优先队列</a>
+        
+          <a href="/tags/凸包维护/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>凸包维护</a>
+        
+          <a href="/tags/三分/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>三分</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
       
         
           <div class='post-wrapper'>
@@ -342,7 +473,7 @@
         <div class="readmore">
           <a href="/2019/09/18/BZOJ1566-NOI2009-管道取珠/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            Read More
+            阅读全文
           </a>
         </div>
       
@@ -449,7 +580,7 @@
         <div class="readmore">
           <a href="/2019/09/18/BZOJ1564-NOI2009-二叉查找树/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            Read More
+            阅读全文
           </a>
         </div>
       
@@ -521,7 +652,7 @@
   <div class='new-meta-item category'>
     <a href='/categories/动态规划/状压dp/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>动态规划&nbsp;/&nbsp;图论&nbsp;/&nbsp;2-sat&nbsp;/&nbsp;codeforces&nbsp;/&nbsp;状压dp</p>
+      <p>图论&nbsp;/&nbsp;动态规划&nbsp;/&nbsp;2-sat&nbsp;/&nbsp;codeforces&nbsp;/&nbsp;状压dp</p>
     </a>
   </div>
 
@@ -563,7 +694,7 @@
         <div class="readmore">
           <a href="/2019/09/16/CF585-Div-2/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            Read More
+            阅读全文
           </a>
         </div>
       
@@ -672,7 +803,7 @@
         <div class="readmore">
           <a href="/2019/09/11/BZOJ1212-HNOI2004-L语言/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            Read More
+            阅读全文
           </a>
         </div>
       
@@ -791,7 +922,7 @@
         <div class="readmore">
           <a href="/2019/08/31/BZOJ1065-NOI2008-奥运物流/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            Read More
+            阅读全文
           </a>
         </div>
       
@@ -895,7 +1026,7 @@
         <div class="readmore">
           <a href="/2019/08/31/BZOJ1063-Noi2008-道路设计/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            Read More
+            阅读全文
           </a>
         </div>
       
@@ -1004,7 +1135,7 @@
         <div class="readmore">
           <a href="/2019/07/18/BZOJ3672-Noi2014-购票/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            Read More
+            阅读全文
           </a>
         </div>
       
@@ -1123,7 +1254,7 @@
         <div class="readmore">
           <a href="/2019/07/17/BZOJ4543-POI2014-Hotel加强版/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            Read More
+            阅读全文
           </a>
         </div>
       
@@ -1195,9 +1326,9 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/数学/拉格朗日插值/' rel="nofollow">
+    <a href='/categories/动态规划/计数dp/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>数学&nbsp;/&nbsp;动态规划&nbsp;/&nbsp;计数dp&nbsp;/&nbsp;拉格朗日插值</p>
+      <p>数学&nbsp;/&nbsp;动态规划&nbsp;/&nbsp;拉格朗日插值&nbsp;/&nbsp;计数dp</p>
     </a>
   </div>
 
@@ -1233,7 +1364,7 @@
         <div class="readmore">
           <a href="/2019/07/15/BZOJ2655-calc/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            Read More
+            阅读全文
           </a>
         </div>
       
@@ -1244,115 +1375,6 @@
           <a href="/tags/计数dp/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>计数dp</a>
         
           <a href="/tags/拉格朗日插值/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>拉格朗日插值</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/07/13/BZOJ2806-Ctsc2012-Cheat/">
-      BZOJ2806 [Ctsc2012]Cheat
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    <a href="http://ratexxxx.github.io" rel="nofollow">
-      
-        <i class="fas fa-user" aria-hidden="true"></i>
-      
-      <p>Ratexxxx</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-07-13</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/动态规划/单调队列优化/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>动态规划&nbsp;/&nbsp;字符串&nbsp;/&nbsp;后缀自动机&nbsp;/&nbsp;单调队列优化</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <blockquote>
-<p>题目链接：<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=2806" target="_blank" rel="noopener">BZOJ2806</a></p>
-</blockquote>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>容易发现，L具有单调性，因此可以二分答案<br>考虑如何判定，分段，长度有限制，容易想到经典的1D1D动规，方程如下：<br>$$<br>f[i] = max(f[j] + i - j, f[i-1]),\ i - maxlen[i] \leq j \leq i - L<br>$$<br>其中maxlen表示以i为右端点能够匹配的最长子串<br>这个方程明显可以用单调队列优化，由于左右都有限制，因此每次入队入的是很久之前算的那个位置<br><del>我最开始的写法不知为何是错的，不知为何啊</del><br>剩下的就是怎样算maxlen<br>将所有的模板串建成广义后缀自动机，之后所有的maxlen可以用一个自动机上的指针一遍预处理出来，就是每次如果无法向下转移就跳父亲，直到可以走DAG为止，跳完父亲len要用val更新，走转移边就是len++，这样才能保证正确</p>
-      
-        <div class="readmore">
-          <a href="/2019/07/13/BZOJ2806-Ctsc2012-Cheat/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/后缀自动机/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>后缀自动机</a>
-        
-          <a href="/tags/单调队列/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>单调队列</a>
         
       </div>
     
@@ -1376,7 +1398,7 @@
           
             <a class="next" rel="next" href="/categories/动态规划/page/2/">
               <section class="post next">
-                &nbsp;Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
+                &nbsp;下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
               </section>
             </a>
           
@@ -1601,7 +1623,7 @@
   <section class='widget category'>
     
 <header class='pure'>
-  <div><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;Categories</div>
+  <div><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;文章分类</div>
   
     <a class="rightBtn"
     
@@ -1623,9 +1645,11 @@
         
           <li><a class="flat-box child" title="/categories/其他/性质/" href="/categories/其他/性质/"><div class='name'>性质</div><div class='badge'>(1)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/动态规划/" href="/categories/动态规划/"><div class='name'>动态规划</div><div class='badge'>(11)</div></a></li>
+          <li><a class="flat-box" title="/categories/动态规划/" href="/categories/动态规划/"><div class='name'>动态规划</div><div class='badge'>(12)</div></a></li>
         
           <li><a class="flat-box child" title="/categories/动态规划/决策单调性优化/" href="/categories/动态规划/决策单调性优化/"><div class='name'>决策单调性优化</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child" title="/categories/动态规划/凸包/" href="/categories/动态规划/凸包/"><div class='name'>凸包</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box child" title="/categories/动态规划/区间dp/" href="/categories/动态规划/区间dp/"><div class='name'>区间dp</div><div class='badge'>(1)</div></a></li>
         
@@ -1724,7 +1748,7 @@
   <section class='widget tagcloud'>
     
 <header class='pure'>
-  <div><i class="fas fa-fire fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;Hot Tags</div>
+  <div><i class="fas fa-fire fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;热门标签</div>
   
     <a class="rightBtn"
     
@@ -1738,7 +1762,7 @@
 </header>
 
     <div class='content pure'>
-      <a href="/tags/2-sat/" style="font-size: 16.5px; color: #888">2-sat</a> <a href="/tags/AC自动机/" style="font-size: 14px; color: #999">AC自动机</a> <a href="/tags/Burnside引理/" style="font-size: 14px; color: #999">Burnside引理</a> <a href="/tags/FFT/" style="font-size: 19px; color: #777">FFT</a> <a href="/tags/LCT/" style="font-size: 16.5px; color: #888">LCT</a> <a href="/tags/NTT/" style="font-size: 14px; color: #999">NTT</a> <a href="/tags/Trie/" style="font-size: 14px; color: #999">Trie</a> <a href="/tags/bfs/" style="font-size: 14px; color: #999">bfs</a> <a href="/tags/manachar/" style="font-size: 16.5px; color: #888">manachar</a> <a href="/tags/trie/" style="font-size: 14px; color: #999">trie</a> <a href="/tags/主席树/" style="font-size: 16.5px; color: #888">主席树</a> <a href="/tags/二分图/" style="font-size: 14px; color: #999">二分图</a> <a href="/tags/二分答案/" style="font-size: 16.5px; color: #888">二分答案</a> <a href="/tags/二次函数/" style="font-size: 14px; color: #999">二次函数</a> <a href="/tags/任意长度FFT/" style="font-size: 14px; color: #999">任意长度FFT</a> <a href="/tags/决策单调性/" style="font-size: 14px; color: #999">决策单调性</a> <a href="/tags/动态规划/" style="font-size: 14px; color: #999">动态规划</a> <a href="/tags/区间dp/" style="font-size: 14px; color: #999">区间dp</a> <a href="/tags/单调栈/" style="font-size: 14px; color: #999">单调栈</a> <a href="/tags/单调队列/" style="font-size: 14px; color: #999">单调队列</a> <a href="/tags/博弈论/" style="font-size: 14px; color: #999">博弈论</a> <a href="/tags/后缀数组/" style="font-size: 16.5px; color: #888">后缀数组</a> <a href="/tags/后缀树/" style="font-size: 14px; color: #999">后缀树</a> <a href="/tags/后缀自动机/" style="font-size: 21.5px; color: #666">后缀自动机</a> <a href="/tags/多项式/" style="font-size: 21.5px; color: #666">多项式</a> <a href="/tags/定理/" style="font-size: 14px; color: #999">定理</a> <a href="/tags/容斥原理/" style="font-size: 14px; color: #999">容斥原理</a> <a href="/tags/对偶图/" style="font-size: 14px; color: #999">对偶图</a> <a href="/tags/循环节/" style="font-size: 14px; color: #999">循环节</a> <a href="/tags/性质/" style="font-size: 14px; color: #999">性质</a> <a href="/tags/拉格朗日插值/" style="font-size: 16.5px; color: #888">拉格朗日插值</a> <a href="/tags/搞/" style="font-size: 19px; color: #777">搞</a> <a href="/tags/数学期望/" style="font-size: 14px; color: #999">数学期望</a> <a href="/tags/数形转换/" style="font-size: 14px; color: #999">数形转换</a> <a href="/tags/数论/" style="font-size: 14px; color: #999">数论</a> <a href="/tags/斜率优化/" style="font-size: 14px; color: #999">斜率优化</a> <a href="/tags/最小字典序二分图匹配/" style="font-size: 14px; color: #999">最小字典序二分图匹配</a> <a href="/tags/最小生成树/" style="font-size: 14px; color: #999">最小生成树</a> <a href="/tags/最短路/" style="font-size: 14px; color: #999">最短路</a> <a href="/tags/杜教筛/" style="font-size: 14px; color: #999">杜教筛</a> <a href="/tags/染色/" style="font-size: 14px; color: #999">染色</a> <a href="/tags/树上动规/" style="font-size: 14px; color: #999">树上动规</a> <a href="/tags/树形dp/" style="font-size: 21.5px; color: #666">树形dp</a> <a href="/tags/树状数组/" style="font-size: 21.5px; color: #666">树状数组</a> <a href="/tags/树链剖分/" style="font-size: 14px; color: #999">树链剖分</a> <a href="/tags/模拟/" style="font-size: 14px; color: #999">模拟</a> <a href="/tags/点分治/" style="font-size: 14px; color: #999">点分治</a> <a href="/tags/状压dp/" style="font-size: 14px; color: #999">状压dp</a> <a href="/tags/第二类斯特林数/" style="font-size: 14px; color: #999">第二类斯特林数</a> <a href="/tags/线性筛/" style="font-size: 16.5px; color: #888">线性筛</a> <a href="/tags/线段树/" style="font-size: 19px; color: #777">线段树</a> <a href="/tags/线段树合并/" style="font-size: 14px; color: #999">线段树合并</a> <a href="/tags/组合数学/" style="font-size: 24px; color: #555">组合数学</a> <a href="/tags/网络流/" style="font-size: 16.5px; color: #888">网络流</a> <a href="/tags/自然数幂和/" style="font-size: 14px; color: #999">自然数幂和</a> <a href="/tags/莫比乌斯反演/" style="font-size: 21.5px; color: #666">莫比乌斯反演</a> <a href="/tags/计数dp/" style="font-size: 19px; color: #777">计数dp</a> <a href="/tags/调和级数/" style="font-size: 14px; color: #999">调和级数</a> <a href="/tags/贪心/" style="font-size: 14px; color: #999">贪心</a> <a href="/tags/费用流/" style="font-size: 14px; color: #999">费用流</a> <a href="/tags/链表/" style="font-size: 14px; color: #999">链表</a> <a href="/tags/长链剖分/" style="font-size: 14px; color: #999">长链剖分</a>
+      <a href="/tags/2-sat/" style="font-size: 16.5px; color: #888">2-sat</a> <a href="/tags/AC自动机/" style="font-size: 14px; color: #999">AC自动机</a> <a href="/tags/Burnside引理/" style="font-size: 14px; color: #999">Burnside引理</a> <a href="/tags/FFT/" style="font-size: 19px; color: #777">FFT</a> <a href="/tags/LCT/" style="font-size: 16.5px; color: #888">LCT</a> <a href="/tags/NTT/" style="font-size: 14px; color: #999">NTT</a> <a href="/tags/Trie/" style="font-size: 14px; color: #999">Trie</a> <a href="/tags/bfs/" style="font-size: 14px; color: #999">bfs</a> <a href="/tags/manachar/" style="font-size: 16.5px; color: #888">manachar</a> <a href="/tags/trie/" style="font-size: 14px; color: #999">trie</a> <a href="/tags/三分/" style="font-size: 14px; color: #999">三分</a> <a href="/tags/主席树/" style="font-size: 16.5px; color: #888">主席树</a> <a href="/tags/二分图/" style="font-size: 14px; color: #999">二分图</a> <a href="/tags/二分答案/" style="font-size: 16.5px; color: #888">二分答案</a> <a href="/tags/二次函数/" style="font-size: 14px; color: #999">二次函数</a> <a href="/tags/任意长度FFT/" style="font-size: 14px; color: #999">任意长度FFT</a> <a href="/tags/优先队列/" style="font-size: 14px; color: #999">优先队列</a> <a href="/tags/决策单调性/" style="font-size: 14px; color: #999">决策单调性</a> <a href="/tags/凸包维护/" style="font-size: 14px; color: #999">凸包维护</a> <a href="/tags/动态规划/" style="font-size: 14px; color: #999">动态规划</a> <a href="/tags/区间dp/" style="font-size: 14px; color: #999">区间dp</a> <a href="/tags/单调栈/" style="font-size: 14px; color: #999">单调栈</a> <a href="/tags/单调队列/" style="font-size: 14px; color: #999">单调队列</a> <a href="/tags/博弈论/" style="font-size: 14px; color: #999">博弈论</a> <a href="/tags/后缀数组/" style="font-size: 16.5px; color: #888">后缀数组</a> <a href="/tags/后缀树/" style="font-size: 14px; color: #999">后缀树</a> <a href="/tags/后缀自动机/" style="font-size: 21.5px; color: #666">后缀自动机</a> <a href="/tags/多项式/" style="font-size: 21.5px; color: #666">多项式</a> <a href="/tags/定理/" style="font-size: 14px; color: #999">定理</a> <a href="/tags/容斥原理/" style="font-size: 14px; color: #999">容斥原理</a> <a href="/tags/对偶图/" style="font-size: 14px; color: #999">对偶图</a> <a href="/tags/循环节/" style="font-size: 14px; color: #999">循环节</a> <a href="/tags/性质/" style="font-size: 14px; color: #999">性质</a> <a href="/tags/拉格朗日插值/" style="font-size: 16.5px; color: #888">拉格朗日插值</a> <a href="/tags/搞/" style="font-size: 19px; color: #777">搞</a> <a href="/tags/数学期望/" style="font-size: 14px; color: #999">数学期望</a> <a href="/tags/数形转换/" style="font-size: 14px; color: #999">数形转换</a> <a href="/tags/数论/" style="font-size: 14px; color: #999">数论</a> <a href="/tags/斜率优化/" style="font-size: 14px; color: #999">斜率优化</a> <a href="/tags/最小字典序二分图匹配/" style="font-size: 14px; color: #999">最小字典序二分图匹配</a> <a href="/tags/最小生成树/" style="font-size: 14px; color: #999">最小生成树</a> <a href="/tags/最短路/" style="font-size: 14px; color: #999">最短路</a> <a href="/tags/杜教筛/" style="font-size: 14px; color: #999">杜教筛</a> <a href="/tags/染色/" style="font-size: 14px; color: #999">染色</a> <a href="/tags/树上动规/" style="font-size: 14px; color: #999">树上动规</a> <a href="/tags/树形dp/" style="font-size: 21.5px; color: #666">树形dp</a> <a href="/tags/树状数组/" style="font-size: 21.5px; color: #666">树状数组</a> <a href="/tags/树链剖分/" style="font-size: 14px; color: #999">树链剖分</a> <a href="/tags/模拟/" style="font-size: 14px; color: #999">模拟</a> <a href="/tags/点分治/" style="font-size: 14px; color: #999">点分治</a> <a href="/tags/状压dp/" style="font-size: 14px; color: #999">状压dp</a> <a href="/tags/第二类斯特林数/" style="font-size: 14px; color: #999">第二类斯特林数</a> <a href="/tags/线性筛/" style="font-size: 16.5px; color: #888">线性筛</a> <a href="/tags/线段树/" style="font-size: 19px; color: #777">线段树</a> <a href="/tags/线段树合并/" style="font-size: 14px; color: #999">线段树合并</a> <a href="/tags/组合数学/" style="font-size: 24px; color: #555">组合数学</a> <a href="/tags/网络流/" style="font-size: 16.5px; color: #888">网络流</a> <a href="/tags/自然数幂和/" style="font-size: 14px; color: #999">自然数幂和</a> <a href="/tags/莫比乌斯反演/" style="font-size: 21.5px; color: #666">莫比乌斯反演</a> <a href="/tags/计数dp/" style="font-size: 19px; color: #777">计数dp</a> <a href="/tags/调和级数/" style="font-size: 14px; color: #999">调和级数</a> <a href="/tags/贪心/" style="font-size: 14px; color: #999">贪心</a> <a href="/tags/费用流/" style="font-size: 14px; color: #999">费用流</a> <a href="/tags/链表/" style="font-size: 14px; color: #999">链表</a> <a href="/tags/长链剖分/" style="font-size: 14px; color: #999">长链剖分</a>
     </div>
   </section>
 
@@ -1783,19 +1807,19 @@
     </div>
   
   <br>
-  <div><p>Blog content follows the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License</a></p>
+  <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
 </div>
   <div>
-    Use
+    本站使用
     <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a>
-    as theme
+    作为主题
     
-      , 
-      total visits
+      ，
+      总访问量为
       <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
-      times
+      次
     
-    . 
+    。
   </div>
 </footer>
 <script>setLoadingBarProgress(80);</script>
@@ -1901,15 +1925,15 @@
 <!-- 复制 -->
 <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
 <script>
-  let COPY_SUCCESS = "Copied";
-  let COPY_FAILURE = "Copy failed";
+  let COPY_SUCCESS = "复制成功";
+  let COPY_FAILURE = "复制失败";
   /*页面载入完成后，创建复制按钮*/
   !function (e, t, a) {
     /* code */
     var initCopyCode = function(){
       var copyHtml = '';
       copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
-      copyHtml += '  <i class="fa fa-copy"></i><span>Copy</span>';
+      copyHtml += '  <i class="fa fa-copy"></i><span>复制</span>';
       copyHtml += '</button>';
       $(".highlight .code pre").before(copyHtml);
       var clipboard = new ClipboardJS('.btn-copy', {
