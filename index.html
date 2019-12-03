@@ -81,7 +81,7 @@
                   
                   
                   id="categories">
-									<i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
+									<i class='fas fa-folder-open fa-fw'></i>&nbsp;Categories
 								</a>
 							</li>
       			
@@ -92,7 +92,7 @@
                   
                   
                   id="tags">
-									<i class='fas fa-hashtag fa-fw'></i>&nbsp;标签
+									<i class='fas fa-hashtag fa-fw'></i>&nbsp;Tags
 								</a>
 							</li>
       			
@@ -125,7 +125,7 @@
 			
 				<div class="m_search">
 					<form name="searchform" class="form u-search-form">
-						<input type="text" class="input u-search-input" placeholder="搜索" />
+						<input type="text" class="input u-search-input" placeholder="Search" />
 						<i class="icon fas fa-search fa-fw"></i>
 					</form>
 				</div>
@@ -171,7 +171,7 @@
                 
                 
                 id="categories">
-								<i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
+								<i class='fas fa-folder-open fa-fw'></i>&nbsp;Categories
 							</a>
             </li>
           
@@ -182,7 +182,7 @@
                 
                 
                 id="tags">
-								<i class='fas fa-hashtag fa-fw'></i>&nbsp;标签
+								<i class='fas fa-hashtag fa-fw'></i>&nbsp;Tags
 							</a>
             </li>
           
@@ -193,7 +193,7 @@
                 
                 
                 id="archives">
-								<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+								<i class='fas fa-archive fa-fw'></i>&nbsp;Archives
 							</a>
             </li>
           
@@ -226,6 +226,113 @@
       
         
           
+            
+              <div class='post-wrapper'>
+                <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/12/03/Attentions/">
+      Attentions!
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    <a href="http://ratexxxx.github.io" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>Ratexxxx</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-12-03</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/注意点/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>注意点</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+  <div class="new-meta-item top-post">
+    <a class='notlink'>
+      <i class="fas fa-angle-double-up" aria-hidden="true"></i>
+      <p>Top</p>
+    </a>
+  </div>
+
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+        <div class="readmore">
+          <a href="/2019/12/03/Attentions/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+    
+  </section>
+</article>
+
+              </div>
+            
+          
+        
+          
         
           
         
@@ -336,6 +443,8 @@
       
     
     
+      
+        
       
         
           <div class='post-wrapper'>
@@ -446,7 +555,7 @@
         <div class="readmore">
           <a href="/2019/10/11/CF1229F-Mateusz-and-Escape-Room/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
+            Read More
           </a>
         </div>
       
@@ -554,7 +663,7 @@
         <div class="readmore">
           <a href="/2019/10/03/数论定理整合/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
+            Read More
           </a>
         </div>
       
@@ -658,12 +767,22 @@
       <blockquote>
 <p>题目链接：<a href="https://codeforces.com/contest/1205/problem/E" target="_blank" rel="noopener">CF1205E</a></p>
 </blockquote>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>令$f(s, i)$表示字符串s中是否有一个长度为j的前后缀，则答案为<br>$$<br>E((\sum_{i=1}^{n-1}f(s, i))^2) \\<br>= \sum_{i=1}^{n-1}\sum_{j=1}^{n-1}E(f(s, i) * f(s, j)))<br>$$<br>表示的意义就是对于任意i和j，求出一个字符串同时有i和j长度的前后缀的期望，也就是有多少个字符串同时有长度为i和j的前后缀，再除以$k^n$<br>重点就是这样一个性质</p>
+<blockquote>
+<p>一个字符串同时有长度为$n-i$和$n-j$的前后缀的期望是<br>$$(\frac{1}{k})^{n-max(gcd(i, j),\ i + j - n)}$$</p>
+</blockquote>
+<p>下面来证明这个性质</p>
+<p>首先，如果有长度为$n-i$的前后缀，那么i一定是一个循环节。这一点容易证明。现在i和j都是循环节，所以$gcd(i, j)$也是循环节，一个循环节内的字符可以任意取，剩下的都是固定的，除以$k^n$得到max的前一部分</p>
+<p>然后，我们有一种感觉，如果$i+j$足够长，那么两个循环节从第二次出现开始不一定会有许多重合的位置，或许gcd相对苛刻了一些。换句话说，如果该字符串无限长，那么一定是gcd为循环节，但长度是有限的，有特殊情况需要考虑。</p>
+<p>举几个例子，用相同的字母表示必须相同的位置，X表示任意<br>一个长度为10的字符串，i=7，j=8<br>AAAXXXXAAA<br>一个长度为11的字符串，i=10，j=3<br>AAXAAXAAXAA<br>显然他们的循环节都不是gcd</p>
+<p>如果$i+j\leq n$，那么答案显然就是gcd，画一个图，较长串第二次出现可以看成一个较短串，这个完整的较短串和全部由较短串拼出的串的对应部分相等，差的部分是循环节，可以递归得到gcd（两数gcd等于差的gcd）</p>
+<p>否则，$i+j\gt n$，不同之处在于较长串第二处出现无法看成一个完整的较短串。不妨令$ i &gt; j $，第二次循环时可以看成一个j，这个j和 完全由j拼成的串 的对应位置产生错位，在j内部产生循环，递归到gcd，如果i后面的那个j超过n的部分段于gcd，那么循环节可以作用在整个j里，成为真正的循环节，否则它是假的循环节，因为无法扩展完整个j，剩下的无法扩展的部分就是$i + j - n - gcd(i, j)$ 这部分作为j这个循环节的一部分可以随便取，再算上gcd可以随便选，结果就是$max(gcd(i, j),\ i + j - n)$</p>
+<p>下面考虑怎么算，枚举$d = gcd(i, j), s = i + j$，转化为求多少对i和j满足定义，注意$ 1 \leq i, j &lt; n $<br>$$<br>f(d) = \sum_{i=1}^{min(n - 1, s - 1)}[gcd(i, s - i) = d] \\<br>F(d) = \sum_{d|t} f(t) = min(s - 1, n - 1) / t;<br>$$<br>$$<br>f(d) = \sum_{d|t}\mu(\frac{t}{d})F(t)<br>$$<br>代码中，由于$ d | t | s $，所以先枚举d，再枚举的是t / d，最后枚举s，复杂度$O(nlog^2n)$，注意i，j的范围<br>
       
         <div class="readmore">
           <a href="/2019/09/27/CF1205E-Expected-Value-Again/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
+            Read More
           </a>
         </div>
       
@@ -775,7 +894,7 @@
         <div class="readmore">
           <a href="/2019/09/18/BZOJ1566-NOI2009-管道取珠/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
+            Read More
           </a>
         </div>
       
@@ -882,7 +1001,7 @@
         <div class="readmore">
           <a href="/2019/09/18/BZOJ1564-NOI2009-二叉查找树/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
+            Read More
           </a>
         </div>
       
@@ -996,7 +1115,7 @@
         <div class="readmore">
           <a href="/2019/09/16/CF585-Div-2/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
+            Read More
           </a>
         </div>
       
@@ -1106,7 +1225,7 @@
         <div class="readmore">
           <a href="/2019/09/11/BZOJ1562-NOI2009-变换序列/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
+            Read More
           </a>
         </div>
       
@@ -1213,7 +1332,7 @@
         <div class="readmore">
           <a href="/2019/09/11/BZOJ1212-HNOI2004-L语言/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
+            Read More
           </a>
         </div>
       
@@ -1329,7 +1448,7 @@
         <div class="readmore">
           <a href="/2019/09/10/BZOJ1145-CTSC2008-图腾totem/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
+            Read More
           </a>
         </div>
       
@@ -1338,118 +1457,6 @@
       <div class="full-width auto-padding tags">
         
           <a href="/tags/树状数组/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>树状数组</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/09/09/BZOJ1129-POI2008-Per/">
-      BZOJ1129 [POI2008]Per
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    <a href="http://ratexxxx.github.io" rel="nofollow">
-      
-        <i class="fas fa-user" aria-hidden="true"></i>
-      
-      <p>Ratexxxx</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-09-09</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/数学/组合/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>数据结构&nbsp;/&nbsp;数学&nbsp;/&nbsp;树状数组&nbsp;/&nbsp;组合</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <blockquote>
-<p>题目链接：<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=1129" target="_blank" rel="noopener">BZOJ1129</a></p>
-</blockquote>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>如果没有重复元素，直接一位一位计数即可<br>有相同元素仍然是一位一位计数，考虑从后往前，假设当前前i-1个是固定的，数在第i位开始小于给定的序列的方案数<br>设原数列为$a$，可以变动的中，不同的元素分别是$b_1, b_2, b_3, …, b_k$，个数分别为$c_1, c_2, c_3…, c_k$个，则答案为<br>$$<br>\sum_{b_j&lt; a_i}\frac{(n-i)!}{\Pi_{k!=j} b_k\cdot(b_j-1) }<br>$$<br>硬算是$O(n^2)$的，可以用树状数组优化<br>分别维护分母和分子，每次i–时有一个新的元素加进来，某一个b会+1，分母会乘以新的b</p>
-<p>关键是这个模数的问题，他不是质数，要质因数分解，分别求答案，然后用CRT合并<br>逆元需要用扩展欧几里得来算</p>
-<p>还有比较麻烦的，如果乘以或除以的数是当前处理的模数对应的那个质因子的倍数，那么需要把这个数所有该因数除掉，同时记录去掉了几个这个因数<br>最后要把这些去掉的因数再快速幂乘回来<br>这是因为求逆元时要求与模数互质，因此必须先去掉，求完逆元再乘回来</p>
-<p>任意模数的逆元的处理方式要记笔记。。。</p>
-      
-        <div class="readmore">
-          <a href="/2019/09/09/BZOJ1129-POI2008-Per/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/树状数组/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>树状数组</a>
-        
-          <a href="/tags/组合数学/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>组合数学</a>
         
       </div>
     
@@ -1473,7 +1480,7 @@
           
             <a class="next" rel="next" href="/page/2/">
               <section class="post next">
-                &nbsp;下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
+                &nbsp;Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
               </section>
             </a>
           
@@ -1695,7 +1702,7 @@
   <section class='widget category'>
     
 <header class='pure'>
-  <div><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;文章分类</div>
+  <div><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;Categories</div>
   
     <a class="rightBtn"
     
@@ -1801,6 +1808,8 @@
         
           <li><a class="flat-box child" title="/categories/数据结构/长链剖分/" href="/categories/数据结构/长链剖分/"><div class='name'>长链剖分</div><div class='badge'>(1)</div></a></li>
         
+          <li><a class="flat-box" title="/categories/注意点/" href="/categories/注意点/"><div class='name'>注意点</div><div class='badge'>(1)</div></a></li>
+        
           <li><a class="flat-box" title="/categories/纪念日/" href="/categories/纪念日/"><div class='name'>纪念日</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box" title="/categories/集训/" href="/categories/集训/"><div class='name'>集训</div><div class='badge'>(4)</div></a></li>
@@ -1820,7 +1829,7 @@
   <section class='widget tagcloud'>
     
 <header class='pure'>
-  <div><i class="fas fa-fire fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;热门标签</div>
+  <div><i class="fas fa-fire fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;Hot Tags</div>
   
     <a class="rightBtn"
     
@@ -1879,19 +1888,19 @@
     </div>
   
   <br>
-  <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+  <div><p>Blog content follows the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License</a></p>
 </div>
   <div>
-    本站使用
+    Use
     <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a>
-    作为主题
+    as theme
     
-      ，
-      总访问量为
+      , 
+      total visits
       <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
-      次
+      times
     
-    。
+    . 
   </div>
 </footer>
 <script>setLoadingBarProgress(80);</script>
@@ -1997,15 +2006,15 @@
 <!-- 复制 -->
 <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
 <script>
-  let COPY_SUCCESS = "复制成功";
-  let COPY_FAILURE = "复制失败";
+  let COPY_SUCCESS = "Copied";
+  let COPY_FAILURE = "Copy failed";
   /*页面载入完成后，创建复制按钮*/
   !function (e, t, a) {
     /* code */
     var initCopyCode = function(){
       var copyHtml = '';
       copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
-      copyHtml += '  <i class="fa fa-copy"></i><span>复制</span>';
+      copyHtml += '  <i class="fa fa-copy"></i><span>Copy</span>';
       copyHtml += '</button>';
       $(".highlight .code pre").before(copyHtml);
       var clipboard = new ClipboardJS('.btn-copy', {

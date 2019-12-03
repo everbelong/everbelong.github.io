@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
-  <title>BZOJ2160 啦啦队排练 | Ratexxxx</title>
+  <title>Archives: 2019/12 | Ratexxxx</title>
   
   
   <meta name="description" content="可以的">
@@ -220,11 +220,16 @@
   <div class="l_body nocover">
     <div class='body-wrapper'>
       <div class='l_main'>
-  
-
-  
-    <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+	
+		
+  <section class="post-list">
+    
       
+        
+          
+            <div class='post-wrapper'>
+              <article class="post reveal ">
+  
 
 
   <section class='meta'>
@@ -233,13 +238,11 @@
     <div class="meta" id="header-meta">
       
         
-  
-    <h1 class="title">
-      <a href="/2019/06/02/BZOJ2160-啦啦队排练/">
-        BZOJ2160 啦啦队排练
-      </a>
-    </h1>
-  
+  <h2 class="title">
+    <a href="/2019/12/03/Attentions/">
+      Attentions!
+    </a>
+  </h2>
 
 
       
@@ -265,7 +268,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-06-02</p>
+    <p>2019-12-03</p>
   </a>
 </div>
 
@@ -275,9 +278,9 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/字符串/manachar/' rel="nofollow">
+    <a href='/categories/注意点/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>字符串&nbsp;/&nbsp;manachar</p>
+      <p>注意点</p>
     </a>
   </div>
 
@@ -286,24 +289,18 @@
         
           
             
-  
-    <div class="new-meta-item browse busuanzi">
-      <a class='notlink'>
-        <i class="fas fa-eye" aria-hidden="true"></i>
-        <p>
-          <span id="busuanzi_value_page_pv">
-            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
-          </span>
-        </p>
-      </a>
-    </div>
-  
-
 
           
         
           
             
+  <div class="new-meta-item top-post">
+    <a class='notlink'>
+      <i class="fas fa-angle-double-up" aria-hidden="true"></i>
+      <p>Top</p>
+    </a>
+  </div>
+
 
           
         
@@ -315,124 +312,81 @@
   </section>
 
 
-      <section class="article typo">
-        <div class="article-entry" itemprop="articleBody">
-          <blockquote>
-<p>题目链接：<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=2160" target="_blank" rel="noopener">BZOJ2160</a></p>
-</blockquote>
-<h1><span id="solution">Solution</span></h1><p>manachar<br>因为只考虑奇数，所以不用添加额外字符<br>差分 桶排序<br>快速幂在桶上统计<br><a id="more"></a></p>
-<h1><span id="code">Code</span></h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1000010</span>, mod = <span class="number">19930726</span>;</span><br><span class="line"><span class="keyword">int</span> n, f[maxn], s[maxn];</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> ans = <span class="number">1</span>, k;</span><br><span class="line"><span class="keyword">char</span> str[maxn];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">manachar</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	f[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">int</span> mx = <span class="number">0</span>, pos = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">		<span class="keyword">if</span>(i &lt; mx) f[i] = min(f[pos * <span class="number">2</span> - i], mx - i);</span><br><span class="line">		<span class="keyword">while</span>(f[i] &lt;= i &amp;&amp; str[i + f[i]] == str[i - f[i]]) f[i]++;</span><br><span class="line">		<span class="keyword">if</span>(i + f[i] &gt; mx) mx = i + f[i], pos = i;</span><br><span class="line">		<span class="comment">//cout &lt;&lt; i &lt;&lt; ' ' &lt;&lt; f[i] &lt;&lt; endl;</span></span><br><span class="line">		s[<span class="number">1</span>]++; s[f[i] + <span class="number">1</span>]--;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">Power</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> x, <span class="keyword">int</span> p)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">long</span> res = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(; p; p &gt;&gt;= <span class="number">1</span>, x = x * x % mod) <span class="keyword">if</span>(p &amp; <span class="number">1</span>) res = res * x % mod;</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%lld"</span>, &amp;n, &amp;k);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%s"</span>, str);</span><br><span class="line">	manachar();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) s[i] += s[i<span class="number">-1</span>];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = n / <span class="number">2</span> + <span class="number">2</span>; i &amp;&amp; k; i--) &#123;</span><br><span class="line">		<span class="keyword">if</span>(s[i] &lt;= k) ans = (ans * Power(i * <span class="number">2</span> - <span class="number">1</span>, s[i])) % mod, k -= s[i];</span><br><span class="line">		<span class="keyword">else</span> ans = (ans * Power(i * <span class="number">2</span> - <span class="number">1</span>, k)) % mod, k = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(k &gt; <span class="number">0</span>) <span class="built_in">printf</span>(<span class="string">"-1\n"</span>);</span><br><span class="line">	<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, ans);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+        <div class="readmore">
+          <a href="/2019/12/03/Attentions/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            Read More
+          </a>
         </div>
-        
-          
-
-
-  <section class='meta' id="footer-meta">
-    <hr>
-    <div class='new-meta-box'>
-      
-        
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-06-29T18:43:40+08:00">
-  <a class='notlink'>
-    <i class="fas fa-clock" aria-hidden="true"></i>
-    <p>last updated at Jun 29, 2019</p>
-  </a>
-</div>
-
-        
-      
-        
-          
-
-        
-      
-        
-          
-
-        
       
     </div>
+    
   </section>
+</article>
 
-
-        
-        
-            <div class="prev-next">
-                
-                    <section class="prev">
-                        <span class="art-item-left">
-                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;Previous</h6>
-                            <h4>
-                                <a href="/2019/06/04/LOJ3103-JSOI2019-节日庆典/" rel="prev" title="LOJ3103 [JSOI2019]节日庆典">
-                                  
-                                      LOJ3103 [JSOI2019]节日庆典
-                                  
-                                </a>
-                            </h4>
-                            
-                        </span>
-                    </section>
-                
-                
-                    <section class="next">
-                        <span class="art-item-right" aria-hidden="true">
-                            <h6>Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
-                            <h4>
-                                <a href="/2019/06/02/字符串算法总结/" rel="prev" title="字符串算法总结">
-                                    
-                                        字符串算法总结
-                                    
-                                </a>
-                            </h4>
-                            
-                        </span>
-                    </section>
-                
             </div>
+          
         
-      </section>
-    </article>
+      
+    
+    
+      
+        
+      
+    
+  </section>
   
-
-  
-    <!-- 显示推荐文章和评论 -->
-
-
-
-  <article class="post white-box comments">
-    <section class="article typo">
-      <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;Comments</h4>
-      
-      
-      
-      
-        <section id="comments">
-          <div id="valine_container" class="valine_thread">
-            <i class="fas fa-spinner fa-spin fa-fw"></i>
-          </div>
-        </section>
-      
-    </section>
-  </article>
-
-
-  
-
-
-
-
-<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
-
-
-
-  <script>
-    window.subData = {
-      title: 'BZOJ2160 啦啦队排练',
-      tools: true
+    
+    <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
+    
+    
+      <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX","TeX"],
+      linebreaks: { automatic:true },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: { autoNumber: "AMS" },
+      noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+      Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+  });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += (all[i].SourceElement().parentNode.className ? ' ' : '') + 'has-jax';
     }
-  </script>
+  });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+    
+
+  
 
 
+	
 </div>
 <aside class='l_side'>
   
@@ -498,20 +452,6 @@
           
           
             
-  <section class='widget toc-wrapper'>
-    
-<header class='pure'>
-  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;TOC</div>
-  
-    <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div>
-  
-</header>
-
-    <div class='content pure'>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#null"><span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#null"><span class="toc-text">Code</span></a></li></ol>
-    </div>
-  </section>
-
 
           
         
@@ -594,11 +534,12 @@
 
   <div class='content pure'>
     <p style="text-align:center;font-size:14px;color:#7d7d80" id="hitokoto">loading...</p>>
-      <script>fetch('https://v1.hitokoto.cn/?c=a')
+      <script>fetch('https://v1.hitokoto.cn/')
         .then(function (res){return res.json();})
         .then(function (data) {
           var hitokoto = document.getElementById('hitokoto');
-          hitokoto.innerText = data.hitokoto;hitokoto.innerText += "\n——" + data.from;
+          hitokoto.innerText = data.hitokoto;
+          hitokoto.innerText += "\n——" + data.from;
         })
         .catch(function (err) {console.error(err);})
       </script>
@@ -631,41 +572,59 @@
     <div class='content pure'>
       <ul class="entry">
         
-          <li><a class="flat-box" title="/categories/动态规划/" href="/categories/动态规划/"><div class='name'>动态规划</div><div class='badge'>(5)</div></a></li>
+          <li><a class="flat-box" title="/categories/codeforces/" href="/categories/codeforces/"><div class='name'>codeforces</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/其他/" href="/categories/其他/"><div class='name'>其他</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child" title="/categories/其他/性质/" href="/categories/其他/性质/"><div class='name'>性质</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/动态规划/" href="/categories/动态规划/"><div class='name'>动态规划</div><div class='badge'>(12)</div></a></li>
         
           <li><a class="flat-box child" title="/categories/动态规划/决策单调性优化/" href="/categories/动态规划/决策单调性优化/"><div class='name'>决策单调性优化</div><div class='badge'>(1)</div></a></li>
         
+          <li><a class="flat-box child" title="/categories/动态规划/凸包/" href="/categories/动态规划/凸包/"><div class='name'>凸包</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child" title="/categories/动态规划/区间dp/" href="/categories/动态规划/区间dp/"><div class='name'>区间dp</div><div class='badge'>(1)</div></a></li>
+        
           <li><a class="flat-box child" title="/categories/动态规划/单调队列优化/" href="/categories/动态规划/单调队列优化/"><div class='name'>单调队列优化</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child" title="/categories/动态规划/数据结构优化/" href="/categories/动态规划/数据结构优化/"><div class='name'>数据结构优化</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box child" title="/categories/动态规划/斜率优化/" href="/categories/动态规划/斜率优化/"><div class='name'>斜率优化</div><div class='badge'>(1)</div></a></li>
         
-          <li><a class="flat-box child" title="/categories/动态规划/树形dp/" href="/categories/动态规划/树形dp/"><div class='name'>树形dp</div><div class='badge'>(1)</div></a></li>
+          <li><a class="flat-box child" title="/categories/动态规划/树形dp/" href="/categories/动态规划/树形dp/"><div class='name'>树形dp</div><div class='badge'>(3)</div></a></li>
         
-          <li><a class="flat-box child" title="/categories/动态规划/计数dp/" href="/categories/动态规划/计数dp/"><div class='name'>计数dp</div><div class='badge'>(1)</div></a></li>
+          <li><a class="flat-box child" title="/categories/动态规划/状压dp/" href="/categories/动态规划/状压dp/"><div class='name'>状压dp</div><div class='badge'>(1)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/图论/" href="/categories/图论/"><div class='name'>图论</div><div class='badge'>(7)</div></a></li>
+          <li><a class="flat-box child" title="/categories/动态规划/背包dp/" href="/categories/动态规划/背包dp/"><div class='name'>背包dp</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child" title="/categories/动态规划/计数dp/" href="/categories/动态规划/计数dp/"><div class='name'>计数dp</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/图论/" href="/categories/图论/"><div class='name'>图论</div><div class='badge'>(8)</div></a></li>
         
           <li><a class="flat-box child" title="/categories/图论/2-sat/" href="/categories/图论/2-sat/"><div class='name'>2-sat</div><div class='badge'>(2)</div></a></li>
         
-          <li><a class="flat-box child" title="/categories/图论/传递闭包/" href="/categories/图论/传递闭包/"><div class='name'>传递闭包</div><div class='badge'>(1)</div></a></li>
+          <li><a class="flat-box child" title="/categories/图论/二分图匹配/" href="/categories/图论/二分图匹配/"><div class='name'>二分图匹配</div><div class='badge'>(1)</div></a></li>
         
-          <li><a class="flat-box child" title="/categories/图论/网络流/" href="/categories/图论/网络流/"><div class='name'>网络流</div><div class='badge'>(4)</div></a></li>
+          <li><a class="flat-box child" title="/categories/图论/染色/" href="/categories/图论/染色/"><div class='name'>染色</div><div class='badge'>(1)</div></a></li>
         
-          <li><a class="flat-box child" title="/categories/图论/网络流/费用流/" href="/categories/图论/网络流/费用流/"><div class='name'>费用流</div><div class='badge'>(1)</div></a></li>
+          <li><a class="flat-box child" title="/categories/图论/网络流/" href="/categories/图论/网络流/"><div class='name'>网络流</div><div class='badge'>(3)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/字符串/" href="/categories/字符串/"><div class='name'>字符串</div><div class='badge'>(13)</div></a></li>
+          <li><a class="flat-box child" title="/categories/图论/补图/" href="/categories/图论/补图/"><div class='name'>补图</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/字符串/" href="/categories/字符串/"><div class='name'>字符串</div><div class='badge'>(10)</div></a></li>
         
           <li><a class="flat-box child" title="/categories/字符串/AC自动机/" href="/categories/字符串/AC自动机/"><div class='name'>AC自动机</div><div class='badge'>(1)</div></a></li>
         
-          <li><a class="flat-box child" title="/categories/字符串/KMP-扩展KMP/" href="/categories/字符串/KMP-扩展KMP/"><div class='name'>KMP/扩展KMP</div><div class='badge'>(1)</div></a></li>
+          <li><a class="flat-box child" title="/categories/字符串/Trie/" href="/categories/字符串/Trie/"><div class='name'>Trie</div><div class='badge'>(1)</div></a></li>
         
-          <li><a class="flat-box child" title="/categories/字符串/manachar/" href="/categories/字符串/manachar/"><div class='name'>manachar</div><div class='badge'>(3)</div></a></li>
+          <li><a class="flat-box child" title="/categories/字符串/manachar/" href="/categories/字符串/manachar/"><div class='name'>manachar</div><div class='badge'>(2)</div></a></li>
         
-          <li><a class="flat-box child" title="/categories/字符串/后缀数组/" href="/categories/字符串/后缀数组/"><div class='name'>后缀数组</div><div class='badge'>(3)</div></a></li>
+          <li><a class="flat-box child" title="/categories/字符串/后缀数组/" href="/categories/字符串/后缀数组/"><div class='name'>后缀数组</div><div class='badge'>(2)</div></a></li>
         
           <li><a class="flat-box child" title="/categories/字符串/后缀树/" href="/categories/字符串/后缀树/"><div class='name'>后缀树</div><div class='badge'>(1)</div></a></li>
         
-          <li><a class="flat-box child" title="/categories/字符串/后缀自动机/" href="/categories/字符串/后缀自动机/"><div class='name'>后缀自动机</div><div class='badge'>(5)</div></a></li>
+          <li><a class="flat-box child" title="/categories/字符串/后缀自动机/" href="/categories/字符串/后缀自动机/"><div class='name'>后缀自动机</div><div class='badge'>(4)</div></a></li>
         
           <li><a class="flat-box" title="/categories/数学/" href="/categories/数学/"><div class='name'>数学</div><div class='badge'>(15)</div></a></li>
         
@@ -673,35 +632,37 @@
         
           <li><a class="flat-box child" title="/categories/数学/多项式/" href="/categories/数学/多项式/"><div class='name'>多项式</div><div class='badge'>(4)</div></a></li>
         
-          <li><a class="flat-box child" title="/categories/数学/多项式/FFT/" href="/categories/数学/多项式/FFT/"><div class='name'>FFT</div><div class='badge'>(0)</div></a></li>
-        
-          <li><a class="flat-box child" title="/categories/数学/容斥原理/" href="/categories/数学/容斥原理/"><div class='name'>容斥原理</div><div class='badge'>(1)</div></a></li>
-        
           <li><a class="flat-box child" title="/categories/数学/拉格朗日插值/" href="/categories/数学/拉格朗日插值/"><div class='name'>拉格朗日插值</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box child" title="/categories/数学/数论/" href="/categories/数学/数论/"><div class='name'>数论</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box child" title="/categories/数学/斯特林数/" href="/categories/数学/斯特林数/"><div class='name'>斯特林数</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box child" title="/categories/数学/杜教筛/" href="/categories/数学/杜教筛/"><div class='name'>杜教筛</div><div class='badge'>(1)</div></a></li>
         
-          <li><a class="flat-box child" title="/categories/数学/组合/" href="/categories/数学/组合/"><div class='name'>组合</div><div class='badge'>(4)</div></a></li>
+          <li><a class="flat-box child" title="/categories/数学/组合/" href="/categories/数学/组合/"><div class='name'>组合</div><div class='badge'>(5)</div></a></li>
         
-          <li><a class="flat-box child" title="/categories/数学/莫比乌斯反演/" href="/categories/数学/莫比乌斯反演/"><div class='name'>莫比乌斯反演</div><div class='badge'>(4)</div></a></li>
+          <li><a class="flat-box child" title="/categories/数学/莫比乌斯反演/" href="/categories/数学/莫比乌斯反演/"><div class='name'>莫比乌斯反演</div><div class='badge'>(3)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/数据结构/" href="/categories/数据结构/"><div class='name'>数据结构</div><div class='badge'>(10)</div></a></li>
+          <li><a class="flat-box" title="/categories/数据结构/" href="/categories/数据结构/"><div class='name'>数据结构</div><div class='badge'>(13)</div></a></li>
         
           <li><a class="flat-box child" title="/categories/数据结构/LCT/" href="/categories/数据结构/LCT/"><div class='name'>LCT</div><div class='badge'>(2)</div></a></li>
         
-          <li><a class="flat-box child" title="/categories/数据结构/主席树/" href="/categories/数据结构/主席树/"><div class='name'>主席树</div><div class='badge'>(0)</div></a></li>
+          <li><a class="flat-box child" title="/categories/数据结构/单调栈/" href="/categories/数据结构/单调栈/"><div class='name'>单调栈</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box child" title="/categories/数据结构/可持久化/" href="/categories/数据结构/可持久化/"><div class='name'>可持久化</div><div class='badge'>(2)</div></a></li>
         
-          <li><a class="flat-box child" title="/categories/数据结构/树链剖分/" href="/categories/数据结构/树链剖分/"><div class='name'>树链剖分</div><div class='badge'>(2)</div></a></li>
+          <li><a class="flat-box child" title="/categories/数据结构/树状数组/" href="/categories/数据结构/树状数组/"><div class='name'>树状数组</div><div class='badge'>(3)</div></a></li>
+        
+          <li><a class="flat-box child" title="/categories/数据结构/树链剖分/" href="/categories/数据结构/树链剖分/"><div class='name'>树链剖分</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box child" title="/categories/数据结构/点分治/" href="/categories/数据结构/点分治/"><div class='name'>点分治</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box child" title="/categories/数据结构/线段树/" href="/categories/数据结构/线段树/"><div class='name'>线段树</div><div class='badge'>(2)</div></a></li>
         
           <li><a class="flat-box child" title="/categories/数据结构/长链剖分/" href="/categories/数据结构/长链剖分/"><div class='name'>长链剖分</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/注意点/" href="/categories/注意点/"><div class='name'>注意点</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box" title="/categories/纪念日/" href="/categories/纪念日/"><div class='name'>纪念日</div><div class='badge'>(1)</div></a></li>
         
@@ -736,7 +697,7 @@
 </header>
 
     <div class='content pure'>
-      <a href="/tags/2-sat/" style="font-size: 14px; color: #999">2-sat</a> <a href="/tags/AC自动机/" style="font-size: 14px; color: #999">AC自动机</a> <a href="/tags/Burnside引理/" style="font-size: 14px; color: #999">Burnside引理</a> <a href="/tags/FFT/" style="font-size: 20.67px; color: #6c6c6c">FFT</a> <a href="/tags/LCT/" style="font-size: 17.33px; color: #828282">LCT</a> <a href="/tags/NTT/" style="font-size: 14px; color: #999">NTT</a> <a href="/tags/manachar/" style="font-size: 17.33px; color: #828282">manachar</a> <a href="/tags/trie/" style="font-size: 14px; color: #999">trie</a> <a href="/tags/主席树/" style="font-size: 17.33px; color: #828282">主席树</a> <a href="/tags/二分图/" style="font-size: 14px; color: #999">二分图</a> <a href="/tags/二分答案/" style="font-size: 17.33px; color: #828282">二分答案</a> <a href="/tags/二次函数/" style="font-size: 14px; color: #999">二次函数</a> <a href="/tags/任意长度FFT/" style="font-size: 14px; color: #999">任意长度FFT</a> <a href="/tags/决策单调性/" style="font-size: 14px; color: #999">决策单调性</a> <a href="/tags/单调队列/" style="font-size: 14px; color: #999">单调队列</a> <a href="/tags/博弈论/" style="font-size: 14px; color: #999">博弈论</a> <a href="/tags/后缀数组/" style="font-size: 17.33px; color: #828282">后缀数组</a> <a href="/tags/后缀树/" style="font-size: 14px; color: #999">后缀树</a> <a href="/tags/后缀自动机/" style="font-size: 24px; color: #555">后缀自动机</a> <a href="/tags/多项式/" style="font-size: 24px; color: #555">多项式</a> <a href="/tags/容斥原理/" style="font-size: 14px; color: #999">容斥原理</a> <a href="/tags/对偶图/" style="font-size: 14px; color: #999">对偶图</a> <a href="/tags/拉拉格朗日插值/" style="font-size: 14px; color: #999">拉拉格朗日插值</a> <a href="/tags/拉格朗日插值/" style="font-size: 14px; color: #999">拉格朗日插值</a> <a href="/tags/搞/" style="font-size: 17.33px; color: #828282">搞</a> <a href="/tags/数学期望/" style="font-size: 14px; color: #999">数学期望</a> <a href="/tags/斜率优化/" style="font-size: 14px; color: #999">斜率优化</a> <a href="/tags/最小生成树/" style="font-size: 14px; color: #999">最小生成树</a> <a href="/tags/最短路/" style="font-size: 14px; color: #999">最短路</a> <a href="/tags/杜教筛/" style="font-size: 14px; color: #999">杜教筛</a> <a href="/tags/树上动规/" style="font-size: 14px; color: #999">树上动规</a> <a href="/tags/树形dp/" style="font-size: 20.67px; color: #6c6c6c">树形dp</a> <a href="/tags/树状数组/" style="font-size: 14px; color: #999">树状数组</a> <a href="/tags/模拟/" style="font-size: 14px; color: #999">模拟</a> <a href="/tags/点分治/" style="font-size: 14px; color: #999">点分治</a> <a href="/tags/熟练剖分/" style="font-size: 14px; color: #999">熟练剖分</a> <a href="/tags/第二类斯特林数/" style="font-size: 14px; color: #999">第二类斯特林数</a> <a href="/tags/线性筛/" style="font-size: 17.33px; color: #828282">线性筛</a> <a href="/tags/线段树/" style="font-size: 20.67px; color: #6c6c6c">线段树</a> <a href="/tags/线段树合并/" style="font-size: 14px; color: #999">线段树合并</a> <a href="/tags/组合数学/" style="font-size: 24px; color: #555">组合数学</a> <a href="/tags/网络流/" style="font-size: 17.33px; color: #828282">网络流</a> <a href="/tags/网络流-最大流/" style="font-size: 14px; color: #999">网络流-最大流</a> <a href="/tags/自然数幂和/" style="font-size: 14px; color: #999">自然数幂和</a> <a href="/tags/莫比乌斯反演/" style="font-size: 20.67px; color: #6c6c6c">莫比乌斯反演</a> <a href="/tags/计数dp/" style="font-size: 17.33px; color: #828282">计数dp</a> <a href="/tags/调和级数/" style="font-size: 14px; color: #999">调和级数</a> <a href="/tags/贪心/" style="font-size: 14px; color: #999">贪心</a> <a href="/tags/费用流/" style="font-size: 14px; color: #999">费用流</a> <a href="/tags/长链剖分/" style="font-size: 14px; color: #999">长链剖分</a>
+      <a href="/tags/2-sat/" style="font-size: 16.5px; color: #888">2-sat</a> <a href="/tags/AC自动机/" style="font-size: 14px; color: #999">AC自动机</a> <a href="/tags/Burnside引理/" style="font-size: 14px; color: #999">Burnside引理</a> <a href="/tags/FFT/" style="font-size: 19px; color: #777">FFT</a> <a href="/tags/LCT/" style="font-size: 16.5px; color: #888">LCT</a> <a href="/tags/NTT/" style="font-size: 14px; color: #999">NTT</a> <a href="/tags/Trie/" style="font-size: 14px; color: #999">Trie</a> <a href="/tags/bfs/" style="font-size: 14px; color: #999">bfs</a> <a href="/tags/manachar/" style="font-size: 16.5px; color: #888">manachar</a> <a href="/tags/trie/" style="font-size: 14px; color: #999">trie</a> <a href="/tags/三分/" style="font-size: 14px; color: #999">三分</a> <a href="/tags/主席树/" style="font-size: 16.5px; color: #888">主席树</a> <a href="/tags/二分图/" style="font-size: 14px; color: #999">二分图</a> <a href="/tags/二分答案/" style="font-size: 16.5px; color: #888">二分答案</a> <a href="/tags/二次函数/" style="font-size: 14px; color: #999">二次函数</a> <a href="/tags/任意长度FFT/" style="font-size: 14px; color: #999">任意长度FFT</a> <a href="/tags/优先队列/" style="font-size: 14px; color: #999">优先队列</a> <a href="/tags/决策单调性/" style="font-size: 14px; color: #999">决策单调性</a> <a href="/tags/凸包维护/" style="font-size: 14px; color: #999">凸包维护</a> <a href="/tags/动态规划/" style="font-size: 14px; color: #999">动态规划</a> <a href="/tags/区间dp/" style="font-size: 14px; color: #999">区间dp</a> <a href="/tags/单调栈/" style="font-size: 14px; color: #999">单调栈</a> <a href="/tags/单调队列/" style="font-size: 14px; color: #999">单调队列</a> <a href="/tags/博弈论/" style="font-size: 14px; color: #999">博弈论</a> <a href="/tags/后缀数组/" style="font-size: 16.5px; color: #888">后缀数组</a> <a href="/tags/后缀树/" style="font-size: 14px; color: #999">后缀树</a> <a href="/tags/后缀自动机/" style="font-size: 21.5px; color: #666">后缀自动机</a> <a href="/tags/多项式/" style="font-size: 21.5px; color: #666">多项式</a> <a href="/tags/定理/" style="font-size: 14px; color: #999">定理</a> <a href="/tags/容斥原理/" style="font-size: 14px; color: #999">容斥原理</a> <a href="/tags/对偶图/" style="font-size: 14px; color: #999">对偶图</a> <a href="/tags/循环节/" style="font-size: 14px; color: #999">循环节</a> <a href="/tags/性质/" style="font-size: 14px; color: #999">性质</a> <a href="/tags/拉格朗日插值/" style="font-size: 16.5px; color: #888">拉格朗日插值</a> <a href="/tags/搞/" style="font-size: 19px; color: #777">搞</a> <a href="/tags/数学期望/" style="font-size: 14px; color: #999">数学期望</a> <a href="/tags/数形转换/" style="font-size: 14px; color: #999">数形转换</a> <a href="/tags/数论/" style="font-size: 14px; color: #999">数论</a> <a href="/tags/斜率优化/" style="font-size: 14px; color: #999">斜率优化</a> <a href="/tags/最小字典序二分图匹配/" style="font-size: 14px; color: #999">最小字典序二分图匹配</a> <a href="/tags/最小生成树/" style="font-size: 14px; color: #999">最小生成树</a> <a href="/tags/最短路/" style="font-size: 14px; color: #999">最短路</a> <a href="/tags/杜教筛/" style="font-size: 14px; color: #999">杜教筛</a> <a href="/tags/染色/" style="font-size: 14px; color: #999">染色</a> <a href="/tags/树上动规/" style="font-size: 14px; color: #999">树上动规</a> <a href="/tags/树形dp/" style="font-size: 21.5px; color: #666">树形dp</a> <a href="/tags/树状数组/" style="font-size: 21.5px; color: #666">树状数组</a> <a href="/tags/树链剖分/" style="font-size: 14px; color: #999">树链剖分</a> <a href="/tags/模拟/" style="font-size: 14px; color: #999">模拟</a> <a href="/tags/点分治/" style="font-size: 14px; color: #999">点分治</a> <a href="/tags/状压dp/" style="font-size: 14px; color: #999">状压dp</a> <a href="/tags/第二类斯特林数/" style="font-size: 14px; color: #999">第二类斯特林数</a> <a href="/tags/线性筛/" style="font-size: 16.5px; color: #888">线性筛</a> <a href="/tags/线段树/" style="font-size: 19px; color: #777">线段树</a> <a href="/tags/线段树合并/" style="font-size: 14px; color: #999">线段树合并</a> <a href="/tags/组合数学/" style="font-size: 24px; color: #555">组合数学</a> <a href="/tags/网络流/" style="font-size: 16.5px; color: #888">网络流</a> <a href="/tags/自然数幂和/" style="font-size: 14px; color: #999">自然数幂和</a> <a href="/tags/莫比乌斯反演/" style="font-size: 21.5px; color: #666">莫比乌斯反演</a> <a href="/tags/计数dp/" style="font-size: 19px; color: #777">计数dp</a> <a href="/tags/调和级数/" style="font-size: 14px; color: #999">调和级数</a> <a href="/tags/贪心/" style="font-size: 14px; color: #999">贪心</a> <a href="/tags/费用流/" style="font-size: 14px; color: #999">费用流</a> <a href="/tags/链表/" style="font-size: 14px; color: #999">链表</a> <a href="/tags/长链剖分/" style="font-size: 14px; color: #999">长链剖分</a>
     </div>
   </section>
 
@@ -797,6 +758,52 @@
   </div>
 </footer>
 <script>setLoadingBarProgress(80);</script>
+
+
+
+
+	<!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
+	
+
+	
+	    <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX","TeX"],
+      linebreaks: { automatic:true },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: { autoNumber: "AMS" },
+      noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+      Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+  });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += (all[i].SourceElement().parentNode.className ? ' ' : '') + 'has-jax';
+    }
+  });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+	
 
 
       <script>setLoadingBarProgress(60);</script>
@@ -885,36 +892,6 @@
 
 
 
-
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  
-    
-      <script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0.5/js/volantis.min.js"></script>
-    
-  
-  <script>
-  var GUEST_INFO = ['nick','mail','link'];
-  var guest_info = 'nick,mail,link'.split(',').filter(function(item){
-    return GUEST_INFO.indexOf(item) > -1
-  });
-  var notify = 'false' == true;
-  var verify = 'false' == true;
-  var valine = new Valine();
-  valine.init({
-    el: '#valine_container',
-    notify: notify,
-    verify: verify,
-    guest_info: guest_info,
-    
-    appId: "dEkbdb7HifiA6NKf8eT0qGe4-gzGzoHsz",
-    appKey: "L8KCnhJjBGbQsOJOI6pbRFj0",
-    placeholder: "快来评论吧~",
-    pageSize:'20',
-    avatar:'mp',
-    lang:'zh-cn',
-    highlight:'true'
-  })
-  </script>
 
 
 

@@ -81,7 +81,7 @@
                   
                   
                   id="categories">
-									<i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
+									<i class='fas fa-folder-open fa-fw'></i>&nbsp;Categories
 								</a>
 							</li>
       			
@@ -92,7 +92,7 @@
                   
                   
                   id="tags">
-									<i class='fas fa-hashtag fa-fw'></i>&nbsp;标签
+									<i class='fas fa-hashtag fa-fw'></i>&nbsp;Tags
 								</a>
 							</li>
       			
@@ -125,7 +125,7 @@
 			
 				<div class="m_search">
 					<form name="searchform" class="form u-search-form">
-						<input type="text" class="input u-search-input" placeholder="搜索" />
+						<input type="text" class="input u-search-input" placeholder="Search" />
 						<i class="icon fas fa-search fa-fw"></i>
 					</form>
 				</div>
@@ -171,7 +171,7 @@
                 
                 
                 id="categories">
-								<i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
+								<i class='fas fa-folder-open fa-fw'></i>&nbsp;Categories
 							</a>
             </li>
           
@@ -182,7 +182,7 @@
                 
                 
                 id="tags">
-								<i class='fas fa-hashtag fa-fw'></i>&nbsp;标签
+								<i class='fas fa-hashtag fa-fw'></i>&nbsp;Tags
 							</a>
             </li>
           
@@ -193,7 +193,7 @@
                 
                 
                 id="archives">
-								<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+								<i class='fas fa-archive fa-fw'></i>&nbsp;Archives
 							</a>
             </li>
           
@@ -224,6 +224,118 @@
   <section class="post-list">
     
     
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/09/09/BZOJ1129-POI2008-Per/">
+      BZOJ1129 [POI2008]Per
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    <a href="http://ratexxxx.github.io" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>Ratexxxx</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-09-09</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/数学/组合/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>数据结构&nbsp;/&nbsp;数学&nbsp;/&nbsp;树状数组&nbsp;/&nbsp;组合</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <blockquote>
+<p>题目链接：<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=1129" target="_blank" rel="noopener">BZOJ1129</a></p>
+</blockquote>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>如果没有重复元素，直接一位一位计数即可<br>有相同元素仍然是一位一位计数，考虑从后往前，假设当前前i-1个是固定的，数在第i位开始小于给定的序列的方案数<br>设原数列为$a$，可以变动的中，不同的元素分别是$b_1, b_2, b_3, …, b_k$，个数分别为$c_1, c_2, c_3…, c_k$个，则答案为<br>$$<br>\sum_{b_j&lt; a_i}\frac{(n-i)!}{\Pi_{k!=j} b_k\cdot(b_j-1) }<br>$$<br>硬算是$O(n^2)$的，可以用树状数组优化<br>分别维护分母和分子，每次i–时有一个新的元素加进来，某一个b会+1，分母会乘以新的b</p>
+<p>关键是这个模数的问题，他不是质数，要质因数分解，分别求答案，然后用CRT合并<br>逆元需要用扩展欧几里得来算</p>
+<p>还有比较麻烦的，如果乘以或除以的数是当前处理的模数对应的那个质因子的倍数，那么需要把这个数所有该因数除掉，同时记录去掉了几个这个因数<br>最后要把这些去掉的因数再快速幂乘回来<br>这是因为求逆元时要求与模数互质，因此必须先去掉，求完逆元再乘回来</p>
+<p>任意模数的逆元的处理方式要记笔记。。。</p>
+      
+        <div class="readmore">
+          <a href="/2019/09/09/BZOJ1129-POI2008-Per/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/树状数组/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>树状数组</a>
+        
+          <a href="/tags/组合数学/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>组合数学</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
       
         
           <div class='post-wrapper'>
@@ -315,7 +427,7 @@
         <div class="readmore">
           <a href="/2019/09/09/BZOJ1113-Poi2008-海报PLA/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
+            Read More
           </a>
         </div>
       
@@ -432,7 +544,7 @@
         <div class="readmore">
           <a href="/2019/09/09/BZOJ1098-POI2007-办公楼biu/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
+            Read More
           </a>
         </div>
       
@@ -553,7 +665,7 @@
         <div class="readmore">
           <a href="/2019/08/31/BZOJ1065-NOI2008-奥运物流/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
+            Read More
           </a>
         </div>
       
@@ -654,7 +766,7 @@
         <div class="readmore">
           <a href="/2019/08/31/BZOJ1064-Noi2008-假面舞会/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
+            Read More
           </a>
         </div>
       
@@ -764,7 +876,7 @@
         <div class="readmore">
           <a href="/2019/08/31/BZOJ1063-Noi2008-道路设计/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
+            Read More
           </a>
         </div>
       
@@ -877,7 +989,7 @@
         <div class="readmore">
           <a href="/2019/08/31/BZOJ1062-NOI2008-糖果雨/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
+            Read More
           </a>
         </div>
       
@@ -993,7 +1105,7 @@
         <div class="readmore">
           <a href="/2019/08/28/BZOJ1921-Ctsc2010-珠宝商/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
+            Read More
           </a>
         </div>
       
@@ -1069,7 +1181,7 @@
   <div class='new-meta-item category'>
     <a href='/categories/数据结构/线段树/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>数据结构&nbsp;/&nbsp;图论&nbsp;/&nbsp;网络流&nbsp;/&nbsp;线段树</p>
+      <p>图论&nbsp;/&nbsp;数据结构&nbsp;/&nbsp;网络流&nbsp;/&nbsp;线段树</p>
     </a>
   </div>
 
@@ -1115,7 +1227,7 @@
         <div class="readmore">
           <a href="/2019/08/28/BZOJ1920-Ctsc2010-产品销售/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
+            Read More
           </a>
         </div>
       
@@ -1230,7 +1342,7 @@
         <div class="readmore">
           <a href="/2019/08/28/BZOJ1919-Ctsc2010-性能优化/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
+            Read More
           </a>
         </div>
       
@@ -1252,119 +1364,6 @@
           </div>
         
       
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/07/18/BZOJ3672-Noi2014-购票/">
-      BZOJ3672 [Noi2014]购票
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    <a href="http://ratexxxx.github.io" rel="nofollow">
-      
-        <i class="fas fa-user" aria-hidden="true"></i>
-      
-      <p>Ratexxxx</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-07-18</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/动态规划/斜率优化/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>数据结构&nbsp;/&nbsp;动态规划&nbsp;/&nbsp;树链剖分&nbsp;/&nbsp;斜率优化</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <blockquote>
-<p>题目链接：<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=3672" target="_blank" rel="noopener">BZOJ3672</a></p>
-</blockquote>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>$O(n^2)$的暴力dp很好想<br>$$<br>f[i] = min(f[j] + (dis[i] - dis[j])\times p_i + q_i),\quad dis[i] - dis[j] &lt;= l_i<br>$$<br>如果在一个序列上的话，这应该是一个经典的斜率优化，对于任意$ a &lt; b $，若要求对于i来说决策a比b更优，则<br>$$<br>p_i &lt; \frac{f[b] - f[a]}{dis[b] - dis[a]}<br>$$<br>由于p不具有单调性，因此不能从队头删除元素，而应在队列中二分查找最优的决策<br>再加上对于决策的位置有l的限制，因此还需要用线段树</p>
-<p>那么对于本题，在树上进行转移，就需要树链剖分了<br>剖分后的线段树上每个节点开一个vector，维护这个节点的决策集合，一个原树上的点最多出现在log个vector中，因此空间复杂度是对的<br>一遍dfs进行转移，维护一个根到当前节点的栈，转移时通过跳top将所有满足小于等于$l_x$的点分割成线段树上的区间，在线段树的各个vector上二分查找最优决策，取最小值，得到当前dp值，再在线段树上进行修改，最多修改log个节点，每个节点把队尾不优的决策弹出，再压如新决策<br>网上的题解都把这个方法叫树剖线段树维护凸包</p>
-<p>下面的代码洛谷上可过，BZOJ上会RE<br>
-      
-        <div class="readmore">
-          <a href="/2019/07/18/BZOJ3672-Noi2014-购票/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/树链剖分/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>树链剖分</a>
-        
-          <a href="/tags/线段树/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>线段树</a>
-        
-          <a href="/tags/斜率优化/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>斜率优化</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
     
   </section>
   
@@ -1375,7 +1374,7 @@
           
             <a class="prev" rel="prev" href="/">
               <section class="post prev" >
-                <i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页&nbsp;
+                <i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;Previous&nbsp;
               </section>
             </a>
           
@@ -1385,7 +1384,7 @@
           
             <a class="next" rel="next" href="/page/3/">
               <section class="post next">
-                &nbsp;下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
+                &nbsp;Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
               </section>
             </a>
           
@@ -1607,7 +1606,7 @@
   <section class='widget category'>
     
 <header class='pure'>
-  <div><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;文章分类</div>
+  <div><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;Categories</div>
   
     <a class="rightBtn"
     
@@ -1713,6 +1712,8 @@
         
           <li><a class="flat-box child" title="/categories/数据结构/长链剖分/" href="/categories/数据结构/长链剖分/"><div class='name'>长链剖分</div><div class='badge'>(1)</div></a></li>
         
+          <li><a class="flat-box" title="/categories/注意点/" href="/categories/注意点/"><div class='name'>注意点</div><div class='badge'>(1)</div></a></li>
+        
           <li><a class="flat-box" title="/categories/纪念日/" href="/categories/纪念日/"><div class='name'>纪念日</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box" title="/categories/集训/" href="/categories/集训/"><div class='name'>集训</div><div class='badge'>(4)</div></a></li>
@@ -1732,7 +1733,7 @@
   <section class='widget tagcloud'>
     
 <header class='pure'>
-  <div><i class="fas fa-fire fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;热门标签</div>
+  <div><i class="fas fa-fire fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;Hot Tags</div>
   
     <a class="rightBtn"
     
@@ -1791,19 +1792,19 @@
     </div>
   
   <br>
-  <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+  <div><p>Blog content follows the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License</a></p>
 </div>
   <div>
-    本站使用
+    Use
     <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a>
-    作为主题
+    as theme
     
-      ，
-      总访问量为
+      , 
+      total visits
       <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
-      次
+      times
     
-    。
+    . 
   </div>
 </footer>
 <script>setLoadingBarProgress(80);</script>
@@ -1909,15 +1910,15 @@
 <!-- 复制 -->
 <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
 <script>
-  let COPY_SUCCESS = "复制成功";
-  let COPY_FAILURE = "复制失败";
+  let COPY_SUCCESS = "Copied";
+  let COPY_FAILURE = "Copy failed";
   /*页面载入完成后，创建复制按钮*/
   !function (e, t, a) {
     /* code */
     var initCopyCode = function(){
       var copyHtml = '';
       copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
-      copyHtml += '  <i class="fa fa-copy"></i><span>复制</span>';
+      copyHtml += '  <i class="fa fa-copy"></i><span>Copy</span>';
       copyHtml += '</button>';
       $(".highlight .code pre").before(copyHtml);
       var clipboard = new ClipboardJS('.btn-copy', {

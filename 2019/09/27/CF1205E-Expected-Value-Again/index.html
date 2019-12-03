@@ -81,7 +81,7 @@
                   
                   
                   id="categories">
-									<i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
+									<i class='fas fa-folder-open fa-fw'></i>&nbsp;Categories
 								</a>
 							</li>
       			
@@ -92,7 +92,7 @@
                   
                   
                   id="tags">
-									<i class='fas fa-hashtag fa-fw'></i>&nbsp;标签
+									<i class='fas fa-hashtag fa-fw'></i>&nbsp;Tags
 								</a>
 							</li>
       			
@@ -125,7 +125,7 @@
 			
 				<div class="m_search">
 					<form name="searchform" class="form u-search-form">
-						<input type="text" class="input u-search-input" placeholder="搜索" />
+						<input type="text" class="input u-search-input" placeholder="Search" />
 						<i class="icon fas fa-search fa-fw"></i>
 					</form>
 				</div>
@@ -171,7 +171,7 @@
                 
                 
                 id="categories">
-								<i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
+								<i class='fas fa-folder-open fa-fw'></i>&nbsp;Categories
 							</a>
             </li>
           
@@ -182,7 +182,7 @@
                 
                 
                 id="tags">
-								<i class='fas fa-hashtag fa-fw'></i>&nbsp;标签
+								<i class='fas fa-hashtag fa-fw'></i>&nbsp;Tags
 							</a>
             </li>
           
@@ -193,7 +193,7 @@
                 
                 
                 id="archives">
-								<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+								<i class='fas fa-archive fa-fw'></i>&nbsp;Archives
 							</a>
             </li>
           
@@ -320,8 +320,7 @@
           <blockquote>
 <p>题目链接：<a href="https://codeforces.com/contest/1205/problem/E" target="_blank" rel="noopener">CF1205E</a></p>
 </blockquote>
-<h1><span id="solution">Solution</span></h1><a id="more"></a>
-<p>令$f(s, i)$表示字符串s中是否有一个长度为j的前后缀，则答案为<br>$$<br>E((\sum_{i=1}^{n-1}f(s, i))^2) \\<br>= \sum_{i=1}^{n-1}\sum_{j=1}^{n-1}E(f(s, i) * f(s, j)))<br>$$<br>表示的意义就是对于任意i和j，求出一个字符串同时有i和j长度的前后缀的期望，也就是有多少个字符串同时有长度为i和j的前后缀，再除以$k^n$<br>重点就是这样一个性质</p>
+<h1><span id="solution">Solution</span></h1><p>令$f(s, i)$表示字符串s中是否有一个长度为j的前后缀，则答案为<br>$$<br>E((\sum_{i=1}^{n-1}f(s, i))^2) \\<br>= \sum_{i=1}^{n-1}\sum_{j=1}^{n-1}E(f(s, i) * f(s, j)))<br>$$<br>表示的意义就是对于任意i和j，求出一个字符串同时有i和j长度的前后缀的期望，也就是有多少个字符串同时有长度为i和j的前后缀，再除以$k^n$<br>重点就是这样一个性质</p>
 <blockquote>
 <p>一个字符串同时有长度为$n-i$和$n-j$的前后缀的期望是<br>$$(\frac{1}{k})^{n-max(gcd(i, j),\ i + j - n)}$$</p>
 </blockquote>
@@ -331,7 +330,7 @@
 <p>举几个例子，用相同的字母表示必须相同的位置，X表示任意<br>一个长度为10的字符串，i=7，j=8<br>AAAXXXXAAA<br>一个长度为11的字符串，i=10，j=3<br>AAXAAXAAXAA<br>显然他们的循环节都不是gcd</p>
 <p>如果$i+j\leq n$，那么答案显然就是gcd，画一个图，较长串第二次出现可以看成一个较短串，这个完整的较短串和全部由较短串拼出的串的对应部分相等，差的部分是循环节，可以递归得到gcd（两数gcd等于差的gcd）</p>
 <p>否则，$i+j\gt n$，不同之处在于较长串第二处出现无法看成一个完整的较短串。不妨令$ i &gt; j $，第二次循环时可以看成一个j，这个j和 完全由j拼成的串 的对应位置产生错位，在j内部产生循环，递归到gcd，如果i后面的那个j超过n的部分段于gcd，那么循环节可以作用在整个j里，成为真正的循环节，否则它是假的循环节，因为无法扩展完整个j，剩下的无法扩展的部分就是$i + j - n - gcd(i, j)$ 这部分作为j这个循环节的一部分可以随便取，再算上gcd可以随便选，结果就是$max(gcd(i, j),\ i + j - n)$</p>
-<p>下面考虑怎么算，枚举$d = gcd(i, j), s = i + j$，转化为求多少对i和j满足定义，注意$ 1 \leq i, j &lt; n $<br>$$<br>f(d) = \sum_{i=1}^{min(n - 1, s - 1)}[gcd(i, s - i) = d] \\<br>F(d) = \sum_{d|t} f(t) = min(s - 1, n - 1) / t;<br>$$<br>$$<br>f(d) = \sum_{d|t}\mu(\frac{t}{d})F(t)<br>$$<br>代码中，由于$ d | t | s $，所以先枚举d，再枚举的是t / d，最后枚举s，复杂度$O(nlog^2n)$，注意i，j的范围</p>
+<p>下面考虑怎么算，枚举$d = gcd(i, j), s = i + j$，转化为求多少对i和j满足定义，注意$ 1 \leq i, j &lt; n $<br>$$<br>f(d) = \sum_{i=1}^{min(n - 1, s - 1)}[gcd(i, s - i) = d] \\<br>F(d) = \sum_{d|t} f(t) = min(s - 1, n - 1) / t;<br>$$<br>$$<br>f(d) = \sum_{d|t}\mu(\frac{t}{d})F(t)<br>$$<br>代码中，由于$ d | t | s $，所以先枚举d，再枚举的是t / d，最后枚举s，复杂度$O(nlog^2n)$，注意i，j的范围<br><a id="more"></a></p>
 <h1><span id="code">Code</span></h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rep(i, a, b) for(int i(a), i##_ORZ(b); i &lt;= i##_ORZ; i++)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> drep(i, a, b) for(int i(a), i##_ORZ(b); i &gt;= i##_ORZ; i--)</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">400010</span>, mod = <span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line">ll n, k, ans, miu[maxn], pri[maxn], cnt, v[maxn], pk[maxn];</span><br><span class="line"><span class="function">ll <span class="title">Power</span><span class="params">(ll x, ll p)</span> </span>&#123;</span><br><span class="line">	ll res = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(; p; p &gt;&gt;= <span class="number">1</span>, x = x * x % mod) <span class="keyword">if</span>(p &amp; <span class="number">1</span>) res = res * x % mod;</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%lld%lld"</span>, &amp;n, &amp;k);</span><br><span class="line">	k = Power(k, mod - <span class="number">2</span>);</span><br><span class="line">	miu[<span class="number">1</span>] = <span class="number">1</span>; v[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">	rep(i, <span class="number">2</span>, n) &#123;</span><br><span class="line">		<span class="keyword">if</span>(!v[i]) pri[++cnt] = i, miu[i] = <span class="number">-1</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= cnt &amp;&amp; i * pri[j] &lt;= n; j++) &#123;</span><br><span class="line">			v[i * pri[j]] = <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">if</span>(i % pri[j]) miu[i * pri[j]] = -miu[i];</span><br><span class="line">			<span class="keyword">else</span> miu[i * pri[j]] = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	rep(i, <span class="number">0</span>, n * <span class="number">2</span>) pk[i] = Power(k, i);</span><br><span class="line">	rep(d, <span class="number">1</span>, n - <span class="number">1</span>) </span><br><span class="line">		rep(t, <span class="number">1</span>, (n * <span class="number">2</span> - <span class="number">2</span>) / d)</span><br><span class="line">			<span class="keyword">for</span>(ll s = t * d; s &lt;= n * <span class="number">2</span> - <span class="number">2</span>; s += t * d) &#123;</span><br><span class="line">				<span class="keyword">if</span>(s == d) <span class="keyword">continue</span>;</span><br><span class="line">				ll tmp = miu[t] * (min(n - <span class="number">1</span>, s - <span class="number">1</span>) / d / t - max(<span class="number">0l</span>l, s - n) / d / t);</span><br><span class="line">				<span class="comment">//cout &lt;&lt; d &lt;&lt; ' ' &lt;&lt; t &lt;&lt; ' ' &lt;&lt; s &lt;&lt; ' ' &lt;&lt; tmp &lt;&lt; endl;</span></span><br><span class="line">				ans = (ans + tmp * pk[k, n - max(<span class="number">1l</span>l * d, s - n)] % mod + mod) % mod;</span><br><span class="line">			&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, ans);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
         </div>
@@ -344,10 +343,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-09-27T21:59:53+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-10-11T20:32:33+08:00">
   <a class='notlink'>
     <i class="fas fa-clock" aria-hidden="true"></i>
-    <p>最后更新于 Sep 27, 2019</p>
+    <p>last updated at Oct 11, 2019</p>
   </a>
 </div>
 
@@ -376,7 +375,7 @@
                 
                     <section class="prev">
                         <span class="art-item-left">
-                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;Previous</h6>
                             <h4>
                                 <a href="/2019/10/03/数论定理整合/" rel="prev" title="数论定理整合">
                                   
@@ -396,7 +395,7 @@
                 
                     <section class="next">
                         <span class="art-item-right" aria-hidden="true">
-                            <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h6>Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
                             <h4>
                                 <a href="/2019/09/18/BZOJ1566-NOI2009-管道取珠/" rel="prev" title="BZOJ1566 [NOI2009]管道取珠">
                                     
@@ -426,7 +425,7 @@
 
   <article class="post white-box comments">
     <section class="article typo">
-      <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;评论</h4>
+      <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;Comments</h4>
       
       
       
@@ -564,7 +563,7 @@
   <section class='widget toc-wrapper'>
     
 <header class='pure'>
-  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;本文目录</div>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;TOC</div>
   
     <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div>
   
@@ -679,7 +678,7 @@
   <section class='widget category'>
     
 <header class='pure'>
-  <div><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;文章分类</div>
+  <div><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;Categories</div>
   
     <a class="rightBtn"
     
@@ -785,6 +784,8 @@
         
           <li><a class="flat-box child" title="/categories/数据结构/长链剖分/" href="/categories/数据结构/长链剖分/"><div class='name'>长链剖分</div><div class='badge'>(1)</div></a></li>
         
+          <li><a class="flat-box" title="/categories/注意点/" href="/categories/注意点/"><div class='name'>注意点</div><div class='badge'>(1)</div></a></li>
+        
           <li><a class="flat-box" title="/categories/纪念日/" href="/categories/纪念日/"><div class='name'>纪念日</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box" title="/categories/集训/" href="/categories/集训/"><div class='name'>集训</div><div class='badge'>(4)</div></a></li>
@@ -804,7 +805,7 @@
   <section class='widget tagcloud'>
     
 <header class='pure'>
-  <div><i class="fas fa-fire fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;热门标签</div>
+  <div><i class="fas fa-fire fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;Hot Tags</div>
   
     <a class="rightBtn"
     
@@ -863,19 +864,19 @@
     </div>
   
   <br>
-  <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+  <div><p>Blog content follows the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License</a></p>
 </div>
   <div>
-    本站使用
+    Use
     <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a>
-    作为主题
+    as theme
     
-      ，
-      总访问量为
+      , 
+      total visits
       <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
-      次
+      times
     
-    。
+    . 
   </div>
 </footer>
 <script>setLoadingBarProgress(80);</script>
@@ -1011,15 +1012,15 @@
 <!-- 复制 -->
 <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
 <script>
-  let COPY_SUCCESS = "复制成功";
-  let COPY_FAILURE = "复制失败";
+  let COPY_SUCCESS = "Copied";
+  let COPY_FAILURE = "Copy failed";
   /*页面载入完成后，创建复制按钮*/
   !function (e, t, a) {
     /* code */
     var initCopyCode = function(){
       var copyHtml = '';
       copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
-      copyHtml += '  <i class="fa fa-copy"></i><span>复制</span>';
+      copyHtml += '  <i class="fa fa-copy"></i><span>Copy</span>';
       copyHtml += '</button>';
       $(".highlight .code pre").before(copyHtml);
       var clipboard = new ClipboardJS('.btn-copy', {
